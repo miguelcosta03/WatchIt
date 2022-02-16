@@ -1,0 +1,125 @@
+.login-background{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+    margin-top: 100px;
+    margin-left: 670px;
+    border-radius: 10%;
+}
+.login-title{
+    margin-left: 110px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.box-email-address{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid grey;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box-email-address:focus{
+    border-color: rgb(32, 28, 228);
+}
+
+.box-invalid-email-address{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid grey;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+    border-color: rgb(255, 0, 0);
+}
+
+.invalid-email-text{
+    margin-bottom: -20px;
+    margin-left: 80px;
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(255, 0, 0);
+}
+
+.box-password{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid grey;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box-password:focus{
+    border-color: rgb(32, 28, 228);
+}
+
+.box-invalid-password{
+    border:0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid grey;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+    border-color: rgb(255, 0, 0);
+}
+
+.invalid-password-text{
+    margin-bottom: -20px;
+    margin-left: 80px;
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(255, 0, 0);
+}
+
+.invalid-credentials-text{
+    margin-top: 10px;
+    margin-left: 80px;
+    font-size: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(255, 0, 0);
+}
+
+.login-button{
+    border:0;
+    background: rgb(32, 28, 228);
+    display: block;
+    margin: 20px auto;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 14px 10px;
+    width: 225px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.login-button:hover{
+    color: #fff;
+    background: rgb(111, 110, 199);
+}

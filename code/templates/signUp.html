@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registar</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/signUp.css') }}"
+</head>
+<body background="https://viciados.net/wp-content/uploads/2019/09/fala-universidades-netflix-3-1980x1114.jpg">
+    <form class="signup-background" action="/registarConta" method="post">
+        <h1 class="signup-title">Registar</h1>
+        <input class="box-email-address" type="text" name="email_address" placeholder="Endereço de Email">
+        <input class="box-username" type="text" name="username" placeholder="Nome De Utilizador">
+        <input class="box-password" type="password" name="password" placeholder="Palavra-Passe">
+        <input class="box-password" type="password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
+        <button class="signup-button" name="signUp" name="signUp" value="Registar">Registar</button>
+    </form>
+</body>
+</html>

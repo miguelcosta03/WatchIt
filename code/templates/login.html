@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
+    <title>Login</title>
+</head>
+<body background="https://viciados.net/wp-content/uploads/2019/09/fala-universidades-netflix-3-1980x1114.jpg">
+    <form class="login-background" action="/login" method="post">
+        <h1 class="login-title">Login</h1>
+        {% if not invalidEmail %}
+            <input class="box-email-address" type="text" name="email_address" placeholder="Endereço de Email">
+        {% else %}
+            <h1 class="invalid-email-text">{{ email_error }}</h1>
+            <input class="box-invalid-email-address" type="text" name="email_address" placeholder="Endereço de Email">
+        {% endif %}
+        
+        {% if not invalidPassword %}
+            <input class="box-password" type="password" name="password" placeholder="Palavra-Passe">
+        {% else %}
+            <h1 class="invalid-password-text">{{ password_error }}</h1>
+            <input class="box-invalid-password" type="password" name="password" placeholder="Palavra-Passe">
+        {% endif %}
+
+        {% if not invalidCredentials %}
+            <button class="login-button" name="login" value="Login">Login</button>
+        {% else %}
+            <h1 class="invalid-credentials-text">{{ invalidCredentialsText }}</h1>
+            <button class="login-button" name="login" value="Login">Login</button>
+        {% endif %}
+    </form>
+</body>
+</html>
