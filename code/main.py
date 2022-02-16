@@ -1,5 +1,3 @@
-import email
-from click import confirm
 from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import os, re
