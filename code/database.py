@@ -15,11 +15,23 @@ class Database:
         self.connection = pyodbc.connect(connectionData)
         self.cursor = self.connection.cursor()
 
+    def checkIfUserExistsByEmail(self, email):
+        emailQuery = f"""SELECT Email_Utilizador FROM dbo.Utilizadores
+                        WHERE Email_Utilizador = '{email}'"""
+
+        self.cursor.execute(emailQuery)
+        checkIfUserExists = self.cursor.fetchall()
+        formattedUserExists = checkIfUserExists[0][0]
+
+        if email == formattedUserExists:
+            return True
+        else:
+            return False
     def createNewUser(self, email, username, password):
-        query = f"""INSERT INTO dbo.Utilizadores
+        createUserQuery = f"""INSERT INTO dbo.Utilizadores
                     VALUES ('{email}', '{username}', '{password}');"""
         
-        self.cursor.execute(query)
+        self.cursor.execute(createUserQuery)
         self.connection.commit()
 
     def loginUser(self, email, password):

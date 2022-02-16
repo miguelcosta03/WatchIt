@@ -10,10 +10,33 @@
 <body background="https://viciados.net/wp-content/uploads/2019/09/fala-universidades-netflix-3-1980x1114.jpg">
     <form class="signup-background" action="/registarConta" method="post">
         <h1 class="signup-title">Registar</h1>
-        <input class="box-email-address" type="text" name="email_address" placeholder="Endereço de Email">
-        <input class="box-username" type="text" name="username" placeholder="Nome De Utilizador">
-        <input class="box-password" type="password" name="password" placeholder="Palavra-Passe">
-        <input class="box-password" type="password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
+        {% if not invalid_email %}
+            <input class="box-email-address" type="text" name="email_address" placeholder="Endereço de Email">
+        {% else %}
+            <h1 class="invalid-email-text">{{ email_error }}</h1>
+            <input class="box-invalid-email-address" type="text" name="email_address" placeholder="Endereço de Email">
+        {% endif %}
+        
+        {% if not invalid_username %}
+            <input class="box-username" type="text" name="username" placeholder="Nome de Utilizador">
+        {% else %}
+            <h1 class="invalid-username-text">{{ username_error }}</h1>
+            <input class="box-invalid-username" type="text" name="username" placeholder="Nome de Utilizador">
+        {% endif %}
+
+        {% if not invalid_password %}
+            <input class="box-password" type="password" name="password" placeholder="Palavra-Passe">
+        {% else %}
+            <h1 class="invalid-password-text">{{ password_error }}</h1>
+            <input class="box-invalid-password" type="password" name="password" placeholder="Palavra-Passe">
+        {% endif %}
+
+        {% if not invalid_confirm_password %}
+            <input class="box-password" type="password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
+        {% else %}
+            <h1 class="invalid-confirm-password-text">{{ confirm_password_error }}</h1>
+            <input class="invalid-confirm-password" type="password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
+        {% endif %}
         <button class="signup-button" name="signUp" name="signUp" value="Registar">Registar</button>
     </form>
 </body>
