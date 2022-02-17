@@ -7,12 +7,32 @@ SERIES_BACKGROUND_FOLDER = os.path.join('static', 'images', 'series_background')
 app = Flask(__name__)
 app.config['SERIES_BACKGROUND_FOLDER'] = SERIES_BACKGROUND_FOLDER
 
+
+"""
+    SERIES TEMPLATES
+"""
+peakyBlindersTemplate = 'peakyblinders.html'
+
+
+
 mainPageTemplate = 'mainPage.html'
 homeTemplate = 'home.html'
 loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 
+
+
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
+
+
+
+@app.route(f"/peakyblinders")
+def watchPeakyBlinders():
+    cover_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
+    serie_name = 'Nome da Série'
+    serie_star_quantity = 'Quantidade Estrelas'
+    serie_description = 'Descrição da Série'
+    return render_template(peakyBlindersTemplate, cover_image=cover_image, serie_name=serie_name, serie_star_quantity=serie_star_quantity, serie_description=serie_description)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -118,6 +138,7 @@ def signUp():
 
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
+    serieName = 1
     s1_value = 'Peaky Blinders'
     s2_value = 'La Casa de Papel'
     if request.method == 'POST':
@@ -128,8 +149,7 @@ def mainPage():
             return redirect(url_for('signUp'))
         
         if request.form.get('s1Button') == s1_value:
-            print('Peakyyy!!!')
-
+            return redirect(url_for("watchPeakyBlinders"))
         if request.form.get('s2Button') == s2_value:
             print('La Casa de Papel')
             
@@ -137,7 +157,6 @@ def mainPage():
     s2_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'lcp.jfif')
     
     return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
