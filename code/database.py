@@ -54,3 +54,58 @@ class Database:
         
         else:
             return False
+
+    def getSerieName(self, name):
+        query = f"""SELECT 
+                        Nome
+                    FROM dbo.Series
+                    WHERE nome='{name}'"""
+        self.cursor.execute(query)
+        serie_name = self.cursor.fetchall()
+        return str(serie_name).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+
+    def getSerieReleaseYear(self, serie_name):
+        query = f"""SELECT
+                        Ano_Lancamento
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_release_year = self.cursor.fetchall()
+        return str(serie_release_year).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieDuration(self, serie_name):
+        query = f"""SELECT
+                        Duracao
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_duration = self.cursor.fetchall()
+        return str(serie_duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def getSerieTotalSeasonsNumber(self, serie_name):
+        query = f"""SELECT
+                        Num_Temporadas
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_total_seasons_number = self.cursor.fetchall()
+        return str(serie_total_seasons_number).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieStarClassification(self, serie_name):
+        query = f"""SELECT
+                        Classificacao
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_classificiation = self.cursor.fetchall()
+        return str(serie_classificiation).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieDescription(self, serie_name):
+        query = f"""SELECT
+                        Descricao
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_duration = self.cursor.fetchall()
+        return str(serie_duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')

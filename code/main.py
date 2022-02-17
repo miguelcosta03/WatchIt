@@ -29,10 +29,15 @@ database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
 @app.route(f"/peakyblinders")
 def watchPeakyBlinders():
     cover_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
-    serie_name = 'Nome da Série'
-    serie_star_quantity = 'Quantidade Estrelas'
-    serie_description = 'Descrição da Série'
-    return render_template(peakyBlindersTemplate, cover_image=cover_image, serie_name=serie_name, serie_star_quantity=serie_star_quantity, serie_description=serie_description)
+    serie_name = database.getSerieName('Peaky Blinders')
+    serie_release_year = database.getSerieReleaseYear('Peaky Blinders')
+    serie_duration = database.getSerieDuration('Peaky Blinders')
+    serie_total_seasons_number = database.getSerieTotalSeasonsNumber('Peaky Blinders')
+    serie_star_classification = database.getSerieStarClassification('Peaky Blinders')
+    serie_description = database.getSerieDescription('Peaky Blinders')
+    return render_template(peakyBlindersTemplate, cover_image=cover_image, serie_name=serie_name, serie_release_year=serie_release_year, 
+                            serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number, serie_star_classification=serie_star_classification, 
+                            serie_description=serie_description)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

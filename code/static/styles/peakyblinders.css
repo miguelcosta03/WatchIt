@@ -4,31 +4,80 @@ body{
     font-family: sans-serif;
     background: rgb(20, 20, 20);
 }
+
+
+.top-widgets{
+    background: rgb(61, 61, 61);
+    height: 70px;
+    margin-top: -1.1%;;
+}
+
+.serie-background{
+    width: 60%;
+    height: 450px;
+    margin-left: 20%;
+    border-radius: 30px;
+
+}
+
 .serie-cover-image{
+    position: relative;
     width: 10%;
     height: auto;
     border-radius: 10%;
-    margin-left: 5%;
-    margin-top: 5%;
-}
-.serie-title{
-    color: white;
-    margin-top: -13.5%;
-    margin-left: 17%;
+    margin-left: -58%;
+    margin-bottom: -5%;
 }
 
-.serie-star-quantity{
+.serie-title{
+    position: relative;
+    color: white;
+    margin-top: -8%;
+    margin-left: 35%;
+}
+
+.serie-release-year{
+    position: relative;
     font-size: 100%;
     color: white;
     margin-top: 1%;
     margin-bottom: -2%;
-    margin-left: 17%;
+    margin-left: 35%;
+}
+
+.serie-duration{
+    position: relative;
+    font-size: 100%;
+    color: white;
+    margin-top: 1%;
+    margin-bottom: -2%;
+    margin-left: 38%;
+}
+
+.serie-total-seasons-number{
+    position: relative;
+    font-size: 100%;
+    color: white;
+    margin-top: 1.1%;
+    margin-bottom: -2%;
+    margin-left: 42%;
+}
+
+.serie-star-classification{
+    position: relative;
+    font-size: 100%;
+    color: white;
+    margin-top: 4%;
+    margin-bottom: -6%;
+    margin-left: 35%;
 }
 
 .serie-description {
+    position: relative;
     font-size: 100%;
     color: white;
-    margin-top: 6%;
+    margin-top: 8%;
     margin-bottom: -2%;
-    margin-left: 17%;
+    margin-left: 35%;
+    width: 45%;
 }
