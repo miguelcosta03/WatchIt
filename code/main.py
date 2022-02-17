@@ -39,7 +39,6 @@ def login():
                             invalidCredentials = False
                             return redirect(url_for('home'))
 
-                            login_user()
                         else:
                             invalidCredentials = True
                             invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
@@ -52,6 +51,7 @@ def login():
             else:
                 invalidEmail = True
                 email_error = "* Por favor insira o seu email."
+
     return render_template(loginTemplate, invalidEmail=invalidEmail, email_error=email_error, invalidPassword=invalidPassword, password_error=password_error,
                            invalidCredentials=invalidCredentials, invalidCredentialsText=invalidCredentialsText)
 
@@ -116,22 +116,27 @@ def signUp():
     return render_template(signUpTemplate, invalid_email=invalid_email, email_error=email_error, invalid_username=invalid_username, username_error=username_error,
                            invalid_password=invalid_password, password_error=password_error, invalid_confirm_password=invalid_confirm_password, confirm_password_error=confirm_password_error)
 
-@app.route("/home", methods=['GET', 'POST'])
-def home():
-    return render_template(homeTemplate)
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
+    s1_value = 'Peaky Blinders'
+    s2_value = 'La Casa de Papel'
     if request.method == 'POST':
         if request.form.get('loginButton') == 'Login':
             return redirect(url_for('login'))
         
         if request.form.get('signUpButton') == 'Registar':
             return redirect(url_for('signUp'))
+        
+        if request.form.get('s1Button') == s1_value:
+            print('Peakyyy!!!')
+
+        if request.form.get('s2Button') == s2_value:
+            print('La Casa de Papel')
             
     s1_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
     s2_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'lcp.jfif')
     
-    return render_template(mainPageTemplate, s1=s1_image, s2=s2_image)
+    return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
 
 
 if __name__ == "__main__":
