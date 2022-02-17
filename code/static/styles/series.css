@@ -31,16 +31,14 @@ s2 -> La Casa de Papel
 .s2-card{
     box-shadow: 20 4px 8px 0 rgb(32, 28, 228);
     transition: 0.3s;
-    width: 10%;
-    height: 270px;
-    margin-left: 250px;
-    margin-top: -273px;
+    width: 9.4%;
+    margin-left: 15%;
+    margin-top: -14.2%;
 
 }
 
 .s2-card:hover {
     box-shadow: 0 8px 16px 0 rgb(32, 28, 228);
-    margin-left: 250px;
 }
 
 .s2-img {

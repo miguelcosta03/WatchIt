@@ -38,6 +38,8 @@ def login():
                         if correctLogin:
                             invalidCredentials = False
                             return redirect(url_for('home'))
+
+                            login_user()
                         else:
                             invalidCredentials = True
                             invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
