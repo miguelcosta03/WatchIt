@@ -98,8 +98,8 @@ class Database:
                     FROM dbo.Series
                     WHERE nome='{serie_name}'"""
         self.cursor.execute(query)
-        serie_classificiation = self.cursor.fetchall()
-        return str(serie_classificiation).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+        serie_classification = self.cursor.fetchall()
+        return str(serie_classification).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
     def getSerieDescription(self, serie_name):
         query = f"""SELECT
