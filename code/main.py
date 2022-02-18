@@ -26,7 +26,7 @@ database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
 
 
 
-@app.route(f"/peakyblinders")
+@app.route(f"/peakyblinders", methods=['POST', 'GET'])
 def watchPeakyBlinders():
     cover_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
     serie_name = database.getSerieName('Peaky Blinders')
