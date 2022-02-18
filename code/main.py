@@ -1,3 +1,4 @@
+from attr import set_run_validators
 from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import os, re
@@ -8,37 +9,17 @@ app = Flask(__name__)
 app.config['SERIES_BACKGROUND_FOLDER'] = SERIES_BACKGROUND_FOLDER
 
 
-"""
-    SERIES TEMPLATES
-"""
-peakyBlindersTemplate = 'peakyblinders.html'
-
-
-
 mainPageTemplate = 'mainPage.html'
 homeTemplate = 'home.html'
 loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
-
-
+serieTemplate = 'serie.html'
 
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
 
 
-
-@app.route(f"/peakyblinders", methods=['POST', 'GET'])
-def watchPeakyBlinders():
-    cover_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
-    serie_name = database.getSerieName('Peaky Blinders')
-    serie_release_year = database.getSerieReleaseYear('Peaky Blinders')
-    serie_duration = database.getSerieDuration('Peaky Blinders')
-    serie_total_seasons_number = database.getSerieTotalSeasonsNumber('Peaky Blinders')
-    serie_star_classification = database.getSerieStarClassification('Peaky Blinders')
-    serie_description = database.getSerieDescription('Peaky Blinders')
-    return render_template(peakyBlindersTemplate, cover_image=cover_image, serie_name=serie_name, serie_release_year=serie_release_year, 
-                            serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number, serie_star_classification=serie_star_classification, 
-                            serie_description=serie_description)
-
+def returnSerieURL(serie_URL):
+    return serie_URL
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     invalidEmail = False
@@ -143,7 +124,6 @@ def signUp():
 
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
-    serieName = 1
     s1_value = 'Peaky Blinders'
     s2_value = 'La Casa de Papel'
     if request.method == 'POST':
@@ -154,14 +134,34 @@ def mainPage():
             return redirect(url_for('signUp'))
         
         if request.form.get('s1Button') == s1_value:
-            return redirect(url_for("watchPeakyBlinders"))
+            database.updateCurrentSerie('peakyblinders', 'Peaky Blinders')
+            return redirect(url_for("watchSerie"))
+
+
         if request.form.get('s2Button') == s2_value:
-            print('La Casa de Papel')
+            database.updateCurrentSerie('lacasadepapel', 'La Casa de Papel')
+            return redirect(url_for("watchSerie"))
             
-    s1_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'pb.jpg')
-    s2_image = os.path.join(app.config['SERIES_BACKGROUND_FOLDER'], 'lcp.jfif')
+    s1_image = os.path.join(SERIES_BACKGROUND_FOLDER, 'pb.jpg')
+    s2_image = os.path.join(SERIES_BACKGROUND_FOLDER, 'lcp.jfif')
     
     return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
+
+@app.route(f"/{database.getCurrentSerieURL()}")
+def watchSerie():
+    serie_title = f'WatchIt - {database.getCurrentSerieName()}'
+    serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getCurrentSerieName()))
+    serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getCurrentSerieName()))
+    serie_name = f'{database.getSerieName(database.getCurrentSerieName())}'
+    serie_release_year = f'{database.getSerieReleaseYear(database.getCurrentSerieName())}'
+    serie_duration = f'{database.getSerieDuration(database.getCurrentSerieName())}'
+    serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getCurrentSerieName())}'
+    serie_star_classification = f'{database.getSerieStarClassification(database.getCurrentSerieName())}'
+    serie_description = f'{database.getSerieDescription(database.getCurrentSerieName())}'
+    return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
+                           serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
+                           serie_star_classification=serie_star_classification, serie_description=serie_description)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,3 +1,5 @@
+from lib2to3.pytree import convert
+from turtle import back
 import pyodbc
 
 class Database:
@@ -55,6 +57,24 @@ class Database:
         else:
             return False
 
+    def getSerieBackgroundImage(self, serie_name):
+        query = f"""SELECT 
+                        Imagem_Background
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        background_image = self.cursor.fetchall()
+        return str(background_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieCoverImage(self, serie_name):
+        query = f"""SELECT
+                        Imagem_Capa
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        cover_image = self.cursor.fetchall()
+        return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
     def getSerieName(self, name):
         query = f"""SELECT 
                         Nome
@@ -109,3 +129,25 @@ class Database:
         self.cursor.execute(query)
         serie_duration = self.cursor.fetchall()
         return str(serie_duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def updateCurrentSerie(self, serie_url, serie_name):
+        query = f"""UPDATE dbo.SerieAtual
+                        SET Serie_URL='{serie_url}',
+                        Nome='{serie_name}'
+                   WHERE ID_Serie=1;"""
+        self.cursor.execute(query).commit()
+        
+    def getCurrentSerieURL(self):
+        query = f"""SELECT Serie_URL FROM dbo.SerieAtual;"""
+        self.cursor.execute(query)
+        serieURL = self.cursor.fetchall()
+        return str(serieURL).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getCurrentSerieName(self):
+        query = f"""SELECT Nome FROM dbo.SerieAtual;"""
+        self.cursor.execute(query)
+        serieName = self.cursor.fetchall()
+        return str(serieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+
+database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')

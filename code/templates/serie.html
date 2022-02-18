@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/serie.css') }}">
+    <title>{{ serie_title }}</title>
+</head>
+<body>
+    <form class="top-widgets" action="/" method="post">
+        <button class="watchit-button">Watch It</button>        
+    </form>
+
+    <form action="/peakyblinders" method="post">
+        <img class="serie-background" src="{{ serie_image_background }}"style=" filter: brightness(50%);">
+        <img class="serie-cover-image" src="{{ serie_cover_image }}">
+        <h1 class="serie-name">{{ serie_name }}</h1>
+        <p class="serie-release-year">{{ serie_release_year }}</p>
+        <p class="serie-duration">{{ serie_duration }}</p>
+        <p class="serie-total-seasons-number">{{ serie_total_seasons_number }} Temporadas</p>
+        <p class="serie-star-classification">{{ serie_star_classification }} / 10 ⭐</p>
+                <p class="serie-description">{{ serie_description }}</p>
+    </form>
+</body>
+</html>
