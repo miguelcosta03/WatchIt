@@ -1,5 +1,3 @@
-from lib2to3.pytree import convert
-from turtle import back
 import pyodbc
 
 class Database:

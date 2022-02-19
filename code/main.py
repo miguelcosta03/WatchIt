@@ -17,9 +17,6 @@ serieTemplate = 'serie.html'
 
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
 
-
-def returnSerieURL(serie_URL):
-    return serie_URL
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     invalidEmail = False
