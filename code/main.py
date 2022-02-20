@@ -3,10 +3,10 @@ from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import os, re
 
-SERIES_BACKGROUND_FOLDER = os.path.join('static', 'images', 'series_background')
+SERIES_THUMBNAIL_FOLDER = os.path.join('static', 'images', 'series_background', 'thumbnails')
 
 app = Flask(__name__)
-app.config['SERIES_BACKGROUND_FOLDER'] = SERIES_BACKGROUND_FOLDER
+app.config['SERIES_THUMBNAIL_FOLDER'] = SERIES_THUMBNAIL_FOLDER
 
 
 mainPageTemplate = 'mainPage.html'
@@ -139,8 +139,8 @@ def mainPage():
             database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
             return redirect(url_for("watchSerie"))
             
-    s1_image = os.path.join(SERIES_BACKGROUND_FOLDER, 'pb.jpg')
-    s2_image = os.path.join(SERIES_BACKGROUND_FOLDER, 'lcp.jfif')
+    s1_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'peaky_blinders.jpg')
+    s2_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'la_casa_de_papel.jfif')
     
     return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
 
