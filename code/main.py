@@ -131,12 +131,12 @@ def mainPage():
             return redirect(url_for('signUp'))
         
         if request.form.get('s1Button') == s1_value:
-            database.updateCurrentSerie('peakyblinders', 'Peaky Blinders')
+            database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
             return redirect(url_for("watchSerie"))
 
 
         if request.form.get('s2Button') == s2_value:
-            database.updateCurrentSerie('lacasadepapel', 'La Casa de Papel')
+            database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
             return redirect(url_for("watchSerie"))
             
     s1_image = os.path.join(SERIES_BACKGROUND_FOLDER, 'pb.jpg')

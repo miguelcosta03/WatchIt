@@ -128,7 +128,7 @@ class Database:
         serie_duration = self.cursor.fetchall()
         return str(serie_duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def updateCurrentSerie(self, serie_url, serie_name):
+    def updateCurrentSerieURL(self, serie_url, serie_name):
         query = f"""UPDATE dbo.SerieAtual
                         SET Serie_URL='{serie_url}',
                         Nome='{serie_name}'
