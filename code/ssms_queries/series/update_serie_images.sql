@@ -10,5 +10,3 @@ UPDATE dbo.Series
 	SET Imagem_Background='../static/images/series_background/la_casa_de_papel/la_casa_de_papel_background.jpg',
 	Imagem_Capa='../static/images/series_background/thumbnails/la_casa_de_papel.jfif'
 WHERE ID=2;
-
-SELECT * FROM dbo.Series;
