@@ -161,11 +161,17 @@ def watchSerie():
     episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 1)}'
     episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 2)}'
     episode_3_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 3)}'
+    episode_4_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 4)}'
+    episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 5)}'
+    episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 6)}'
+
     
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
-                           episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image)
+                           episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image,
+                           episode_4_cover_image=episode_4_cover_image, episode_5_cover_image=episode_5_cover_image,
+                           episode_6_cover_image=episode_6_cover_image)
 
 
 if __name__ == "__main__":

@@ -220,3 +220,87 @@ body{
         z-index: 999;
         background: rgb(32, 28, 228);
     }
+
+    .play-episode-1-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -1650%;
+        border-color: transparent;
+    }
+
+    .play-episode-1-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
+
+    .play-episode-2-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -1030px;
+        border-color: transparent;
+    }
+
+    .play-episode-2-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
+
+    .play-episode-3-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -830px;
+        border-color: transparent;
+    }
+
+    .play-episode-3-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
+
+    .play-episode-4-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -630px;
+        border-color: transparent;
+    }
+
+    .play-episode-4-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
+
+    .play-episode-5-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -430px;
+        border-color: transparent;
+    }
+
+    .play-episode-5-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
+
+    .play-episode-6-button{
+        position: relative;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: -230px;
+        border-color: transparent;
+    }
+
+    .play-episode-6-button:hover{
+        border-color:rgb(32, 28, 228);
+    }
