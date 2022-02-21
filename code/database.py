@@ -146,6 +146,15 @@ class Database:
         self.cursor.execute(query)
         serieName = self.cursor.fetchall()
         return str(serieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-
+    
+    def getEpisodeCoverImage(self, serie_name, season_number, episode_number):
+        query = f"""SELECT 
+                        Imagem_Capa
+                    FROM dbo.Episodios
+                    WHERE(Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number})"""
+        
+        self.cursor.execute(query)
+        episode_cover_image = self.cursor.fetchall()
+        return str(episode_cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')

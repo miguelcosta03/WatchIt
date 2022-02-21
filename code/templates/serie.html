@@ -12,7 +12,7 @@
         <button class="watchit-button">Watch It</button>        
     </form>
 
-    <form action="/{{ serie_url }}" method="post">
+    <form method="post">
         <img class="serie-background" src="{{ serie_image_background }}"style=" filter: brightness(50%);">
         <img class="serie-cover-image" src="{{ serie_cover_image }}">
         <h1 class="serie-name">{{ serie_name }}</h1>
@@ -21,7 +21,7 @@
         <p class="serie-total-seasons-number">{{ serie_total_seasons_number }} Temporadas</p>
         <p class="serie-star-classification">{{ serie_star_classification }} / 10 ⭐</p>
         <p class="serie-description">{{ serie_description }}</p>
-        <button class="season-1-button">1</button>
+        <button class="season-1-button" name="season1Button" value="season1Button">1</button>
         <button class="season-2-button">2</button>
         <button class="season-3-button">3</button>
         <button class="season-4-button">4</button>
@@ -32,17 +32,14 @@
                 Episódios
             </div>
             <div class="episode-slot">
-                <img src="{{ cover_image }}">
+                <img class="episode-slot" src="{{ episode_1_cover_image }}">
             </div>
             <div class="episode-slot">
-                <img src="{{ cover_image }}">
+                <img class="episode-slot" src="{{ episode_2_cover_image }}">
             </div>
             <div class="episode-slot">
-                <img src="{{ cover_image }}">
+                <img class="episode-slot" src="{{ episode_3_cover_image }}">
             </div>
-            <button class="play-episode-button-1"></button>
-            <button class="play-episode-button-2"></button>
-            <button class="play-episode-button-3"></button>
         </div>
     </form>
 </body>

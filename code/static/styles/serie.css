@@ -207,7 +207,8 @@ body{
     color: white;
     }
     .episode-slot{
-        width: 300px;
+        width: 200px;
+        height: 130px;
         background-color: blueviolet;
         border-radius: 10px;
         pointer-events: none;
@@ -218,30 +219,4 @@ body{
         left:0;
         z-index: 999;
         background: rgb(32, 28, 228);
-    }
-
-    .play-episode-button-1{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 50%;
-        margin-left: -1140%;
-    }
-    .play-episode-button-2{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 50%;
-        margin-left: -800%;
-    }
-
-    .play-episode-button-3{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 50%;
-        margin-left: -460%;
     }

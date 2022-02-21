@@ -144,7 +144,7 @@ def mainPage():
     
     return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
 
-@app.route(f"/{database.getCurrentSerieURL()}")
+@app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getCurrentSerieName()))
@@ -155,9 +155,17 @@ def watchSerie():
     serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getCurrentSerieName())}'
     serie_star_classification = f'{database.getSerieStarClassification(database.getCurrentSerieName())}'
     serie_description = f'{database.getSerieDescription(database.getCurrentSerieName())}'
+    
+    season_number = 1
+
+    episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 1)}'
+    episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 2)}'
+    episode_3_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 3)}'
+    
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
-                           serie_star_classification=serie_star_classification, serie_description=serie_description)
+                           serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
+                           episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image)
 
 
 if __name__ == "__main__":
