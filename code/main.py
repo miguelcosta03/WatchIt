@@ -1,5 +1,6 @@
+from wsgiref.util import request_uri
 from attr import set_run_validators
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, request_started, url_for
 from database import Database
 import os, re
 
@@ -157,6 +158,7 @@ def watchSerie():
     serie_description = f'{database.getSerieDescription(database.getCurrentSerieName())}'
     
     season_number = 1
+    episode_number = 1
 
     if request.method == 'POST':
         if request.form.get('season1Button') == 'season1Button':
@@ -173,7 +175,26 @@ def watchSerie():
         
         elif request.form.get('season5Button') == 'season5Button':
             season_number = 5
-    
+
+    if request.method == 'Post':
+        if request.form.get('playEpisode1Button') == 'playEpisode1Button':
+            episode_number = 1
+
+        elif request.form.get('playEpisode2Button') == 'playEpisode2Button':
+            episode_number = 2
+        
+        elif request.form.get('playEpisode3Button') == 'playEpisode3Button':
+            episode_number = 3
+        
+        elif request.form.get('playEpisode4Button') == 'playEpisode4Button':
+            episode_number = 4
+        
+        elif request.form.get('playEpisode5Button') == 'playEpisode5Button':
+            episode_number = 5
+        
+        elif request.form.get('playEpisode6Button') == 'playEpisode6Button':
+            episode_number = 6
+
     episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 1)}'
     episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 2)}'
     episode_3_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 3)}'
@@ -181,12 +202,13 @@ def watchSerie():
     episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 5)}'
     episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 6)}'
 
+    episode_video = f'{database.getEpisodeVideo(database.getCurrentSerieName(), 1, 1)}'
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
                            episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image,
                            episode_4_cover_image=episode_4_cover_image, episode_5_cover_image=episode_5_cover_image,
-                           episode_6_cover_image=episode_6_cover_image)
+                           episode_6_cover_image=episode_6_cover_image, episode_video=episode_video)
 
 
 if __name__ == "__main__":

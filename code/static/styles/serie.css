@@ -304,3 +304,8 @@ body{
     .play-episode-6-button:hover{
         border-color:rgb(32, 28, 228);
     }
+
+.video-player{
+    margin-top: 10%;
+    margin-left: 25%;
+}

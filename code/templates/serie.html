@@ -49,13 +49,18 @@
             <div class="episode-slot">
                 <img class="episode-slot" src="{{ episode_6_cover_image }}">
             </div>
-            <button class="play-episode-1-button"></button>
-            <button class="play-episode-2-button"></button>
-            <button class="play-episode-3-button"></button>
-            <button class="play-episode-4-button"></button>
-            <button class="play-episode-5-button"></button>
-            <button class="play-episode-6-button"></button>
+            <button class="play-episode-1-button" name="playEpisode1Button" value="playEpisode1Button"></button>
+            <button class="play-episode-2-button" name="playEpisode2Button" value="playEpisode2Button"></button>
+            <button class="play-episode-3-button" name="playEpisode3Button" value="playEpisode3Button"></button>
+            <button class="play-episode-4-button" name="playEpisode4Button" value="playEpisode4Button"></button>
+            <button class="play-episode-5-button" name="playEpisode5Button" value="playEpisode5Button"></button>
+            <button class="play-episode-6-button" name="playEpisode6Button" value="playEpisode6Button"></button>
         </div>
+        
+        <video class="video-player" width="1000px" height="600px" controls>
+            <source src="{{ episode_video }}" type="video/mp4">
+        </video>
+
     </form>
 </body>
 </html>

@@ -151,10 +151,21 @@ class Database:
         query = f"""SELECT 
                         Imagem_Capa
                     FROM dbo.Episodios
-                    WHERE(Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number})"""
+                    WHERE(Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
         
         self.cursor.execute(query)
         episode_cover_image = self.cursor.fetchall()
         return str(episode_cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
+    def getEpisodeVideo(self, serie_name, season_number, episode_number):
+        query = f"""SELECT
+                        Video_Episodio
+                    FROM dbo.Episodios
+                    WHERE (Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
+        self.cursor.execute(query)
+        episode_video = self.cursor.fetchall()
+        return str(episode_video).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
+
+print(database.getEpisodeVideo('Peaky Blinders', 1, 1))
