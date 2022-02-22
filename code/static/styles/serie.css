@@ -108,6 +108,8 @@ body{
 
 .season-1-button:hover{
     border-color: rgb(32, 28, 228);
+    width: 60px;
+    height: 60px;
 }
 
 .season-2-button{
@@ -305,9 +307,11 @@ body{
         border-color:rgb(32, 28, 228);
     }
 
-.video-player {
-    width: 1000px;
-    height: 600px;
-    margin-left: 25%;
-    margin-top: 1%;
+.video-player{
+    width: 50%;
+    margin-top: 5%;
+    margin-left: 27%;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
 }
