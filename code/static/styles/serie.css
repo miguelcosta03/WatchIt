@@ -128,6 +128,8 @@ body{
 
 .season-2-button:hover{
     border-color: rgb(32, 28, 228);
+    width: 60px;
+    height: 60px;
 }
 
 .season-3-button{
@@ -146,6 +148,8 @@ body{
 
 .season-3-button:hover{
     border-color: rgb(32, 28, 228);
+    width: 60px;
+    height: 60px;
 }
 
 .season-4-button{
@@ -164,6 +168,8 @@ body{
 
 .season-4-button:hover{
     border-color: rgb(32, 28, 228);
+    width: 60px;
+    height: 60px;
 }
 
 .season-5-button{
@@ -182,6 +188,8 @@ body{
 
 .season-5-button:hover{
     border-color: rgb(32, 28, 228);
+    width: 60px;
+    height: 60px;
 }
 
 .seasons-text{
