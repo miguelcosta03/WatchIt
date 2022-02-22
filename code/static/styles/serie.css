@@ -305,7 +305,11 @@ body{
         border-color:rgb(32, 28, 228);
     }
 
-.video-player{
+.video-player {
     margin-top: 10%;
     margin-left: 25%;
+    margin-top: 10%;
+    margin-left: 25%;
+    width: 1000px;
+    height: 600px;
 }
