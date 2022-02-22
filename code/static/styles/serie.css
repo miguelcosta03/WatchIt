@@ -306,10 +306,8 @@ body{
     }
 
 .video-player {
-    margin-top: 10%;
-    margin-left: 25%;
-    margin-top: 10%;
-    margin-left: 25%;
     width: 1000px;
     height: 600px;
+    margin-left: 25%;
+    margin-top: 1%;
 }
