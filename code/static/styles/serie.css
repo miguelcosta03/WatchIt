@@ -223,9 +223,23 @@ body{
         border-radius: 10px;
         pointer-events: none;
     }
+    .episode-slot-unavailable{
+        width: 200px;
+        height: 130px;
+        background-color: black;
+        border-radius: 10px;
+        pointer-events: none;
+    }
+
+    .episode-unavailable-text{
+        position: absolute;
+        margin-top: -185px;
+        width: 200px;
+        height: 130px;
+    }
     .episode-text{
         position: sticky;
-        width: 100p;
+        width: 100px;
         left:0;
         z-index: 999;
         background: rgb(32, 28, 228);

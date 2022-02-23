@@ -204,13 +204,192 @@ def watchSerie():
 
     
     episode_video = f'{database.getEpisodeVideo(database.getCurrentSerieName(), season_number, episode_number)}'
+
+
+    episode_limit = int(database.getSerieTotalSeasonEpisodes(database.getSerieID(database.getCurrentSerieName()), season_number))
+
+    ep1_available = True
+    ep2_available = True
+    ep3_available = True
+    ep4_available = True
+    ep5_available = True
+    ep6_available = True
+    ep7_available = True
+    ep8_available = True
+    ep9_available = True
+    ep10_available = True
+    ep11_available = True
+    ep12_available = True
+    ep13_available = True
+    ep14_available = True
+    ep15_available = True
+    ep16_available = True
+
+
+    if episode_limit == 1:
+        ep2_available = False
+        ep3_available = False
+        ep4_available = False
+        ep4_available = False
+        ep5_available = False
+        ep6_available = False
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 2:
+        ep3_available = False
+        ep4_available = False
+        ep5_available = False
+        ep6_available = False
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+        
+    if episode_limit == 3:
+        ep4_available = False
+        ep5_available = False
+        ep6_available = False
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 4:
+        ep5_available = False
+        ep6_available = False
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 5:
+        ep6_available = False
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 6:
+        ep7_available = False
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 7:
+        ep8_available = False
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 8:
+        ep9_available = False
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+
+    if episode_limit == 9:
+        ep10_available = False
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 10:
+        ep11_available = False
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 11:
+        ep12_available = False
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 12:
+        ep13_available = False
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 13:
+        ep14_available = False
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 14:
+        ep15_available = False
+        ep16_available = False
+    
+    if episode_limit == 15:
+        ep16_available = False
+    
+    else:
+        pass
+
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
                            episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image,
                            episode_4_cover_image=episode_4_cover_image, episode_5_cover_image=episode_5_cover_image,
-                           episode_6_cover_image=episode_6_cover_image, episode_video=episode_video)
-
+                           episode_6_cover_image=episode_6_cover_image, episode_video=episode_video,
+                           episode_limit=episode_limit, ep1_available=ep1_available, ep2_available=ep2_available, ep3_available=ep3_available, ep4_available=ep4_available, 
+                           ep5_available=ep5_available, ep6_available=ep6_available, ep7_available=ep7_available, ep8_available=ep8_available,
+                           ep9_available=ep9_available, ep10_available=ep10_available, ep11_available=ep11_available, ep12_available=ep12_available,
+                           ep13_available=ep13_available, ep14_available=ep14_available, ep15_available=ep15_available, ep16_available=ep16_available)
 
 if __name__ == "__main__":
     app.run(debug=True)

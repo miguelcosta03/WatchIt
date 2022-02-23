@@ -27,6 +27,7 @@ class Database:
             return True
         else:
             return False
+
     def createNewUser(self, email, username, password):
         createUserQuery = f"""INSERT INTO dbo.Utilizadores
                     VALUES ('{email}', '{username}', '{password}');"""
@@ -72,6 +73,15 @@ class Database:
         self.cursor.execute(query)
         cover_image = self.cursor.fetchall()
         return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieID(self, serie_name):
+        query = f"""SELECT
+                        ID
+                    FROM dbo.Series
+                    WHERE nome='{serie_name}'"""
+        self.cursor.execute(query)
+        serie_id = self.cursor.fetchall()
+        return str(serie_id).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
     def getSerieName(self, name):
         query = f"""SELECT 
@@ -82,7 +92,6 @@ class Database:
         serie_name = self.cursor.fetchall()
         return str(serie_name).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
-
     def getSerieReleaseYear(self, serie_name):
         query = f"""SELECT
                         Ano_Lancamento
@@ -162,10 +171,22 @@ class Database:
                         Video_Episodio
                     FROM dbo.Episodios
                     WHERE (Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
+
         self.cursor.execute(query)
         episode_video = self.cursor.fetchall()
         return str(episode_video).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieTotalSeasonEpisodes(self, serie_id, season_number):
+        query = f"""SELECT
+                        Num_Eps_Temp_{season_number}
+                    FROM dbo.EpsPorTemporada
+                    WHERE ID_Serie={serie_id}"""
+        self.cursor.execute(query)
+        total_season_episodes = self.cursor.fetchall()
+        return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
 
 database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
 
-print(database.getEpisodeVideo('Peaky Blinders', 1, 1))
+# print(database.getEpisodeVideo('Peaky Blinders', 1, 1))
+print(database.getSerieTotalSeasonEpisodes(database.getSerieID('Peaky Blinders'), 1))
