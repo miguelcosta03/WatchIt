@@ -176,7 +176,7 @@ def watchSerie():
         elif request.form.get('season5Button') == 'season5Button':
             season_number = 5
 
-    if request.method == 'Post':
+    if request.method == 'POST':
         if request.form.get('playEpisode1Button') == 'playEpisode1Button':
             episode_number = 1
 
@@ -202,7 +202,8 @@ def watchSerie():
     episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 5)}'
     episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 6)}'
 
-    episode_video = f'{database.getEpisodeVideo(database.getCurrentSerieName(), 1, 1)}'
+    
+    episode_video = f'{database.getEpisodeVideo(database.getCurrentSerieName(), season_number, episode_number)}'
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
