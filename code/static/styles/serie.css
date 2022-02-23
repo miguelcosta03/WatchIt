@@ -237,7 +237,7 @@ body{
         width: 70px;
         height: 70px;
         margin-top: 30px;
-        margin-left: -1650%;
+        margin-left: -3210px;
         border-color: transparent;
     }
 
@@ -251,7 +251,7 @@ body{
         width: 70px;
         height: 70px;
         margin-top: 30px;
-        margin-left: -1030px;
+        margin-left: -3010px;
         border-color: transparent;
     }
 
@@ -264,8 +264,8 @@ body{
         background: url('../images/other_images/play-episode.png');
         width: 70px;
         height: 70px;
-        margin-top: 30px;
-        margin-left: -830px;
+        margin-top: -105px;
+        margin-left: 590px;
         border-color: transparent;
     }
 
@@ -274,12 +274,12 @@ body{
     }
 
     .play-episode-4-button{
-        position: relative;
+        position: absolute;
         background: url('../images/other_images/play-episode.png');
         width: 70px;
         height: 70px;
         margin-top: 30px;
-        margin-left: -630px;
+        margin-left: 790px;
         border-color: transparent;
     }
 
@@ -288,12 +288,12 @@ body{
     }
 
     .play-episode-5-button{
-        position: relative;
+        position: absolute;
         background: url('../images/other_images/play-episode.png');
         width: 70px;
         height: 70px;
         margin-top: 30px;
-        margin-left: -430px;
+        margin-left: 990px;
         border-color: transparent;
     }
 
@@ -302,12 +302,12 @@ body{
     }
 
     .play-episode-6-button{
-        position: relative;
+        position: absolute;
         background: url('../images/other_images/play-episode.png');
         width: 70px;
         height: 70px;
         margin-top: 30px;
-        margin-left: -230px;
+        margin-left: 1195px;
         border-color: transparent;
     }
 
@@ -315,6 +315,137 @@ body{
         border-color:rgb(32, 28, 228);
     }
 
+    .play-episode-7-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 1405px;
+        border-color: transparent;
+    }
+    
+    .play-episode-7-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-8-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 1605px;
+        border-color: transparent;
+    }
+    .play-episode-8-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-9-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 1815px;
+        border-color: transparent;
+    }
+    .play-episode-9-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-10-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 2020px;
+        border-color: transparent;
+    }
+    .play-episode-10-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-11-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 2225px;
+        border-color: transparent;
+    }
+    .play-episode-11-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    
+    .play-episode-12-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 2430px;
+        border-color: transparent;
+    }
+    .play-episode-12-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-13-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 2635px;
+        border-color: transparent;
+    }
+    .play-episode-13-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-14-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 2840px;
+        border-color: transparent;
+    }
+    .play-episode-14-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-15-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 3045px;
+        border-color: transparent;
+    }
+    .play-episode-15-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
+
+    .play-episode-16-button{
+        position: absolute;
+        background: url('../images/other_images/play-episode.png');
+        width: 70px;
+        height: 70px;
+        margin-top: 30px;
+        margin-left: 3250px;
+        border-color: transparent;
+    }
+    .play-episode-16-button:hover{
+        border-color: rgb(32, 28, 228);
+    }
 .video-player{
     width: 50%;
     margin-top: 5%;
