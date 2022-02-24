@@ -201,8 +201,18 @@ def watchSerie():
     episode_4_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 4)}'
     episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 5)}'
     episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 6)}'
+    episode_7_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 7)}'
+    episode_8_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 8)}'
+    episode_9_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 9)}'
+    episode_10_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 10)}'
+    episode_11_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 11)}'
+    episode_12_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 12)}'
+    episode_13_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 13)}'
+    episode_14_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 14)}'
+    episode_15_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 15)}'
+    episode_16_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 16)}'
 
-    
+
     episode_video = f'{database.getEpisodeVideo(database.getSerieID(database.getCurrentSerieName()), season_number, episode_number)}'
 
 
@@ -385,7 +395,11 @@ def watchSerie():
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
                            episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image,
                            episode_4_cover_image=episode_4_cover_image, episode_5_cover_image=episode_5_cover_image,
-                           episode_6_cover_image=episode_6_cover_image, episode_video=episode_video,
+                           episode_6_cover_image=episode_6_cover_image, episode_7_cover_image=episode_7_cover_image, 
+                           episode_8_cover_image=episode_8_cover_image, episode_9_cover_image=episode_9_cover_image,
+                           episode_10_cover_image=episode_10_cover_image, episode_11_cover_image=episode_11_cover_image,
+                           episode_12_cover_image=episode_12_cover_image, episode_13_cover_image=episode_13_cover_image,
+                           episode_14_cover_image=episode_14_cover_image, episode_15_cover_image=episode_15_cover_image,episode_16_cover_image=episode_16_cover_image,episode_video=episode_video,
                            episode_limit=episode_limit, ep1_available=ep1_available, ep2_available=ep2_available, ep3_available=ep3_available, ep4_available=ep4_available, 
                            ep5_available=ep5_available, ep6_available=ep6_available, ep7_available=ep7_available, ep8_available=ep8_available,
                            ep9_available=ep9_available, ep10_available=ep10_available, ep11_available=ep11_available, ep12_available=ep12_available,
