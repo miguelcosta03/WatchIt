@@ -195,15 +195,15 @@ def watchSerie():
         elif request.form.get('playEpisode6Button') == 'playEpisode6Button':
             episode_number = 6
 
-    episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 1)}'
-    episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 2)}'
-    episode_3_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 3)}'
-    episode_4_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 4)}'
-    episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 5)}'
-    episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getCurrentSerieName(), season_number, 6)}'
+    episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 1)}'
+    episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 2)}'
+    episode_3_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 3)}'
+    episode_4_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 4)}'
+    episode_5_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 5)}'
+    episode_6_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 6)}'
 
     
-    episode_video = f'{database.getEpisodeVideo(database.getCurrentSerieName(), season_number, episode_number)}'
+    episode_video = f'{database.getEpisodeVideo(database.getSerieID(database.getCurrentSerieName()), season_number, episode_number)}'
 
 
     episode_limit = int(database.getSerieTotalSeasonEpisodes(database.getSerieID(database.getCurrentSerieName()), season_number))

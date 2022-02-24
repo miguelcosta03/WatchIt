@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 import pyodbc
 
 class Database:
@@ -60,7 +61,7 @@ class Database:
         query = f"""SELECT 
                         Imagem_Background
                     FROM dbo.Series
-                    WHERE nome='{serie_name}'"""
+                    WHERE Nome='{serie_name}'"""
         self.cursor.execute(query)
         background_image = self.cursor.fetchall()
         return str(background_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -69,7 +70,7 @@ class Database:
         query = f"""SELECT
                         Imagem_Capa
                     FROM dbo.Series
-                    WHERE nome='{serie_name}'"""
+                    WHERE Nome='{serie_name}'"""
         self.cursor.execute(query)
         cover_image = self.cursor.fetchall()
         return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -156,21 +157,21 @@ class Database:
         serieName = self.cursor.fetchall()
         return str(serieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
-    def getEpisodeCoverImage(self, serie_name, season_number, episode_number):
+    def getEpisodeCoverImage(self, serie_id, season_number, episode_number):
         query = f"""SELECT 
                         Imagem_Capa
                     FROM dbo.Episodios
-                    WHERE(Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
+                    WHERE(ID_Serie={serie_id} AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
         
         self.cursor.execute(query)
         episode_cover_image = self.cursor.fetchall()
         return str(episode_cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def getEpisodeVideo(self, serie_name, season_number, episode_number):
+    def getEpisodeVideo(self, serie_id, season_number, episode_number):
         query = f"""SELECT
                         Video_Episodio
                     FROM dbo.Episodios
-                    WHERE (Nome_Serie='{serie_name}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
+                    WHERE (ID_Serie='{serie_id}' AND Num_Temporada={season_number} AND Num_Episodio={episode_number});"""
 
         self.cursor.execute(query)
         episode_video = self.cursor.fetchall()
@@ -184,4 +185,5 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-        
+
+
