@@ -75,6 +75,17 @@ class Database:
         cover_image = self.cursor.fetchall()
         return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
+    def getTrendingSeriesID(self):
+        trending_IDs = []
+        query = """SELECT ID
+                    FROM dbo.Tendencias_Series"""
+        self.cursor.execute(query)
+        trending_series = self.cursor.fetchall()
+        for id in trending_series:
+            formatted_id = str(id).replace('(','').replace(')','').replace(' ','').replace(',','')
+            trending_IDs.append(int(formatted_id))
+        return trending_IDs
+
     def getSerieID(self, serie_name):
         query = f"""SELECT
                         ID
@@ -84,11 +95,11 @@ class Database:
         serie_id = self.cursor.fetchall()
         return str(serie_id).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def getSerieName(self, name):
+    def getSerieName(self, serie_id):
         query = f"""SELECT 
                         Nome
                     FROM dbo.Series
-                    WHERE nome='{name}'"""
+                    WHERE ID='{serie_id}'"""
         self.cursor.execute(query)
         serie_name = self.cursor.fetchall()
         return str(serie_name).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -187,3 +198,7 @@ class Database:
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
 
+database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
+
+
+print(database.getTrendingSeriesID())

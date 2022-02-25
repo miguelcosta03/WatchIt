@@ -124,6 +124,12 @@ def signUp():
 def mainPage():
     s1_value = 'Peaky Blinders'
     s2_value = 'La Casa de Papel'
+
+    ts_ids = database.getTrendingSeriesID()
+    ts1_name = database.getSerieName(ts_ids[0])
+    ts2_name = database.getSerieName(ts_ids[1])
+    ts3_name = database.getSerieName(ts_ids[2])
+
     if request.method == 'POST':
         if request.form.get('loginButton') == 'Login':
             return redirect(url_for('login'))
@@ -139,18 +145,25 @@ def mainPage():
         if request.form.get('s2Button') == s2_value:
             database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
             return redirect(url_for("watchSerie"))
-            
+        
+        
+    ts1_bg_img = database.getSerieBackgroundImage(ts1_name)
+    ts2_bg_img = database.getSerieBackgroundImage(ts2_name)
+    ts3_bg_img = database.getSerieBackgroundImage(ts3_name)
+
     s1_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'peaky_blinders.jpg')
     s2_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'la_casa_de_papel.jfif')
     
-    return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value)
+    return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value,
+                          ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
+                          ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getCurrentSerieName()))
     serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getCurrentSerieName()))
-    serie_name = f'{database.getSerieName(database.getCurrentSerieName())}'
+    serie_name = f'{database.getSerieName(database.getSerieID(database.getCurrentSerieName()))}'
     serie_release_year = f'{database.getSerieReleaseYear(database.getCurrentSerieName())}'
     serie_duration = f'{database.getSerieDuration(database.getCurrentSerieName())}'
     serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getCurrentSerieName())}'
@@ -389,7 +402,7 @@ def watchSerie():
     
     else:
         pass
-
+    
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
