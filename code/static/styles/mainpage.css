@@ -22,6 +22,7 @@ body{
     margin-top: 1%;
     margin-left: 0.5%;
     height: 52px;
+    cursor: pointer;
 }
 
 .header-buttons{
