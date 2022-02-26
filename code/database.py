@@ -99,7 +99,7 @@ class Database:
         query = f"""SELECT 
                         Nome
                     FROM dbo.Series
-                    WHERE ID='{serie_id}'"""
+                    WHERE ID={serie_id}"""
         self.cursor.execute(query)
         serie_name = self.cursor.fetchall()
         return str(serie_name).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')

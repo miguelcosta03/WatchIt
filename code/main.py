@@ -162,7 +162,7 @@ def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
     serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getSerieID(database.getCurrentSerieName())))
-    serie_name = f'{database.getSerieName(database.getSerieID(database.getSerieID(database.getCurrentSerieName())))}'
+    serie_name = f'{database.getSerieName(database.getSerieID(database.getCurrentSerieName()))}'
     serie_release_year = f'{database.getSerieReleaseYear(database.getSerieID(database.getCurrentSerieName()))}'
     serie_duration = f'{database.getSerieDuration(database.getSerieID(database.getCurrentSerieName()))}'
     serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getSerieID(database.getCurrentSerieName()))}'
