@@ -1,11 +1,8 @@
 from flask import Flask, render_template, request, redirect, request_started, url_for
 from database import Database
-import os, re
-
-SERIES_THUMBNAIL_FOLDER = os.path.join('static', 'images', 'series_background', 'thumbnails')
+import re
 
 app = Flask(__name__)
-app.config['SERIES_THUMBNAIL_FOLDER'] = SERIES_THUMBNAIL_FOLDER
 
 
 mainPageTemplate = 'mainPage.html'
