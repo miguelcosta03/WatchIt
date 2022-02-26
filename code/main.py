@@ -1,10 +1,4 @@
-from calendar import c
-from cmath import atan
-from wsgiref.util import request_uri
-from attr import set_run_validators
 from flask import Flask, render_template, request, redirect, request_started, url_for
-from matplotlib import image
-from numpy import imag
 from database import Database
 import os, re
 
