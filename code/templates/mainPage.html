@@ -42,15 +42,19 @@
 
     <h1 class="slogan">As tuas séries e filmes favoritos estão aqui!</h1>
     <form class="s1-container" action="/" method="post">
-        <img src="{{ s1 }}" style="height:100%; width:100%;">
+        <img src="{{ s1_image }}" style="height:100%; width:100%;">
         <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
     </form>
     
     <form class="s2-container" action="/" method="post">
-        <img src="{{ s2 }}" style="height:100%; width:100%;">
+        <img src="{{ s2_image }}" style="height:100%; width:100%;">
         <button class="btn" name="s2Button" value="{{ s2_value }}"></button>
     </form>
 
+    <form class="s3-container" action="/" method="post">
+        <img src="{{ s3_image }}" style="height:100%; width:100%">
+        <button class="btn" name="s3Button" value="{{ s3_value }}"></button>
+    </form>
     <script>
         var slideIndex = 0;
         showSlides();

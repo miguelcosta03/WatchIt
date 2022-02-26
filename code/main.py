@@ -1,6 +1,9 @@
+from cmath import atan
 from wsgiref.util import request_uri
 from attr import set_run_validators
 from flask import Flask, render_template, request, redirect, request_started, url_for
+from matplotlib import image
+from numpy import imag
 from database import Database
 import os, re
 
@@ -124,6 +127,7 @@ def signUp():
 def mainPage():
     s1_value = 'Peaky Blinders'
     s2_value = 'La Casa de Papel'
+    s3_value = 'Euphoria'
 
     ts_ids = database.getTrendingSeriesID()
     ts1_name = database.getSerieName(ts_ids[0])
@@ -141,34 +145,37 @@ def mainPage():
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
             return redirect(url_for("watchSerie"))
 
-
         if request.form.get('s2Button') == s2_value:
             database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
             return redirect(url_for("watchSerie"))
-        
-        
-    ts1_bg_img = database.getSerieBackgroundImage(ts1_name)
-    ts2_bg_img = database.getSerieBackgroundImage(ts2_name)
-    ts3_bg_img = database.getSerieBackgroundImage(ts3_name)
 
-    s1_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'peaky_blinders.jpg')
-    s2_image = os.path.join(SERIES_THUMBNAIL_FOLDER, 'la_casa_de_papel.jfif')
+        if request.form.get('s3Button') == s3_value:
+            database.updateCurrentSerieURL('euphoria', 'Euphoria')
+            return redirect(url_for("watchSerie"))
+        
+    ts1_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts1_name))
+    ts2_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts2_name))
+    ts3_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts3_name))
+
+    s1_image = database.getSerieCoverImage(database.getSerieID(s1_value))
+    s2_image = database.getSerieCoverImage(database.getSerieID(s2_value))
+    s3_image = database.getSerieCoverImage(database.getSerieID(s3_value))
     
-    return render_template(mainPageTemplate, s1=s1_image, s2=s2_image, s1_value=s1_value, s2_value=s2_value,
-                          ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
-                          ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+    return render_template(mainPageTemplate, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
+                           s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
+                           ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
-    serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getCurrentSerieName()))
-    serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getCurrentSerieName()))
-    serie_name = f'{database.getSerieName(database.getSerieID(database.getCurrentSerieName()))}'
-    serie_release_year = f'{database.getSerieReleaseYear(database.getCurrentSerieName())}'
-    serie_duration = f'{database.getSerieDuration(database.getCurrentSerieName())}'
-    serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getCurrentSerieName())}'
-    serie_star_classification = f'{database.getSerieStarClassification(database.getCurrentSerieName())}'
-    serie_description = f'{database.getSerieDescription(database.getCurrentSerieName())}'
+    serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
+    serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getSerieID(database.getCurrentSerieName())))
+    serie_name = f'{database.getSerieName(database.getSerieID(database.getSerieID(database.getCurrentSerieName())))}'
+    serie_release_year = f'{database.getSerieReleaseYear(database.getSerieID(database.getCurrentSerieName()))}'
+    serie_duration = f'{database.getSerieDuration(database.getSerieID(database.getCurrentSerieName()))}'
+    serie_total_seasons_number = f'{database.getSerieTotalSeasonsNumber(database.getSerieID(database.getCurrentSerieName()))}'
+    serie_star_classification = f'{database.getSerieStarClassification(database.getSerieID(database.getCurrentSerieName()))}'
+    serie_description = f'{database.getSerieDescription(database.getSerieID(database.getCurrentSerieName()))}'
     
     season_number = 1
     episode_number = 1

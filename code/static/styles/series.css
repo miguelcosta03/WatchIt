@@ -83,3 +83,42 @@
   }
 
 
+.s3-container{
+    position: absolute;
+    box-shadow: 20 4px 8px 0 rgb(32, 28, 228);
+    transition: 0.3s;
+    width: 9.3%;
+    margin-left: 28%;
+    margin-top: -25%;
+    border-radius: 10%;
+    background-color: transparent;
+  }
+  .s3-container:hover {
+    box-shadow: 0 8px 16px 0 rgb(32, 28, 228);
+    margin-left: 28%;
+    border-radius: 10%;
+  }
+
+  .s3-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+  }
+
+  .s3-container .btn {
+    position: absolute;
+    top: 50%;
+    left: 35.5%;
+    margin-left: 13.5%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;;
+  }
