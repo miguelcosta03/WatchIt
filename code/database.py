@@ -196,9 +196,3 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-
-
-database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
-
-
-print(database.getSerieBackgroundImage(database.getSerieID('Peaky Blinders')))
