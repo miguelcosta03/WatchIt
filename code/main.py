@@ -1,3 +1,4 @@
+from calendar import c
 from cmath import atan
 from wsgiref.util import request_uri
 from attr import set_run_validators
@@ -256,160 +257,161 @@ def watchSerie():
     ep16_available = True
 
 
-    if episode_limit == 1:
-        ep2_available = False
-        ep3_available = False
-        ep4_available = False
-        ep4_available = False
-        ep5_available = False
-        ep6_available = False
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 2:
-        ep3_available = False
-        ep4_available = False
-        ep5_available = False
-        ep6_available = False
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
+    match episode_limit:
+        case 1:
+            ep2_available = False
+            ep3_available = False
+            ep4_available = False
+            ep4_available = False
+            ep5_available = False
+            ep6_available = False
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
         
-    if episode_limit == 3:
-        ep4_available = False
-        ep5_available = False
-        ep6_available = False
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 4:
-        ep5_available = False
-        ep6_available = False
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 5:
-        ep6_available = False
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 6:
-        ep7_available = False
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 7:
-        ep8_available = False
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 8:
-        ep9_available = False
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-
-    if episode_limit == 9:
-        ep10_available = False
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 10:
-        ep11_available = False
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 11:
-        ep12_available = False
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 12:
-        ep13_available = False
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 13:
-        ep14_available = False
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 14:
-        ep15_available = False
-        ep16_available = False
-    
-    if episode_limit == 15:
-        ep16_available = False
-    
-    else:
-        pass
-    
+        case 2:
+            ep3_available = False
+            ep4_available = False
+            ep5_available = False
+            ep6_available = False
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 3:
+            ep4_available = False
+            ep5_available = False
+            ep6_available = False
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 4:
+            ep5_available = False
+            ep6_available = False
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 5:
+            ep6_available = False
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 6:
+            ep7_available = False
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 7:
+            ep8_available = False
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 8:
+            ep9_available = False
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 9:
+            ep10_available = False
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 10:
+            ep11_available = False
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 11:
+            ep12_available = False
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 12:
+            ep13_available = False
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 13:
+            ep14_available = False
+            ep15_available = False
+            ep16_available = False
+        
+        case 14:
+            ep15_available = False
+            ep16_available = False
+        
+        case 15:
+            ep16_available = False
+        
+        case 16:
+            pass
+            
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
