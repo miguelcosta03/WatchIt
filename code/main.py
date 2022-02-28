@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, request_started, url_for
+from numpy import mat
 from database import Database
 import re
 
@@ -261,6 +262,7 @@ def watchSerie():
 
 
     episode_limit = int(database.getSerieTotalSeasonEpisodes(database.getSerieID(database.getCurrentSerieName()), season_number))
+    total_num_seasons = int(database.getSerieTotalSeasonsNumber(database.getSerieID(database.getCurrentSerieName())))
 
     ep1_available = True
     ep2_available = True
@@ -434,18 +436,46 @@ def watchSerie():
         
         case 16:
             pass
-            
+    
+    s1_available = True
+    s2_available = True
+    s3_available = True
+    s4_available = True
+    s5_available = True
+
+    match total_num_seasons:
+        case 1:
+            s2_available = False
+            s3_available = False
+            s4_available = False
+            s5_available = False
+        
+        case 2:
+            s3_available = False
+            s4_available = False
+            s5_available = False
+        
+        case 3:
+            s2_available = False
+            s4_available = False
+            s5_available = False
+        
+        case 4:
+            s5_available = False
+        
+        case 5:
+            pass
+
     return render_template(serieTemplate, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
                            serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
-                           episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image,
-                           episode_4_cover_image=episode_4_cover_image, episode_5_cover_image=episode_5_cover_image,
-                           episode_6_cover_image=episode_6_cover_image, episode_7_cover_image=episode_7_cover_image, 
-                           episode_8_cover_image=episode_8_cover_image, episode_9_cover_image=episode_9_cover_image,
-                           episode_10_cover_image=episode_10_cover_image, episode_11_cover_image=episode_11_cover_image,
-                           episode_12_cover_image=episode_12_cover_image, episode_13_cover_image=episode_13_cover_image,
-                           episode_14_cover_image=episode_14_cover_image, episode_15_cover_image=episode_15_cover_image,episode_16_cover_image=episode_16_cover_image,episode_video=episode_video,
-                           episode_limit=episode_limit, ep1_available=ep1_available, ep2_available=ep2_available, ep3_available=ep3_available, ep4_available=ep4_available, 
+                           episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image, episode_4_cover_image=episode_4_cover_image, 
+                           episode_5_cover_image=episode_5_cover_image, episode_6_cover_image=episode_6_cover_image, episode_7_cover_image=episode_7_cover_image, 
+                           episode_8_cover_image=episode_8_cover_image, episode_9_cover_image=episode_9_cover_image, episode_10_cover_image=episode_10_cover_image, 
+                           episode_11_cover_image=episode_11_cover_image, episode_12_cover_image=episode_12_cover_image, episode_13_cover_image=episode_13_cover_image,
+                           episode_14_cover_image=episode_14_cover_image, episode_15_cover_image=episode_15_cover_image, episode_16_cover_image=episode_16_cover_image,episode_video=episode_video,
+                           episode_limit=episode_limit, total_num_seasons = total_num_seasons, s1_available=s1_available, s2_available=s2_available, s3_available=s3_available,
+                           s4_available=s4_available, s5_available=s5_available, ep1_available=ep1_available, ep2_available=ep2_available, ep3_available=ep3_available, ep4_available=ep4_available, 
                            ep5_available=ep5_available, ep6_available=ep6_available, ep7_available=ep7_available, ep8_available=ep8_available,
                            ep9_available=ep9_available, ep10_available=ep10_available, ep11_available=ep11_available, ep12_available=ep12_available,
                            ep13_available=ep13_available, ep14_available=ep14_available, ep15_available=ep15_available, ep16_available=ep16_available)
