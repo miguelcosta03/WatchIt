@@ -173,39 +173,71 @@ def watchSerie():
     episode_number = 1
 
     if request.method == 'POST':
-        if request.form.get('season1Button') == 'season1Button':
-            season_number = 1
-
-        elif request.form.get('season2Button') == 'season2Button':
-            season_number = 2
-        
-        elif request.form.get('season3Button') == 'season3Button':
-            season_number = 3
-        
-        elif request.form.get('season4Button') == 'season4Button':
-            season_number = 4
-        
-        elif request.form.get('season5Button') == 'season5Button':
-            season_number = 5
+        match request.form.get('seasonButton'):
+            case 'season1Button':
+                season_number = 1
+            
+            case 'season2Button':
+                season_number = 2
+            
+            case 'season3Button':
+                season_number = 3
+            
+            case 'season4Button':
+                season_number = 4
+            
+            case 'season5Button':
+                season_number = 5
 
     if request.method == 'POST':
-        if request.form.get('playEpisode1Button') == 'playEpisode1Button':
-            episode_number = 1
+        match request.form.get('playEpisodeButton'):
+            case 'playEpisode1Button':
+                episode_number = 1
+            
+            case 'playEpisode2Button':
+                episode_number = 2
+            
+            case 'playEpisode3Button':
+                episode_number = 3
+            
+            case 'playEpisode4Button':
+                episode_number = 4
+            
+            case 'playEpisode5Button':
+                episode_number = 5
+            
+            case 'playEpisode6Button':
+                episode_number = 6
+            
+            case 'playEpisode7Button':
+                episode_number = 7
+            
+            case 'playEpisode8Button':
+                episode_number = 8
+            
+            case 'playEpisode9Button':
+                episode_number = 9
+            
+            case 'playEpisode10Button':
+                episode_number = 10
+            
+            case 'playEpisode11Button':
+                episode_number = 11
+            
+            case 'playEpisode12Button':
+                episode_number = 12
+            
+            case 'playEpisode13Button':
+                episode_number = 13
+            
+            case 'playEpisode14Button':
+                episode_number = 14
+            
+            case 'playEpisode15Button':
+                episode_number = 15
 
-        elif request.form.get('playEpisode2Button') == 'playEpisode2Button':
-            episode_number = 2
-        
-        elif request.form.get('playEpisode3Button') == 'playEpisode3Button':
-            episode_number = 3
-        
-        elif request.form.get('playEpisode4Button') == 'playEpisode4Button':
-            episode_number = 4
-        
-        elif request.form.get('playEpisode5Button') == 'playEpisode5Button':
-            episode_number = 5
-        
-        elif request.form.get('playEpisode6Button') == 'playEpisode6Button':
-            episode_number = 6
+            case 'playEpisode16Button':
+                episode_number = 16
 
     episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 1)}'
     episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 2)}'

@@ -21,11 +21,11 @@
         <p class="serie-total-seasons-number">{{ serie_total_seasons_number }} Temporadas</p>
         <p class="serie-star-classification">{{ serie_star_classification }} / 10 ⭐</p>
         <p class="serie-description">{{ serie_description }}</p>
-        <button class="season-1-button" name="season1Button" value="season1Button">1</button>
-        <button class="season-2-button" name="season2Button" value="season2Button">2</button>
-        <button class="season-3-button" name="season3Button" value="season3Button">3</button>
-        <button class="season-4-button" name="season4Button" value="season4Button">4</button>
-        <button class="season-5-button" name="season5Button" value="season5Button">5</button>
+        <button class="season-1-button" name="seasonButton" value="season1Button">1</button>
+        <button class="season-2-button" name="seasonButton" value="season2Button">2</button>
+        <button class="season-3-button" name="seasonButton" value="season3Button">3</button>
+        <button class="season-4-button" name="seasonButton" value="season4Button">4</button>
+        <button class="season-5-button" name="seasonButton" value="season5Button">5</button>
         <h1 class="seasons-text">Temporadas</h1>
         <div class="episode-grid">
             <div class="episode-text">
@@ -208,99 +208,99 @@
             {% endif %}
             
             {% if ep1_available%}
-                <button class="play-episode-1-button" name="playEpisode1Button" value="playEpisode1Button"></button>
+                <button class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
             {% else %}
-                <button hidden class="play-episode-1-button" name="playEpisode1Button" value="playEpisode1Button"></button>
+                <button hidden class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
             {% endif %}
 
             {% if ep2_available %}
-                <button class="play-episode-2-button" name="playEpisode2Button" value="playEpisode2Button"></button>
+                <button class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>
             {% else %}
-                <button hidden class="play-episode-2-button" name="playEpisode2Button" value="playEpisode2Button"></button>    
+                <button hidden class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>    
             {% endif %}
 
             {% if ep3_available %}
-                <button class="play-episode-3-button" name="playEpisode3Button" value="playEpisode3Button"></button>
+                <button class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
             {% else %}
-                <button hidden class="play-episode-3-button" name="playEpisode3Button" value="playEpisode3Button"></button>
+                <button hidden class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
             {% endif %}
 
             {% if ep4_available %}
-                <button class="play-episode-4-button" name="playEpisode4Button" value="playEpisode4Button"></button>
+                <button class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
             {% else %}
-                <button hidden class="play-episode-4-button" name="playEpisode4Button" value="playEpisode4Button"></button>
+                <button hidden class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
             {% endif %}
 
             {% if ep5_available %}
-                <button class="play-episode-5-button" name="playEpisode5Button" value="playEpisode5Button"></button>
+                <button class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
             {% else %}
-                <button hidden class="play-episode-5-button" name="playEpisode5Button" value="playEpisode5Button"></button>
+                <button hidden class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
             {% endif %}
 
             {% if ep6_available %}
-                <button class="play-episode-6-button" name="playEpisode6Button" value="playEpisode6Button"></button>
+                <button class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
             {% else %}
-                <button hidden class="play-episode-6-button" name="playEpisode6Button" value="playEpisode6Button"></button>
+                <button hidden class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
             {% endif %}
             
             {% if ep7_available %}
-                <button class="play-episode-7-button" name="playEpisode7Button" value="playEpisode7Button"></button>
+                <button class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
             {% else %}
-                <button hidden class="play-episode-7-button" name="playEpisode7Button" value="playEpisode7Button"></button>
+                <button hidden class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
             {% endif %}
 
             {% if ep8_available %}
-                <button class="play-episode-8-button" name="playEpisode8Button" value="playEpisode8Button"></button>
+                <button class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
             {% else %}
-                <button hidden class="play-episode-8-button" name="playEpisode8Button" value="playEpisode8Button"></button>
+                <button hidden class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
             {% endif %}
 
             {% if ep9_available %}
-                <button class="play-episode-9-button" name="playEpisode9Button" value="playEpisode9Button"></button>
+                <button class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
             {% else %} 
-                <button hidden class="play-episode-9-button" name="playEpisode9Button" value="playEpisode9Button"></button>
+                <button hidden class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
             {% endif %}
 
             {% if ep10_available %}
-                <button class="play-episode-10-button" name="playEpisode10Button" value="playEpisode10Button"></button>
+                <button class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
             {% else %}
-                <button hidden class="play-episode-10-button" name="playEpisode10Button" value="playEpisode10Button"></button>
+                <button hidden class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
             {% endif %}
 
             {% if ep11_available %}
-                <button class="play-episode-11-button" name="playEpisode11Button" value="playEpisode11Button"></button>
+                <button class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
             {% else %}
-                <button hidden class="play-episode-11-button" name="playEpisode11Button" value="playEpisode11Button"></button>
+                <button hidden class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
             {% endif %}
 
             {% if ep12_available %}
-                <button class="play-episode-12-button" name="playEpisode12Button" value="playEpisode12Button"></button>
+                <button class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
             {% else %}
-                <button hidden class="play-episode-12-button" name="playEpisode12Button" value="playEpisode12Button"></button>
+                <button hidden class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
             {% endif %}
 
             {% if ep13_available %}
-                <button class="play-episode-13-button" name="playEpisode13Button" value="playEpisode13Button"></button>
+                <button class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
             {% else %}
-                <button hidden class="play-episode-13-button" name="playEpisode13Button" value="playEpisode13Button"></button>
+                <button hidden class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
             {% endif %}
 
             {% if ep14_available %}
-                <button class="play-episode-14-button" name="playEpisode14Button" value="playEpisode14Button"></button>
+                <button class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
             {% else %}
-                <button hidden class="play-episode-14-button" name="playEpisode14Button" value="playEpisode14Button"></button>
+                <button hidden class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
             {% endif %}
 
             {% if ep15_available %}
-                <button class="play-episode-15-button" name="playEpisode15Button" value="playEpisode15Button"></button>
+                <button class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
             {% else %}
-                <button hidden class="play-episode-15-button" name="playEpisode15Button" value="playEpisode15Button"></button>
+                <button hidden class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
             {% endif %}
 
             {% if ep16_available %}
-                <button class="play-episode-16-button" name="playEpisode16Button" value="playEpisode16Button"></button>
+                <button class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
             {% else %}
-                <button hidden class="play-episode-16-button" name="playEpisode16Button" value="playEpisode16Button"></button>
+                <button hidden class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
             {% endif %}
         </div>
 
