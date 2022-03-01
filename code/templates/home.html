@@ -1,13 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WatchIt</title>
-    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/home.css') }}">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Watch It</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/series.css') }}">
+    </head>
+
+    <div class="slideshow-container">
+        <div class="slides fade">
+            <img class = "slideshow-serie-image" src="{{ ts1_bg_img }}">
+            <div class="slideshow-serie-name">{{ ts1_name }}</div>
+        </div>
+
+        <div class="slides fade">
+            <img class = "slideshow-serie-image" src="{{ ts2_bg_img }}">
+            <div class="slideshow-serie-name">{{ ts2_name }}</div>
+        </div>
+
+        <div class="slides fade">
+            <img class = "slideshow-serie-image" src="{{ ts3_bg_img }}">
+            <div class="slideshow-serie-name">{{ ts3_name }}</div>
+        </div>
+
+    </div>
+
+    <div style="text-align:center">
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+        <span class="dot"></span> 
+      </div>
+
+    <form class="top-widgets" action="/" method="post">
+        <button class="watchit-button">Watch It</button>
+        <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
+        <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
+    </form>
+
+
+    <h1 class="slogan">As tuas séries e filmes favoritos estão aqui!</h1>
+    <form class="s1-container" action="/" method="post">
+        <img src="{{ s1_image }}" style="height:100%; width:100%;">
+        <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
+    </form>
     
-</body>
+    <form class="s2-container" action="/" method="post">
+        <img src="{{ s2_image }}" style="height:100%; width:100%;">
+        <button class="btn" name="s2Button" value="{{ s2_value }}"></button>
+    </form>
+
+    <form class="s3-container" action="/" method="post">
+        <img src="{{ s3_image }}" style="height:100%; width:100%">
+        <button class="btn" name="s3Button" value="{{ s3_value }}"></button>
+    </form>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides(){
+            var i;
+            var slides = document.getElementsByClassName("slides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 10000); 
+        }
+    </script>
 </html>
