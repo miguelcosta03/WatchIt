@@ -325,8 +325,11 @@
                 <button hidden class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
             {% endif %}
         </div>
-
-        <video class="video-player" src="{{ episode_video }}" controls controlsList="nodownload"></video>
+        {% if isLogged %}
+            <video class="video-player" src="{{ episode_video }}" controls controlsList="nodownload"></video>
+        {% else %}
+            <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
+        {% endif %}
     </form>
 </body>
 </html>
