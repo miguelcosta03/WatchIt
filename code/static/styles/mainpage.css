@@ -6,12 +6,12 @@ body{
 }
 
 .top-widgets{
-    position: relative;
+    position: fixed;
     /* background: rgb(61, 61, 61); */
-    background: transparent;
+    background: rgb(61, 61, 61);
     height: 70px;
-    top: -2%;
-
+    width: 100%;
+    top: 0px;
 }
 
 .watchit-button{
@@ -21,8 +21,8 @@ body{
     font-size: 45px;
     background-color: transparent;
     border-color: transparent;
-    top: -1100%;
     margin-left: 0.5%;
+    margin-top: 0.2%;
     height: 52px;
     cursor: pointer;
 }
@@ -32,26 +32,25 @@ body{
     width: 130px;
     height: 50px;
     border: 10px solid #000;
+    top: -13%;
     font-family: 'Lato', sans-serif;
     font-weight: 500;
     background: transparent;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    top: -10%;
     display: inline-block;
 }
 
 .mainButton {
     position: relative;
-    background: rgb(32, 28, 228);
+    background: rgba(125, 255, 125, 0.712);
     color: #fff;
     line-height: 42px;
     padding: 0;
     border: none;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     left: 70%;
-    top: -1100%;
 }
 
 .mainButton span {
@@ -119,6 +118,70 @@ body{
     width: 100%;
 }
 
+.profile-picture {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: transparent;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+  .dropdown {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    left: 1700px;
+    border-radius: 50%;
+    top: 10px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgb(20, 20, 20);
+    border-style: outset;
+    border-color: black;
+    min-width: 160px;
+    height: 100px;
+    border-radius: 4%;
+    z-index: 1;
+    margin-left: -100px;
+  }
+  
+  .edit-profile-button {
+    color: white;
+    background: rgba(125, 255, 125, 0.712);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-color: rgba(125, 255, 125, 0.712);
+    display: block;
+    margin-top: 0%;
+    width: 160px;
+    height: 50px;
+  }
+
+  .logout-button{
+    color: white;
+    background: rgba(125, 255, 125, 0.712);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    display: block;
+    margin-top: 0%;
+    width: 160px;
+    height: 50px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
 .slogan{
     position: relative;
     color: white;
@@ -134,12 +197,11 @@ body{
     max-width: 1000px;
     margin: auto;
 }
-
 .slideshow-serie-image{
     width: 1950px;
     height: 1000px;
     margin-left: -50%;
-    margin-top: -10%;
+    margin-top: 5%;
     opacity: 30%;
 }
 
@@ -192,3 +254,4 @@ body{
   @media only screen and (max-width: 300px) {
     .text {font-size: 11px}
   }
+
