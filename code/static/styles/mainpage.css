@@ -9,21 +9,11 @@ html, body{
     right:0; 
 }
 
-.navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-  }
-  
-
-  footer {
-    background-color: #f2f2f2;
-    padding: 25px;
-  }
-  
 .carousel-inner img {
     width: 100%; 
     margin: auto;
-    min-height:200px;
+    max-height: 850px;
+    filter: brightness(80%);
 }
 
 .top-widgets{
@@ -204,75 +194,16 @@ html, body{
       display: block;
     }
 
+.slider-serie-name{
+    position: relative;
+    top: -500px;
+    left: 45%;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 .slogan{
     position: relative;
     color: white;
     padding-left: 2%;
-    top: 150px
+    top: 150px;
 }
-
-.slides{
-    display: none;
-}
-
-.slideshow-container {
-    max-width: 1000px;
-    margin: auto;
-}
-.slideshow-serie-image{
-    width: 1950px;
-    height: 1000px;
-    margin-left: -50%;
-    margin-top: 5%;
-    opacity: 30%;
-}
-
-.slideshow-serie-name{
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: relative;
-    top: -10px;
-    left: 350px;
-    margin-top: -600px;
-    font-size: 50px;
-    font-family: 'Helvetica Neue', sans-serif;
-}
-
-.dot{
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-    margin-top: 20%;
-    margin-left: -5%;
-}
-
-
-.active {
-    background-color: #717171;
-  }
-  
-  .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
-  
-  @-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-  
-  @keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-  }
-  
-  @media only screen and (max-width: 300px) {
-    .text {font-size: 11px}
-  }

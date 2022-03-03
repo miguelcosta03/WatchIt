@@ -25,26 +25,25 @@ body{
     cursor: pointer;
 }
 .serie-background{
-    width: 60%;
-    height: 450px;
-    margin-left: 20%;
-    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    border-radius: 3%;
 }
 
 .serie-cover-image{
     position: relative;
-    width: 10%;
-    height: auto;
+    width: 50%;
     border-radius: 10%;
-    margin-left: -58%;
-    margin-bottom: -5%;
+    margin-left: 15%;
+    margin-top: -50%;
 }
 
 .serie-name{
-    position: relative;
+    display: flex;
+    position: sticky;
     color: white;
-    margin-top: -8%;
-    margin-left: 35%;
+    margin-top: -14%;
+    margin-left: 25%;
 }
 
 .serie-release-year{
@@ -53,44 +52,41 @@ body{
     color: white;
     margin-top: 1%;
     margin-bottom: -2%;
-    margin-left: 35%;
+    margin-left: -47.5%;
 }
 
 .serie-duration{
     position: relative;
     font-size: 100%;
     color: white;
-    margin-top: 1%;
-    margin-bottom: -2%;
-    margin-left: 38%;
+    margin-top: 0.3%;
+    margin-left: -37%;
 }
 
 .serie-total-seasons-number{
     position: relative;
     font-size: 100%;
     color: white;
-    margin-top: 1.06%;
-    margin-bottom: -2%;
-    margin-left: 41.4%;
+    margin-top: -2.6%;
+    margin-left: -20.4%;
 }
 
 .serie-star-classification{
     position: relative;
     font-size: 100%;
     color: white;
-    margin-top: 4%;
-    margin-bottom: -6%;
-    margin-left: 35%;
+    margin-top: 1.5%;
+    margin-left: -43.5%;
 }
 
 .serie-description {
-    position: relative;
+    display: flex;
+    position: absolute;
     font-size: 100%;
     color: white;
-    margin-top: 8%;
-    margin-bottom: -2%;
-    margin-left: 35%;
-    width: 45%;
+    margin-left: 15.3%;
+    width: 35%;
+    text-align: justify;
 }
 
 .season-1-button {
@@ -99,10 +95,9 @@ body{
     line-height: 42px;
     background-color: rgb(32, 28, 228);
     color: white;
-    margin-top: 10%;
-    margin-bottom: -5%;
-    margin-left: 35%;
-    width: 3%;
+    top: 215px;
+    margin-left: -30%;
+    width: 4%;
     border-radius: 30%;
     border-color: white;
 }
@@ -119,10 +114,10 @@ body{
     line-height: 42px;
     background-color: rgb(32, 28, 228);
     color: white;
-    margin-top: 10%;
+    top: 215px;
     margin-bottom: -5%;
     margin-left: 1%;
-    width: 3%;
+    width: 4%;
     border-radius: 30%;
     border-color: white;
 }
@@ -139,10 +134,10 @@ body{
     line-height: 42px;
     background-color: rgb(32, 28, 228);
     color: white;
-    margin-top: 10%;
+    top: 215px;
     margin-bottom: -5%;
     margin-left: 1%;
-    width: 3%;
+    width: 4%;
     border-radius: 30%;
     border-color: white;
 }
@@ -159,10 +154,10 @@ body{
     line-height: 42px;
     background-color: rgb(32, 28, 228);
     color: white;
-    margin-top: 10%;
+    top: 215px;
     margin-bottom: -5%;
     margin-left: 1%;
-    width: 3%;
+    width: 4%;
     border-radius: 30%;
     border-color: white;
 }
@@ -179,10 +174,11 @@ body{
     line-height: 42px;
     background-color: rgb(32, 28, 228);
     color: white;
-    margin-top: 10%;
-    margin-bottom: -5%;
+    top: 215px;
+    margin-top: -1%;
+    margin-bottom: -1%;
     margin-left: 1%;
-    width: 3%;
+    width: 4%;
     border-radius: 30%;
     border-color: white;
 }
@@ -197,8 +193,9 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 30px;
     color: white;
-    margin-top: -1.7%;
-    margin-left: 23%;
+    margin-top: 15%;
+    margin-left: -50%;
+    top: 95px;
 }
 
 .episode-grid{
@@ -233,7 +230,7 @@ body{
 
     .episode-unavailable-text{
         position: absolute;
-        margin-top: -185px;
+        margin-top: -128px;
         width: 200px;
         height: 130px;
     }

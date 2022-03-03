@@ -1,20 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/serie.css') }}">
-    <title>{{ serie_title }}</title>
-</head>
-<body>
-    <form class="top-widgets" action="/" method="post">
-        <button class="watchit-button">Watch It</button>        
-    </form>
+  <title>WatchIt - {{ serie_name }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/styles/mainpage.css">
+  <link rel="stylesheet" href="../static/styles/serie.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
 
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  </style>
+</head>
+<body style="background: rgb(20, 20, 20);">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <form action="/" method="post">
+        <button class="watchit-button">WatchIt</button>
+      </form>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+            <form action="/" method="post">
+                {% if isLogged %}
+                <div class="dropdown">
+                    <button class="profile-picture"></button>
+                    <div class="dropdown-content">
+                    <button class="edit-profile-button">Editar Perfil</button>
+                    <button class="logout-button">Sair</button>
+                    </div>
+                </div>
+                {% else %}
+                    <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
+                    <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
+                {% endif %}
+            </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container text-center">    
     <form method="post">
-        <img class="serie-background" src="{{ serie_image_background }}"style=" filter: brightness(50%);">
-        <img class="serie-cover-image" src="{{ serie_cover_image }}">
+        <img class="serie-background " src="{{ serie_image_background }}"style="filter: brightness(50%); ">
+    </form>
+  <div class="row">
+    <div class="col-sm-4">
+    <form method="post">
+        <img class="serie-cover-image img-responsive" src="{{ serie_cover_image }}">
+        </div>
         <h1 class="serie-name">{{ serie_name }}</h1>
         <p class="serie-release-year">{{ serie_release_year }}</p>
         <p class="serie-duration">{{ serie_duration }}</p>
@@ -63,11 +130,11 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-            
+
             {% if ep2_available %}
-                <div class="episode-slot">
-                    <img class="episode-slot" src="{{ episode_2_cover_image }}">
-                </div>
+            <div class="episode-slot">
+                <img class="episode-slot" src="{{ episode_2_cover_image }}">
+            </div>
             {% else %}
                 <div class="episode-slot">
                     <img class="episode-slot-unavailable">
@@ -85,7 +152,7 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-
+            
             {% if ep4_available %}
                 <div class="episode-slot">
                     <img class="episode-slot" src="{{ episode_4_cover_image }}">
@@ -140,7 +207,7 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-            
+
             {% if ep9_available %}
                 <div class="episode-slot">
                     <img class="episode-slot" src="{{ episode_9_cover_image }}">
@@ -173,7 +240,7 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-        
+
             {% if ep12_available %}
                 <div class="episode-slot">
                     <img class="episode-slot" src="{{ episode_12_cover_image }}">
@@ -184,7 +251,7 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-            
+
             {% if ep13_available %}
                 <div class="episode-slot">
                     <img class="episode-slot" src="{{ episode_13_cover_image }}">
@@ -207,6 +274,7 @@
                 </div>
             {% endif %}
 
+
             {% if ep15_available %}
                 <div class="episode-slot">
                     <img class="episode-slot" src="{{ episode_15_cover_image }}">
@@ -228,7 +296,7 @@
                     <p class="episode-unavailable-text">Não existe este episódio!</p>
                 </div>
             {% endif %}
-            
+
             {% if ep1_available%}
                 <button class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
             {% else %}
@@ -264,13 +332,13 @@
             {% else %}
                 <button hidden class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
             {% endif %}
-            
+
             {% if ep7_available %}
                 <button class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
             {% else %}
                 <button hidden class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
             {% endif %}
-
+            
             {% if ep8_available %}
                 <button class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
             {% else %}
@@ -331,5 +399,12 @@
             <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
         {% endif %}
     </form>
+  </div>
+</div><br>
+
+<footer class="container-fluid text-center" style="background: rgb(20, 20, 20);">
+  <p>WatchIt</p>
+</footer>
+
 </body>
 </html>
