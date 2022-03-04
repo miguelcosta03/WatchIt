@@ -32,170 +32,178 @@ body{
 
 .serie-cover-image{
     position: relative;
-    width: 50%;
+    width: 15%;
     border-radius: 10%;
-    margin-left: 15%;
-    margin-top: -50%;
+    margin-left: 6%;
+    margin-top: -17%;
 }
 
 .serie-name{
     display: flex;
-    position: sticky;
+    position: absolute;
     color: white;
-    margin-top: -14%;
-    margin-left: 25%;
+    margin-top: -19%;
+    margin-left: 23%;
+    font-size: 2.2vw;
 }
 
 .serie-release-year{
-    position: relative;
-    font-size: 100%;
+    display: flex;
+    position: absolute;
     color: white;
-    margin-top: 1%;
-    margin-bottom: -2%;
-    margin-left: -47.5%;
+    margin-top: -15%;
+    margin-left: 23%;
+    font-size: 0.9vw;
 }
 
 .serie-duration{
-    position: relative;
-    font-size: 100%;
+    display: flex;
+    position: absolute;
     color: white;
-    margin-top: 0.3%;
-    margin-left: -37%;
+    margin-top: -15%;
+    margin-left: 28%;
+    font-size: 0.9vw;
 }
 
 .serie-total-seasons-number{
-    position: relative;
-    font-size: 100%;
+    display: flex;
+    position: absolute;
     color: white;
-    margin-top: -2.6%;
-    margin-left: -20.4%;
+    margin-top: -15%;
+    margin-left: 34.5%;
+    font-size: 0.9vw;
 }
 
 .serie-star-classification{
-    position: relative;
-    font-size: 100%;
+    display: flex;
+    position: absolute;
     color: white;
-    margin-top: 1.5%;
-    margin-left: -43.5%;
+    margin-top: -12%;
+    margin-left: 23%;
+    font-size: 0.9vw;
 }
 
 .serie-description {
     display: flex;
     position: absolute;
-    font-size: 100%;
     color: white;
-    margin-left: 15.3%;
-    width: 35%;
+    margin-top: -10%;
+    margin-left: 23%;
+    width: 70%;
+    font-size: 0.9vw;
     text-align: justify;
 }
 
 .season-1-button {
+    display: table-cell;
     position: relative;
-    font-size: 100%;
-    line-height: 42px;
-    background-color: rgb(32, 28, 228);
+    background-color: rgba(125, 255, 125, 0.712);
     color: white;
-    top: 215px;
-    margin-left: -30%;
-    width: 4%;
-    border-radius: 30%;
-    border-color: white;
+    margin-left: 23%;
+    font-size: 0.9vw;
+    left: -10vw;
+    top: -5vw;
+    margin-top: 10vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
 }
 
 .season-1-button:hover{
     border-color: rgb(32, 28, 228);
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 3vw;
 }
 
 .season-2-button{
+    display: table-cell;
     position: relative;
-    font-size: 100%;
-    line-height: 42px;
-    background-color: rgb(32, 28, 228);
+    background-color: rgba(125, 255, 125, 0.712);
     color: white;
-    top: 215px;
-    margin-bottom: -5%;
-    margin-left: 1%;
-    width: 4%;
-    border-radius: 30%;
-    border-color: white;
+    font-size: 0.9vw;
+    left: -9vw;
+    top: -5vw;
+    margin-top: 10vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
 }
 
 .season-2-button:hover{
     border-color: rgb(32, 28, 228);
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 3vw;
 }
 
 .season-3-button{
+    display: table-cell;
     position: relative;
-    font-size: 100%;
-    line-height: 42px;
-    background-color: rgb(32, 28, 228);
+    background-color: rgba(125, 255, 125, 0.712);
     color: white;
-    top: 215px;
-    margin-bottom: -5%;
-    margin-left: 1%;
-    width: 4%;
-    border-radius: 30%;
-    border-color: white;
+    font-size: 0.9vw;
+    left: -8vw;
+    top: -5vw;
+    margin-top: 10vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
 }
 
 .season-3-button:hover{
     border-color: rgb(32, 28, 228);
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 3vw;
 }
 
 .season-4-button{
+    display: table-cell;
     position: relative;
-    font-size: 100%;
-    line-height: 42px;
-    background-color: rgb(32, 28, 228);
+    background-color: rgba(125, 255, 125, 0.712);
     color: white;
-    top: 215px;
-    margin-bottom: -5%;
-    margin-left: 1%;
-    width: 4%;
-    border-radius: 30%;
-    border-color: white;
+    font-size: 0.9vw;
+    left: -7vw;
+    top: -5vw;
+    margin-top: 10vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
 }
 
 .season-4-button:hover{
     border-color: rgb(32, 28, 228);
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 3vw;
 }
 
 .season-5-button{
+    display: table-cell;
     position: relative;
-    font-size: 100%;
-    line-height: 42px;
-    background-color: rgb(32, 28, 228);
+    background-color: rgba(125, 255, 125, 0.712);
     color: white;
-    top: 215px;
-    margin-top: -1%;
-    margin-bottom: -1%;
-    margin-left: 1%;
-    width: 4%;
-    border-radius: 30%;
-    border-color: white;
+    font-size: 0.9vw;
+    left: -6vw;
+    top: -5vw;
+    margin-top: 10vw;
+    width: 3vw;
+    height: 3vw;
+    border-radius: 10%;
 }
 
 .season-5-button:hover{
     border-color: rgb(32, 28, 228);
-    width: 60px;
-    height: 60px;
+    width: 3vw;
+    height: 3vw;
 }
 
 .seasons-text{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 30px;
+    position: relative;
+    font-size: 1.5vw;
+    line-height: 2.0vw;
     color: white;
-    margin-top: 15%;
-    margin-left: -50%;
-    top: 95px;
+    margin-top: -10.0vw;
+    margin-left: -2vw;
+    border-radius: 30%;
+    border-color: white;
 }
 
 .episode-grid{
@@ -203,10 +211,10 @@ body{
     display: grid;
     grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     overflow-x: scroll ;
-    width: 50%;
-    height: 150px;
+    width: 80%;
+    height: 160px;
     margin-top: 4%;
-    margin-left: 26.5%;
+    margin-left: 10%;
     text-align: center;
     line-height: 120px;
     grid-gap: 5px;
@@ -418,7 +426,6 @@ body{
     .play-episode-13-button:hover{
         border-color: rgb(32, 28, 228);
     }
-
     .play-episode-14-button{
         position: absolute;
         background: url('../images/other_images/play-episode.png');
@@ -431,7 +438,6 @@ body{
     .play-episode-14-button:hover{
         border-color: rgb(32, 28, 228);
     }
-
     .play-episode-15-button{
         position: absolute;
         background: url('../images/other_images/play-episode.png');
@@ -444,7 +450,6 @@ body{
     .play-episode-15-button:hover{
         border-color: rgb(32, 28, 228);
     }
-
     .play-episode-16-button{
         position: absolute;
         background: url('../images/other_images/play-episode.png');
@@ -457,13 +462,14 @@ body{
     .play-episode-16-button:hover{
         border-color: rgb(32, 28, 228);
     }
-.video-player{
-    width: 50%;
+
+.video-player {
+    width: 100%;
     margin-top: 5%;
-    margin-left: 27%;
-    -moz-border-radius:10px;
-    -webkit-border-radius:10px;
-    border-radius:10px;
+    margin-left: 5%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .login-warn-text{
