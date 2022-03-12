@@ -34,40 +34,16 @@
         {% if not invalid_confirm_password %}
             <input class="box-password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
             <div class="checkbox-show-password">
-                <input  type="checkbox" id="checkbox-show-password" onclick="showHidePassword()">Mostrar Palavra-Passe
+                <input type="checkbox" id="checkbox-show-password" onclick="showHidePassword()">Mostrar Palavra-Passe
             </div>
-            <script>
-                function showHidePassword(){
-                    var password = document.getElementById("password");
-                    var confirmPassword = document.getElementById("confirm_password");
-                    if (password.type === "password" && confirmPassword.type === "password"){
-                        password.type = "text";
-                        confirmPassword.type = "text";
-                    } else {
-                        password.type = "password";
-                        confirmPassword.type = "password";
-                    }
-                }
-            </script>
+            <script src="../static/js/password.js"></script>
         {% else %}
             <h1 class="invalid-confirm-password-text">{{ confirm_password_error }}</h1>
             <input class="invalid-confirm-password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar Palavra-Passe">
             <div class="checkbox-show-password">
                 <input  type="checkbox" id="checkbox-show-password" onclick="showHidePassword()">Mostrar Palavra-Passe
             </div>
-            <script>
-                function showHidePassword(){
-                    var password = document.getElementById("password");
-                    var confirmPassword = document.getElementById("confirm_password");
-                    if (password.type === "password" && confirmPassword.type === "password"){
-                        password.type = "text";
-                        confirmPassword.type = "text";
-                    } else {
-                        password.type = "password";
-                        confirmPassword.type = "password";
-                    }
-                }
-            </script>
+            <script src="../static/js/password.js"></script>
         {% endif %}
         <button class="signup-button" name="signUp" name="signUp" value="Registar">Registar</button>
     </form>
