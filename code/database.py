@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 import pyodbc
 
 class Database:
@@ -22,11 +21,13 @@ class Database:
 
         self.cursor.execute(emailQuery)
         checkIfUserExists = self.cursor.fetchall()
-        formattedUserExists = checkIfUserExists[0][0]
 
-        if email == formattedUserExists:
-            return True
-        else:
+        try:
+            formattedUserExists = checkIfUserExists[0][0]
+            if email == formattedUserExists:
+                return True
+
+        except IndexError:
             return False
 
     def createNewUser(self, email, username, password):
