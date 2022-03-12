@@ -22,16 +22,7 @@
             <div class="checkbox-show-password">
                 <input  type="checkbox" id="checkbox-show-password" onclick="showHidePassword()">Mostrar Palavra-Passe
             </div>
-            <script>
-                function showHidePassword(){
-                    var password = document.getElementById("password");
-                    if (password.type === "password"){
-                        password.type = "text";
-                    } else {
-                        password.type = "password";
-                    }
-                }
-            </script>
+            <script src="../static/js/password.js"></script>
         {% else %}
             <h1 class="invalid-password-text">{{ password_error }}</h1>
             <input class="box-invalid-password" type="password" name="password" placeholder="Palavra-Passe">
