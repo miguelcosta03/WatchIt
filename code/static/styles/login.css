@@ -27,7 +27,7 @@
 }
 
 .box-email-address:focus{
-    border-color: rgb(32, 28, 228);
+    border-color: rgba(125, 255, 125, 0.712);
 }
 
 .box-invalid-email-address{
@@ -70,7 +70,7 @@
 }
 
 .box-password:focus{
-    border-color: rgb(32, 28, 228);
+    border-color: rgba(125, 255, 125, 0.712);
 }
 
 .box-invalid-password{
@@ -113,7 +113,7 @@
 
 .login-button{
     border:0;
-    background: rgb(32, 28, 228);
+    background: rgba(33, 194, 33, 0.712);
     display: block;
     margin: 20px auto;
     color: rgb(255, 255, 255);
@@ -127,5 +127,5 @@
 
 .login-button:hover{
     color: #fff;
-    background: rgb(111, 110, 199);
+    background: rgba(90, 226, 90, 0.712);
 }
