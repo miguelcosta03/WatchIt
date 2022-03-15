@@ -1,190 +1,126 @@
-.signup-background{
-    background-color: white;
-    width: 300px;
-    height: 450px;
-    margin-top: 10%;
-    margin-left: 45%;
-    border-radius: 10%;
-}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
 
-.signup-title{
-    margin-left: 90px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+body{
+	background-color: rgba(0, 0, 0, 0.945);
+	background-position: center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+	min-height:100vh;
+	font-family: 'Noto Sans', sans-serif;
 }
-
-.box-email-address{
-    border:0;
-    background: none;
+.text-center{
+	color:#fff;	
+    font-size: 23px;
+    margin: -50px 0 30px 0px;
     display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
+    text-align: left;
+}
+.box{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+    background-color: rgba(0, 0, 0, 0.89);
+	border-radius:2%;
+	padding: 100px 100px;
+    width: 30%;
+    height: 300px;
+}
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+    width: 50%;
+    margin-top: 3%;
+}
+.input-container label{
+	position:absolute;
+	top: -4px;
+	left:0px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid rgba(125, 255, 125, 0.712);	
 }
 
-.box-email-address:focus{
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
+}
+
+.invalid-input-container {
+    position:relative;
+	margin-bottom:25px;
+    width: 50%;
+    margin-top: 3%;
+} 
+.invalid-input-container label {
+    top:-12px;
+    position:absolute;
+	left:0px;
+	font-size:12px;
+	color: red;	
+	transition: all 0.5s ease-in-out;
+}
+.invalid-input-container input{ 
+    border:none;	
+    outline:none;	
+    border-bottom:1px solid red;  
+    background:transparent;
+    width:100%;
+    padding:8px 0 5px 0;
+    font-size:16px;
+    color:#fff;
+}
+
+.signup-button {
+    color: white;
+    background-color: rgba(125, 255, 125, 0.712);
     border-color: rgba(125, 255, 125, 0.712);
-}
-
-.box-invalid-email-address{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-    border-color: rgb(255, 0, 0);
-}
-
-.invalid-email-text{
-    margin-bottom: -20px;
-    margin-left: 50px;
-    font-size: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(255, 0, 0);
-}
-
-.box-username{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;   
-}
-
-.box-username:focus{
-    border-color: rgba(90, 226, 90, 0.712);
-}
-
-.box-invalid-username{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-    border-color: rgb(255, 0, 0);
-}
-
-.invalid-username-text{
-    margin-bottom: -20px;
-    margin-left: 80px;
-    font-size: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(255, 0, 0);
-}
-.box-password{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-}
-
-.box-password:focus{
-    border-color: rgba(125, 255, 125, 0.712);
-}
-
-.box-invalid-password{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-    border-color: rgb(255, 0, 0);
-}
-
-.invalid-password-text{
-    margin-bottom: -20px;
-    margin-left: 50px;
-    font-size: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(255, 0, 0);
-}
-
-.invalid-confirm-password{
-    border:0;
-    background: none;
-    display: block;
-    margin: 20px auto;
-    text-align: center;
-    border: 2px solid grey;
-    padding: 14px 10px;
-    width: 200px;
-    outline: none;
-    color: black;
-    border-radius: 24px;
-    transition: 0.25s;
-    border-color: rgb(255, 0, 0);
-}
-
-.invalid-confirm-password-text{
-    margin-bottom: -20px;
-    margin-left: 50px;
-    font-size: 10px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(255, 0, 0);
-}
-
-.checkbox-show-password{
-    margin-left: 50px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15.5px;
-}
-
-.signup-button{
-    border:0;
-    background: rgba(33, 194, 33, 0.712);
-    display: block;
-    margin: 20px auto;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    padding: 14px 10px;
-    width: 225px;
-    outline: none;
-    border-radius: 24px;
-    transition: 0.25s;
+    border-radius: 5px;
+    width: 50%;
+    height: 50px;
 }
 
 .signup-button:hover{
-    color: #fff;
-    background: rgba(90, 226, 90, 0.712);
+    border-color: rgba(80, 168, 80, 0.712);
+}
+.side-image {
+    position: absolute;
+    width: 30%;
+	height: 60%;
+    margin-left:50%;
+    top: 15%;
+}
+
+.bottom-text {
+    display: flex;
+    color: white;
+    margin-top: 5%;
+    font-size: 90%;
+}
+
+.redirect-to-login-button {
+    display: flex;
+    color: rgb(0, 89, 255);
+    background: transparent;
+    border: transparent;
+    margin-top: -17px;
+    margin-left: 100px;
+    cursor: pointer;
 }
