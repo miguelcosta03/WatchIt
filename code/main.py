@@ -11,7 +11,7 @@ loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
 
-database = Database(f'SQL SERVER', 'MYSERPC\MSSQLSERVER01;', 'WatchItDB')
+database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 @app.route("/login", methods=['GET', 'POST'])

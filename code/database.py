@@ -1,16 +1,19 @@
 import pyodbc
 
 class Database:
-    def __init__(self, driver, server, databaseName):
+    def __init__(self, driver, server, port, database, uid, pwd):
         self.driver = driver
-        self.server = server
-        self.databaseName = databaseName
+        self.server = str(server).replace("'",'')
+        self.port = port
+        self.database = str(database).replace("'", '')
+        self.uid = str(uid).replace("'", '')
+        self.pwd = str(pwd).replace("'", '')
 
-        connectionData = (
-            f"Driver={self.driver};"
-            f"Server={self.server};"
-            f"Database={self.databaseName};"
-        )
+        connectionData = (f"Driver={self.driver};"
+                    f"Server={self.server},{self.port};"
+                    f"Database={self.database};"
+                    f"UID={self.uid};"
+                    f"PWD={self.pwd};")
 
         self.connection = pyodbc.connect(connectionData)
         self.cursor = self.connection.cursor()
