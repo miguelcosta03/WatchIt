@@ -53,7 +53,8 @@ def login():
             else:
                 invalidEmail = True
                 email_error = "* Por favor insira o seu email."
-
+        if request.form.get('signUpNow') == "registarAgora":
+            return redirect(url_for("signUp"))
     return render_template(loginTemplate, invalidEmail=invalidEmail, email_error=email_error, invalidPassword=invalidPassword, password_error=password_error,
                            invalidCredentials=invalidCredentials, invalidCredentialsText=invalidCredentialsText)
 
@@ -90,6 +91,7 @@ def signUp():
                                     userExists = database.checkIfUserExistsByEmail(email_address)
                                     if not userExists:
                                         database.createNewUser(email_address, username, password)
+                                        return redirect(url_for('mainPage'))
                                     else:
                                         invalid_email = True
                                         email_error = '* Este Email já está associado a uma conta.'

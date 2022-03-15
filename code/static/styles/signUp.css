@@ -115,8 +115,26 @@ body{
     top: 285px;
     left: 45%;
     cursor: pointer;
-
 }
+
+.invalid-email-text {
+    color:red;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.invalid-username-text {
+    color:red;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.invalid-password-text {
+    color:red;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
 .signup-button {
     color: white;
     background-color: rgba(125, 255, 125, 0.712);

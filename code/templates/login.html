@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/login.css') }}">
-    <title>Login</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href= "../static/styles/login.css">
+  <link rel="stylesheet" href="../static/styles/mainpage.css">
+  <title>Login</title>
 </head>
-<body background="https://viciados.net/wp-content/uploads/2019/09/fala-universidades-netflix-3-1980x1114.jpg">
-    <form class="login-background" action="/login" method="post">
-        <h1 class="login-title">Login</h1>
-        {% if not invalidEmail %}
-            <input class="box-email-address" type="text" name="email_address" placeholder="Endereço de Email">
-        {% else %}
-            <h1 class="invalid-email-text">{{ email_error }}</h1>
-            <input class="box-invalid-email-address" type="text" name="email_address" placeholder="Endereço de Email">
-        {% endif %}
-        
-        {% if not invalidPassword %}
-            <input class="box-password" id="password" type="password" name="password" placeholder="Palavra-Passe">
-            <div class="checkbox-show-password">
-                <input  type="checkbox" id="checkbox-show-password" onclick="showHidePassword()">Mostrar Palavra-Passe
-            </div>
-            <script src="../static/js/password.js"></script>
-        {% else %}
-            <h1 class="invalid-password-text">{{ password_error }}</h1>
-            <input class="box-invalid-password" type="password" name="password" placeholder="Palavra-Passe">
-        {% endif %}
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+  
+        <form action="/" method="post">
+          <div class="top-widgets">
+            <button class="watchit-button">WatchIt</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <div class="box">
+    <form action="/login" method="post">
+      <span class="text-center">Login</span>
+      {% if not invalidEmail %}
+        <div class="input-container">		
+          <input type="mail" name="email_address"/>
+          <label>Email</label>
+        </div>
+      {% else %}
+        <div class="invalid-input-container">
+          <input type="mail" name="email_address"/>
+          <label>Email</label>
+          <h1 class="invalid-email-text">{{ email_error }}</h1>
+        </div>
+      {% endif %}
 
-        {% if not invalidCredentials %}
-            <button class="login-button" name="login" value="Login">Login</button>
-        {% else %}
-            <h1 class="invalid-credentials-text">{{ invalidCredentialsText }}</h1>
-            <button class="login-button" name="login" value="Login">Login</button>
-        {% endif %}
-    </form>
+      {% if not invalidPassword %}
+        <div class="input-container">		
+          <input type="password" name="password" id="password"/>
+          <label>Password</label>
+        </div>
+      {% else %}
+        <div class="invalid-input-container">		
+          <input type="password" name="password" id="password"/>
+          <label>Password</label>
+          <h1 class="invalid-password-text">{{ password_error }}</h1>
+        </div>
+      {% endif %}
+      <div>
+        <button class="login-button" name="login" value="Login">Login</button>
+      </div>
+      <div>
+        <p1 class="bottom-text">Novo por aqui?</p1>
+        <button class="redirect-to-signUp-button" name="signUpNow" value="registarAgora">Regista-te agora!</button>
+      </div>
+    </form>	
+    <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
+    <script src="../static/js/password.js"></script>
+    <img class="side-image" src="../static/images/other_images/signup_background.jpg">
+  </div>
 </body>
 </html>
