@@ -53,8 +53,7 @@ def login():
             else:
                 invalidEmail = True
                 email_error = "* Por favor insira o seu email."
-        if request.form.get('signUpNow') == "registarAgora":
-            return redirect(url_for("signUp"))
+                
     return render_template(loginTemplate, invalidEmail=invalidEmail, email_error=email_error, invalidPassword=invalidPassword, password_error=password_error,
                            invalidCredentials=invalidCredentials, invalidCredentialsText=invalidCredentialsText)
 
@@ -116,9 +115,6 @@ def signUp():
             else:
                 invalid_email = True
                 email_error = '* Por favor insira o seu email.'
-        
-        if request.form.get('signInNow') == 'iniciarSessaoAgora':
-            return redirect(url_for('login'))
 
     return render_template(signUpTemplate, invalid_email=invalid_email, email_error=email_error, invalid_username=invalid_username, username_error=username_error,
                            invalid_password=invalid_password, password_error=password_error, invalid_confirm_password=invalid_confirm_password, confirm_password_error=confirm_password_error)

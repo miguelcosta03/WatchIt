@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href= "../static/styles/login.css">
   <link rel="stylesheet" href="../static/styles/mainpage.css">
-  <title>Login</title>
+  <script src="../static/js/urls.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-  
-        <form action="/" method="post">
-          <div class="top-widgets">
-            <button class="watchit-button">WatchIt</button>
-          </div>
-        </form>
+        <div class="top-widgets">
+          <button class="watchit-button" onclick="returnToHomePage()">WatchIt</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -52,11 +50,11 @@
       <div>
         <button class="login-button" name="login" value="Login">Login</button>
       </div>
-      <div>
-        <p1 class="bottom-text">Novo por aqui?</p1>
-        <button class="redirect-to-signUp-button" name="signUpNow" value="registarAgora">Regista-te agora!</button>
-      </div>
     </form>	
+    <div>
+      <p1 class="bottom-text">Novo por aqui?</p1>
+      <button class="redirect-to-signUp-button" onclick="redirectToSignUpPage()">Regista-te agora!</button>
+    </div>
     <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
     <script src="../static/js/password.js"></script>
     <img class="side-image" src="../static/images/other_images/signup_background.jpg">
