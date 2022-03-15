@@ -48,27 +48,26 @@
           <label>Nome de Utilizador</label>
         </div>
       {% endif %}
-       
       {% if not invalid_password %}
         <div class="input-container">		
-          <input type="password" name="password"/>
+          <input type="password" name="password" id="password"/>
           <label>Password</label>
         </div>
       {% else %}
         <div class="invalid-input-container">		
-          <input type="password" name="password"/>
+          <input type="password" name="password" id="password"/>
           <label>Password</label>
         </div>
       {% endif %}
 
       {% if not invalid_confirm_password %}
         <div class="input-container">		
-          <input type="password" name="confirm_password"/>
+          <input type="password" name="confirm_password" id="confirm_password"/>
           <label>Confirmar Password</label>
         </div>
       {% else %}
         <div class="invalid-input-container">		
-          <input type="password" name="confirm_password"/>
+          <input type="password" name="confirm_password" id="confirm_password"/>
           <label>Confirmar Password</label>
         </div>
       {% endif %}
@@ -80,6 +79,9 @@
         <button class="redirect-to-login-button" name="signInNow" value="iniciarSessaoAgora">Inicia sessão agora</button>
       </div>
     </form>	
+    <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
+    <button class="confirm-password-button" id="conf_psw_button" onclick="showHidePassword()"></button>
+    <script src="../static/js/password.js"></script>
     <img class="side-image" src="../static/images/other_images/signup_background.jpg">
   </div>
 </body>

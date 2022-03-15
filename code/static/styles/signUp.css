@@ -16,6 +16,7 @@ body{
     display: block;
     text-align: left;
 }
+
 .box{
 	position:absolute;
 	left:50%;
@@ -24,7 +25,7 @@ body{
     background-color: rgba(0, 0, 0, 0.89);
 	border-radius:2%;
 	padding: 100px 100px;
-    width: 30%;
+    width: 35%;
     height: 300px;
 }
 .input-container{
@@ -88,6 +89,34 @@ body{
     color:#fff;
 }
 
+.password-button {
+    position: fixed;
+    background-image: url('../images/other_images/password_invisible.png');
+    background-repeat: no-repeat;
+    width: 3%;
+    height: 20px;
+    border-left:50px;
+    border-color: transparent;
+    background-color: transparent;
+    top: 230px;
+    left: 45%;
+    cursor: pointer;
+}
+
+.confirm-password-button {
+    position: fixed;
+    background-image: url('../images/other_images/password_invisible.png');
+    background-repeat: no-repeat;
+    width: 3%;
+    height: 20px;
+    border-left:50px;
+    border-color: transparent;
+    background-color: transparent;
+    top: 285px;
+    left: 45%;
+    cursor: pointer;
+
+}
 .signup-button {
     color: white;
     background-color: rgba(125, 255, 125, 0.712);
@@ -100,10 +129,11 @@ body{
 .signup-button:hover{
     border-color: rgba(80, 168, 80, 0.712);
 }
+
 .side-image {
     position: absolute;
     width: 30%;
-	height: 60%;
+	height: 70%;
     margin-left:50%;
     top: 15%;
 }
