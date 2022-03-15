@@ -6,7 +6,6 @@ app = Flask(__name__)
 
 
 mainPageTemplate = 'mainPage.html'
-homeTemplate = 'home.html'
 loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
