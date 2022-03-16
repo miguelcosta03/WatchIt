@@ -9,6 +9,7 @@ mainPageTemplate = 'mainPage.html'
 loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
+editProfileTemplate = 'editProfile.html'
 
 database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
 
@@ -129,12 +130,6 @@ def mainPage():
     ts3_name = database.getSerieName(ts_ids[2])
 
     if request.method == 'POST':
-        if request.form.get('loginButton') == 'Login':
-            return redirect(url_for('login'))
-        
-        if request.form.get('signUpButton') == 'Registar':
-            return redirect(url_for('signUp'))
-        
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
             return redirect(url_for("watchSerie"))
@@ -158,6 +153,10 @@ def mainPage():
     return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
                            s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
                            ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+
+@app.route('/editarPerfil', methods=['GET', 'POST'])
+def editProfile():
+    return render_template(editProfileTemplate)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
@@ -480,6 +479,5 @@ def watchSerie():
                            ep5_available=ep5_available, ep6_available=ep6_available, ep7_available=ep7_available, ep8_available=ep8_available,
                            ep9_available=ep9_available, ep10_available=ep10_available, ep11_available=ep11_available, ep12_available=ep12_available,
                            ep13_available=ep13_available, ep14_available=ep14_available, ep15_available=ep15_available, ep16_available=ep16_available)
-
 if __name__ == "__main__":
     app.run(debug=True)

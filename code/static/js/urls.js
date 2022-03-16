@@ -9,3 +9,7 @@ function redirectToLoginPage() {
 function redirectToSignUpPage() {
     location.replace('http://127.0.0.1:5000/registarConta')
 }
+
+function redirectToEditProfilePage() {
+    location.replace('http://127.0.0.1:5000/editarPerfil')
+}

@@ -157,7 +157,7 @@ html, body{
   
   .dropdown-content {
     display: none;
-    position: absolute;
+    position: fixed;
     background: rgb(20, 20, 20);
     border-style: outset;
     border-color: black;

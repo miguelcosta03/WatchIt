@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="../static/styles/editProfile.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
+        </div>
+    </div>
+    <div class="box">
+        <div>
+            <img class="profile-image" src="../static/images/other_images/icon-profile.png">
+            <p class="username-title">@Username</p>
+            <p class="level-text">Level 1</p>
+            <div class="editable-info-div">
+                <div class="editable-username-div">
+                    <p class="username-text">Username:</p>
+                    <div class="username-editable-div">
+                        <label class="username">@Username</label>
+                        <button class="edit-username-button"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
