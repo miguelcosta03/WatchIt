@@ -1,3 +1,4 @@
+
 body {
     background-color: rgb(20, 20, 20);
 }
@@ -111,7 +112,7 @@ body {
 }
 
 .editable-email-div {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 10%;
     height: 200%;
 }
@@ -147,10 +148,12 @@ body {
 }
 
 .new-email-div {
+    top: 10%;
     border-color: #0BD67E;
     background: transparent;
     width: 95%;
     border-radius: 5px;
+    display: none;
 }
 
 .new-email-input {
