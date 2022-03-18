@@ -7,8 +7,11 @@
     <title>Editar Perfil</title>
     <link rel="stylesheet" href="../static/styles/editProfile.css">
     <script src="../static/js/update_credentials.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color: rgb(20, 20, 20);">
     <div class="container-fluid">
         <div class="navbar-header">
             <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
@@ -20,27 +23,33 @@
             <p class="username-title">@Username</p>
             <p class="level-text">Level 1</p>
             <div class="editable-info-div">
-                <div class="editable-username-div">
-                    <p class="username-text">Username:</p>
-                    <div class="username-editable-div">
-                        <label class="username">@Username</label>
-                        <button class="edit-username-button" id="edit-username-button" onclick="showHideNewUsernameDiv()"></button>
-                    </div>
-                    <div class="new-username-div" id="new-username-div">
-                        <input class="new-username-input" type="text">
-                    </div>
-                </div>
+                <div class="container text-center">    
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <div class="editable-username-div">
+                            <p class="username-text">Username:</p>
+                            <div class="username-editable-div">
+                                <label class="username">@Username</label>
+                                <button class="edit-username-button" id="edit-username-button" onclick="showHideNewUsernameDiv()"></button>
+                            </div>
+                            <div class="new-username-div" id="new-username-div">
+                                <input class="new-username-input" type="text">
+                            </div>
 
-                <div class="editable-email-div">
-                    <p class="email-text">Email:</p>
-                    <div class="email-editable-div">
-                        <label class="email">@Email</label>
-                        <button class="edit-email-button" id="edit-email-button" onclick="showHideNewEmailDiv()"></button>
+                            <div class="editable-email-div">
+                                <p class="email-text">Email:</p>
+                                <div class="email-editable-div">
+                                    <label class="email">@Email</label>
+                                    <button class="edit-email-button" id="edit-email-button" onclick="showHideNewEmailDiv()"></button>
+                                </div>
+                                <div class="new-email-div" id="new-email-div">
+                                    <input class="new-email-input" type="text">
+                                </div>
+                            </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="new-email-div" id="new-email-div">
-                        <input class="new-email-input" type="text">
-                    </div>
-                </div>
+                  </div><br>
             </div>
         </div>
     </div>
