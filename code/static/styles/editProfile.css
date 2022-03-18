@@ -78,7 +78,7 @@ body {
 
 .username-editable-div {
     margin-left: 1%;
-    width: 200%;
+    width: 15vw;
     height: auto;
     text-align: left;
     font-size: 0.95vw;
@@ -112,7 +112,7 @@ body {
 }
 
 .editable-email-div {
-    margin-top: 10%;
+    margin-top: 5%;
     width: 10%;
     height: 200%;
 }
@@ -126,7 +126,7 @@ body {
 
 .email-editable-div {
     margin-left: 1%;
-    width: 200%;
+    width: 15vw;
     height: auto;
     text-align: left;
     font-size: 0.95vw;
