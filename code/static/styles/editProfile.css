@@ -111,6 +111,19 @@ body {
     border-radius: 5px;
 }
 
+.save-new-username-button {
+    margin-top: 10%;
+    width: 10vw;
+    color: white;
+    background-color: transparent;
+    border-color: #0BD67E;
+    border-radius: 29px;
+}
+
+.save-new-username-button:hover {
+    background-color: #0BD67E;
+}
+
 .editable-email-div {
     margin-top: 5%;
     width: 10%;
@@ -161,4 +174,17 @@ body {
     background: transparent;
     width: 10vw;
     border-radius: 5px;
+}
+
+.save-new-email-button {
+    margin-top: 20%;
+    width: 10vw;
+    color: white;
+    background-color: transparent;
+    border-color: #0BD67E;
+    border-radius: 29px;
+}
+
+.save-new-email-button:hover {
+    background-color: #0BD67E;
 }
