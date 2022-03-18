@@ -107,7 +107,7 @@ body {
 .new-username-input {
     border-color: #0BD67E;
     background: transparent;
-    width: 95%;
+    width: 10vw;
     border-radius: 5px;
 }
 
@@ -159,6 +159,6 @@ body {
 .new-email-input {
     border-color: #0BD67E;
     background: transparent;
-    width: 95%;
+    width: 10vw;
     border-radius: 5px;
 }
