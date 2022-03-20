@@ -161,6 +161,7 @@ def mainPage():
 @app.route('/editarPerfil')
 def editProfile():
     return render_template(editProfileTemplate)
+    
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
