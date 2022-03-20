@@ -48,7 +48,13 @@
         </div>
       {% endif %}
       <div>
-        <button class="login-button" name="login" value="Login">Login</button>
+        {% if not invalidCredentials %}
+          <button class="login-button" name="login" value="Login">Login</button>
+        {% else %}
+          <p1 class="invalid-credentials-text">{{ invalidCredentialsText }}</p1>
+          <br>
+          <button class="login-button" name="login" value="Login">Login</button>
+        {% endif %}
       </div>
     </form>	
     <div>

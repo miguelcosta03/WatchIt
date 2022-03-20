@@ -40,7 +40,6 @@ def login():
                             invalidCredentials = False
                             isLogged = True
                             return redirect(url_for('mainPage'))
-
                         else:
                             invalidCredentials = True
                             invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
