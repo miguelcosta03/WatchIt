@@ -187,3 +187,9 @@ body {
 .save-new-email-button:hover {
     background-color: #0BD67E;
 }
+
+.change-password-button {
+    background-color: #0BD67E;
+    border-radius: 10px;
+    border-color: #0BD67E;
+}
