@@ -52,12 +52,14 @@ body{
     width: 35%;
     height: 300px;
 }
+
 .input-container{
 	position:relative;
 	margin-bottom:25px;
     width: 50%;
     margin-top: 3%;
 }
+
 .input-container label{
 	position:absolute;
 	top: -4px;

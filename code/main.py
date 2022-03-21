@@ -10,6 +10,7 @@ loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
 editProfileTemplate = 'editProfile.html'
+changePasswordTemplate = 'changePassword.html'
 
 database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
 
@@ -158,9 +159,14 @@ def mainPage():
     return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
                            s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
                            ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+
 @app.route('/editarPerfil')
 def editProfile():
     return render_template(editProfileTemplate)
+
+@app.route('/alterarPalavraPasse')
+def changePassword():
+    return render_template(changePasswordTemplate)
     
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
