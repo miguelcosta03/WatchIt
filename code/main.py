@@ -10,6 +10,7 @@ loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
 editProfileTemplate = 'editProfile.html'
+insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 
 database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
@@ -164,10 +165,14 @@ def mainPage():
 def editProfile():
     return render_template(editProfileTemplate)
 
+@app.route('/inserirCodigoDeVerificacao')
+def insertVericationCode():
+    return render_template(insertVericationCodeTemplate)
+
 @app.route('/alterarPalavraPasse')
 def changePassword():
     return render_template(changePasswordTemplate)
-    
+
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'

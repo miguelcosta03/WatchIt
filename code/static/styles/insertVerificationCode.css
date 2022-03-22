@@ -1,0 +1,87 @@
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.box {
+    margin-top: 15%;
+    margin-left: 40%;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 5px;
+    background-color: black;
+}
+
+.verification-code-text {
+    position: absolute;
+    left: 43vw;
+    font-size: 1.5vw;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.first-digit-input{
+    position: absolute;
+    top: 23vw;
+    left: 43vw;
+    width: 2.1vw;
+    height: 3vw;
+    font-size: 2.3vw;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+}
+
+.second-digit-input {
+    position: absolute;
+    top: 23vw;
+    left: 47vw;
+    width: 2.1vw;
+    height: 3vw;
+    font-size: 2.3vw;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+}
+
+.third-digit-input {
+    position: absolute;
+    top: 23vw;
+    left: 51vw;
+    width: 2.1vw;
+    height: 3vw;
+    font-size: 2.3vw;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+}
+
+.fourth-digit-input {
+    position: absolute;
+    top: 23vw;
+    left: 55vw;
+    width: 2.1vw;
+    height: 3vw;
+    font-size: 2.3vw;
+    color: white;
+    text-align: center;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+}
+
+.submit-button {
+    position: absolute;
+    top: 30vw;
+    left: 43vw;
+    width: 14.5vw;
+    height: 4vw;
+    color: white;
+    background-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+    border-color: rgba(125, 255, 125, 0.712);
+}

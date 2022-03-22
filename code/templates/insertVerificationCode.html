@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/insertVerificationCode.css">
+    <script src="../static/js/effects.js"></script>
+    <script src="../static/js/urls.js"></script>
+    <title>Código de Verificação</title>
+</head>
+<body>
+    <div class="box">
+        <p class="verification-code-text">Código de Verificação</p>
+        <input class="first-digit-input" type="text" id="first_input" oninput="focusElement()">
+        <input class="second-digit-input"type="text" id="second_input" oninput="focusElement()">
+        <input class="third-digit-input"type="text" id="third_input" oninput="focusElement()">
+        <input class="fourth-digit-input"type="text" id="fourth_input" oninput="focusElement()">
+        <button class="submit-button" onclick="redirectToChangePasswordPage()">Verificar</button>
+    </div>
+</body>
+</html>
