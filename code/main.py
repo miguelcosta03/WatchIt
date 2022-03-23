@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import re
+from contacts import Contacts
 
 app = Flask(__name__)
 
@@ -16,9 +17,12 @@ changePasswordTemplate = 'changePassword.html'
 database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
 
 isLogged = False
+email_address = ""
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     global isLogged
+    global email_address
     invalidEmail = False
     email_error = None
     invalidPassword = False
@@ -163,10 +167,16 @@ def mainPage():
 
 @app.route('/editarPerfil')
 def editProfile():
+    contact = Contacts("myserofficial@gmail.com")
+    contact.send_email()
     return render_template(editProfileTemplate)
 
 @app.route('/inserirCodigoDeVerificacao')
 def insertVericationCode():
+    global email_address
+    contact = Contacts(email_address)
+    contact.send_email()
+    verificationCode = contact.returnVerificationCode()
     return render_template(insertVericationCodeTemplate)
 
 @app.route('/alterarPalavraPasse')
