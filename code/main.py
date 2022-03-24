@@ -167,8 +167,6 @@ def mainPage():
 
 @app.route('/editarPerfil')
 def editProfile():
-    contact = Contacts("myserofficial@gmail.com")
-    contact.send_email()
     return render_template(editProfileTemplate)
 
 @app.route('/inserirCodigoDeVerificacao')
