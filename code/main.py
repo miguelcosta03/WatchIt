@@ -1,3 +1,4 @@
+from wsgiref.util import request_uri
 from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import re
@@ -133,7 +134,6 @@ def mainPage():
     ts1_name = database.getSerieName(ts_ids[0])
     ts2_name = database.getSerieName(ts_ids[1])
     ts3_name = database.getSerieName(ts_ids[2])
-
     if request.method == 'POST':
         if request.form.get('loginButton') == 'Login':
             return redirect(url_for('login'))
@@ -169,16 +169,41 @@ def mainPage():
 def editProfile():
     return render_template(editProfileTemplate)
 
-@app.route('/inserirCodigoDeVerificacao')
+@app.route('/inserirCodigodeVerificacao', methods=['POST', 'GET'])
 def insertVericationCode():
     global email_address
-    contact = Contacts(email_address)
-    contact.send_email()
-    verificationCode = contact.returnVerificationCode()
-    return render_template(insertVericationCodeTemplate)
+    sendEmailRC = database.checkSendingEmailRecuperationCode(email_address)
+    invalidVerificationCode = False
+    verCode = ""
+
+    if sendEmailRC:
+        contact = Contacts(email_address)
+        contact.send_email()
+        database.updatePasswordVerificationCode(email_address, str(contact.returnVerificationCode()))
+        database.updateSendingEmailRecuperationCode(email_address, 0)
+        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+    
+    else:
+        database.updateSendingEmailRecuperationCode(email_address, 1)
+        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+    if request.method == 'POST':
+        if request.form.get('submitButton') == 'Verificar':
+            firstDigit = int(request.form['first_input'])
+            secondDigit = int(request.form['second_input'])
+            thirdDigit = int(request.form['third_input'])
+            fourthDigit = int(request.form['fourth_input'])
+
+            if firstDigit == int(verCode[0]) and secondDigit == int(verCode[1]) and thirdDigit == int(verCode[2]) and fourthDigit == int(verCode[3]):
+                invalidVerificationCode = False
+                return redirect(url_for('changePassword'))
+            
+            else:
+                invalidVerificationCode = True
+    print(verCode)
+    return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
 
 @app.route('/alterarPalavraPasse')
-def changePassword():
+def changePassword():    
     return render_template(changePasswordTemplate)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])

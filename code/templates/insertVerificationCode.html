@@ -11,12 +11,22 @@
 </head>
 <body>
     <div class="box">
-        <p class="verification-code-text">Código de Verificação</p>
-        <input class="first-digit-input" type="text" id="first_input" oninput="focusElement()">
-        <input class="second-digit-input"type="text" id="second_input" oninput="focusElement()">
-        <input class="third-digit-input"type="text" id="third_input" oninput="focusElement()">
-        <input class="fourth-digit-input"type="text" id="fourth_input" oninput="focusElement()">
-        <button class="submit-button" onclick="redirectToChangePasswordPage()">Verificar</button>
+        <form action="/inserirCodigodeVerificacao" method="post">
+            <p class="verification-code-text">Código de Verificação</p>
+            {% if not invalidVerificationCode %}
+                <input class="first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
+                <input class="second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
+                <input class="third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
+                <input class="fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
+            {% else %}
+                <input class="invalid-first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
+                <input class="invalid-second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
+                <input class="invalid-third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
+                <input class="invalid-fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
+                <label class="invalid-code-text">Código Inválido. Tenta Novamente.</label>
+            {% endif %}
+            <button class="submit-button" name="submitButton" value="Verificar">Verificar</button>
+        </form>
     </div>
 </body>
 </html>

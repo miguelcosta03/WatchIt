@@ -15,7 +15,7 @@ function redirectToEditProfilePage() {
 }
 
 function redirectToInsertVerificationCodePage() {
-    location.replace('http://127.0.0.1:5000/inserirCodigoDeVerificacao')
+    location.replace('http://127.0.0.1:5000/inserirCodigodeVerificacao')
 }
 
 function redirectToChangePasswordPage() {

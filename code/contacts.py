@@ -12,10 +12,11 @@ class Contacts:
 
     def send_email(self):
         emailMsg = f"""\
-                    Verification Code
+                    Código de Verificação
 
-                    Your password reset verification code is: {self.verificationCode}"""
+                    O teu código de verificação de alteração de password é: {self.verificationCode}"""
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
         server.login(self.supportEmail, self.supportPassword)
-        server.sendmail(self.supportEmail, self.user_email, emailMsg)
+        server.sendmail(self.supportEmail, self.user_email, emailMsg.encode("utf-8"))
         server.close()
+        return

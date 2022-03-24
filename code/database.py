@@ -61,6 +61,40 @@ class Database:
         else:
             return False
 
+    def getPasswordVerificationCode(self, email):
+        query = f"""SELECT Codigo_Recuperacao_Password FROM dbo.Utilizadores
+                    WHERE Email_Utilizador='{email}'"""
+
+        self.cursor.execute(query)
+        pwdVerCode = self.cursor.fetchall()
+        return str(pwdVerCode).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def updatePasswordVerificationCode(self, email, newVerificationCode):
+        query = f"""UPDATE dbo.Utilizadores
+                        SET Codigo_Recuperacao_Password='{newVerificationCode}'
+                    WHERE Email_Utilizador='{email}';"""
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def checkSendingEmailRecuperationCode(self, email):
+        query = f"""SELECT Enviar_Email_Recuperacao FROM dbo.Utilizadores
+                    WHERE Email_Utilizador='{email}'"""
+        self.cursor.execute(query)
+        sendEmailRC = self.cursor.fetchall()
+        sendEmailRCFormatted = str(sendEmailRC).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+        if int(sendEmailRCFormatted) == 0:
+            return False
+
+        else:
+            return True
+    
+    def updateSendingEmailRecuperationCode(self, email, status):
+        query = f"""UPDATE dbo.Utilizadores
+                        SET Enviar_Email_Recuperacao={status}
+                    WHERE Email_Utilizador='{email}';"""
+        self.cursor.execute(query)
+        self.connection.commit()
+
     def getSerieBackgroundImage(self, serie_id):
         query = f"""SELECT 
                         Imagem_Background
@@ -200,3 +234,9 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+
+
+database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
+database.updateSendingEmailRecuperationCode('myserofficial@gmail.com', 1)
+print(database.checkSendingEmailRecuperationCode("myserofficial@gmail.com"))
