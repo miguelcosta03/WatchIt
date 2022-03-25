@@ -60,6 +60,12 @@ class Database:
         
         else:
             return False
+    def getUsername(self, email):
+        query = f"""SELECT Nome_Utilizador FROM dbo.Utilizadores
+                    WHERE Email_Utilizador='{email}'"""
+        self.cursor.execute(query)
+        username = self.cursor.fetchall()
+        return str(username).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
     def getPasswordVerificationCode(self, email):
         query = f"""SELECT Codigo_Recuperacao_Password FROM dbo.Utilizadores
@@ -234,9 +240,3 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-
-
-
-database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
-database.updateSendingEmailRecuperationCode('myserofficial@gmail.com', 1)
-print(database.checkSendingEmailRecuperationCode("myserofficial@gmail.com"))

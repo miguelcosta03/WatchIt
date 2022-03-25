@@ -167,7 +167,9 @@ def mainPage():
 
 @app.route('/editarPerfil')
 def editProfile():
-    return render_template(editProfileTemplate)
+    global email_address
+    username = str(database.getUsername(email_address))
+    return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['POST', 'GET'])
 def insertVericationCode():
@@ -199,7 +201,6 @@ def insertVericationCode():
             
             else:
                 invalidVerificationCode = True
-    print(verCode)
     return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
 
 @app.route('/alterarPalavraPasse')
