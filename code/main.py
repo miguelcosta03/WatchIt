@@ -171,7 +171,7 @@ def editProfile():
     username = str(database.getUsername(email_address))
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
-@app.route('/inserirCodigodeVerificacao', methods=['POST', 'GET'])
+@app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
     global email_address
     sendEmailRC = database.checkSendingEmailRecuperationCode(email_address)
@@ -188,6 +188,7 @@ def insertVericationCode():
     else:
         database.updateSendingEmailRecuperationCode(email_address, 1)
         verCode = list(str(database.getPasswordVerificationCode(email_address)))
+
     if request.method == 'POST':
         if request.form.get('submitButton') == 'Verificar':
             firstDigit = int(request.form['first_input'])
@@ -207,7 +208,7 @@ def insertVericationCode():
 def changePassword():    
     return render_template(changePasswordTemplate)
 
-@app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
+@app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
