@@ -60,31 +60,40 @@ class Database:
         
         else:
             return False
-    def getUsername(self, email):
-        query = f"""SELECT Nome_Utilizador FROM dbo.Utilizadores
+
+    def getUserID(self, email):
+        query = f"""SELECT ID_Utilizador FROM dbo.Utilizadores
                     WHERE Email_Utilizador='{email}'"""
+        
+        self.cursor.execute(query)
+        userID = self.cursor.fetchall()
+        return str(userID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getUsername(self, userID):
+        query = f"""SELECT Nome_Utilizador FROM dbo.Utilizadores
+                    WHERE ID_Utilizador='{userID}'"""
         self.cursor.execute(query)
         username = self.cursor.fetchall()
         return str(username).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def getPasswordVerificationCode(self, email):
+    def getPasswordVerificationCode(self, userID):
         query = f"""SELECT Codigo_Recuperacao_Password FROM dbo.Utilizadores
-                    WHERE Email_Utilizador='{email}'"""
+                    WHERE ID_Utilizador='{userID}'"""
 
         self.cursor.execute(query)
         pwdVerCode = self.cursor.fetchall()
         return str(pwdVerCode).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def updatePasswordVerificationCode(self, email, newVerificationCode):
+    def updatePasswordVerificationCode(self, userID, newVerificationCode):
         query = f"""UPDATE dbo.Utilizadores
                         SET Codigo_Recuperacao_Password='{newVerificationCode}'
-                    WHERE Email_Utilizador='{email}';"""
+                    WHERE ID_Utilizador='{userID}';"""
         self.cursor.execute(query)
         self.connection.commit()
 
-    def checkSendingEmailRecuperationCode(self, email):
+    def checkSendingEmailRecuperationCode(self, userID):
         query = f"""SELECT Enviar_Email_Recuperacao FROM dbo.Utilizadores
-                    WHERE Email_Utilizador='{email}'"""
+                    WHERE ID_Utilizador='{userID}'"""
         self.cursor.execute(query)
         sendEmailRC = self.cursor.fetchall()
         sendEmailRCFormatted = str(sendEmailRC).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -240,3 +249,4 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+

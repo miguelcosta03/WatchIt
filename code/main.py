@@ -168,7 +168,7 @@ def mainPage():
 @app.route('/editarPerfil')
 def editProfile():
     global email_address
-    username = str(database.getUsername(email_address))
+    username = str(database.getUsername(database.getUserID(email_address)))
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
@@ -181,13 +181,13 @@ def insertVericationCode():
     if sendEmailRC:
         contact = Contacts(email_address)
         contact.send_email()
-        database.updatePasswordVerificationCode(email_address, str(contact.returnVerificationCode()))
-        database.updateSendingEmailRecuperationCode(email_address, 0)
-        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+        database.updatePasswordVerificationCode(database.getUserID(email_address), str(contact.returnVerificationCode()))
+        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 0)
+        verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
     
     else:
-        database.updateSendingEmailRecuperationCode(email_address, 1)
-        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 1)
+        verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
 
     if request.method == 'POST':
         if request.form.get('submitButton') == 'Verificar':
