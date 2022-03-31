@@ -1,4 +1,3 @@
-from wsgiref.util import request_uri
 from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import re
@@ -15,7 +14,7 @@ editProfileTemplate = 'editProfile.html'
 insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 
-database = Database('SQL Server', '5.249.6.238', 3344, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
@@ -143,6 +142,7 @@ def mainPage():
         
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+
             return redirect(url_for("watchSerie"))
 
         if request.form.get('s2Button') == s2_value:
