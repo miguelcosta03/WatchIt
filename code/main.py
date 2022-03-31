@@ -168,10 +168,10 @@ def mainPage():
 @app.route('/editarPerfil')
 def editProfile():
     global email_address
-    username = str(database.getUsername(email_address))
+    username = str(database.getUsername(database.getUserID(email_address)))
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
-@app.route('/inserirCodigodeVerificacao', methods=['POST', 'GET'])
+@app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
     global email_address
     sendEmailRC = database.checkSendingEmailRecuperationCode(email_address)
@@ -181,13 +181,14 @@ def insertVericationCode():
     if sendEmailRC:
         contact = Contacts(email_address)
         contact.send_email()
-        database.updatePasswordVerificationCode(email_address, str(contact.returnVerificationCode()))
-        database.updateSendingEmailRecuperationCode(email_address, 0)
-        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+        database.updatePasswordVerificationCode(database.getUserID(email_address), str(contact.returnVerificationCode()))
+        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 0)
+        verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
     
     else:
-        database.updateSendingEmailRecuperationCode(email_address, 1)
-        verCode = list(str(database.getPasswordVerificationCode(email_address)))
+        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 1)
+        verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
+
     if request.method == 'POST':
         if request.form.get('submitButton') == 'Verificar':
             firstDigit = int(request.form['first_input'])
@@ -207,7 +208,7 @@ def insertVericationCode():
 def changePassword():    
     return render_template(changePasswordTemplate)
 
-@app.route(f"/{database.getCurrentSerieURL()}", methods=['POST', 'GET'])
+@app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
