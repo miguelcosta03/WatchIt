@@ -8,6 +8,7 @@
   <link rel="stylesheet" type="text/css" href= "../static/styles/login.css">
   <script src="../static/js/urls.js"></script>
   <script src="../static/js/effects.js"></script>
+  <script src="../static/js/check_credentials.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -20,41 +21,21 @@
     </div>
   </nav>
   <div class="box">
+    <span class="text-center">Login</span>
     <form action="/login" method="post">
-      <span class="text-center">Login</span>
-      {% if not invalidEmail %}
-        <div class="input-container">		
-          <input class="email-address" type="mail" name="email_address"/>
-          <label>Email</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">
-          <input type="mail" name="email_address"/>
-          <label>Email</label>
-          <h1 class="invalid-email-text">{{ email_error }}</h1>
-        </div>
-      {% endif %}
-
-      {% if not invalidPassword %}
-        <div class="input-container">		
-          <input type="password" name="password" id="password"/>
-          <label>Password</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">		
-          <input type="password" name="password" id="password"/>
-          <label>Password</label>
-          <h1 class="invalid-password-text">{{ password_error }}</h1>
-        </div>
-      {% endif %}
+      <div class="input-container">		
+        <input class="email-address" type="mail" name="email_address" id="emailAddress" oninput="checkEmail()"/>
+        <label>Email</label>
+      </div>
+      
+      <div class="input-container">		
+        <input type="password" name="password" id="password" oninput="checkPassword()"/>
+        <label>Password</label>
+      </div>
+      <p1 class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalidCredentialsText }}</p1>
       <div>
-        {% if not invalidCredentials %}
-          <button class="login-button" name="login" value="Login">Login</button>
-        {% else %}
-          <p1 class="invalid-credentials-text">{{ invalidCredentialsText }}</p1>
-          <br>
-          <button class="login-button" name="login" value="Login">Login</button>
-        {% endif %}
+        <br>
+        <button class="login-button" name="login" value="Login">Login</button>
       </div>
     </form>	
     <div>

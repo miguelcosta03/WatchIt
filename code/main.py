@@ -28,39 +28,24 @@ def login():
     invalidPassword = False
     password_error = None
     invalidCredentials = False
-    invalidCredentialsText = None
+    invalidCredentialsText = ''
 
     if request.method == 'POST':
         if request.form.get('login') == 'Login':
             email_address = request.form['email_address']
             password = request.form['password']
-            email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-            
-            if len(email_address) >= 1:
-                if re.fullmatch(email_regex, email_address):
-                    invalidEmail = False
-                    if len(password) > 1:
-                        invalidPassword = False
-                        correctLogin = database.loginUser(email_address, password)
-                        if correctLogin:
-                            invalidCredentials = False
-                            isLogged = True
-                            return redirect(url_for('mainPage'))
-                        else:
-                            invalidCredentials = True
-                            invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
-                    else:
-                        invalidPassword = True
-                        password_error = '* Por favor insira a sua password.'
-                else:
-                    invalidEmail = True
-                    email_error = '* Email Inválido.'
+
+            correctLogin = database.loginUser(email_address, password)
+            if correctLogin:
+                invalidCredentials = False
+                isLogged = True
+                return redirect(url_for('mainPage'))
             else:
-                invalidEmail = True
-                email_error = "* Por favor insira o seu email."
-                
-    return render_template(loginTemplate, invalidEmail=invalidEmail, email_error=email_error, invalidPassword=invalidPassword, password_error=password_error,
-                           invalidCredentials=invalidCredentials, invalidCredentialsText=invalidCredentialsText)
+                invalidCredentials = True
+                invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
+                print('invalid credentials')
+                    
+    return render_template(loginTemplate, invalidEmail=invalidEmail, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/registarConta", methods=['GET', 'POST'])
 def signUp():
