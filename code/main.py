@@ -43,7 +43,6 @@ def login():
             else:
                 invalidCredentials = True
                 invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
-                print('invalid credentials')
                     
     return render_template(loginTemplate, invalidEmail=invalidEmail, invalidCredentialsText=invalidCredentialsText)
 
