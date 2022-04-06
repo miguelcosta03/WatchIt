@@ -463,6 +463,30 @@ body{
         border-color: rgb(32, 28, 228);
     }
 
+.players-box {
+    position: absolute;
+    width: 50%;
+    margin-top: -30.5vw;
+    margin-left: 27.5vw;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.player-button {
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    left: 4px;
+    width: 7vw;
+    height: 3vw;
+    border-radius: 15px;
+    color: white;
+    font-size: 1vw;
+}
+.player-button:hover {
+    background-color: rgba(125, 255, 125, 0.712);
+}
+
 .video-player {
     width: 50%;
     margin-top: 5%;

@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/styles/mainpage.css">
     <link rel="stylesheet" href="../static/styles/serie.css">
+    <link rel="stylesheet" href="../static/styles/watchit_player.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="../static/js/player_operations.js"></script>
     <style>
         .navbar {
         margin-bottom: 0;
@@ -395,11 +397,16 @@
                     {% endif %}
                 </div>
                 {% if isLogged %}
-                    <video class="video-player" src="{{ episode_video }}" controls controlsList="nodownload"></video>
+                    <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls controlsList="nodownload"></video>
+                    <video hidden controls class="watchit-video-player" src="{{ episode_video }}" id="watchItVideoPlayer" controlsList="nodownload"></video>
                 {% else %}
                     <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
                 {% endif %}
             </form>
+            <div class="players-box">
+                <button class="player-button" onclick="selectNormalPlayer()">Player Normal</button>
+                <button class="player-button" onclick="selectWatchItPlayer()">WatchIt Player</button>
+            </div>
     </div>     
   </div>
 
