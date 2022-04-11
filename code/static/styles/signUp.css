@@ -142,7 +142,6 @@ body{
 }
 
 .invalid-credentials-text {
-    display: none;
     margin-left: 1vw;
     margin-top: -0.5vw;
     font-size: 0.vw;

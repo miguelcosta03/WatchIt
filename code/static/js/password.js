@@ -1,6 +1,6 @@
 function showHidePassword() {
     pswField = window.document.getElementById('password');
-    confPswField = window.document.getElementById('confirm_password');
+    confPswField = window.document.getElementById('confirmPassword');
     pswButton = window.document.getElementById('psw_button');
     confPswButton = window.document.getElementById('conf_psw_button');
     if (pswField.type === 'password') {

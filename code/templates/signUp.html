@@ -30,17 +30,17 @@
       </div>
 
       <div class="input-container">		
-        <input type="text" name="username"/>
+        <input type="text" name="username" id="username" oninput="checkUsername()"/>
         <label>Nome de Utilizador</label>
       </div>
 
       <div class="input-container">		
-        <input type="password" name="password" id="password"/>
+        <input type="password" name="password" id="password" oninput="checkPassword()"/>
         <label>Password</label>
       </div>
 
       <div class="input-container">		
-        <input type="password" name="confirm_password" id="confirm_password"/>
+        <input type="password" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()"/>
         <label>Confirmar Password</label>
       </div>
       <p1 class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalidCredentialsText }}</p1>

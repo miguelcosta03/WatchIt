@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import werkzeug
 from database import Database
-import re
 from contacts import Contacts
 
 app = Flask(__name__)
@@ -25,10 +24,6 @@ def login():
     global isLogged
     global email_address
     invalidEmail = False
-    email_error = None
-    invalidPassword = False
-    password_error = None
-    invalidCredentials = False
     invalidCredentialsText = ''
 
     if request.method == 'POST':
@@ -38,76 +33,30 @@ def login():
 
             correctLogin = database.loginUser(email_address, password)
             if correctLogin:
-                invalidCredentials = False
+
                 isLogged = True
                 return redirect(url_for('mainPage'))
             else:
-                invalidCredentials = True
                 invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
                     
     return render_template(loginTemplate, invalidEmail=invalidEmail, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/registarConta", methods=['GET', 'POST'])
 def signUp():
-    invalid_email = False
-    email_error = None
-    invalid_username = False
-    username_error = None
-    invalid_password = False
-    password_error = None
-    invalid_confirm_password = False
-    confirm_password_error = None
+    invalidCredentialsText = ''
     if request.method == 'POST':
-        if request.form.get('signUp') == 'Registar':
-            email_address = request.form['email_address']
+        if request.form.get('signUp') == "Registar":
+            email = request.form['email_address']
             username = request.form['username']
             password = request.form['password']
-            confirm_password = request.form['confirm_password']
-            email_regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-            
-            if len(email_address) >= 1:
-                if re.fullmatch(email_regex, email_address):
-                    invalid_email = False
-                    if len(username) >= 5:
-                        invalid_username = False
-                        if len(password) >= 1:
-                            invalid_password = False
-                            if len(confirm_password) >= 1:
-                                invalid_confirm_password = False
-                                if password == confirm_password:
-                                    invalid_password = False
-                                    invalid_confirm_password = False
-                                    userExists = database.checkIfUserExistsByEmail(email_address)
-                                    if not userExists:
-                                        database.createNewUser(email_address, username, password)
-                                        return redirect(url_for('mainPage'))
-                                    else:
-                                        invalid_email = True
-                                        email_error = '* Este Email já está associado a uma conta.'
-
-                                else:
-                                    invalid_password = True
-                                    invalid_confirm_password = True
-                                    password_error = '* As palavras-passe inseridas não correspondem.'
-                                    confirm_password_error = '* As palavras-passe inseridas não correspondem.'
-                            else:
-                                invalid_confirm_password = True
-                                confirm_password_error = '* Por favor preencha o campo de Confirmar Palavra-Passe.'
-                        else:
-                            invalid_password = True
-                            password_error = '* Por favor preencha o campo da Palavra-Passe.'
-                    else:
-                        invalid_username = True
-                        username_error = '* O Nome de Utilizador precisa de ter no mínimo 5 letras.'
-                else:
-                    invalid_email = True
-                    email_error = '* Email Inválido.'
+            conf_password = request.form['confirmPassword']
+            if password == conf_password:
+                invalidCredentialsText = ''
+                database.createNewUser(email, username, password)
+                return redirect(url_for('mainPage'))
             else:
-                invalid_email = True
-                email_error = '* Por favor insira o seu email.'
-
-    return render_template(signUpTemplate, invalid_email=invalid_email, email_error=email_error, invalid_username=invalid_username, username_error=username_error,
-                           invalid_password=invalid_password, password_error=password_error, invalid_confirm_password=invalid_confirm_password, confirm_password_error=confirm_password_error)
+                invalidCredentialsText = '* As passwords não correspondem.'
+    return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
