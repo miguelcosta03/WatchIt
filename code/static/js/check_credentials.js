@@ -12,6 +12,7 @@ function checkEmail() {
         } else {
             invalidCredentialsLabel.style.display = "block"
             invalidCredentialsLabel.innerHTML = "* Email Inválido."
+            console.log('Email Invalido')
         }
     } else {
         invalidCredentialsLabel.innerHTML = "* Por favor insira o um email."
