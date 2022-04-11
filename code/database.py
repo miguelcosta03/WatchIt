@@ -110,6 +110,13 @@ class Database:
         self.cursor.execute(query)
         self.connection.commit()
 
+    def updateUserPassword(self, userID, password):
+        query = f"""UPDATE dbo.Utilizadores
+                        SET Password_Utilizador='{password}'
+                    WHERE ID_Utilizador={userID}"""
+        self.cursor.execute(query)
+        self.connection.commit()
+        
     def getSerieBackgroundImage(self, serie_id):
         query = f"""SELECT 
                         Imagem_Background
