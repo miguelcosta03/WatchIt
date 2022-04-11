@@ -5,8 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href= "../static/styles/signUp.css">
+  <script src="../static/js/password.js"></script>
   <script src="../static/js/urls.js"></script>
   <script src="../static/js/effects.js"></script>
+  <script src="../static/js/check_credentials.js"></script>
   <title>Registar</title>
 </head>
 <body>
@@ -22,57 +24,26 @@
   <div class="box">
     <form action="/registarConta" method="post">
       <span class="text-center">Registar</span>
-      
-      {% if not invalid_email %}
-        <div class="input-container">		
-          <input type="mail" name="email_address"/>
-          <label>Email</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">
-          <input type="mail" name="email_address"/>
-          <label>Email</label>		
-          <h1 class="invalid-email-text">{{ email_error }}</h1>
-        </div>
-      {% endif %}
+      <div class="input-container">		
+        <input class="email-address" type="mail" name="email_address" id="emailAddress" oninput="checkEmail()"/>
+        <label>Email</label>
+      </div>
 
-      {% if not invalid_username %}
-        <div class="input-container">		
-          <input type="text" name="username"/>
-          <label>Nome de Utilizador</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">		
-          <input type="text" name="username"/>
-          <label>Nome de Utilizador</label>
-          <h1 class="invalid-username-text">{{ username_error }}</h1>
-        </div>
-      {% endif %}
-      {% if not invalid_password %}
-        <div class="input-container">		
-          <input type="password" name="password" id="password"/>
-          <label>Password</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">		
-          <input type="password" name="password" id="password"/>
-          <label>Password</label>
-          <h1 class="invalid-password-text">{{ password_error }}</h1>
-        </div>
-      {% endif %}
+      <div class="input-container">		
+        <input type="text" name="username"/>
+        <label>Nome de Utilizador</label>
+      </div>
 
-      {% if not invalid_confirm_password %}
-        <div class="input-container">		
-          <input type="password" name="confirm_password" id="confirm_password"/>
-          <label>Confirmar Password</label>
-        </div>
-      {% else %}
-        <div class="invalid-input-container">		
-          <input type="password" name="confirm_password" id="confirm_password"/>
-          <label>Confirmar Password</label>
-          <h1 class="invalid-password-text">{{ password_error }}</h1>
-        </div>
-      {% endif %}
+      <div class="input-container">		
+        <input type="password" name="password" id="password"/>
+        <label>Password</label>
+      </div>
+
+      <div class="input-container">		
+        <input type="password" name="confirm_password" id="confirm_password"/>
+        <label>Confirmar Password</label>
+      </div>
+      <p1 class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalidCredentialsText }}</p1>
       <div>
         <button class="signup-button" name="signUp" value="Registar">Registar</button>
       </div>
@@ -83,7 +54,6 @@
     </div>
     <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
     <button class="confirm-password-button" id="conf_psw_button" onclick="showHidePassword()"></button>
-    <script src="../static/js/password.js"></script>
     <img class="side-image" src="../static/images/other_images/signup_background.jpg">
   </div>
 </body>
