@@ -397,8 +397,8 @@
                     {% endif %}
                 </div>
                 {% if isLogged %}
-                    <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls controlsList="nodownload"></video>
-                    <video hidden controls class="watchit-video-player" src="{{ episode_video }}" id="watchItVideoPlayer" controlsList="nodownload"></video>
+                    <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+                    <video hidden class="watchit-video-player" src="{{ episode_video }}" id="watchItVideoPlayer" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
                 {% else %}
                     <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
                 {% endif %}

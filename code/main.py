@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import werkzeug
 from database import Database
 import re
 from contacts import Contacts
@@ -158,7 +159,7 @@ def editProfile():
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
     global email_address
-    sendEmailRC = database.checkSendingEmailRecuperationCode(email_address)
+    sendEmailRC = database.checkSendingEmailRecuperationCode(database.getUserID(email_address))
     invalidVerificationCode = False
     verCode = ""
 
@@ -188,8 +189,19 @@ def insertVericationCode():
                 invalidVerificationCode = True
     return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
 
-@app.route('/alterarPalavraPasse')
-def changePassword():    
+@app.route('/alterarPalavraPasse', methods=['GET', 'POST'])
+def changePassword():
+    global email_address
+
+    if request.method == 'POST':
+        if request.form.get('confirmNewPasswordButton') == 'alterarPalavraPasse':
+            password = request.form['password']
+            try:
+                invalidLoginLabel = request.form['invalidCredentialsLabel']
+                print('error!')
+            except werkzeug.exceptions.BadRequestKeyError:
+                print('all good')
+            print(password)
     return render_template(changePasswordTemplate)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])

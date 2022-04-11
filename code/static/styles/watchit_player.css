@@ -9,7 +9,7 @@
 }
 
 .watchit-video-player::-webkit-media-controls-play-button {
-    background-color: transparent;
+    background-color: transparet;
 }
 
 .watchit-video-player::-webkit-media-controls-play-button:hover {
@@ -31,6 +31,10 @@
     width: 100%;
 }
 
+.watchit-video-player.watchit-video-player::-webkit-media-controls-timeline:hover{
+    height: 1vh;
+}
+
 .watchit-video-player::-webkit-media-controls-volume-slider {
     background-color: rgba(125, 255, 125, 0.712);
     padding-top: 0;
@@ -38,12 +42,9 @@
     padding-bottom: 0;
 }
 
-.player-controls {
-    width: 50vw;
-    margin-top: -1.5vw;
-    margin-left: 10vw;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background-color: aqua;
+
+.watchit-video-player::-webkit-media-controls-fullscreen-button:hover {
+    background-color: rgba(125, 255, 125, 0.712);
+    border-radius: 50px;
+    width: 2%;
 }
