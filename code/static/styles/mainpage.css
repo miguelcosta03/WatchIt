@@ -161,8 +161,8 @@ html, body{
     background: rgb(20, 20, 20);
     border-style: outset;
     border-color: black;
-    min-width: 160px;
-    height: 100px;
+    min-width: 150px;
+    height: 5.5vw;
     border-radius: 4%;
     z-index: 1;
     margin-left: -100px;
