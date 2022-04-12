@@ -10,6 +10,14 @@ function redirectToSignUpPage() {
     location.replace('http://127.0.0.1:5000/registarConta');
 }
 
+function redirectToMoviesPage() {
+    location.replace('http://127.0.0.1:5000/filmes')
+}
+
+function redirectToSeriesPage() {
+    location.replace('http://127.0.0.1:5000/series')
+}
+
 function redirectToEditProfilePage() {
     location.replace('http://127.0.0.1:5000/editarPerfil');
 }

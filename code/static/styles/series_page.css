@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.grid-series-container {
+    display: grid;
+    grid-template-columns: 15vw 15vw 15vw;
+    padding: 100px;
+    margin-top: 10vw;
+}
+
+.grid-series-item {
+    padding: 10px;
+    width: 11vw;
+    text-align: center;
+    color: white;
+}
+
+
+.serie-container {
+    position: relative;
+    box-shadow: 20 4px 8px 0 rgba(125, 255, 125, 0.712);
+    transition: 0.3s;
+    width: 10vw;
+    border-radius: 10%;
+    opacity: 100%;
+  }
+  
+  .serie-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(125, 255, 125, 0.712);
+  }
+  
+  /* Make the image responsive */
+  .serie-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10%;
+  }
+  
+  .serie-container .btn {
+    position: absolute;
+    top: 50%;
+    left: 50.5%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10%;
+  }
+
+.slot-s2 {
+    width: 9.3vw;
+}
+
+.slot-s3 {
+    width: 9.3vw;
+}
+  
+  

@@ -133,6 +133,29 @@ html, body{
     width: 100%;
 }
 
+.movies-button {
+    position: absolute;
+    margin-left: 180px;
+    margin-top: -38px;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+.series-button {
+    position: absolute;
+    margin-left: 280px;
+    margin-top: -38px;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+.series-button:hover {
+    color: rgba(125, 255, 125, 0.712);
+}
+
 .profile-picture {
     color: white;
     font-size: 16px;
