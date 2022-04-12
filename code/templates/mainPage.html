@@ -100,25 +100,27 @@
 <h1 class="slogan">As tuas séries e filmes favoritos estão aqui!</h1><br>
   <div class="row">
     <div class="col-sm-4">
-    <form class="s1-container" action="/" method="post">
-        <img src="{{ s1_image }}" style="height:100%; width:100%;">
-        <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
-    </form>
-    </div>
-    <div class="col-sm-4"> 
-        <form class="s2-container" action="/" method="post">
+      <div class="grid-container">
+        <div class="grid-item">
+          <form class="s1-container" action="/" method="post">
+            <img src="{{ s1_image }}" style="height:100%; width:100%;">
+            <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
+          </form>
+        </div>
+        <div class="grid-item">
+          <form class="s1-container slot-s2" action="/" method="post">
             <img src="{{ s2_image }}" style="height:100%; width:100%;">
             <button class="btn" name="s2Button" value="{{ s2_value }}"></button>
-        </form>  
-    </div>
-
-    <div class="col-sm-4"> 
-        <form class="s3-container" action="/" method="post">
+          </form>
+        </div>
+        <div class="grid-item">
+          <form class="s1-container slot-s3" action="/" method="post">
             <img src="{{ s3_image }}" style="height:100%; width:100%;">
             <button class="btn" name="s3Button" value="{{ s3_value }}"></button>
-        </form>  
+          </form>
+        </div>
+      </div>
     </div>
-
   </div>
 </div><br>
 
