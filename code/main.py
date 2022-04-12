@@ -30,7 +30,6 @@ def login():
         if request.form.get('login') == 'Login':
             email_address = request.form['email_address']
             password = request.form['password']
-
             correctLogin = database.loginUser(email_address, password)
             if correctLogin:
 
@@ -141,17 +140,20 @@ def insertVericationCode():
 @app.route('/alterarPalavraPasse', methods=['GET', 'POST'])
 def changePassword():
     global email_address
-
+    invalidCredentials = False
+    invalidCredentialsText = ''
     if request.method == 'POST':
         if request.form.get('confirmNewPasswordButton') == 'alterarPalavraPasse':
             password = request.form['password']
-            try:
-                invalidLoginLabel = request.form['invalidCredentialsLabel']
-                print('error!')
-            except werkzeug.exceptions.BadRequestKeyError:
-                print('all good')
-            print(password)
-    return render_template(changePasswordTemplate)
+            conf_password = request.form['confirmPassword']
+            if len(password) > 0 and password == conf_password:
+                invalidCredentials = False
+                invalidCredentialsText = ''
+                database.updateUserPassword(database.getUserID(email_address), password)
+            else:
+                invalidCredentials = True
+                invalidCredentialsText = '* Por favor insira uma password.'
+    return render_template(changePasswordTemplate, invalidCredentials=invalidCredentials, invalidCredentialsText=invalidCredentialsText)
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():

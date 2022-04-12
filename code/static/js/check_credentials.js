@@ -54,9 +54,14 @@ function checkConfirmPassword() {
     let confirmPassword = document.getElementById('confirmPassword').value;
     let invalidCredentialsLabel = document.getElementById('invalidCredentialsLabel');
     if (confirmPassword.length > 0) {
-        invalidCredentialsLabel.style.display = "none";
+        if (password == confirmPassword) {
+            invalidCredentialsLabel.style.display = "none";
+        } else {
+            invalidCredentialsLabel.style.display = "block";
+            invalidCredentialsLabel.innerHTML = "* As passwords não correspondem."
+        }
     } else {
         invalidCredentialsLabel.style.display = "block";
-        invalidCredentialsLabel.innerHTML = "* Por favor confirme a sua password."
+        invalidCredentialsLabel.innerHTML = "* Por favor confirme a sua password.";
     }
 }
