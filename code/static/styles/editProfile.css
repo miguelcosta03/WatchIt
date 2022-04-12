@@ -90,8 +90,8 @@ body {
 
 .edit-username-button {
     background: url('../images/other_images/edit-info-icon.png');
-    width: 20px;
-    height: 20px;
+    width: 1vw;
+    height: 2vh;
     background-repeat: no-repeat;
     border-color: #0BD67E;
     cursor: pointer;
@@ -107,12 +107,15 @@ body {
     border-color: #0BD67E;
     background: transparent;
     width: 10vw;
+    font-size: 0.8vw;
     border-radius: 5px;
+    color: white;
 }
 
 .save-new-username-button {
-    margin-top: 10%;
+    margin-top: 0.3vw;
     width: 10vw;
+    font-size: 0.7vw;
     color: white;
     background-color: transparent;
     border-color: #0BD67E;
@@ -152,8 +155,8 @@ body {
 
 .edit-email-button {
     background: url('../images/other_images/edit-info-icon.png');
-    width: 20px;
-    height: 20px;
+    width: 1vw;
+    height: 2vh;
     background-repeat: no-repeat;
     border-color: #0BD67E;
     cursor: pointer;
@@ -166,18 +169,23 @@ body {
     width: 95%;
     border-radius: 5px;
     display: none;
+    color: white;
 }
 
 .new-email-input {
     border-color: #0BD67E;
     background: transparent;
     width: 10vw;
+    font-size: 0.8vw;
     border-radius: 5px;
+    color: white;
 }
 
 .save-new-email-button {
-    margin-top: 20%;
+    margin-top: -1px;
+    margin-top: 0.3vw;
     width: 10vw;
+    font-size: 0.7vw;
     color: white;
     background-color: transparent;
     border-color: #0BD67E;
