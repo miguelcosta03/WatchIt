@@ -34,22 +34,23 @@
         <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
       </form>
 
+
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>
-              {% if isLogged %}
-              <div class="dropdown">
-                <div class="dropdown-content" id="dropdownContent">
-                  <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
-                  <button class="logout-button">Sair</button>
-                </div>
-                <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
-              </div>
-              {% else %}
-                  <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
-                  <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>
-              {% endif %}
+          {% if isLogged %}
+          <div class="dropdown">
+            <div class="dropdown-content" id="dropdownContent">
+              <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+              <button class="logout-button">Sair</button>
+            </div>
+            <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
+          </div>
+          {% else %}
+              <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
+              <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>
+          {% endif %}
         </li>
       </ul>
     </div>
