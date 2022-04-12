@@ -1,13 +1,15 @@
 function moveProfilePanel() {
     let winWidth = window.innerWidth;
     let dropdownContent = document.getElementById('dropdownContent');
-    if (winWidth < 768) {
-        dropdownContent.style.marginLeft = "0.1vw";
-        dropdownContent.style.marginTop = "9.7vw";
-        dropdownContent.style.height = "21.3vw";
+    if (winWidth < 767){
+        dropdownContent.style.position = "fixed";
+        dropdownContent.style.marginTop = "48px";
+        dropdownContent.style.marginLeft = "0px";
+        dropdownContent.style.height = "107px";
     } else {
-        dropdownContent.style.marginLeft = "-5.1vw";
-        dropdownContent.style.marginTop = "2.4vw";
-        dropdownContent.style.height = "5.5vw";
+        dropdownContent.style.position = "absolute";
+        dropdownContent.style.marginTop = "90%";
+        dropdownContent.style.marginLeft = "-100px";
+        dropdownContent.style.height = "107px";
     }
 }
