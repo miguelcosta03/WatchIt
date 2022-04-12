@@ -4,13 +4,15 @@ body {
 
 .grid-series-container {
     display: grid;
-    grid-template-columns: 15vw 15vw 15vw;
+    grid-template-columns: 15vw 15vw 15vw 15vw;
     padding: 100px;
     margin-top: 10vw;
+    margin-left: -100px;
 }
 
 .grid-series-item {
     padding: 10px;
+    margin-top: 30px;
     width: 11vw;
     text-align: center;
     color: white;
