@@ -1,4 +1,7 @@
 import pyodbc
+from account_operations import AccountOperations
+from datetime import datetime
+
 
 class Database:
     def __init__(self, driver, server, port, database, uid, pwd):
@@ -34,8 +37,9 @@ class Database:
             return False
 
     def createNewUser(self, email, username, password):
+        date = datetime.now().strftime('%Y%m%d%H%M')
         createUserQuery = f"""INSERT INTO dbo.Utilizadores
-                    VALUES ('{email}', '{username}', '{password}', '000', 0);"""
+                    VALUES ('{email}', '{username}', '{password}', '000', '{date}');"""
         
         self.cursor.execute(createUserQuery)
         self.connection.commit()
@@ -83,25 +87,28 @@ class Database:
         self.cursor.execute(query)
         pwdVerCode = self.cursor.fetchall()
         return str(pwdVerCode).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+        
+    def getVerificationCodeRegisteredDate(self, userID):
+        query = f"""SELECT Data_Registo_Cod_Recup FROM dbo.Utilizadores
+                    WHERE ID_Utilizador='{userID}'"""
+        self.cursor.execute(query)
+        verCodeRegisteredDate = self.cursor.fetchall()
+        return str(verCodeRegisteredDate).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
-    def updatePasswordVerificationCode(self, userID, newVerificationCode):
+    def updatePasswordVerificationCode(self, userID, newPasswordVerificationCode):
+        newRegisterDate = datetime.now().strftime('%Y%m%d%H%M')
         query = f"""UPDATE dbo.Utilizadores
-                        SET Codigo_Recuperacao_Password='{newVerificationCode}'
-                    WHERE ID_Utilizador='{userID}';"""
+                        SET Codigo_Recuperacao_Password = '{newPasswordVerificationCode}',
+                        Data_Registo_Cod_Recup = '{newRegisterDate}'
+                    WHERE ID_Utilizador = {userID}"""
         self.cursor.execute(query)
         self.connection.commit()
 
-    def checkSendingEmailRecuperationCode(self, userID):
-        query = f"""SELECT Enviar_Email_Recuperacao FROM dbo.Utilizadores
-                    WHERE ID_Utilizador='{userID}'"""
-        self.cursor.execute(query)
-        sendEmailRC = self.cursor.fetchall()
-        sendEmailRCFormatted = str(sendEmailRC).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-        if int(sendEmailRCFormatted) == 0:
-            return False
-
-        else:
+    def checkSendingEmailRecuperationCode(self, registeredDate):
+        if int(datetime.now().strftime('%Y%m%d%H%M')) - int(registeredDate) >= 10:
             return True
+        else:
+            return False
     
     def updateSendingEmailRecuperationCode(self, email, status):
         query = f"""UPDATE dbo.Utilizadores
@@ -256,4 +263,3 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
-

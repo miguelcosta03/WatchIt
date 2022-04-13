@@ -142,6 +142,11 @@ html, body{
     border-color: transparent;
     color: white;
 }
+
+.movies-button:hover {
+    color: rgba(125, 255, 125, 0.712);
+}
+
 .series-button {
     position: absolute;
     margin-left: 280px;

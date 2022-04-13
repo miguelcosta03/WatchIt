@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
-import werkzeug
 from database import Database
 from contacts import Contacts
+from account_operations import AccountOperations
 
 app = Flask(__name__)
 
@@ -77,7 +77,6 @@ def mainPage():
         
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-
             return redirect(url_for("watchSerie"))
 
         if request.form.get('s2Button') == s2_value:
@@ -120,21 +119,20 @@ def editProfile():
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
     global email_address
-    sendEmailRC = database.checkSendingEmailRecuperationCode(database.getUserID(email_address))
+
     invalidVerificationCode = False
+    genVerCode = AccountOperations.generateNewVerificationCode()
     verCode = ""
-
-    if sendEmailRC:
+    sendEmailPVC = database.checkSendingEmailRecuperationCode(database.getVerificationCodeRegisteredDate(database.getUserID(email_address)))
+    if sendEmailPVC:
         contact = Contacts(email_address)
-        contact.send_email()
-        database.updatePasswordVerificationCode(database.getUserID(email_address), str(contact.returnVerificationCode()))
-        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 0)
+        contact.send_email(genVerCode)
+        database.updatePasswordVerificationCode(database.getUserID(email_address), genVerCode)
         verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
-    
     else:
-        database.updateSendingEmailRecuperationCode(database.getUserID(email_address), 1)
         verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
 
+    print(f'CODIGO: {verCode}')
     if request.method == 'POST':
         if request.form.get('submitButton') == 'Verificar':
             firstDigit = int(request.form['first_input'])
