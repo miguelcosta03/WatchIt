@@ -5,7 +5,7 @@ CREATE TABLE Utilizadores (
 	Email_Utilizador VARCHAR(255),
 	Nome_Utilizador VARCHAR(255),
 	Password_Utilizador VARCHAR(255),
-	Codigo_Recuperacao_Email VARCHAR(255),
+	Codigo_Recuperacao_Password VARCHAR(255),
 	Data_Registo_Cod_Recup VARCHAR(255)
 );
 
