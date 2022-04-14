@@ -15,6 +15,7 @@ seriesTemplate = 'series.html'
 editProfileTemplate = 'editProfile.html'
 insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
+errorPageTemplate = 'errorPage.html'
 
 database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
 
@@ -27,18 +28,20 @@ def login():
     global email_address
     invalidEmail = False
     invalidCredentialsText = ''
+    try:
+        if request.method == 'POST':
+            if request.form.get('login') == 'Login':
+                email_address = request.form['email_address']
+                password = request.form['password']
+                correctLogin = database.loginUser(email_address, password)
+                if correctLogin:
 
-    if request.method == 'POST':
-        if request.form.get('login') == 'Login':
-            email_address = request.form['email_address']
-            password = request.form['password']
-            correctLogin = database.loginUser(email_address, password)
-            if correctLogin:
-
-                isLogged = True
-                return redirect(url_for('mainPage'))
-            else:
-                invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
+                    isLogged = True
+                    return redirect(url_for('mainPage'))
+                else:
+                    invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
+    except IndexError:
+        return render_template(errorPageTemplate)
                     
     return render_template(loginTemplate, invalidEmail=invalidEmail, invalidCredentialsText=invalidCredentialsText)
 
