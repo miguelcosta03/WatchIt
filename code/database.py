@@ -39,7 +39,7 @@ class Database:
     def createNewUser(self, email, username, password):
         date = datetime.now().strftime('%Y%m%d%H%M')
         createUserQuery = f"""INSERT INTO dbo.Utilizadores
-                    VALUES ('{email}', '{username}', '{password}', '000', '{date}');"""
+                    VALUES ('{email}', '{username}', '{password}', '0000', '{date}');"""
         
         self.cursor.execute(createUserQuery)
         self.connection.commit()

@@ -33,9 +33,13 @@ def login():
             if request.form.get('login') == 'Login':
                 email_address = request.form['email_address']
                 password = request.form['password']
+                invalidCredentials = AccountOperations.checkCredentialsLogin(email_address, password)
+                if invalidCredentials:
+                    return render_template(errorPageTemplate)
                 correctLogin = database.loginUser(email_address, password)
+                if len(email_address) == 0 or len(password) == 0:
+                    return render_template(errorPageTemplate)
                 if correctLogin:
-
                     isLogged = True
                     return redirect(url_for('mainPage'))
                 else:
@@ -54,6 +58,9 @@ def signUp():
             username = request.form['username']
             password = request.form['password']
             conf_password = request.form['confirmPassword']
+            invalidCredentials = AccountOperations.checkCredentialsSignUp(email, username, password, conf_password)
+            if invalidCredentials:
+                return render_template(errorPageTemplate)
             if password == conf_password:
                 invalidCredentialsText = ''
                 database.createNewUser(email, username, password)
