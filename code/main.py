@@ -33,19 +33,21 @@ def login():
             if request.form.get('login') == 'Login':
                 email_address = request.form['email_address']
                 password = request.form['password']
-                invalidCredentials = AccountOperations.checkCredentialsLogin(email_address, password)
-                if invalidCredentials:
-                    return render_template(errorPageTemplate)
                 correctLogin = database.loginUser(email_address, password)
-                if len(email_address) == 0 or len(password) == 0:
-                    return render_template(errorPageTemplate)
                 if correctLogin:
                     isLogged = True
                     return redirect(url_for('mainPage'))
                 else:
                     invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
     except IndexError:
-        return render_template(errorPageTemplate)
+        invalidEmail = AccountOperations.checkEmail(request.form['email_address'])
+        invalidPassword = AccountOperations.checkPassword(request.form['password'])
+        if invalidEmail:
+            invalidCredentialsText = '* Por favor insira um email.'
+        else:
+            if invalidPassword:
+                invalidCredentialsText = '* Por favor insira uma password.'
+        
                     
     return render_template(loginTemplate, invalidEmail=invalidEmail, invalidCredentialsText=invalidCredentialsText)
 
@@ -129,11 +131,11 @@ def editProfile():
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
     global email_address
-
     invalidVerificationCode = False
     genVerCode = AccountOperations.generateNewVerificationCode()
     verCode = ""
     sendEmailPVC = database.checkSendingEmailRecuperationCode(database.getVerificationCodeRegisteredDate(database.getUserID(email_address)))
+
     if sendEmailPVC:
         contact = Contacts(email_address)
         contact.send_email(genVerCode)

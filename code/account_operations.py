@@ -2,8 +2,15 @@ from random import randint
 
 class AccountOperations:
     @staticmethod
-    def checkCredentialsLogin(email, password):
-        if len(email) == 0 or len(password) == 0:
+    def checkEmail(email):
+        if len(email) == 0:
+            return True
+        else:
+            return False
+    
+    @staticmethod
+    def checkPassword(password):
+        if len(password) == 0:
             return True
         else:
             return False
