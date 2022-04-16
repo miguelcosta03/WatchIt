@@ -14,13 +14,14 @@ class AccountOperations:
             return True
         else:
             return False
-
+    
     @staticmethod
-    def checkCredentialsSignUp(email, username, password, confirmPassword):
-        if len(email) == 0 or len(username) == 0 or len(password) == 0 or len(confirmPassword) == 0:
+    def checkUsername(username):
+        if len(username) == 0:
             return True
         else:
             return False
+            
     @staticmethod
     def generateNewVerificationCode():
         return randint(1000, 9999)

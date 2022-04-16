@@ -59,16 +59,28 @@ def signUp():
             email = request.form['email_address']
             username = request.form['username']
             password = request.form['password']
-            conf_password = request.form['confirmPassword']
-            invalidCredentials = AccountOperations.checkCredentialsSignUp(email, username, password, conf_password)
-            if invalidCredentials:
-                return render_template(errorPageTemplate)
-            if password == conf_password:
-                invalidCredentialsText = ''
-                database.createNewUser(email, username, password)
-                return redirect(url_for('mainPage'))
+            confPassword = request.form['confirmPassword']
+
+            invalidEmail = AccountOperations.checkEmail(email)
+            invalidUsername = AccountOperations.checkUsername(username)
+            invalidPassword = AccountOperations.checkPassword(password)
+            invalidConfPassword = AccountOperations.checkPassword(confPassword)
+
+            if invalidEmail:
+                invalidCredentialsText = '* Por favor insira um email.'
             else:
-                invalidCredentialsText = '* As passwords não correspondem.'
+                if invalidUsername:
+                    invalidCredentialsText = '* Por favor insira um username'
+                else:
+                    if invalidPassword:
+                        invalidCredentialsText = '* Por favor insira uma password.'
+                    else:
+                        if invalidConfPassword:
+                            invalidCredentialsText = '* Por favor confirme a sua password.'
+                        else:
+                            database.createNewUser(email, username, password, confPassword)
+                            return redirect(url_for('mainPage'))
+
     return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
