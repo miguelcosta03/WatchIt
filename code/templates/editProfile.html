@@ -8,6 +8,7 @@
     <script src="../static/js/urls.js"></script>
     <script src="../static/js/effects.js"></script>
     <script src="../static/js/update_credentials.js"></script>
+    <script src="../static/js/check_credentials.js"></script>
     <link rel="stylesheet" href="../static/styles/editProfile.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -35,8 +36,11 @@
                                     <button class="edit-username-button" id="edit-username-button" onclick="showHideNewUsernameDiv()"></button>
                                 </div>
                                 <div class="new-username-div" id="new-username-div">
-                                    <input class="new-username-input" type="text">
-                                    <button class="save-new-username-button">Salvar Username</button>
+                                    <form class="/editarPerfil" method="post">
+                                        <input class="new-username-input" id="newUsername" name="newUsernameInput" type="text" oninput="checkNewUsername()">
+                                        <button class="save-new-username-button" name="saveNewUsername" value="Salvar Username">Salvar Username</button>
+                                        <h1 class="invalid-username-label" id="invalidUsernameLabel"></h1>
+                                    </form>
                                 </div>
                             </div>
                             <div class="editable-email-div">

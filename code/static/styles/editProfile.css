@@ -41,6 +41,13 @@ body {
     font-size: 1.3vw;
 }
 
+.invalid-username-label {
+    display: none;
+    color: red;
+    font-size: 0.8vw;
+    width: 10vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 .level-text {
     margin-top:-2%;
     margin-left: 15%;

@@ -37,6 +37,30 @@ function checkUsername() {
     }
 }
 
+function checkNewUsername() {
+    let newUsername = document.getElementById('newUsername').value;
+    let newUsernameInput = document.getElementById('newUsername');
+    let invalidUsernameLabel = document.getElementById('invalidUsernameLabel');
+    if (newUsername.length > 0) {
+        invalidUsernameLabel.style.display = "none";
+        let validateNewUsername = (newUsername) => {
+            newUsernameRegex = /^[a-zA-Z\-]+$/;
+            return newUsernameRegex.test(newUsername);
+        }
+        if(validateNewUsername(newUsername) == true) {
+            invalidUsernameLabel.style.display = "none";
+        } else {
+            newUsernameInput.style.borderColor = "red";
+            invalidUsernameLabel.style.display = "block";
+            invalidUsernameLabel.innerHTML = "* Username Inválido."
+        }
+    } else {
+        newUsernameInput.style.borderColor = "red";
+        invalidUsernameLabel.style.display = "block";
+        invalidUsernameLabel.innerHTML = "* Por favor insira um nome de utilizador.";
+    }
+}
+
 function checkPassword() {
     let password = document.getElementById('password').value;
     let invalidCredentialsLabel = document.getElementById('invalidCredentialsLabel');

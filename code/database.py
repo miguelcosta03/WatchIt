@@ -1,5 +1,4 @@
 import pyodbc
-from account_operations import AccountOperations
 from datetime import datetime
 
 
@@ -95,6 +94,13 @@ class Database:
         verCodeRegisteredDate = self.cursor.fetchall()
         return str(verCodeRegisteredDate).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
+    def updateUsername(self, userID, newUsername):
+        query = f"""UPDATE dbo.Utilizadores
+                        SET Nome_Utilizador = '{newUsername}'
+                    WHERE ID_Utilizador = {userID}"""
+        self.cursor.execute(query)
+        self.connection.commit()
+        
     def updatePasswordVerificationCode(self, userID, newPasswordVerificationCode):
         newRegisterDate = datetime.now().strftime('%Y%m%d%H%M')
         query = f"""UPDATE dbo.Utilizadores

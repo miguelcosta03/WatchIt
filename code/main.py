@@ -134,10 +134,14 @@ def series():
     s3_image = database.getSerieCoverImage(3)
     return render_template(seriesTemplate, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image)
 
-@app.route('/editarPerfil')
+@app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
     global email_address
     username = str(database.getUsername(database.getUserID(email_address)))
+    if request.method == 'POST':
+        if request.form.get('saveNewUsername') == 'Salvar Username':
+            newUsername = request.form['newUsernameInput']
+            database.updateUsername(database.getUserID(email_address), newUsername)
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
