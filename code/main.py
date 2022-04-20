@@ -142,6 +142,9 @@ def editProfile():
         if request.form.get('saveNewUsername') == 'Salvar Username':
             newUsername = request.form['newUsernameInput']
             database.updateUsername(database.getUserID(email_address), newUsername)
+        if request.form.get('saveNewEmail') == 'Salvar Email':
+            newEmail = request.form['newEmailInput']
+            database.updateEmail(database.getUserID(email_address), newEmail)
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
@@ -160,7 +163,6 @@ def insertVericationCode():
     else:
         verCode = list(str(database.getPasswordVerificationCode(database.getUserID(email_address))))
 
-    print(f'CODIGO: {verCode}')
     if request.method == 'POST':
         if request.form.get('submitButton') == 'Verificar':
             firstDigit = int(request.form['first_input'])

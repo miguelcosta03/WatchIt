@@ -36,7 +36,7 @@
                                     <button class="edit-username-button" id="edit-username-button" onclick="showHideNewUsernameDiv()"></button>
                                 </div>
                                 <div class="new-username-div" id="new-username-div">
-                                    <form class="/editarPerfil" method="post">
+                                    <form action="/editarPerfil" method="post">
                                         <input class="new-username-input" id="newUsername" name="newUsernameInput" type="text" oninput="checkNewUsername()">
                                         <button class="save-new-username-button" name="saveNewUsername" value="Salvar Username">Salvar Username</button>
                                         <h1 class="invalid-username-label" id="invalidUsernameLabel"></h1>
@@ -50,8 +50,11 @@
                                     <button class="edit-email-button" id="edit-email-button" onclick="showHideNewEmailDiv()"></button>
                                 </div>
                                 <div class="new-email-div" id="new-email-div">
-                                    <input class="new-email-input" type="text">
-                                    <button class="save-new-email-button">Salvar Email</button>
+                                    <form action="/editarPerfil" method="post">
+                                        <input class="new-email-input" id="newEmail" name="newEmailInput" type="text" oninput="checkNewEmail()">
+                                        <button class="save-new-email-button" name="saveNewEmail" value="Salvar Email">Salvar Email</button>
+                                        <h1 class="invalid-email-label" id="invalidEmailLabel"></h1>
+                                    </form>
                                 </div>
                             </div>
                         </div>

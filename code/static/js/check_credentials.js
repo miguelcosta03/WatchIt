@@ -47,7 +47,7 @@ function checkNewUsername() {
             newUsernameRegex = /^[a-zA-Z\-]+$/;
             return newUsernameRegex.test(newUsername);
         }
-        if(validateNewUsername(newUsername) == true) {
+        if (validateNewUsername(newUsername) == true) {
             invalidUsernameLabel.style.display = "none";
         } else {
             newUsernameInput.style.borderColor = "red";
@@ -87,5 +87,25 @@ function checkConfirmPassword() {
     } else {
         invalidCredentialsLabel.style.display = "block";
         invalidCredentialsLabel.innerHTML = "* Por favor confirme a sua password.";
+    }
+}
+
+function checkNewEmail() {
+    let newEmailInput = document.getElementById('newEmail').value;
+    let invalidEmailLabel = document.getElementById('invalidEmailLabel');
+    if (newEmailInput.length > 0) {
+        let validateNewEmail = (newEmail) => {
+            newEmailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+            return newEmailRegex.test(newEmail);
+        }
+        if (validateNewEmail(newEmailInput) == true) {
+            invalidEmailLabel.style.display = "none";
+        } else {
+            invalidEmailLabel.style.display = "block";
+            invalidEmailLabel.innerHTML = "* Email Inválido."
+        }
+    } else {
+        invalidEmailLabel.style.display = "block";
+        invalidEmailLabel.innerHTML = "* Por favor insira um email."
     }
 }

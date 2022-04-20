@@ -94,6 +94,13 @@ class Database:
         verCodeRegisteredDate = self.cursor.fetchall()
         return str(verCodeRegisteredDate).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
+    def updateEmail(self, userID, newEmail):
+        query = f"""UPDATE dbo.Utilizadores
+                        SET Email_Utilizador = {newEmail}
+                    WHERE ID_Utilizador = {userID};"""
+        self.cursor.execute(query)
+        self.connection.commit()
+
     def updateUsername(self, userID, newUsername):
         query = f"""UPDATE dbo.Utilizadores
                         SET Nome_Utilizador = '{newUsername}'
@@ -126,7 +133,7 @@ class Database:
     def updateUserPassword(self, userID, password):
         query = f"""UPDATE dbo.Utilizadores
                         SET Password_Utilizador='{password}'
-                    WHERE ID_Utilizador={userID}"""
+                    WHERE ID_Utilizador='{userID}'"""
         self.cursor.execute(query)
         self.connection.commit()
         

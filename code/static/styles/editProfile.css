@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(20, 20, 20);
+    background: linear-gradient(to right, #000000 , #130F40);
 }
 
 .watchit-button {
@@ -42,6 +42,14 @@ body {
 }
 
 .invalid-username-label {
+    display: none;
+    color: red;
+    font-size: 0.8vw;
+    width: 10vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.invalid-email-label {
     display: none;
     color: red;
     font-size: 0.8vw;

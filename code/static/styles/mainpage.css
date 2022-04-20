@@ -1,8 +1,12 @@
 html, body{
+    background: #093028; /* fallback for old browsers */
+    background: linear-gradient(to right, #000000 , #130F40);
+    /* background: linear-gradient(to left, #2C3E50 , #000000); */
+    /* background: linear-gradient(to right, #000000 , #130F40); */
+    /*background: linear-gradient(to left, #000428, #1a0950); */
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: rgb(20, 20, 20);
     top:0; 
     bottom:0; 
     left:0; 
@@ -17,13 +21,8 @@ html, body{
 }
 
 .top-widgets{
-    position: fixed;
-    /* background: rgb(61, 61, 61); */
-    background: rgb(61, 61, 61);
-    height: 70px;
-    width: 150%;
-    top: -10px;
-    left: -14px;
+    background: #093028; /* fallback for old browsers */
+    background: linear-gradient(to right, #000000 , #130F40);
 }
 
 .watchit-button{
