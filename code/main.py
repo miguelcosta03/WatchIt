@@ -129,10 +129,11 @@ def movies():
 
 @app.route('/series')
 def series():
+    global isLogged
     s1_image = database.getSerieCoverImage(1)
     s2_image = database.getSerieCoverImage(2)
     s3_image = database.getSerieCoverImage(3)
-    return render_template(seriesTemplate, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image)
+    return render_template(seriesTemplate, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, isLogged=isLogged)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():

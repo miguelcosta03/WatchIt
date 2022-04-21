@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(20, 20, 20);
+  background: linear-gradient(to right, #000000 , #130F40);
 }
 
 .grid-series-container {
