@@ -125,7 +125,8 @@ def mainPage():
 
 @app.route('/filmes')
 def movies():
-    return render_template(moviesTemplate)
+    global isLogged
+    return render_template(moviesTemplate, isLogged=isLogged)
 
 @app.route('/series')
 def series():
