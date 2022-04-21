@@ -145,6 +145,7 @@ def editProfile():
         if request.form.get('saveNewEmail') == 'Salvar Email':
             newEmail = request.form['newEmailInput']
             database.updateEmail(database.getUserID(email_address), newEmail)
+            email_address = newEmail
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])

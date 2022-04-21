@@ -72,6 +72,13 @@ class Database:
         userID = self.cursor.fetchall()
         return str(userID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
+    def getUserEmail(self, userID):
+        query = f"""SELECT Email_Utilizador FROM dbo.Utilizadores
+                    WHERE ID_Utilizador={userID};"""
+        self.cursor.execute(query)
+        userEmail = self.cursor.fetchall()
+        return str(userEmail).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
     def getUsername(self, userID):
         query = f"""SELECT Nome_Utilizador FROM dbo.Utilizadores
                     WHERE ID_Utilizador='{userID}'"""
@@ -96,7 +103,7 @@ class Database:
 
     def updateEmail(self, userID, newEmail):
         query = f"""UPDATE dbo.Utilizadores
-                        SET Email_Utilizador = {newEmail}
+                        SET Email_Utilizador = '{newEmail}'
                     WHERE ID_Utilizador = {userID};"""
         self.cursor.execute(query)
         self.connection.commit()
