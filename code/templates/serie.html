@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="../static/vendor/header_widgets_movement.js"></script>
+    <script src="../static/vendor/body_widgets_movement.js"></script>
     <script src="../static/js/player_operations.js"></script>
     <style>
         .navbar {
@@ -40,376 +42,383 @@
         }
     </style>
 </head>
-<body>
-
-<nav class="navbar navbar-inverse" style="background-color: transparent;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <form action="/" method="post">
-        <button class="watchit-button">WatchIt</button>
-      </form>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">
-            <form action="/" method="post">
-                {% if isLogged %}
-                <div class="dropdown">
-                    <button class="profile-picture"></button>
-                    <div class="dropdown-content">
-                    <button class="edit-profile-button">Editar Perfil</button>
-                    <button class="logout-button">Sair</button>
-                    </div>
-                </div>
-                {% else %}
-                    <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
-                    <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
-                {% endif %}
-            </form>
-        </a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-  
-<div class="container-fluid text-center" style="background-color: transparent;">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav" style="background-color: transparent;">
-      <p><a href="#"></a></p>
-      <p><a href="#"></a></p>
-      <p><a href="#"></a></p>
-    </div>
-        <div class="col-sm-8 text-left" style="background-color: transparent;"> 
-            <img class="serie-background " src="{{ serie_image_background }}" style="filter: brightness(50%); ">
-            <img class="serie-cover-image img-responsive" src="{{ serie_cover_image }}">
-            <h1 class="serie-name">{{ serie_name }}</h1>
-            <p class="serie-release-year">{{ serie_release_year }}</p>
-            <p class="serie-duration">{{ serie_duration }}</p>
-            <p class="serie-total-seasons-number">{{ serie_total_seasons_number }} Temporadas</p>
-            <p class="serie-star-classification">{{ serie_star_classification }} / 10 ⭐</p>
-            <p class="serie-description">{{ serie_description }}</p>   
+<body onresize="movePlayerButtons()">
+    <nav class="navbar navbar-inverse" style="background-color: transparent;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <form action="/" method="post">
+            <button class="watchit-button">WatchIt</button>
+        </form>
         </div>
-            <form method="post">
-                <button class="season-1-button">1</button>
-                {% if s2_available %}
-                    <button class="season-2-button" name="seasonButton" value="season2Button">2</button>
-                {% else %}
-                    <button hidden class="season-2-button" name="seasonButton" value="season2Button">2</button>
-                {% endif %}
+        <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">
+                <form action="/" method="post">
+                    {% if isLogged %}
+                        <div class="dropdown">
+                            <div class="dropdown-content" id="dropdownContent">
+                            <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+                            <button class="logout-button">Sair</button>
+                            </div>
+                            <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
+                        </div>
+                    {% else %}
+                        <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
+                        <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
+                    {% endif %}
+                </form>
+            </a></li>
+        </ul>
+        </div>
+    </div>
+    </nav>
     
-                {% if s3_available %}
-                    <button class="season-3-button" name="seasonButton" value="season3Button">3</button>
-                {% else %}
-                    <button hidden class="season-3-button" name="seasonButton" value="season3Button">3</button>
-                {% endif %}
-    
-                {% if s4_available %}
-                    <button class="season-4-button" name="seasonButton" value="season4Button">4</button>
-                {% else %}
-                    <button hidden class="season-4-button" name="seasonButton" value="season4Button">4</button>
-                {% endif %}
-    
-                {% if s5_available %}
-                    <button class="season-5-button" name="seasonButton" value="season5Button">5</button>
-                {% else %}
-                    <button hidden class="season-5-button" name="seasonButton" value="season5Button">6</button>
-                {% endif %}
-                <h1 class="seasons-text">Temporadas</h1>
-                <div class="episode-grid">
-                    <div class="episode-text">
-                        Episódios
-                    </div>
-                    {% if ep1_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_1_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep2_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_2_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep3_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_3_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep4_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_4_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep5_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_5_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep6_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_6_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep7_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_7_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot-unavailable">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {%endif%}
-
-                    {% if ep8_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_8_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep9_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_9_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep10_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_10_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep11_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_11_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep12_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_12_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep13_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_13_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep14_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_14_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep15_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_15_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep16_available %}
-                        <div class="episode-slot">
-                            <img class="episode-slot" src="{{ episode_16_cover_image }}">
-                        </div>
-                    {% else %}
-                        <div class="episode-slot">
-                            <img class="episode-slot-unavailable">
-                            <p class="episode-unavailable-text">Não existe este episódio!</p>
-                        </div>
-                    {% endif %}
-
-                    {% if ep1_available%}
-                        <button class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
-                    {% endif %}
-
-                    {% if ep2_available %}
-                        <button class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>    
-                    {% endif %}
-
-                    {% if ep3_available %}
-                        <button class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
-                    {% endif %}
-
-                    {% if ep4_available %}
-                        <button class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
-                    {% endif %}
-
-                    {% if ep5_available %}
-                        <button class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
-                    {% endif %}
-                    
-                    {% if ep6_available %}
-                        <button class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
-                    {% endif %}
-
-                    {% if ep7_available %}
-                        <button class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
-                    {% endif %}
-
-                    {% if ep8_available %}
-                        <button class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
-                    {% endif %}
-
-                    {% if ep9_available %}
-                        <button class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
-                    {% else %} 
-                        <button hidden class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
-                    {% endif %}
-
-                    {% if ep10_available %}
-                        <button class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
-                    {% endif %}
-
-                    {% if ep11_available %}
-                        <button class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
-                    {% endif %}
-
-                    {% if ep12_available %}
-                        <button class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
-                    {% endif %}
-
-                    {% if ep13_available %}
-                        <button class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
-                    {% endif %}
-
-                    {% if ep14_available %}
-                        <button class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
-                    {% endif %}
-
-                    {% if ep15_available %}
-                        <button class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
-                    {% endif %}
-
-                    {% if ep16_available %}
-                        <button class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
-                    {% else %}
-                        <button hidden class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
-                    {% endif %}
-                </div>
-                {% if isLogged %}
-                    <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
-                    <video hidden class="watchit-video-player" src="{{ episode_video }}" id="watchItVideoPlayer" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
-                {% else %}
-                    <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
-                {% endif %}
-            </form>
-            <div class="players-box">
-                <button class="player-button" onclick="selectNormalPlayer()">Player Normal</button>
-                <button class="player-button" onclick="selectWatchItPlayer()">WatchIt Player</button>
+    <div class="container-fluid text-center" style="background-color: transparent;">    
+    <div class="row content">
+        <div class="col-sm-2 sidenav" style="background-color: transparent;">
+        <p><a href="#"></a></p>
+        <p><a href="#"></a></p>
+        <p><a href="#"></a></p>
+        </div>
+            <div class="col-sm-8 text-left" style="background-color: transparent;"> 
+                <img class="serie-background " src="{{ serie_image_background }}" style="filter: brightness(50%); ">
+                <img class="serie-cover-image img-responsive" src="{{ serie_cover_image }}">
+                <h1 class="serie-name">{{ serie_name }}</h1>
+                <p class="serie-release-year">{{ serie_release_year }}</p>
+                <p class="serie-duration">{{ serie_duration }}</p>
+                <p class="serie-total-seasons-number">{{ serie_total_seasons_number }} Temporadas</p>
+                <p class="serie-star-classification">{{ serie_star_classification }} / 10 ⭐</p>
+                <p class="serie-description">{{ serie_description }}</p>   
             </div>
-    </div>     
-  </div>
+                <form method="post">
+                    <button class="season-1-button">1</button>
+                    {% if s2_available %}
+                        <button class="season-2-button" name="seasonButton" value="season2Button">2</button>
+                    {% else %}
+                        <button hidden class="season-2-button" name="seasonButton" value="season2Button">2</button>
+                    {% endif %}
+        
+                    {% if s3_available %}
+                        <button class="season-3-button" name="seasonButton" value="season3Button">3</button>
+                    {% else %}
+                        <button hidden class="season-3-button" name="seasonButton" value="season3Button">3</button>
+                    {% endif %}
+        
+                    {% if s4_available %}
+                        <button class="season-4-button" name="seasonButton" value="season4Button">4</button>
+                    {% else %}
+                        <button hidden class="season-4-button" name="seasonButton" value="season4Button">4</button>
+                    {% endif %}
+        
+                    {% if s5_available %}
+                        <button class="season-5-button" name="seasonButton" value="season5Button">5</button>
+                    {% else %}
+                        <button hidden class="season-5-button" name="seasonButton" value="season5Button">6</button>
+                    {% endif %}
+                    <h1 class="seasons-text">Temporadas</h1>
+                    <div class="episode-grid">
+                        <div class="episode-text">
+                            Episódios
+                        </div>
+                        {% if ep1_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_1_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
 
-</div>
+                        {% if ep2_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_2_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep3_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_3_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep4_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_4_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep5_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_5_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep6_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_6_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep7_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_7_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot-unavailable">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {%endif%}
+
+                        {% if ep8_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_8_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep9_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_9_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep10_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_10_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep11_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_11_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep12_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_12_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep13_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_13_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep14_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_14_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep15_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_15_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep16_available %}
+                            <div class="episode-slot">
+                                <img class="episode-slot" src="{{ episode_16_cover_image }}">
+                            </div>
+                        {% else %}
+                            <div class="episode-slot">
+                                <img class="episode-slot-unavailable">
+                                <p class="episode-unavailable-text">Não existe este episódio!</p>
+                            </div>
+                        {% endif %}
+
+                        {% if ep1_available%}
+                            <button class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-1-button" name="playEpisodeButton" value="playEpisode1Button"></button>
+                        {% endif %}
+
+                        {% if ep2_available %}
+                            <button class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-2-button" name="playEpisodeButton" value="playEpisode2Button"></button>    
+                        {% endif %}
+
+                        {% if ep3_available %}
+                            <button class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-3-button" name="playEpisodeButton" value="playEpisode3Button"></button>
+                        {% endif %}
+
+                        {% if ep4_available %}
+                            <button class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-4-button" name="playEpisodeButton" value="playEpisode4Button"></button>
+                        {% endif %}
+
+                        {% if ep5_available %}
+                            <button class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-5-button" name="playEpisodeButton" value="playEpisode5Button"></button>
+                        {% endif %}
+                        
+                        {% if ep6_available %}
+                            <button class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-6-button" name="playEpisodeButton" value="playEpisode6Button"></button>
+                        {% endif %}
+
+                        {% if ep7_available %}
+                            <button class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-7-button" name="playEpisodeButton" value="playEpisode7Button"></button>
+                        {% endif %}
+
+                        {% if ep8_available %}
+                            <button class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-8-button" name="playEpisodeButton" value="playEpisode8Button"></button>
+                        {% endif %}
+
+                        {% if ep9_available %}
+                            <button class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
+                        {% else %} 
+                            <button hidden class="play-episode-9-button" name="playEpisodeButton" value="playEpisode9Button"></button>
+                        {% endif %}
+
+                        {% if ep10_available %}
+                            <button class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-10-button" name="playEpisodeButton" value="playEpisode10Button"></button>
+                        {% endif %}
+
+                        {% if ep11_available %}
+                            <button class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-11-button" name="playEpisodeButton" value="playEpisode11Button"></button>
+                        {% endif %}
+
+                        {% if ep12_available %}
+                            <button class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-12-button" name="playEpisodeButton" value="playEpisode12Button"></button>
+                        {% endif %}
+
+                        {% if ep13_available %}
+                            <button class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-13-button" name="playEpisodeButton" value="playEpisode13Button"></button>
+                        {% endif %}
+
+                        {% if ep14_available %}
+                            <button class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-14-button" name="playEpisodeButton" value="playEpisode14Button"></button>
+                        {% endif %}
+
+                        {% if ep15_available %}
+                            <button class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-15-button" name="playEpisodeButton" value="playEpisode15Button"></button>
+                        {% endif %}
+
+                        {% if ep16_available %}
+                            <button class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
+                        {% else %}
+                            <button hidden class="play-episode-16-button" name="playEpisodeButton" value="playEpisode16Button"></button>
+                        {% endif %}
+                    </div>
+                    {% if isLogged %}
+                        <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+                        <video class="watchit-video-player" id="watchItVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+                    {% else %}
+                        <video hidden class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+                        <video hidden class="watchit-video-player" src="{{ episode_video }}" id="watchItVideoPlayer" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+                        <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
+                    {% endif %}
+                </form>
+                {% if isLogged %}
+                    <div class="players-box">
+                        <button class="player-button" id="normalPlayer" onclick="selectNormalPlayer()" onresize="movePlayerButtons()">Player Normal</button>
+                        <button class="player-button" id="watchItPlayer" onclick="selectWatchItPlayer()">WatchIt Player</button>
+                    </div>
+                {% else %}
+                    <div hidden class="players-box">
+                        <button class="player-button" id="normalPlayer" onclick="selectNormalPlayer()">Player Normal</button>
+                        <button class="player-button" id="watchItPlayer" onclick="selectWatchItPlayer()">WatchIt Player</button>
+                    </div>
+                {% endif %}
+            </div>     
+        </div>
+    </div>
 </body>
 </html>

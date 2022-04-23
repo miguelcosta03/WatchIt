@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/urls.js"></script>
-  <script src="../static/vendor/widget_movement.js"></script>
+  <script src="../static/vendor/header_widgets_movement.js"></script>
   <style>    
       .navbar {
         margin-bottom: 0;
@@ -41,13 +41,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           {% if isLogged %}
-          <div class="dropdown">
-            <div class="dropdown-content" id="dropdownContent">
-              <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
-              <button class="logout-button">Sair</button>
+            <div class="dropdown">
+              <div class="dropdown-content" id="dropdownContent">
+                <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+                <button class="logout-button">Sair</button>
+              </div>
+              <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
             </div>
-            <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
-          </div>
           {% else %}
               <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
               <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>

@@ -483,6 +483,7 @@ body{
     color: white;
     font-size: 1vw;
 }
+
 .player-button:hover {
     background-color: rgba(125, 255, 125, 0.712);
 }
