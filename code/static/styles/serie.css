@@ -94,6 +94,17 @@ body{
     text-align: justify;
 }
 
+.seasons-text {
+    position: absolute;
+    font-size: 1.5vw;
+    line-height: 2.0vw;
+    color: white;
+    margin-top: 5.3vw;
+    margin-left: 48vw;
+    border-radius: 30%;
+    border-color: white;
+}
+
 .season-1-button {
     display: table-cell;
     position: relative;
@@ -102,7 +113,7 @@ body{
     margin-left: 23%;
     font-size: 0.9vw;
     left: -10vw;
-    top: -5vw;
+    top: -1vw;
     margin-top: 10vw;
     width: 3vw;
     height: 3vw;
@@ -122,7 +133,7 @@ body{
     color: white;
     font-size: 0.9vw;
     left: -9vw;
-    top: -5vw;
+    top: -1vw;
     margin-top: 10vw;
     width: 3vw;
     height: 3vw;
@@ -142,7 +153,7 @@ body{
     color: white;
     font-size: 0.9vw;
     left: -8vw;
-    top: -5vw;
+    top: -1vw;
     margin-top: 10vw;
     width: 3vw;
     height: 3vw;
@@ -162,7 +173,7 @@ body{
     color: white;
     font-size: 0.9vw;
     left: -7vw;
-    top: -5vw;
+    top: -1vw;
     margin-top: 10vw;
     width: 3vw;
     height: 3vw;
@@ -182,7 +193,7 @@ body{
     color: white;
     font-size: 0.9vw;
     left: -6vw;
-    top: -5vw;
+    top: -1vw;
     margin-top: 10vw;
     width: 3vw;
     height: 3vw;
@@ -193,17 +204,6 @@ body{
     border-color: rgb(32, 28, 228);
     width: 3vw;
     height: 3vw;
-}
-
-.seasons-text{
-    position: relative;
-    font-size: 1.5vw;
-    line-height: 2.0vw;
-    color: white;
-    margin-top: -10.0vw;
-    margin-left: -2vw;
-    border-radius: 30%;
-    border-color: white;
 }
 
 .episode-grid{

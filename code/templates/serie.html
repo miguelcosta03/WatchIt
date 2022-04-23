@@ -42,7 +42,7 @@
         }
     </style>
 </head>
-<body onresize="movePlayerButtons()">
+<body onresize="moveBodyWidgets() ">
     <nav class="navbar navbar-inverse" style="background-color: transparent;">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -96,31 +96,31 @@
                 <p class="serie-description">{{ serie_description }}</p>   
             </div>
                 <form method="post">
-                    <button class="season-1-button">1</button>
+                    <h1 class="seasons-text">Temporadas</h1>
+                    <button class="season-1-button" id="season1Button" name="seasonButton" value="season1Button">1</button>
                     {% if s2_available %}
-                        <button class="season-2-button" name="seasonButton" value="season2Button">2</button>
+                        <button class="season-2-button" id="season2Button" name="seasonButton" value="season2Button">2</button>
                     {% else %}
                         <button hidden class="season-2-button" name="seasonButton" value="season2Button">2</button>
                     {% endif %}
         
                     {% if s3_available %}
-                        <button class="season-3-button" name="seasonButton" value="season3Button">3</button>
+                        <button class="season-3-button" id="season3Button" name="seasonButton" value="season3Button">3</button>
                     {% else %}
                         <button hidden class="season-3-button" name="seasonButton" value="season3Button">3</button>
                     {% endif %}
         
                     {% if s4_available %}
-                        <button class="season-4-button" name="seasonButton" value="season4Button">4</button>
+                        <button class="season-4-button" id="season4Button" name="seasonButton" value="season4Button">4</button>
                     {% else %}
                         <button hidden class="season-4-button" name="seasonButton" value="season4Button">4</button>
                     {% endif %}
         
                     {% if s5_available %}
-                        <button class="season-5-button" name="seasonButton" value="season5Button">5</button>
+                        <button class="season-5-button" id="season5Button" name="seasonButton" value="season5Button">5</button>
                     {% else %}
                         <button hidden class="season-5-button" name="seasonButton" value="season5Button">6</button>
                     {% endif %}
-                    <h1 class="seasons-text">Temporadas</h1>
                     <div class="episode-grid">
                         <div class="episode-text">
                             Episódios
