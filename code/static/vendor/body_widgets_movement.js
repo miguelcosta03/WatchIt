@@ -20,8 +20,6 @@ function moveSeasonButtons() {
         season4Button.style.left = "-7vw";
         season5Button.style.left = "-6vw";
     }
-
-    console.log(winWidth)
 }
 
 function movePlayerButtons() {

@@ -13,6 +13,7 @@
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/urls.js"></script>
   <script src="../static/vendor/widget_movement.js"></script>
+  <script src="../static/js/top_series.js"></script>
   <style>    
       .navbar {
         margin-bottom: 0;
@@ -21,43 +22,55 @@
   </style>
 </head>
 <body>
-
-<nav class="navbar navbar-inverse" style="background: transparent;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <form action="/" method="post">
-        <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
-      </form>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          {% if isLogged %}
-          <div class="dropdown">
-            <div class="dropdown-content" id="dropdownContent">
-              <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
-              <button class="logout-button">Sair</button>
+  <nav class="navbar navbar-inverse" style="background: transparent;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <form action="/" method="post">
+          <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
+        </form>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            {% if isLogged %}
+            <div class="dropdown">
+              <div class="dropdown-content" id="dropdownContent">
+                <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+                <button class="logout-button">Sair</button>
+              </div>
+              <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
             </div>
-            <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
-          </div>
-          {% else %}
-              <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
-              <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>
-          {% endif %}
-        </li>
-      </ul>
+            {% else %}
+                <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
+                <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
-<div class="container text-center" style="background: transparent;">    
-<h1 class="slogan">As tuas séries favoritas estão aqui!</h1><br>
-  <div class="row">
-    <div class="col-sm-4">
+  </nav>
+  <div class="container text-center" style="background: transparent;">
+    <div class="top-series-container" id="topSerie" onmouseenter="decreaseBrightness('topSerie')" onmouseout="increaseBrightness('topSerie')">
+      <div class="top-series-item" onmouseenter="decreaseBrightness()">
+        <img id="topSerie1" src="../static/images/series_background/peaky_blinders/peaky_blinders_background.jpg">
+      </div>
+      <div class="top-series-item">
+        <img class="top-serie-2" id="topSerie2" src="../static/images/series_background/la_casa_de_papel/la_casa_de_papel_background.jpg">
+      </div>
+      <div class="top-series-item">
+        <img class="top-serie-3" id="topSerie3" src="../static/images/series_background/euphoria/euphoria_background.jpeg">
+      </div>
+      <button class="next-button" onclick="nextTopSerie()">></button>
+      <button class="previous-button" onclick="previousTopSerie()"><</button>
+    </div>
+    <h1 class="slogan">As tuas séries favoritas estão aqui!</h1><br>
+    <div class="row">
+      <div class="col-sm-4">
         <div class="grid-series-container">
             <div class="grid-series-item">
                 <form class="serie-container" action="/" method="post">
@@ -78,14 +91,14 @@
                 </form>
             </div>
         </div>
-        
+          
+      </div>
     </div>
-  </div>
-</div><br>
+  </div><br>
 
-<footer class="container-fluid text-center" style="background: transparent;">
-  <p>WatchIt</p>
-</footer>
+  <footer class="container-fluid text-center" style="background: transparent;">
+    <p>WatchIt</p>
+  </footer>
 
 </body>
 </html>

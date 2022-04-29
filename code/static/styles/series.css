@@ -1,3 +1,83 @@
+.top-series-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+  background-color: aliceblue;
+}
+
+.top-series-container img {
+  width: 100%;
+
+}
+
+.top-series-item {
+  width: 100%;
+}
+
+.top-serie-1 {
+  display: block;
+}
+
+.top-serie-2 {
+  display: none;
+}
+.top-serie-3 {
+  display: none;
+}
+
+.top-series-container .previous-button {
+  position: absolute;
+  top: 50%;
+  left: 2vw;
+  font-size: 1vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 3vw;
+  height: 3vw;
+  border-color: transparent;
+  color: rgba(125, 255, 125, 0.712);
+  background: linear-gradient(to right, #000000 , #130F40);;
+}
+
+.top-series-container .previous-button {
+  position: absolute;
+  top: 50%;
+  right: 2vw;
+  font-size: 1vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 600px;
+  width: 3vw;
+  height: 3vw;
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.768);
+  background: linear-gradient(to right, #000000 , #130F40);
+}
+
+.top-series-container .previous-button:hover {
+  color: rgba(125, 255, 125, 0.712);
+  border-color: rgba(125, 255, 125, 0.712);
+  box-shadow: 10px 0px 100px;
+}
+
+.top-series-container .next-button {
+  position: absolute;
+  top: 50%;
+  right: 2vw;
+  font-size: 1vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 600px;
+  width: 3vw;
+  height: 3vw;
+  border-color: transparent;
+  color: rgba(255, 255, 255, 0.768);
+  background: linear-gradient(to right, #000000 , #130F40);
+}
+
+.top-series-container .next-button:hover {
+  color: rgba(125, 255, 125, 0.712);
+  border-color: rgba(125, 255, 125, 0.712);
+  box-shadow: 10px 0px 100px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 15vw 15vw 15vw;

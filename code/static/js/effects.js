@@ -1,19 +1,28 @@
 function decreaseButtonBrightness(buttonID) {
-    let button = window.document.getElementById(`${buttonID}`);
+    let button = document.getElementById(`${buttonID}`);
     button.style.filter = `brightness(50%)`;
 }
 
 function resetButtonBrightness(buttonID) {
-    let button = window.document.getElementById(`${buttonID}`);
+    let button = document.getElementById(`${buttonID}`);
     button.style.filter = `brightness(100%)`;
 }
 
+function decreaseBrightness(elementID) {
+    let element = document.getElementById(`${elementID}`);
+    element.style.filter = `brightness(50%)`;
+}
+
+function increaseBrightness(elementID) {
+    let element = document.getElementById(`${elementID}`);
+    element.style.filter = `brightness(100%)`;
+}
 
 function focusElement() {
-    let firstDigit = window.document.getElementById('first_input');
-    let secondDigit = window.document.getElementById('second_input');
-    let thirdDigit = window.document.getElementById('third_input');
-    let fourthDigit = window.document.getElementById('fourth_input');
+    let firstDigit = document.getElementById('first_input');
+    let secondDigit = document.getElementById('second_input');
+    let thirdDigit = document.getElementById('third_input');
+    let fourthDigit = document.getElementById('fourth_input');
 
     document.addEventListener('keydown', (event) => {
         let keyPressed = event.key;
