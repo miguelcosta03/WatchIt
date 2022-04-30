@@ -17,7 +17,7 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
@@ -131,10 +131,13 @@ def movies():
 @app.route('/series')
 def series():
     global isLogged
+    ts1_background = database.getSerieBackgroundImage(1)
+    ts2_background = database.getSerieBackgroundImage(2)
+    ts3_background = database.getSerieBackgroundImage(3)
     s1_image = database.getSerieCoverImage(1)
     s2_image = database.getSerieCoverImage(2)
     s3_image = database.getSerieCoverImage(3)
-    return render_template(seriesTemplate, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, isLogged=isLogged)
+    return render_template(seriesTemplate, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, isLogged=isLogged)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():

@@ -10,7 +10,7 @@ function resetButtonBrightness(buttonID) {
 
 function decreaseBrightness(elementID) {
     let element = document.getElementById(`${elementID}`);
-    element.style.filter = `brightness(50%)`;
+    element.style.filter = `brightness(80%)`;
 }
 
 function increaseBrightness(elementID) {

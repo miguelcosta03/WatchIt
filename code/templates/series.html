@@ -57,13 +57,13 @@
   <div class="container text-center" style="background: transparent;">
     <div class="top-series-container" id="topSerie" onmouseenter="decreaseBrightness('topSerie')" onmouseout="increaseBrightness('topSerie')">
       <div class="top-series-item" onmouseenter="decreaseBrightness()">
-        <img id="topSerie1" src="../static/images/series_background/peaky_blinders/peaky_blinders_background.jpg">
+        <img class="top-serie-1" id="topSerie1" src="{{ ts1_background }}">
       </div>
       <div class="top-series-item">
-        <img class="top-serie-2" id="topSerie2" src="../static/images/series_background/la_casa_de_papel/la_casa_de_papel_background.jpg">
+        <img class="top-serie-2" id="topSerie2" src="{{ ts2_background }}">
       </div>
       <div class="top-series-item">
-        <img class="top-serie-3" id="topSerie3" src="../static/images/series_background/euphoria/euphoria_background.jpeg">
+        <img class="top-serie-3" id="topSerie3" src="{{ ts3_background }}">
       </div>
       <button class="next-button" onclick="nextTopSerie()">></button>
       <button class="previous-button" onclick="previousTopSerie()"><</button>
