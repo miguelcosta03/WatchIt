@@ -128,16 +128,18 @@ def movies():
     global isLogged
     return render_template(moviesTemplate, isLogged=isLogged)
 
-@app.route('/series')
+@app.route('/series', methods=['GET', 'POST'])
 def series():
     global isLogged
     ts1_background = database.getSerieBackgroundImage(1)
     ts2_background = database.getSerieBackgroundImage(2)
     ts3_background = database.getSerieBackgroundImage(3)
+
     s1_image = database.getSerieCoverImage(1)
     s2_image = database.getSerieCoverImage(2)
     s3_image = database.getSerieCoverImage(3)
-    return render_template(seriesTemplate, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, isLogged=isLogged)
+
+    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():

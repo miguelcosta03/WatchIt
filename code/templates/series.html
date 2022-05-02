@@ -55,14 +55,14 @@
     </div>
   </nav>
   <div class="container text-center" style="background: transparent;">
-    <div class="top-series-container" id="topSerie" onmouseenter="decreaseBrightness('topSerie')" onmouseout="increaseBrightness('topSerie')">
-      <div class="top-series-item" onmouseenter="decreaseBrightness()">
+    <div class="top-series-container">
+      <div class="top-series-item" id="topSerie1Div">
         <img class="top-serie-1" id="topSerie1" src="{{ ts1_background }}">
       </div>
-      <div class="top-series-item">
+      <div class="top-series-item" id="topSerie2Div">
         <img class="top-serie-2" id="topSerie2" src="{{ ts2_background }}">
       </div>
-      <div class="top-series-item">
+      <div class="top-series-item" id="topSerie3Div">
         <img class="top-serie-3" id="topSerie3" src="{{ ts3_background }}">
       </div>
       <button class="next-button" onclick="nextTopSerie()">></button>

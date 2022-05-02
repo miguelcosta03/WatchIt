@@ -55,6 +55,4 @@ function focusElement() {
     if (thirdDigit.value != "") {
         fourthDigit.focus();
     }
-
-
 }
