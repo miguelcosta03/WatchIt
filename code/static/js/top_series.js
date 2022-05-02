@@ -31,12 +31,14 @@ function nextTopSerie() {
         setTimeout(() => {
             showTopSerie1();
         }, 1000);
+
     } else if (currentTopSerieIndex == 1) {
         $("#topSerie1Div").fadeOut(1000);
         $("#topSerie2Div").fadeIn(1000);
         setTimeout(() => {
             showTopSerie2();
         }, 1000);
+
     } else if (currentTopSerieIndex == 2){
         $("#topSerie2Div").fadeOut(1000);
         $("#topSerie3Div").fadeIn(1000);
@@ -52,6 +54,7 @@ function nextTopSerie() {
             setTimeout(() => {
                 showTopSerie1();
             }, 1000);
+
         } else if (currentTopSerieIndex < 0) {
             currentTopSerieIndex = 2;
             $("#topSerie1Div").fadeOut(1000);
@@ -88,17 +91,19 @@ function previousTopSerie() {
 
     currentTopSerieIndex -= 1;
     if (currentTopSerieIndex == 0) {
-        $("#topSerie3Div").fadeOut(1000);
+        $("#topSerie2Div").fadeOut(1000);
         $("#topSerie1Div").fadeIn(1000);
         setTimeout(() => {
             showTopSerie1();
         }, 1000);
+
     } else if (currentTopSerieIndex == 1) {
-        $("#topSerie1Div").fadeOut(1000);
+        $("#topSerie3Div").fadeOut(1000);
         $("#topSerie2Div").fadeIn(1000);
         setTimeout(() => {
             showTopSerie2();
         }, 1000);
+
     } else if (currentTopSerieIndex == 2){
         $("#topSerie2Div").fadeOut(1000);
         $("#topSerie3Div").fadeIn(1000);
@@ -114,6 +119,7 @@ function previousTopSerie() {
             setTimeout(() => {
                 showTopSerie1();
             }, 1000);
+
         } else if (currentTopSerieIndex < 0) {
             currentTopSerieIndex = 2;
             $("#topSerie1Div").fadeOut(1000);
