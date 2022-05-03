@@ -65,8 +65,12 @@
       <div class="top-series-item" id="topSerie3Div">
         <img class="top-serie-3" id="topSerie3" src="{{ ts3_background }}">
       </div>
-      <button class="next-button" onclick="nextTopSerie()">></button>
-      <button class="previous-button" onclick="previousTopSerie()"><</button>
+      <div class="previous-button-div" id="previousButtonDiv" onmouseenter="increaseOpacity('previousButtonDiv')" onmouseleave="decreaseOpacity('previousButtonDiv')" onclick="previousTopSerie()">
+      </div>
+      <div class="next-button-div" id="nextButtonDiv" onmouseenter="increaseOpacity('nextButtonDiv')" onmouseleave="decreaseOpacity('nextButtonDiv')" onclick="nextTopSerie()">
+      </div>
+      <button class="previous-button" onmouseenter="increaseOpacity('previousButtonDiv')" onmouseleave="decreaseOpacity('previousButtonDiv')" onclick="previousTopSerie()"><</button>
+      <button class="next-button" onmouseenter="increaseOpacity('nextButtonDiv')" onmouseleave="decreaseOpacity('nextButtonDiv')" onclick="nextTopSerie()">></button>
     </div>
     <h1 class="slogan">As tuas séries favoritas estão aqui!</h1><br>
     <div class="row">

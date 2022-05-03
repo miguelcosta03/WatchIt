@@ -1,28 +1,40 @@
 function decreaseButtonBrightness(buttonID) {
-    let button = document.getElementById(`${buttonID}`);
+    const button = document.getElementById(`${buttonID}`);
     button.style.filter = `brightness(50%)`;
 }
 
 function resetButtonBrightness(buttonID) {
-    let button = document.getElementById(`${buttonID}`);
+    const button = document.getElementById(`${buttonID}`);
     button.style.filter = `brightness(100%)`;
 }
 
 function decreaseBrightness(elementID) {
-    let element = document.getElementById(`${elementID}`);
-    element.style.filter = `brightness(80%)`;
+    const element = document.getElementById(`${elementID}`);
+    element.style.filter = `brightness(50%)`;
 }
 
 function increaseBrightness(elementID) {
-    let element = document.getElementById(`${elementID}`);
-    element.style.filter = `brightness(100%)`;
+    const element = document.getElementById(`${elementID}`);
+    element.style.filter = `brightness(80%)`;
 }
 
+function increaseOpacity(elementID) {
+    const element = document.getElementById(`${elementID}`);
+    element.style.filter = `opacity(80%)`;
+}
+
+function decreaseOpacity(elementID) {
+    const element = document.getElementById(`${elementID}`);
+    element.style.filter = `opacity(50%)`;
+}
+
+
+
 function focusElement() {
-    let firstDigit = document.getElementById('first_input');
-    let secondDigit = document.getElementById('second_input');
-    let thirdDigit = document.getElementById('third_input');
-    let fourthDigit = document.getElementById('fourth_input');
+    const firstDigit = document.getElementById('first_input');
+    const secondDigit = document.getElementById('second_input');
+    const thirdDigit = document.getElementById('third_input');
+    const fourthDigit = document.getElementById('fourth_input');
 
     document.addEventListener('keydown', (event) => {
         let keyPressed = event.key;
@@ -40,7 +52,7 @@ function focusElement() {
 
             }
         }
-    })
+    });
 
     firstDigit.focus();
 

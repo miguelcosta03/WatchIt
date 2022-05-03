@@ -21,8 +21,33 @@
 .top-serie-2 {
   display: none;
 }
+
 .top-serie-3 {
   display: none;
+}
+
+.top-series-container .previous-button-div {
+  position: absolute;
+  top: 0%;
+  left: 0vw;
+  font-size: 1vw;
+  background-color: rgb(25, 25, 25);
+  width: 10%;
+  height: 100%;
+  filter: opacity(50%);
+  cursor: pointer;
+}
+
+.top-series-container .next-button-div {
+  position: absolute;
+  top: 0%;
+  right: 0vw;
+  font-size: 1vw;
+  background-color: rgb(25, 25, 25);
+  width: 10%;
+  height: 100%;
+  filter: opacity(50%);
+  cursor: pointer;
 }
 
 .top-series-container .previous-button {
@@ -30,32 +55,11 @@
   top: 50%;
   left: 2vw;
   font-size: 1vw;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: monospace;
   width: 3vw;
-  height: 3vw;
+  background: transparent;
   border-color: transparent;
   color: rgba(125, 255, 125, 0.712);
-  background: linear-gradient(to right, #000000 , #130F40);;
-}
-
-.top-series-container .previous-button {
-  position: absolute;
-  top: 50%;
-  right: 2vw;
-  font-size: 1vw;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  border-radius: 600px;
-  width: 3vw;
-  height: 3vw;
-  border-color: transparent;
-  color: rgba(255, 255, 255, 0.768);
-  background: linear-gradient(to right, #000000 , #130F40);
-}
-
-.top-series-container .previous-button:hover {
-  color: rgba(125, 255, 125, 0.712);
-  border-color: rgba(125, 255, 125, 0.712);
-  box-shadow: 10px 0px 100px;
 }
 
 .top-series-container .next-button {
@@ -63,19 +67,13 @@
   top: 50%;
   right: 2vw;
   font-size: 1vw;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: monospace;
   border-radius: 600px;
   width: 3vw;
   height: 3vw;
   border-color: transparent;
-  color: rgba(255, 255, 255, 0.768);
-  background: linear-gradient(to right, #000000 , #130F40);
-}
-
-.top-series-container .next-button:hover {
   color: rgba(125, 255, 125, 0.712);
-  border-color: rgba(125, 255, 125, 0.712);
-  box-shadow: 10px 0px 100px;
+  background: transparent;
 }
 
 .grid-container {
