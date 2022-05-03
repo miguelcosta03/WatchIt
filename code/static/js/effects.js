@@ -28,7 +28,25 @@ function decreaseOpacity(elementID) {
     element.style.filter = `opacity(50%)`;
 }
 
+function changePreviousSerieArrowColor() {
+    const previousSerieArrow = document.getElementById('previousSerieArrow');
+    previousSerieArrow.style.color = "rgba(125, 255, 125, 0.712)";
+}
 
+function resetPreviousSerieArrowColor() {
+    const previousSerieArrow = document.getElementById('previousSerieArrow');
+    previousSerieArrow.style.color = "rgb(255, 255, 255)";
+}
+
+function changeNextSerieArrowColor() {
+    const nextSerieArrow = document.getElementById('nextSerieArrow');
+    nextSerieArrow.style.color = "rgba(125, 255, 125, 0.712)";
+}
+
+function resetNextSerieArrowColor() {
+    const nextSerieArrow = document.getElementById('nextSerieArrow');
+    nextSerieArrow.style.color = "rgb(255, 255, 255)";
+}
 
 function focusElement() {
     const firstDigit = document.getElementById('first_input');

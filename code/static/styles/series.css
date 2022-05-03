@@ -59,7 +59,7 @@
   width: 3vw;
   background: transparent;
   border-color: transparent;
-  color: rgba(125, 255, 125, 0.712);
+  color: white;
 }
 
 .top-series-container .next-button {
@@ -72,7 +72,7 @@
   width: 3vw;
   height: 3vw;
   border-color: transparent;
-  color: rgba(125, 255, 125, 0.712);
+  color: white;
   background: transparent;
 }
 
