@@ -46,38 +46,41 @@
     <nav class="navbar navbar-inverse" style="background-color: transparent;">
     <div class="container-fluid">
         <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>                        
-        </button>
-        <form action="/" method="post">
-            <button class="watchit-button">WatchIt</button>
-        </form>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <form action="/" method="post">
+              <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
+            </form>
+      
+            <h1 class="movies-button" onclick="redirectToMoviesPage()">FILMES</h1>
+      
+            <h1 class="series-button" onclick="redirectToSeriesPage()">SÉRIES</h1>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">
-                <form action="/" method="post">
-                    {% if isLogged %}
-                        <div class="dropdown">
-                            <div class="dropdown-content" id="dropdownContent">
-                            <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
-                            <button class="logout-button">Sair</button>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">
+                    <form action="/" method="post">
+                        {% if isLogged %}
+                            <div class="dropdown">
+                                <div class="dropdown-content" id="dropdownContent">
+                                <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+                                <button class="logout-button">Sair</button>
+                                </div>
+                                <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
                             </div>
-                            <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
-                        </div>
-                    {% else %}
-                        <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
-                        <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
-                    {% endif %}
-                </form>
-            </a></li>
-        </ul>
+                        {% else %}
+                            <button class="header-buttons mainButton" name="loginButton" value="Login">Login</button>
+                            <button class="header-buttons mainButton" name="signUpButton" value="Registar">Registar</button>
+                        {% endif %}
+                    </form>
+                </a></li>
+            </ul>
         </div>
     </div>
     </nav>
-    
     <div class="container-fluid text-center" style="background-color: transparent;">    
     <div class="row content">
         <div class="col-sm-2 sidenav" style="background-color: transparent;">

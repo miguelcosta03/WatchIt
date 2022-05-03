@@ -52,8 +52,8 @@
 
 .top-series-container .previous-button {
   position: absolute;
-  top: 50%;
-  left: 2vw;
+  top: 45%;
+  left: 1vw;
   font-size: 1vw;
   font-family: monospace;
   width: 3vw;
@@ -64,8 +64,8 @@
 
 .top-series-container .next-button {
   position: absolute;
-  top: 50%;
-  right: 2vw;
+  top: 45%;
+  right: 1vw;
   font-size: 1vw;
   font-family: monospace;
   border-radius: 600px;
