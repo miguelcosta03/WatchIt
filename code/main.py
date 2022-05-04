@@ -17,7 +17,7 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
@@ -119,9 +119,12 @@ def mainPage():
     s2_image = database.getSerieCoverImage(database.getSerieID(s2_value))
     s3_image = database.getSerieCoverImage(database.getSerieID(s3_value))
     
-    return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
-                           s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
-                           ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+    try:
+        return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
+                            s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
+                            ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+    except Exception:
+        return render_template(errorPageTemplate)
 
 @app.route('/filmes')
 def movies():
@@ -139,7 +142,21 @@ def series():
     s2_image = database.getSerieCoverImage(2)
     s3_image = database.getSerieCoverImage(3)
 
-    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image)
+    s1_value = database.getSerieName(1)
+    s2_value = database.getSerieName(2)
+    s3_value = database.getSerieName(3)
+
+    if request.method == "POST":
+        if request.form.get('s1Button') == s1_value:
+            database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+            return redirect(url_for("watchSerie"))
+        
+        if request.form.get('s2Button') == s2_value:
+            database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+            return redirect(url_for("watchSerie"))
+
+    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, 
+                           s1_value=s1_value, s2_value=s2_value)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():

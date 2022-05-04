@@ -36,7 +36,7 @@
   
         <h1 class="movies-button" onclick="redirectToMoviesPage()">FILMES</h1>
   
-        <h1 class="series-button" onclick="redirectToSeriesPage()">SÉRIES</h1>
+        <h1 class="series-button" style="color: rgba(125, 255, 125, 0.712); text-shadow: 0 0 10px white;" onclick="redirectToSeriesPage()">SÉRIES</h1>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -81,19 +81,19 @@
       <div class="col-sm-4">
         <div class="grid-series-container">
             <div class="grid-series-item">
-                <form class="serie-container" action="/" method="post">
+                <form class="serie-container" method="post">
                     <img src="{{ s1_image }}" style="height:100%; width:100%;">
                     <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
                 </form>
             </div>
             <div class="grid-series-item">
-                <form class="serie-container slot-s2" action="/" method="post">
+                <form class="serie-container slot-s2" method="post">
                     <img src="{{ s2_image }}" style="height:100%; width:100%;">
                     <button class="btn" name="s2Button" value="{{ s2_value }}"></button>
                 </form>
             </div>
             <div class="grid-series-item">
-                <form class="serie-container slot-s3" action="/" method="post">
+                <form class="serie-container slot-s3" method="post">
                     <img src="{{ s3_image }}" style="height:100%; width:100%;">
                     <button class="btn" name="s3Button" value="{{ s3_value }}"></button>
                 </form>

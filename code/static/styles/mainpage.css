@@ -145,8 +145,7 @@ html, body{
 .movies-button:hover {
     color: rgba(125, 255, 125, 0.712);
     cursor: pointer;
-    text-shadow: 0 0 10px;
-    background:scroll;
+    text-shadow: 0 0 10px white;
 }
 
 .series-button {
@@ -162,7 +161,7 @@ html, body{
 .series-button:hover {
     color: rgba(125, 255, 125, 0.712);
     cursor: pointer;
-    text-shadow: 0 0 10px;
+    text-shadow: 0 0 10px white;
 }
 
 .profile-picture {
