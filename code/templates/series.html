@@ -63,14 +63,20 @@
       <div class="top-series-item" id="topSerie1Div">
         <img class="top-serie-1" id="topSerie1" src="{{ ts1_background }}">
         <div class="border border-light p-3 mb-4"> 
-          <h1 class="top-serie-name">Peaky Blinders</h1>
+          <h1 class="top-serie-name">{{ ts1_name }}</h1>
         </div>
       </div>
-      <div class="top-series-item" id="topSerie2Div">
+      <div class="top-series-item" style="display: none;" id="topSerie2Div">
         <img class="top-serie-2" id="topSerie2" src="{{ ts2_background }}">
+        <div class="border border-light p-3 mb-4"> 
+          <h1 class="top-serie-name">{{ ts2_name }}</h1>
+        </div>
       </div>
-      <div class="top-series-item" id="topSerie3Div">
+      <div class="top-series-item" style="display: none;" id="topSerie3Div">
         <img class="top-serie-3" id="topSerie3" src="{{ ts3_background }}">
+        <div class="border border-light p-3 mb-4"> 
+          <h1 class="top-serie-name">{{ ts3_name }}</h1>
+        </div>
       </div>
       <div class="previous-button-div" id="previousButtonDiv" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousSerieArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousSerieArrowColor()" onclick="previousTopSerie()">
       </div>

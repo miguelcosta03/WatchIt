@@ -146,6 +146,11 @@ def series():
     s2_value = database.getSerieName(2)
     s3_value = database.getSerieName(3)
 
+    ts_ids = database.getTrendingSeriesID()
+    ts1_name = database.getSerieName(ts_ids[0])
+    ts2_name = database.getSerieName(ts_ids[1])
+    ts3_name = database.getSerieName(ts_ids[2])
+    
     if request.method == "POST":
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
@@ -155,8 +160,12 @@ def series():
             database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
             return redirect(url_for("watchSerie"))
 
+        if request.form.get('s3Button') == s3_value:
+            database.updateCurrentSerieURL('euphoria', "Euphoria")
+            return redirect(url_for("watchSerie"))
+
     return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, 
-                           s1_value=s1_value, s2_value=s2_value)
+                           s1_value=s1_value, s2_value=s2_value, ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
