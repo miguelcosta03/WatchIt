@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 from contacts import Contacts
 from account_operations import AccountOperations
+from time import sleep
 
 app = Flask(__name__)
 
@@ -21,6 +22,9 @@ database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456'
 
 isLogged = False
 email_address = ""
+serieName = None
+scrollToEpisodeGrid = False
+
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -85,46 +89,77 @@ def signUp():
 
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
-    s1_value = 'Peaky Blinders'
-    s2_value = 'La Casa de Papel'
-    s3_value = 'Euphoria'
-    ts_ids = database.getTrendingSeriesID()
-    ts1_name = database.getSerieName(ts_ids[0])
-    ts2_name = database.getSerieName(ts_ids[1])
-    ts3_name = database.getSerieName(ts_ids[2])
-    if request.method == 'POST':
-        if request.form.get('loginButton') == 'Login':
-            return redirect(url_for('login'))
-        
-        if request.form.get('signUpButton') == 'Registar':
-            return redirect(url_for('signUp'))
-        
-        if request.form.get('s1Button') == s1_value:
-            database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-            return redirect(url_for("watchSerie"))
-
-        if request.form.get('s2Button') == s2_value:
-            database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-            return redirect(url_for("watchSerie"))
-
-        if request.form.get('s3Button') == s3_value:
-            database.updateCurrentSerieURL('euphoria', 'Euphoria')
-            return redirect(url_for("watchSerie"))
-        
-    ts1_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts1_name))
-    ts2_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts2_name))
-    ts3_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts3_name))
-
-    s1_image = database.getSerieCoverImage(database.getSerieID(s1_value))
-    s2_image = database.getSerieCoverImage(database.getSerieID(s2_value))
-    s3_image = database.getSerieCoverImage(database.getSerieID(s3_value))
-    
+    s1_value = None
+    s2_value = None
+    s3_value = None
+    ts_ids = None
+    ts1_name = None
+    ts2_name = None
+    ts3_name = None
+    ts1_bg_img = None
+    ts2_bg_img = None
+    ts3_bg_img = None
+    s1_image = None
+    s2_image = None
+    s3_image = None
     try:
+        s1_value = 'Peaky Blinders'
+        s2_value = 'La Casa de Papel'
+        s3_value = 'Euphoria'
+        ts_ids = database.getTrendingSeriesID()
+        ts1_name = database.getSerieName(ts_ids[0])
+        ts2_name = database.getSerieName(ts_ids[1])
+        ts3_name = database.getSerieName(ts_ids[2])
+        if request.method == 'POST':
+            if request.form.get('loginButton') == 'Login':
+                return redirect(url_for('login'))
+            
+            if request.form.get('signUpButton') == 'Registar':
+                return redirect(url_for('signUp'))
+            
+            if request.form.get('s1Button') == s1_value:
+                database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                return redirect(url_for('watchSerie'))
+
+            if request.form.get('s2Button') == s2_value:
+                database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                return redirect(url_for('watchSerie'))
+
+            if request.form.get('s3Button') == s3_value:
+                database.updateCurrentSerieURL('euphoria', 'Euphoria')
+                return redirect(url_for('watchSerie'))
+            
+        ts1_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts1_name))
+        ts2_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts2_name))
+        ts3_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts3_name))
+
+        s1_image = database.getSerieCoverImage(database.getSerieID(s1_value))
+        s2_image = database.getSerieCoverImage(database.getSerieID(s2_value))
+        s3_image = database.getSerieCoverImage(database.getSerieID(s3_value))
+        
+
         return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
                             s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
                             ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
     except Exception:
-        return render_template(errorPageTemplate)
+        sleep(0.1)
+        s1_value = 'Peaky Blinders'
+        s2_value = 'La Casa de Papel'
+        s3_value = 'Euphoria'
+        ts_ids = database.getTrendingSeriesID()
+        ts1_name = database.getSerieName(ts_ids[0])
+        ts2_name = database.getSerieName(ts_ids[1])
+        ts3_name = database.getSerieName(ts_ids[2])
+        ts1_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts1_name))
+        ts2_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts2_name))
+        ts3_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts3_name))
+        s1_image = database.getSerieCoverImage(database.getSerieID(s1_value))
+        s2_image = database.getSerieCoverImage(database.getSerieID(s2_value))
+        s3_image = database.getSerieCoverImage(database.getSerieID(s3_value))
+        return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
+                            s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
+                            ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+
 
 @app.route('/filmes')
 def movies():
@@ -232,6 +267,8 @@ def changePassword():
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():
+    global scrollToEpisodeGrid
+
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
     serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getSerieID(database.getCurrentSerieName())))
@@ -244,73 +281,95 @@ def watchSerie():
     
     season_number = 1
     episode_number = 1
+    scrollToEpisodeGrid = False
 
     if request.method == 'POST':
         match request.form.get('seasonButton'):
             case 'season1Button':
                 season_number = 1
+                scrollToEpisodeGrid = True
             
             case 'season2Button':
                 season_number = 2
+                scrollToEpisodeGrid = True
             
             case 'season3Button':
                 season_number = 3
+                scrollToEpisodeGrid = True
             
             case 'season4Button':
                 season_number = 4
+                scrollToEpisodeGrid = True
             
             case 'season5Button':
                 season_number = 5
+                scrollToEpisodeGrid = True
 
     if request.method == 'POST':
         match request.form.get('playEpisodeButton'):
             case 'playEpisode1Button':
                 episode_number = 1
+                scrollToEpisodeGrid = True
             
             case 'playEpisode2Button':
                 episode_number = 2
+                scrollToEpisodeGrid = True
             
             case 'playEpisode3Button':
                 episode_number = 3
+                scrollToEpisodeGrid = True
             
             case 'playEpisode4Button':
                 episode_number = 4
+                scrollToEpisodeGrid = True
             
             case 'playEpisode5Button':
                 episode_number = 5
+                scrollToEpisodeGrid = True
             
             case 'playEpisode6Button':
                 episode_number = 6
+                scrollToEpisodeGrid = True
             
             case 'playEpisode7Button':
                 episode_number = 7
+                scrollToEpisodeGrid = True
             
             case 'playEpisode8Button':
                 episode_number = 8
+                scrollToEpisodeGrid = True
             
             case 'playEpisode9Button':
                 episode_number = 9
+                scrollToEpisodeGrid = True
             
             case 'playEpisode10Button':
                 episode_number = 10
+                scrollToEpisodeGrid = True
             
             case 'playEpisode11Button':
                 episode_number = 11
+                scrollToEpisodeGrid = True
             
             case 'playEpisode12Button':
                 episode_number = 12
+                scrollToEpisodeGrid = True
             
             case 'playEpisode13Button':
                 episode_number = 13
+                scrollToEpisodeGrid = True
             
             case 'playEpisode14Button':
                 episode_number = 14
+                scrollToEpisodeGrid = True
             
             case 'playEpisode15Button':
                 episode_number = 15
+                scrollToEpisodeGrid = True
 
             case 'playEpisode16Button':
                 episode_number = 16
+                scrollToEpisodeGrid = True
 
     episode_1_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 1)}'
     episode_2_cover_image = f'{database.getEpisodeCoverImage(database.getSerieID(database.getCurrentSerieName()), season_number, 2)}'
@@ -537,10 +596,9 @@ def watchSerie():
         case 5:
             pass
     
-    
     return render_template(serieTemplate, isLogged=isLogged, serie_title=serie_title, serie_image_background=serie_image_background, serie_cover_image=serie_cover_image,
                            serie_name=serie_name, serie_release_year=serie_release_year, serie_duration=serie_duration, serie_total_seasons_number=serie_total_seasons_number,
-                           serie_star_classification=serie_star_classification, serie_description=serie_description, episode_1_cover_image=episode_1_cover_image,
+                           serie_star_classification=serie_star_classification, serie_description=serie_description, scrollToEpisodeGrid=scrollToEpisodeGrid,episode_1_cover_image=episode_1_cover_image,
                            episode_2_cover_image=episode_2_cover_image, episode_3_cover_image=episode_3_cover_image, episode_4_cover_image=episode_4_cover_image, 
                            episode_5_cover_image=episode_5_cover_image, episode_6_cover_image=episode_6_cover_image, episode_7_cover_image=episode_7_cover_image, 
                            episode_8_cover_image=episode_8_cover_image, episode_9_cover_image=episode_9_cover_image, episode_10_cover_image=episode_10_cover_image, 

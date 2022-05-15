@@ -84,6 +84,7 @@ function nextTopSerie() {
             nextButton.click();
         }, 3000);
     }
+    
     else {
         if (currentTopSerieIndex > 2) {
             currentTopSerieIndex = 0;
@@ -183,6 +184,7 @@ function previousTopSerie() {
         waitS2 = setTimeout(() => {
             nextButton.click();
         }, 3000);
+
     } else if (currentTopSerieIndex == -2 || currentTopSerieIndex == 2) {
         $("#topSerie2Div").fadeOut(50);
         $("#topSerie3Div").fadeIn(500);
@@ -198,6 +200,7 @@ function previousTopSerie() {
         waitS3 = setTimeout(() => {
             nextButton.click();
         }, 3000);
+
     } else {
         if (currentTopSerieIndex < -2) {
             currentTopSerieIndex = 0;

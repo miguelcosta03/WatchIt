@@ -1,11 +1,6 @@
 .watchit-video-player {
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 5%;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    display: none;
+    display: block;
+    background-color: transparent;
 }
 
 .watchit-video-player::-webkit-media-controls-play-button {

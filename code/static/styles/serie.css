@@ -1,497 +1,257 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-.watchit-button{
-    position: relative;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: white;
-    font-size: 45px;
-    background-color: transparent;
-    border-color: transparent;
-    margin-top: 1%;
-    margin-left: 0.5%;
-    height: 52px;
-    cursor: pointer;
-}
-.serie-background{
+.serie-image {
+    background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
-    border-radius: 3%;
+    height: 54vw;
+    left: 0vw;
 }
 
-.serie-cover-image{
-    position: relative;
-    width: 15%;
-    border-radius: 10%;
-    margin-left: 6%;
-    margin-top: -17%;
+.left-div {
+    position: absolute;
+    background:  linear-gradient(to left,  rgba(255, 255, 255, 0), black,black);
+    width: 55%;
+    border-radius: 0 700px 700px 0;
+    margin-top: -54vw;
+    height: 54vw;
+    margin-left: 0vw;
 }
 
-.serie-name{
-    display: flex;
+.left-div .serie-name {
     position: absolute;
     color: white;
-    margin-top: -19%;
-    margin-left: 23%;
-    font-size: 2.2vw;
+    margin-top: 10vw;
+    margin-left: 5vw;
+    font-size: 2vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.serie-release-year{
-    display: flex;
+.left-div .serie-release-year {
     position: absolute;
+    margin-top: 13vw;
+    margin-left: 5vw;
+    font-size: 1vw;
     color: white;
-    margin-top: -15%;
-    margin-left: 23%;
-    font-size: 0.9vw;
 }
 
-.serie-duration{
-    display: flex;
+.left-div .serie-duration {
     position: absolute;
+    margin-top: 13vw;
+    margin-left: 9vw;
+    font-size: 1vw;
     color: white;
-    margin-top: -15%;
-    margin-left: 28%;
-    font-size: 0.9vw;
 }
 
-.serie-total-seasons-number{
-    display: flex;
+.left-div .serie-total-seasons-number {
     position: absolute;
+    margin-top: 13vw;
+    margin-left: 13vw;
+    font-size: 1vw;
     color: white;
-    margin-top: -15%;
-    margin-left: 34.5%;
-    font-size: 0.9vw;
 }
 
-.serie-star-classification{
-    display: flex;
+.left-div .serie-star-classification {
     position: absolute;
+    margin-top: 15vw;
+    margin-left: 5vw;
+    font-size: 1vw;
     color: white;
-    margin-top: -12%;
-    margin-left: 23%;
-    font-size: 0.9vw;
 }
 
-.serie-description {
-    display: flex;
+.left-div .serie-description {
     position: absolute;
     color: white;
-    margin-top: -10%;
-    margin-left: 23%;
-    width: 70%;
-    font-size: 0.9vw;
+    margin-top: 20vw;
+    margin-left: 5vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 50%;
+    font-size: 1vw;
     text-align: justify;
 }
 
-.season-1-button {
-    display: table-cell;
-    position: relative;
-    background-color: rgba(125, 255, 125, 0.712);
+.left-div .watch-now-button {
+    position: absolute;
     color: white;
-    margin-left: 23%;
+    margin-top: 30vw;
+    margin-left: 5vw;
+    width: 8vw;
+    height: 3vw;
     font-size: 0.9vw;
-    left: -10vw;
-    top: -5vw;
-    margin-top: 10vw;
-    width: 3vw;
-    height: 3vw;
-    border-radius: 10%;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+    transition: 0.1s;
 }
 
-.season-1-button:hover{
-    border-color: rgb(32, 28, 228);
-    width: 3vw;
-    height: 3vw;
-}
-
-.season-2-button{
-    display: table-cell;
-    position: relative;
+.left-div .watch-now-button:hover{
     background-color: rgba(125, 255, 125, 0.712);
+    transition: 0.2s;
+}
+
+.seasons-title {
+    position: absolute;
     color: white;
-    font-size: 0.9vw;
-    left: -9vw;
-    top: -5vw;
+    font-size: 2vw;
     margin-top: 10vw;
-    width: 3vw;
-    height: 3vw;
-    border-radius: 10%;
+    margin-left: 45vw;
 }
 
-.season-2-button:hover{
-    border-color: rgb(32, 28, 228);
-    width: 3vw;
-    height: 3vw;
-}
-
-.season-3-button{
-    display: table-cell;
-    position: relative;
-    background-color: rgba(125, 255, 125, 0.712);
-    color: white;
-    font-size: 0.9vw;
-    left: -8vw;
-    top: -5vw;
-    margin-top: 10vw;
-    width: 3vw;
-    height: 3vw;
-    border-radius: 10%;
-}
-
-.season-3-button:hover{
-    border-color: rgb(32, 28, 228);
-    width: 3vw;
-    height: 3vw;
-}
-
-.season-4-button{
-    display: table-cell;
-    position: relative;
-    background-color: rgba(125, 255, 125, 0.712);
-    color: white;
-    font-size: 0.9vw;
-    left: -7vw;
-    top: -5vw;
-    margin-top: 10vw;
-    width: 3vw;
-    height: 3vw;
-    border-radius: 10%;
-}
-
-.season-4-button:hover{
-    border-color: rgb(32, 28, 228);
-    width: 3vw;
-    height: 3vw;
-}
-
-.season-5-button{
-    display: table-cell;
-    position: relative;
-    background-color: rgba(125, 255, 125, 0.712);
-    color: white;
-    font-size: 0.9vw;
-    left: -6vw;
-    top: -5vw;
-    margin-top: 10vw;
-    width: 3vw;
-    height: 3vw;
-    border-radius: 10%;
-}
-
-.season-5-button:hover{
-    border-color: rgb(32, 28, 228);
-    width: 3vw;
-    height: 3vw;
-}
-
-.seasons-text{
-    position: relative;
-    font-size: 1.5vw;
-    line-height: 2.0vw;
-    color: white;
-    margin-top: -10.0vw;
-    margin-left: -2vw;
-    border-radius: 30%;
-    border-color: white;
-}
-
-.episode-grid{
-    position: relative;
+.seasons-grid-container {
+    position: absolute;
     display: grid;
-    grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    overflow-x: scroll ;
-    width: 80%;
-    height: 160px;
-    margin-top: 4%;
-    margin-left: 10%;
+    grid-template-columns: 3vw 3vw 3vw 3vw 3vw 3vw;
+    margin-top: 15vw;
+    margin-left: 42vw;
+
+  }
+
+  .seasons-grid-item {
+    background-color: rgba(125, 255, 125, 0.712);
     text-align: center;
-    line-height: 120px;
-    grid-gap: 5px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: white;
-    }
-    .episode-slot{
-        width: 200px;
-        height: 130px;
-        background-color: blueviolet;
-        border-radius: 10px;
-        pointer-events: none;
-    }
-    .episode-slot-unavailable{
-        width: 200px;
-        height: 130px;
-        background-color: black;
-        border-radius: 10px;
-        pointer-events: none;
-    }
+    font-size: 1vw;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 5px;
+  }
 
-    .episode-unavailable-text{
-        position: absolute;
-        margin-top: -128px;
-        width: 200px;
-        height: 130px;
-    }
-    .episode-text{
-        position: sticky;
-        width: 100px;
-        left:0;
-        z-index: 999;
-        background: rgb(32, 28, 228);
-    }
+  .seasons-grid-item:hover{
+      border-color: green;
+  }
 
-    .play-episode-1-button{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: -3210px;
-        border-color: transparent;
-    }
+.episodes-grid-container {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 25vw;
+    margin-left: 16vw;
+    overflow-x: scroll;
+    width: 66vw;
+  }
 
-    .play-episode-1-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
+  .episodes-grid-item {
+      position: relative;
+      background-color: blueviolet;
+      border-color: black;
+      border-radius: 5%;
+      margin-left: 1vw;
+  }
+  
+  .episodes-grid-item img {
+      border-radius: 5%;
+      height: 8vw;
+      width: 12vw;
+  }
 
-    .play-episode-2-button{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: -3010px;
-        border-color: transparent;
-    }
+  .episodes-grid-item button {
+    position: absolute;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    margin: 20% 34%;
+    font-size: 2vw;
+    border-radius: 50%;
+    width: 30%;
+    line-height: 3vw;
+    text-align: center;
+    padding-left: 5%;
+    border-color: black;
+    color: black;
+  }
 
-    .play-episode-2-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
+  .episodes-grid-item button:hover {
+      color: rgba(125, 255, 125, 0.712);
+      border-color: rgba(125, 255, 125, 0.712);
+  }
 
-    .play-episode-3-button{
-        position: relative;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: -105px;
-        margin-left: 590px;
-        border-color: transparent;
-    }
+  
+.episodes-grid-container::-webkit-scrollbar{
+    position: absolute; 
+    border-radius: 30px;
+    box-shadow: inset 0 0 5px white; 
+    height: 1vw;
 
-    .play-episode-3-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
+}
 
-    .play-episode-4-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 790px;
-        border-color: transparent;
-    }
+.episodes-grid-container::-webkit-scrollbar-thumb{ 
+   background-color: rgba(125, 255, 125, 0.425);
+   border-radius: 30px;
+}
 
-    .play-episode-4-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
-
-    .play-episode-5-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 990px;
-        border-color: transparent;
-    }
-
-    .play-episode-5-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
-
-    .play-episode-6-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 1195px;
-        border-color: transparent;
-    }
-
-    .play-episode-6-button:hover{
-        border-color:rgb(32, 28, 228);
-    }
-
-    .play-episode-7-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 1405px;
-        border-color: transparent;
-    }
-    
-    .play-episode-7-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    .play-episode-8-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 1605px;
-        border-color: transparent;
-    }
-    .play-episode-8-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    .play-episode-9-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 1815px;
-        border-color: transparent;
-    }
-    .play-episode-9-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    .play-episode-10-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 2020px;
-        border-color: transparent;
-    }
-    .play-episode-10-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    .play-episode-11-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 2225px;
-        border-color: transparent;
-    }
-    .play-episode-11-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    
-    .play-episode-12-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 2430px;
-        border-color: transparent;
-    }
-    .play-episode-12-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-
-    .play-episode-13-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 2635px;
-        border-color: transparent;
-    }
-    .play-episode-13-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-    .play-episode-14-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 2840px;
-        border-color: transparent;
-    }
-    .play-episode-14-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-    .play-episode-15-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 3045px;
-        border-color: transparent;
-    }
-    .play-episode-15-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
-    .play-episode-16-button{
-        position: absolute;
-        background: url('../images/other_images/play-episode.png');
-        width: 70px;
-        height: 70px;
-        margin-top: 30px;
-        margin-left: 3250px;
-        border-color: transparent;
-    }
-    .play-episode-16-button:hover{
-        border-color: rgb(32, 28, 228);
-    }
+.episodes-grid-container::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(125, 255, 125, 0.712);
+}
 
 .players-box {
     position: absolute;
-    width: 50%;
-    margin-top: -31vw;
-    margin-left: 27.5vw;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-
-.player-button {
-    background-color: transparent;
-    border-color: rgba(125, 255, 125, 0.712);
-    left: 4px;
-    width: 7vw;
-    height: 3.5vw;
-    border-radius: 15px;
-    color: white;
+    margin-top: 38vw;
+    margin-left: 44vw;
+    height: 3vw;
     font-size: 1vw;
 }
-.player-button:hover {
+
+.players-box button {
+    width: 7vw;
+    height: 3.5vw;
+    font-size: 1vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: transparent;
+    color: white;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 50px;
+}
+
+.players-box button:hover {
     background-color: rgba(125, 255, 125, 0.712);
 }
 
-.video-player {
-    width: 50%;
-    margin-top: 5%;
-    margin-left: 5%;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+
+.video-players-div {
+    position: absolute;
+    margin-top: 43vw;
+    margin-left: 26vw;
+    width: 50vw;
 }
 
-.login-warn-text{
-    margin-left: 4%;
-    font-size: 40px;
+.video-players-div video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.login-warn-text {
+    position: absolute;
+    margin-top: 34vw;
+    margin-left: 40vw;
+    font-size: 2vw;
     text-align: center;
     color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.go-to-first-episode-button {
+    display: none;
+    position: absolute;
+    margin-top: 23vw;
+    margin-left: 17vw;
+    font-size: 1vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    cursor: pointer;
+}
+
+.go-to-first-episode-button:hover {
+    color: rgba(125, 255, 125, 0.712);
+}
+
+
+.go-to-last-episode-button {
+    position: absolute;
+    margin-top: 23vw;
+    margin-left: 72.8vw;
+    width: 8.2vw;
+    font-size: 1vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
+    cursor: pointer;
+}
+.go-to-last-episode-button:hover {
+    color: rgba(125, 255, 125, 0.712);
 }

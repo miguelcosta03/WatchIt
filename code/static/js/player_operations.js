@@ -1,10 +1,24 @@
+function fillPlayerButtonBackgroundColor(buttonID) {
+    playerButton = document.getElementById(`${buttonID}`);
+    playerButton.style.backgroundColor = "rgba(125, 255, 125, 0.712)";
+}
+
+function resetPlayerButtonBackgroundColor(buttonID) {
+    playerButton = document.getElementById(`${buttonID}`);
+    playerButton.style.backgroundColor = "transparent";
+}
+
 function selectNormalPlayer() {
     normalVideoPlayer = document.getElementById('normalVideoPlayer');
     watchItVideoPlayer = document.getElementById('watchItVideoPlayer');
 
     watchItVideoPlayer.style.display = 'none';
-    normalVideoPlayer.style.marginLeft = '27.3vw';
+    watchItVideoPlayer.pause();
     normalVideoPlayer.style.display = 'block';
+
+    fillPlayerButtonBackgroundColor('normalPlayerButton');
+    resetPlayerButtonBackgroundColor('watchItPlayerButton');
+
 }
 
 function selectWatchItPlayer() {
@@ -12,6 +26,9 @@ function selectWatchItPlayer() {
     watchItVideoPlayer = document.getElementById('watchItVideoPlayer');
 
     normalVideoPlayer.style.display = 'none';
-    watchItVideoPlayer.style.marginLeft = '27.3vw';
+    normalVideoPlayer.pause();
     watchItVideoPlayer.style.display = 'block';
+    
+    resetPlayerButtonBackgroundColor('normalPlayerButton');
+    fillPlayerButtonBackgroundColor('watchItPlayerButton');
 }
