@@ -3,11 +3,11 @@ body {
 }
 
 .grid-series-container {
+    position: absolute;
     display: grid;
-    grid-template-columns: 15vw 15vw 15vw 15vw;
-    padding: 100px;
-    margin-top: 10vw;
-    margin-left: -100px;
+    grid-template-columns: 15vw 15vw 15vw;
+    margin-top: 70vw;
+    margin-left: 10vw;
 }
 
 .grid-series-item {

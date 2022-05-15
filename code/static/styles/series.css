@@ -1,17 +1,20 @@
 .top-series-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-  background-color: aliceblue;
+  position: absolute;
+  background-repeat: no-repeat;
+  margin-top: -1%;
+  width: 101.5%;
+  height: 54vw;
+  left: -1.5vw;
 }
 
 .top-series-container img {
   width: 100%;
-
+  height: 54vw;
 }
 
 .top-series-item {
   width: 100%;
+  
 }
 
 .top-serie-1 {
@@ -33,7 +36,7 @@
   left: 0vw;
   font-size: 1vw;
   background-color: rgb(25, 25, 25);
-  width: 10%;
+  width: 4.5%;
   height: 100%;
   filter: opacity(50%);
   cursor: pointer;
@@ -45,7 +48,7 @@
   right: 0vw;
   font-size: 1vw;
   background-color: rgb(25, 25, 25);
-  width: 10%;
+  width: 3%;
   height: 100%;
   filter: opacity(50%);
   cursor: pointer;
@@ -54,7 +57,7 @@
 .top-series-container .previous-button {
   position: absolute;
   top: 45%;
-  left: 1vw;
+  left: 1.6vw;
   font-size: 1vw;
   font-family: monospace;
   width: 3vw;
@@ -66,7 +69,7 @@
 .top-series-container .next-button {
   position: absolute;
   top: 45%;
-  right: 1vw;
+  right: 0vw;
   font-size: 1vw;
   font-family: monospace;
   border-radius: 600px;
@@ -77,16 +80,97 @@
   background: transparent;
 }
 
-
-.top-serie-name {
+.top-serie-left-div {
   position: absolute;
-  top: 35%;
-  left: 42%;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 2vw;
+  background:  linear-gradient(to left,  rgba(255, 255, 255, 0), black,black);
+  width: 55%;
+  border-radius: 0 700px 700px 0;
+  margin-top: -54vw;
+  height: 54vw;
+  margin-left: 0vw;
 }
 
+.top-serie-left-div .serie-name {
+  position: absolute;
+  color: white;
+  margin-top: 10vw;
+  margin-left: 5vw;
+  font-size: 2vw;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.top-serie-left-div .serie-release-year {
+  position: absolute;
+  margin-top: 13vw;
+  margin-left: 5vw;
+  font-size: 1vw;
+  color: white;
+}
+
+.top-serie-left-div .serie-duration {
+  position: absolute;
+  margin-top: 13vw;
+  margin-left: 9vw;
+  font-size: 1vw;
+  color: white;
+}
+
+.top-serie-left-div .serie-total-seasons-number {
+  position: absolute;
+  margin-top: 13vw;
+  margin-left: 13vw;
+  font-size: 1vw;
+  color: white;
+}
+
+.top-serie-left-div .serie-star-classification {
+  position: absolute;
+  margin-top: 15vw;
+  margin-left: 5vw;
+  font-size: 1vw;
+  color: white;
+}
+
+.top-serie-left-div .watch-now-button {
+  position: absolute;
+  color: white;
+  margin-top: 30vw;
+  margin-left: -22.5vw;
+  width: 8vw;
+  height: 3vw;
+  font-size: 0.9vw;
+  background-color: transparent;
+  border-color: rgba(125, 255, 125, 0.712);
+  border-radius: 5px;
+  transition: 0.1s;
+}
+
+.top-serie-left-div .watch-now-button:hover{
+  background-color: rgba(125, 255, 125, 0.712);
+  transition: 0.2s;
+}
+
+
+.top-serie-left-div .serie-description{
+  position: absolute;
+  color: white;
+  margin-top: 20vw;
+  margin-left: 5vw;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 50%;
+  font-size: 1vw;
+  text-align: justify;
+}
+
+
+.slogan-series {
+  position: absolute;
+  margin-top: 65vw;
+  margin-left: 35vw;
+  font-size: 2vw;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: white;
+}
 
 .grid-container {
   display: grid;

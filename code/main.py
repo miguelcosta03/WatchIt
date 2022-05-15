@@ -169,9 +169,36 @@ def movies():
 @app.route('/series', methods=['GET', 'POST'])
 def series():
     global isLogged
-    ts1_background = database.getSerieBackgroundImage(1)
-    ts2_background = database.getSerieBackgroundImage(2)
-    ts3_background = database.getSerieBackgroundImage(3)
+
+    ts_ids = database.getTrendingSeriesID()
+    ts1_background = database.getSerieBackgroundImage(ts_ids[0])
+    ts2_background = database.getSerieBackgroundImage(ts_ids[1])
+    ts3_background = database.getSerieBackgroundImage(ts_ids[2])
+
+    ts1_name = database.getSerieName(ts_ids[0])
+    ts2_name = database.getSerieName(ts_ids[1])
+    ts3_name = database.getSerieName(ts_ids[2])
+
+    ts1_release_year = database.getSerieReleaseYear(ts_ids[0])
+    ts2_release_year = database.getSerieReleaseYear(ts_ids[1])
+    ts3_release_year = database.getSerieReleaseYear(ts_ids[2])
+    
+    ts1_duration = database.getSerieDuration(ts_ids[0])
+    ts2_duration = database.getSerieDuration(ts_ids[1])
+    ts3_duration = database.getSerieDuration(ts_ids[2])
+
+    ts1_total_seasons_number = database.getSerieTotalSeasonsNumber(ts_ids[0])
+    ts2_total_seasons_number = database.getSerieTotalSeasonsNumber(ts_ids[1])
+    ts3_total_seasons_number = database.getSerieTotalSeasonsNumber(ts_ids[2])
+
+
+    ts1_star_classification = database.getSerieStarClassification(ts_ids[0])
+    ts2_star_classification = database.getSerieStarClassification(ts_ids[1])
+    ts3_star_classification = database.getSerieStarClassification(ts_ids[2])
+
+    ts1_description = database.getSerieDescription(ts_ids[0])
+    ts2_description = database.getSerieDescription(ts_ids[1])
+    ts3_description = database.getSerieDescription(ts_ids[2])
 
     s1_image = database.getSerieCoverImage(1)
     s2_image = database.getSerieCoverImage(2)
@@ -181,11 +208,6 @@ def series():
     s2_value = database.getSerieName(2)
     s3_value = database.getSerieName(3)
 
-    ts_ids = database.getTrendingSeriesID()
-    ts1_name = database.getSerieName(ts_ids[0])
-    ts2_name = database.getSerieName(ts_ids[1])
-    ts3_name = database.getSerieName(ts_ids[2])
-    
     if request.method == "POST":
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
@@ -199,8 +221,15 @@ def series():
             database.updateCurrentSerieURL('euphoria', "Euphoria")
             return redirect(url_for("watchSerie"))
 
-    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts2_background=ts2_background, ts3_background=ts3_background, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image, 
-                           s1_value=s1_value, s2_value=s2_value, ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
+                           ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
+                           ts1_star_classification=ts1_star_classification, ts1_description=ts1_description,
+                           ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
+                           ts2_total_seasons_number=ts2_total_seasons_number, ts2_star_classification=ts2_star_classification, ts2_description=ts2_description,
+                           ts3_background=ts3_background, ts3_name=ts3_name, ts3_release_year=ts3_release_year, ts3_duration=ts3_duration,
+                           ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
+                           ts3_description=ts3_description, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
+                           s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
 
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
