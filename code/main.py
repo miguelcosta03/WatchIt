@@ -18,7 +18,7 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
@@ -208,6 +208,22 @@ def series():
     s2_value = database.getSerieName(2)
     s3_value = database.getSerieName(3)
 
+    def convertSerieNameToURL(serieName):
+        return serieName.lower().replace(' ', '')
+
+    if request.method == "POST":
+        if request.form.get('watchTopSerie') == "watchTopSerie1":
+            database.updateCurrentSerieURL(convertSerieNameToURL(ts1_name), ts1_name)
+            return redirect(url_for("watchSerie"))
+
+        if request.form.get('watchTopSerie') == "watchTopSerie2":
+            database.updateCurrentSerieURL(convertSerieNameToURL(ts2_name), ts2_name)
+            return redirect(url_for("watchSerie"))
+        
+        if request.form.get('watchTopSerie') == "watchTopSerie3":
+            database.updateCurrentSerieURL(convertSerieNameToURL(ts3_name), ts3_name)
+            return redirect(url_for("watchSerie"))
+            
     if request.method == "POST":
         if request.form.get('s1Button') == s1_value:
             database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')

@@ -70,7 +70,9 @@
           <p class="serie-total-seasons-number">{{ ts1_total_seasons_number }} Temporadas</p>
           <p class="serie-star-classification">{{ ts1_star_classification }} / 10 ⭐</p>
           <p class="serie-description">{{ ts1_description }}</p>
-          <button class="watch-now-button" onclick="scrollToEpisodesGrid()">Assistir Agora</button>
+          <form method="post">
+            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie1">Assistir Agora</button>
+          </form>
         </div>
       </div>
       <div class="top-series-item" style="display: none;" id="topSerie2Div">
@@ -82,7 +84,9 @@
           <p class="serie-total-seasons-number">{{ ts2_total_seasons_number }} Temporadas</p>
           <p class="serie-star-classification">{{ ts2_star_classification }} / 10 ⭐</p>
           <p class="serie-description">{{ ts2_description }}</p>
-          <button class="watch-now-button" onclick="scrollToEpisodesGrid()">Assistir Agora</button>
+          <form method="post">
+            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie2">Assistir Agora</button>
+          </form>
         </div>
       </div>
       <div class="top-series-item" style="display: none;" id="topSerie3Div">

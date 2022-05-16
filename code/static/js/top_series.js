@@ -169,7 +169,7 @@ function previousTopSerie() {
             nextButton.click();
         }, 3000);
         
-    } else if (currentTopSerieIndex == -1 || currentTopSerieIndex == 1){
+    } else if (currentTopSerieIndex == 1){
         $("#topSerie1Div").fadeOut(50);
         $("#topSerie2Div").fadeIn(500);
         showTopSerie2();
@@ -185,7 +185,7 @@ function previousTopSerie() {
             nextButton.click();
         }, 3000);
 
-    } else if (currentTopSerieIndex == -2 || currentTopSerieIndex == 2) {
+    } else if (currentTopSerieIndex == 2) {
         $("#topSerie2Div").fadeOut(50);
         $("#topSerie3Div").fadeIn(500);
         showTopSerie3();
@@ -204,7 +204,7 @@ function previousTopSerie() {
     } else {
         if (currentTopSerieIndex < -2) {
             currentTopSerieIndex = 0;
-            $("#topSerie3Div").fadeOut(50);
+            $("#topSerie2Div").fadeOut(50);
             $("#topSerie1Div").fadeIn(500);
             showTopSerie1();
             countS1 = true;
@@ -212,10 +212,42 @@ function previousTopSerie() {
             countS3 = false;
     
             if (countS1 === true) {
-                clearTimeout(waitS3);
+                clearTimeout(waitS2);
             }
             
             waitS1 = setTimeout(() => {
+                nextButton.click();
+            }, 3000);
+        }
+        else if (currentTopSerieIndex == -1) {
+            $("#topSerie1Div").fadeOut(50);
+            $("#topSerie3Div").fadeIn(500);
+            showTopSerie3();
+            countS1 = false;
+            countS2 = false;
+            countS3 = true;
+    
+            if (countS3 === true){
+                clearTimeout(waitS1);
+            }
+            
+            waitS3 = setTimeout(() => {
+                nextButton.click();
+            }, 3000);
+            
+        } else if (currentTopSerieIndex == -2) {
+            $("#topSerie3Div").fadeOut(50);
+            $("#topSerie2Div").fadeIn(500);
+            showTopSerie2();
+            counts1 = false;
+            countS2 = true;
+            countS3 = false;
+    
+            if (countS2 === true) {
+                clearTimeout(waitS3);
+            }
+    
+            waitS2 = setTimeout(() => {
                 nextButton.click();
             }, 3000);
         }
