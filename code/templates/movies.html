@@ -64,21 +64,23 @@
     <div class="col-sm-4">
         <div class="grid-movies-container">
             <div class="grid-movies-item">
-                <form class="movie-container" action="/" method="post">
-                    @Movie 1
+                <form class="movie-container" method="post">
+                    <img src="{{ m1_image }}">
+                    <button class="btn" name="m1Button" value="{{ m1_value }}"></button>
                 </form>
             </div>
             <div class="grid-movies-item">
-                <form class="movie-container" action="/" method="post">
-                    @Movie 2
+                <form class="movie-container" method="post">
+                  <img src="{{ m2_image }}">
+                  <button class="btn" name="m2Button" value="{{ m2_value }}"></button>
                 </form>
             </div>
             <div class="grid-movies-item">
-                <form class="movie-container" action="/" method="post">
-                    @Movie 3
-                </form>
+              <form class="movie-container" method="post">
+                <img src="{{ m3_image }}">
+                <button class="btn" name="m3Button" value="{{ m3_value }}"></button>
+              </form>
             </div>
-            
         </div>
         
     </div>

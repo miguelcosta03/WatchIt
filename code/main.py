@@ -12,17 +12,19 @@ loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
 moviesTemplate = 'movies.html'
+movieTemplate = 'movie.html'
 seriesTemplate = 'series.html'
 editProfileTemplate = 'editProfile.html'
 insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
 serieName = None
+movieName = None
 scrollToEpisodeGrid = False
 
 
@@ -160,11 +162,31 @@ def mainPage():
                             s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
                             ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
 
-
-@app.route('/filmes')
+@app.route('/filmes', methods=['GET', 'POST'])
 def movies():
     global isLogged
-    return render_template(moviesTemplate, isLogged=isLogged)
+    global movieName
+    
+    m1_value = "Joker"
+    m2_value = "Dunkirk"
+    m3_value = "Look Mom I Can Fly"
+
+    m1_image = database.getMovieCoverImage(1)
+    m2_image = database.getMovieCoverImage(2)
+    m3_image = database.getMovieCoverImage(3)
+
+    if request.method == "POST":
+        if request.form.get('m1Button') == m1_value:
+            database.updateCurrentMovieURL('joker', 'Joker')
+            return redirect(url_for("watchMovie"))
+        if request.form.get('m2Button') == m2_value:
+            database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
+            return redirect(url_for("watchMovie"))
+        if request.form.get('m3Button') == m3_value:
+            database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
+            return redirect(url_for("watchMovie"))
+    return render_template(moviesTemplate, isLogged=isLogged, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image,
+                           m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
 
 @app.route('/series', methods=['GET', 'POST'])
 def series():
@@ -655,5 +677,17 @@ def watchSerie():
                            ep9_available=ep9_available, ep10_available=ep10_available, ep11_available=ep11_available, ep12_available=ep12_available,
                            ep13_available=ep13_available, ep14_available=ep14_available, ep15_available=ep15_available, ep16_available=ep16_available)
 
+@app.route(f"/{database.getCurrentMovieURL()}", methods=['GET', 'POST'])
+def watchMovie():
+    global isLogged
+    movie_title = database.getCurrentMovieName()
+    movie_image_background = r'{}'.format(database.getMovieBackgroundImage(database.getMovieID(movie_title)))
+    movie_release_year = database.getMovieReleaseYear(database.getMovieID(movie_title))
+    movie_duration = database.getMovieDuration(database.getMovieID(movie_title))
+    movie_star_classification = database.getMovieStarClassification(database.getMovieID(movie_title))
+    movie_description = database.getMovieDescription(database.getMovieID(movie_title))
+    return render_template(movieTemplate, isLogged=isLogged, movie_title=movie_title, movie_image_background=movie_image_background,
+                           movie_release_year=movie_release_year, movie_duration=movie_duration,
+                           movie_star_classification=movie_star_classification, movie_description=movie_description)
 if __name__ == "__main__":
     app.run(debug=True)

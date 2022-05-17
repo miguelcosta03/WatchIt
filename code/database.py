@@ -283,3 +283,93 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def getMovieID(self, movieName):
+        query = f"""SELECT
+                        ID
+                    FROM dbo.Filmes
+                    WHERE Nome='{movieName}'"""
+        self.cursor.execute(query)
+        movieID = self.cursor.fetchall()
+        return str(movieID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getMovieName(self, movieID):
+        query = f"""SELECT
+                        Nome
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        movieName = self.cursor.fetchall()
+        return str(movieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def getMovieReleaseYear(self, movieID):
+        query = f"""SELECT
+                        Ano_Lancamento
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        release_year = self.cursor.fetchall()
+        return str(release_year).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getMovieDuration(self, movieID):
+        query = f"""SELECT
+                        Duracao
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        duration = self.cursor.fetchall()
+        return str(duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def getMovieStarClassification(self, movieID):
+        query = f"""SELECT
+                        Classificacao
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        classification = self.cursor.fetchall()
+        return str(classification).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getMovieDescription(self, movieID):
+        query = f"""SELECT
+                        Descricao
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        description = self.cursor.fetchall()
+        return str(description).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '')
+    def getMovieCoverImage(self, movieID):
+        query = f"""SELECT
+                        Imagem_Capa
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        cover_image = self.cursor.fetchall()
+        return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def getMovieBackgroundImage(self, movieID):
+        query = f"""SELECT
+                        Imagem_Background
+                    FROM dbo.Filmes
+                    WHERE ID={movieID}"""
+        self.cursor.execute(query)
+        background_image = self.cursor.fetchall()
+        return str(background_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+    def updateCurrentMovieURL(self, movie_url, movie_name):
+        query = f"""UPDATE dbo.FilmeAtual
+                        SET Filme_URL='{movie_url}',
+                        Nome='{movie_name}'
+                   WHERE ID_Filme=1;"""
+        self.cursor.execute(query).commit()
+        
+    def getCurrentMovieURL(self):
+        query = """SELECT Filme_URL FROM dbo.FilmeAtual;"""
+        self.cursor.execute(query)
+        movieURL = self.cursor.fetchall()
+        return str(movieURL).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getCurrentMovieName(self):
+        query = """SELECT Nome FROM dbo.FilmeAtual;"""
+        self.cursor.execute(query)
+        movieName = self.cursor.fetchall()
+        return str(movieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')

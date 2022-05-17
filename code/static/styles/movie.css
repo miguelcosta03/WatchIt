@@ -1,0 +1,128 @@
+.movie-image {
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 54vw;
+    left: 0vw;
+}
+
+
+.left-div {
+    position: absolute;
+    background:  linear-gradient(to left,  rgba(255, 255, 255, 0), black,black);
+    width: 55%;
+    border-radius: 0 700px 700px 0;
+    margin-top: -54vw;
+    height: 54vw;
+    margin-left: 0vw;
+}
+
+.left-div .movie-name {
+    position: absolute;
+    color: white;
+    margin-top: 10vw;
+    margin-left: 5vw;
+    font-size: 2vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.left-div .movie-release-year {
+    position: absolute;
+    margin-top: 13vw;
+    margin-left: 5vw;
+    font-size: 1vw;
+    color: white;
+}
+
+.left-div .movie-duration {
+    position: absolute;
+    margin-top: 13vw;
+    margin-left: 9vw;
+    font-size: 1vw;
+    color: white;
+}
+
+.left-div .movie-star-classification {
+    position: absolute;
+    margin-top: 13vw;
+    margin-left: 13vw;
+    font-size: 1vw;
+    color: white;
+}
+
+.left-div .movie-description {
+    position: absolute;
+    color: white;
+    margin-top: 20vw;
+    margin-left: 5vw;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 50%;
+    font-size: 1vw;
+    text-align: justify;
+}
+
+.left-div .watch-now-button {
+    position: absolute;
+    color: white;
+    margin-top: 30vw;
+    margin-left: 5vw;
+    width: 8vw;
+    height: 3vw;
+    font-size: 0.9vw;
+    background-color: transparent;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+    transition: 0.1s;
+}
+
+.left-div .watch-now-button:hover {
+    background-color: rgba(125, 255, 125, 0.712);
+    transition: 0.2s;
+}
+
+
+.players-box {
+    position: absolute;
+    margin-top: 10vw;
+    margin-left: 44vw;
+    height: 3vw;
+    font-size: 1vw;
+}
+
+.players-box button {
+    width: 7vw;
+    height: 3.5vw;
+    font-size: 1vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: transparent;
+    color: white;
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 50px;
+}
+
+.players-box button:hover {
+    background-color: rgba(125, 255, 125, 0.712);
+}
+
+.video-players-div {
+    position: absolute;
+    margin-top: 15vw;
+    margin-left: 26vw;
+    width: 50vw;
+}
+
+.video-players-div video {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.login-warn-text {
+    position: absolute;
+    margin-top: 34vw;
+    margin-left: 40vw;
+    font-size: 2vw;
+    text-align: center;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}

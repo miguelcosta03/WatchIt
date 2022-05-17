@@ -1,3 +1,18 @@
+.top-series-progress-bar-div {
+  position: absolute;
+  background-color: white;
+  margin-top: 40vw;
+  margin-left: 4.6vw;
+  width: 23vw;
+  height: 0.1vw;
+}
+
+.top-series-progress-bar {
+  background-color: rgba(125, 255, 125, 0.712);
+  width: 1%;
+  height: 0.1vw;
+}
+
 .top-series-container {
   position: absolute;
   background-repeat: no-repeat;
@@ -14,7 +29,6 @@
 
 .top-series-item {
   width: 100%;
-  
 }
 
 .top-serie-1 {

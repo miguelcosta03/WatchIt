@@ -26,7 +26,7 @@ function scrollToLastEpisode() {
     lastEpisodeLabel.style.display = "none";
     firstEpisodeLabel.style.display = "block";
     episodesGrid.scrollTo({
-        left : 500,
+        left : 9999999,
         behavior : 'smooth'
     });
 }

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie_title }}</title>
+    <link rel="stylesheet" href="../static/styles/movie.css">
+    <link rel="stylesheet" href="../static/styles/mainpage.css">
+    <link rel="stylesheet" href="../static/styles/watchit_player.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="../static/js/urls.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" style="background: transparent;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+                </button>
+                <form action="/" method="post">
+                    <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
+                </form>
+                <h1 class="movies-button" onclick="redirectToMoviesPage()">FILMES</h1>
+                <h1 class="series-button" onclick="redirectToSeriesPage()">SÉRIES</h1>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        {% if isLogged %}
+                        <div class="dropdown">
+                        <div class="dropdown-content" id="dropdownContent">
+                            <button class="edit-profile-button" onclick="redirectToEditProfilePage()">Editar Perfil</button>
+                            <button class="logout-button">Sair</button>
+                        </div>
+                        <button class="profile-picture" id="profilePicture" onmouseenter="moveProfilePanel()"></button>
+                        </div>
+                        {% else %}
+                            <button class="header-buttons mainButton" onclick="redirectToLoginPage()">Login</button>
+                            <button class="header-buttons mainButton" onclick="redirectToSignUpPage()">Registar</button>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <img class="movie-image" src="{{ movie_image_background }}">
+    <div class="left-div">
+        <h1 class="movie-name">{{ movie_title }}</h1>
+        <p class="movie-release-year">{{ movie_release_year }}</p>
+        <p class="movie-duration">{{ movie_duration }}</p>
+        <p class="movie-description">{{ movie_description }}</p>
+        <p class="movie-star-classification">{{ movie_star_classification }} / 10 ⭐</p>
+        <button class="watch-now-button">Assistir Agora</button>
+    </div>
+    {% if isLogged %}
+        <div class="players-box">
+            <button id="normalPlayerButton" onclick="selectNormalPlayer()">Player Normal</button>
+            <button id="watchItPlayerButton" style="background-color: rgba(125, 255, 125, 0.712);"  onclick="selectWatchItPlayer()">WatchIt Player</button>
+        </div>
+        <div class="video-players-div" id="videoPlayersDiv">
+            <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+            <video class="watchit-video-player" style="display: block;" id="watchItVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+        </div>
+    {% else %}
+        <div hidden class="players-box">
+            <button id="normalPlayerButton" onclick="selectNormalPlayer()">Player Normal</button>
+            <button id="watchItPlayerButton" style="background-color: rgba(125, 255, 125, 0.712);"  onclick="selectWatchItPlayer()">WatchIt Player</button>
+        </div>
+        <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
+    {% endif %}
+</body>
+</html>

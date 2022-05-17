@@ -73,6 +73,9 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie1">Assistir Agora</button>
           </form>
+          <div class="top-series-progress-bar-div">
+            <div class="top-series-progress-bar" id="topSerieProgressBar1"></div>
+          </div>
         </div>
       </div>
       <div class="top-series-item" style="display: none;" id="topSerie2Div">
@@ -87,6 +90,9 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie2">Assistir Agora</button>
           </form>
+          <div class="top-series-progress-bar-div">
+            <div class="top-series-progress-bar" id="topSerieProgressBar2"></div>
+          </div>
         </div>
       </div>
       <div class="top-series-item" style="display: none;" id="topSerie3Div">
@@ -98,7 +104,12 @@
           <p class="serie-total-seasons-number">{{ ts3_total_seasons_number }} Temporadas</p>
           <p class="serie-star-classification">{{ ts3_star_classification }} / 10 ⭐</p>
           <p class="serie-description">{{ ts3_description }}</p>
-          <button class="watch-now-button" onclick="scrollToEpisodesGrid()">Assistir Agora</button>
+          <form method="post">
+            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie3">Assistir Agora</button>
+          </form>
+          <div class="top-series-progress-bar-div">
+            <div class="top-series-progress-bar" id="topSerieProgressBar3"></div>
+          </div>
         </div>
       </div>
       <div class="previous-button-div" id="previousButtonDiv" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousSerieArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousSerieArrowColor()" onclick="previousTopSerie()">

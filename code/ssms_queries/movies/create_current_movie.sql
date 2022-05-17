@@ -1,0 +1,5 @@
+CREATE TABLE FilmeAtual(
+	ID_Filme INT,
+	Filme_URL VARCHAR(255),
+	Nome VARCHAR(255)
+);

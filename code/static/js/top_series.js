@@ -6,6 +6,25 @@ let waitS1 = undefined;
 let waitS2 = undefined;
 let waitS3 = undefined;
 
+function fillTopSerieProgressBar(progressBarID) {
+    let progressBar = document.getElementById(`${progressBarID}`);
+    let progressBarWidth = 1;
+    setInterval(() => {
+        progressBarWidth += 1;
+        if (progressBarWidth > 100) {
+            clearInterval();
+        } else {
+            progressBar.style.width = progressBarWidth + "%";
+        }
+    }, 30);
+}
+
+function resetTopSerieProgressBar(progressBarID) {
+    let progressBar = document.getElementById(`${progressBarID}`);
+    let progressBarWidth = 1;
+    progressBar.style.width = progressBarWidth + "%";
+}
+
 function nextTopSerie() {
     let topSerie1 = document.getElementById('topSerie1');
     let topSerie2 = document.getElementById('topSerie2');
@@ -40,6 +59,9 @@ function nextTopSerie() {
         $("#topSerie3Div").fadeOut(50);
         $("#topSerie1Div").fadeIn(500);
         showTopSerie1();
+        resetTopSerieProgressBar('topSerieProgressBar3');
+        fillTopSerieProgressBar('topSerieProgressBar1');
+
         countS1 = true;
         countS2 = false;
         countS3 = false;
@@ -56,6 +78,9 @@ function nextTopSerie() {
         $("#topSerie1Div").fadeOut(50);
         $("#topSerie2Div").fadeIn(500);
         showTopSerie2();
+        resetTopSerieProgressBar('topSerieProgressBar1');
+        fillTopSerieProgressBar('topSerieProgressBar2');
+        
         counts1 = false;
         countS2 = true;
         countS3 = false;
@@ -72,6 +97,9 @@ function nextTopSerie() {
         $("#topSerie2Div").fadeOut(50);
         $("#topSerie3Div").fadeIn(500);
         showTopSerie3();
+        resetTopSerieProgressBar('topSerieProgressBar2');
+        fillTopSerieProgressBar('topSerieProgressBar3');
+
         countS1 = false;
         countS2 = false;
         countS3 = true;
@@ -91,6 +119,9 @@ function nextTopSerie() {
             $("#topSerie3Div").fadeOut(50);
             $("#topSerie1Div").fadeIn(500);
             showTopSerie1();
+            resetTopSerieProgressBar('topSerieProgressBar3');
+            fillTopSerieProgressBar('topSerieProgressBar1');
+            
             countS1 = true;
             countS2 = false;
             countS3 = false;
@@ -108,6 +139,8 @@ function nextTopSerie() {
             $("#topSerie1Div").fadeOut(50);
             $("#topSerie3Div").fadeIn(500);
             showTopSerie3();
+            resetTopSerieProgressBar('topSerieProgressBar2');
+            fillTopSerieProgressBar('topSerieProgressBar3');
             countS1 = false;
             countS2 = false;
             countS3 = true;
