@@ -175,6 +175,12 @@ def movies():
     m2_image = database.getMovieCoverImage(2)
     m3_image = database.getMovieCoverImage(3)
 
+    tm1_background = database.getMovieBackgroundImage(1)
+    tm1_name = database.getMovieName(1)
+    tm1_release_year = database.getMovieDuration(1)
+    tm1_star_classification = database.getMovieStarClassification(1)
+    tm1_description = database.getMovieDescription(1)
+
     if request.method == "POST":
         if request.form.get('m1Button') == m1_value:
             database.updateCurrentMovieURL('joker', 'Joker')
@@ -185,7 +191,9 @@ def movies():
         if request.form.get('m3Button') == m3_value:
             database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
             return redirect(url_for("watchMovie"))
-    return render_template(moviesTemplate, isLogged=isLogged, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image,
+    return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
+                           tm1_star_classification=tm1_star_classification, tm1_description=tm1_description,
+                           m1_image=m1_image, m2_image=m2_image, m3_image=m3_image,
                            m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
 
 @app.route('/series', methods=['GET', 'POST'])
