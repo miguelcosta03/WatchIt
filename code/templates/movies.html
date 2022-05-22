@@ -57,11 +57,11 @@
       </div>
     </div>
   </nav>
-  <h1 class="slogan-series">Os teus filmes favoritos estão aqui!</h1><br>
+  <h1 class="slogan-movies">Os teus filmes favoritos estão aqui!</h1><br>
   <div class="container text-center" style="background: transparent;">
     <div class="top-movies-container">
-      <div class="top-series-item" id="topSerie1Div">
-        <img class="top-serie-1" id="topSerie1" src="{{ tm1_background }}">
+      <div class="top-movies-item" id="topMovie1Div">
+        <img class="top-movie-1" id="topMovie1" src="{{ tm1_background }}">
         <div class="top-movie-left-div">
           <h1 class="movie-name">{{ tm1_name }}</h1>
           <p class="movie-release-year">{{ tm1_release_year }}</p>
@@ -69,42 +69,42 @@
           <p class="movie-star-classification">{{ tm1_star_classification }} / 10 ⭐</p>
           <p class="movie-description">{{ tm1_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie1">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
-          <div class="top-series-progress-bar-div">
-            <div class="top-series-progress-bar" id="topSerieProgressBar1"></div>
+          <div class="top-movies-progress-bar-div">
+            <div class="top-movies-progress-bar" id="topMovieProgressBar1"></div>
           </div>
         </div>
       </div>
-      <div class="top-series-item" style="display: none;" id="topSerie2Div">
-        <img class="top-serie-2" id="topSerie2" src="{{ ts2_background }}">
-        <div class="top-serie-left-div">
+      <div class="top-movies-item" style="display: none;" id="topMovie2Div">
+        <img class="top-movie-2" id="topMovie2" src="{{ tm2_background }}">
+        <div class="top-movies-left-div">
+          <h1 class="movie-name">{{ tm2_name }}</h1>
+          <p class="movie-release-year">{{ tm2_release_year }}</p>
+          <p class="movie-duration">{{ tm2_duration }}</p>
+          <p class="movie-star-classification">{{ tm2_star_classification }} / 10 ⭐</p>
+          <p class="movie-description">{{ tm2_description }}</p>
+          <form method="post">
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie2">Assistir Agora</button>
+          </form>
+          <div class="top-movies-progress-bar-div">
+            <div class="top-movies-progress-bar" id="topMovieProgressBar2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="top-movies-item" style="display: none;" id="topMovie3Div">
+        <img class="top-movies-3" id="topSerie3" src="{{ tm3_background }}">
+        <div class="top-movies-left-div">
           <h1 class="movie-name">{{ tm1_name }}</h1>
           <p class="movie-release-year">{{ tm1_release_year }}</p>
           <p class="movie-duration">{{ tm1_duration }}</p>
           <p class="movie-star-classification">{{ tm1_star_classification }} / 10 ⭐</p>
           <p class="movie-description">{{ tm1_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie2">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie3">Assistir Agora</button>
           </form>
-          <div class="top-series-progress-bar-div">
-            <div class="top-series-progress-bar" id="topSerieProgressBar2"></div>
-          </div>
-        </div>
-      </div>
-      <div class="top-series-item" style="display: none;" id="topSerie3Div">
-        <img class="top-serie-3" id="topSerie3" src="{{ ts3_background }}">
-        <div class="top-serie-left-div">
-          <h1 class="movie-name">{{ tm1_name }}</h1>
-          <p class="movie-release-year">{{ tm1_release_year }}</p>
-          <p class="movie-duration">{{ tm1_duration }}</p>
-          <p class="movie-star-classification">{{ tm1_star_classification }} / 10 ⭐</p>
-          <p class="movie-description">{{ tm1_description }}</p>
-          <form method="post">
-            <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie3">Assistir Agora</button>
-          </form>
-          <div class="top-series-progress-bar-div">
-            <div class="top-series-progress-bar" id="topSerieProgressBar3"></div>
+          <div class="top-movie-progress-bar-div">
+            <div class="top-movie-progress-bar" id="topMovieProgressBar3"></div>
           </div>
         </div>
       </div>
