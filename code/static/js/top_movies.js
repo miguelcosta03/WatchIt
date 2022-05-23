@@ -8,7 +8,6 @@ let waitM3 = undefined;
 
 
 function nextTopMovie() {
-    console.log(currentTopMovieIndex);
     let topMovie1 = document.getElementById('topMovie1Div');
     let topMovie2 = document.getElementById('topMovie2Div');
     let topMovie3 = document.getElementById('topMovie3Div');
@@ -53,7 +52,6 @@ function nextTopMovie() {
     } else if (currentTopMovieIndex == 1) {
         $('#topMovie1Div').fadeOut(50);
         $('#topMovie2Div').fadeIn(500);
-        console.log('whattt')
         showTopMovie2();
 
         countM1 = false;
