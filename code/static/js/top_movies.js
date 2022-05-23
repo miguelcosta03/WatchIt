@@ -11,7 +11,7 @@ function nextTopMovie() {
     let topMovie1 = document.getElementById('topMovie1Div');
     let topMovie2 = document.getElementById('topMovie2Div');
     let topMovie3 = document.getElementById('topMovie3Div');
-    let nextButton = document.getElementById('nextMovieButton');
+    let nextButton = document.getElementById('nextMovieArrow');
     currentTopMovieIndex += 1;
 
     function showTopMovie1() {
