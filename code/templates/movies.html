@@ -13,6 +13,7 @@
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/urls.js"></script>
   <script src="../static/vendor/widget_movement.js"></script>
+  <script src="../static/js/top_movies.js"></script>
   <style>    
       .navbar {
         margin-bottom: 0;
@@ -60,7 +61,7 @@
   <h1 class="slogan-movies">Os teus filmes favoritos estão aqui!</h1><br>
   <div class="container text-center" style="background: transparent;">
     <div class="top-movies-container">
-      <div class="top-movies-item" id="topMovie1Div">
+      <div class="top-movies-item" style="display: block;" id="topMovie1Div">
         <img class="top-movie-1" id="topMovie1" src="{{ tm1_background }}">
         <div class="top-movie-left-div">
           <h1 class="movie-name">{{ tm1_name }}</h1>
@@ -78,42 +79,42 @@
       </div>
       <div class="top-movies-item" style="display: none;" id="topMovie2Div">
         <img class="top-movie-2" id="topMovie2" src="{{ tm2_background }}">
-        <div class="top-movies-left-div">
+        <div class="top-movie-left-div">
           <h1 class="movie-name">{{ tm2_name }}</h1>
           <p class="movie-release-year">{{ tm2_release_year }}</p>
           <p class="movie-duration">{{ tm2_duration }}</p>
           <p class="movie-star-classification">{{ tm2_star_classification }} / 10 ⭐</p>
           <p class="movie-description">{{ tm2_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie2">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
           <div class="top-movies-progress-bar-div">
-            <div class="top-movies-progress-bar" id="topMovieProgressBar2"></div>
+            <div class="top-movies-progress-bar" id="topMovieProgressBar1"></div>
           </div>
         </div>
       </div>
       <div class="top-movies-item" style="display: none;" id="topMovie3Div">
-        <img class="top-movies-3" id="topSerie3" src="{{ tm3_background }}">
-        <div class="top-movies-left-div">
-          <h1 class="movie-name">{{ tm1_name }}</h1>
-          <p class="movie-release-year">{{ tm1_release_year }}</p>
-          <p class="movie-duration">{{ tm1_duration }}</p>
-          <p class="movie-star-classification">{{ tm1_star_classification }} / 10 ⭐</p>
-          <p class="movie-description">{{ tm1_description }}</p>
+        <img class="top-movie-3" id="topMovie3" src="{{ tm3_background }}">
+        <div class="top-movie-left-div">
+          <h1 class="movie-name">{{ tm3_name }}</h1>
+          <p class="movie-release-year">{{ tm3_release_year }}</p>
+          <p class="movie-duration">{{ tm3_duration }}</p>
+          <p class="movie-star-classification">{{ tm3_star_classification }} / 10 ⭐</p>
+          <p class="movie-description">{{ tm3_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie3">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
-          <div class="top-movie-progress-bar-div">
-            <div class="top-movie-progress-bar" id="topMovieProgressBar3"></div>
+          <div class="top-movies-progress-bar-div">
+            <div class="top-movies-progress-bar" id="topMovieProgressBar1"></div>
           </div>
         </div>
       </div>
-      <div class="previous-button-div" id="previousButtonDiv" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousSerieArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousSerieArrowColor()" onclick="previousTopSerie()">
+      <div class="previous-button-div" id="previousButtonDiv" onclick="previousTopSerie()">
       </div>
-      <div class="next-button-div" id="nextButtonDiv" onmouseenter="increaseOpacity('nextButtonDiv'); changeNextSerieArrowColor()" onmouseleave="decreaseOpacity('nextButtonDiv'); resetNextSerieArrowColor()" onclick="nextTopSerie();">
+      <div class="next-button-div" id="nextButtonDiv" onclick="nextTopMovie();">
       </div>
-      <button class="previous-button" id="previousSerieArrow" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousSerieArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousSerieArrowColor()" onclick="previousTopSerie()"><</button>
-      <button class="next-button" id="nextSerieArrow" onmouseenter="increaseOpacity('nextButtonDiv'); changeNextSerieArrowColor()" onmouseleave="decreaseOpacity('nextButtonDiv'); resetNextSerieArrowColor()" onclick="nextTopSerie()">></button>
+      <button class="previous-button" id="previousSerieArrow" onclick="previousTopSerie()"><</button>
+      <button class="next-button" id="nextMovieArrow" onclick="nextTopMovie()">></button>
     </div>
     <div class="row">
       <div class="col-sm-4">
