@@ -28,23 +28,23 @@ function decreaseOpacity(elementID) {
     element.style.filter = `opacity(50%)`;
 }
 
-function changePreviousSerieArrowColor() {
-    const previousSerieArrow = document.getElementById('previousSerieArrow');
+function changePreviousArrowColor() {
+    const previousSerieArrow = document.getElementById('previousArrow');
     previousSerieArrow.style.color = "rgba(125, 255, 125, 0.712)";
 }
 
-function resetPreviousSerieArrowColor() {
-    const previousSerieArrow = document.getElementById('previousSerieArrow');
+function resetPreviousArrowColor() {
+    const previousSerieArrow = document.getElementById('previousArrow');
     previousSerieArrow.style.color = "rgb(255, 255, 255)";
 }
 
-function changeNextSerieArrowColor() {
-    const nextSerieArrow = document.getElementById('nextSerieArrow');
+function changeNextArrowColor() {
+    const nextSerieArrow = document.getElementById('nextArrow');
     nextSerieArrow.style.color = "rgba(125, 255, 125, 0.712)";
 }
 
-function resetNextSerieArrowColor() {
-    const nextSerieArrow = document.getElementById('nextSerieArrow');
+function resetNextArrowColor() {
+    const nextSerieArrow = document.getElementById('nextArrow');
     nextSerieArrow.style.color = "rgb(255, 255, 255)";
 }
 

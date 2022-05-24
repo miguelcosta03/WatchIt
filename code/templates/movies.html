@@ -109,12 +109,12 @@
           </div>
         </div>
       </div>
-      <div class="previous-button-div" id="previousButtonDiv" onclick="previousTopMovie()">
+      <div class="previous-button-div" id="previousButtonDiv" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousArrowColor()" onclick="previousTopMovie()">
       </div>
-      <div class="next-button-div" id="nextButtonDiv" onclick="nextTopMovie();">
+      <div class="next-button-div" id="nextButtonDiv" onmouseenter="increaseOpacity('nextButtonDiv'); changeNextArrowColor()" onmouseleave="decreaseOpacity('nextButtonDiv'); resetNextArrowColor()" onclick="nextTopMovie();">
       </div>
-      <button class="previous-button" id="previousSerieArrow" onclick="previousTopMovie()"><</button>
-      <button class="next-button" id="nextMovieArrow" onclick="nextTopMovie()">></button>
+      <button class="previous-button" id="previousArrow" onmouseenter="increaseOpacity('previousButtonDiv'); changePreviousArrowColor()" onmouseleave="decreaseOpacity('previousButtonDiv'); resetPreviousArrowColor()" onclick="previousTopMovie()"><</button>
+      <button class="next-button" id="nextArrow" onmouseenter="increaseOpacity('nextButtonDiv'); changeNextArrowColor()" onmouseleave="decreaseOpacity('nextButtonDiv'); resetNextArrowColor()" onclick="nextTopMovie()">></button>
     </div>
     <div class="row">
       <div class="col-sm-4">
