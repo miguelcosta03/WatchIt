@@ -29,7 +29,7 @@ function nextTopSerie() {
     let topSerie1 = document.getElementById('topSerie1');
     let topSerie2 = document.getElementById('topSerie2');
     let topSerie3 = document.getElementById('topSerie3');
-    let nextButton = document.getElementById('nextSerieArrow');
+    let nextButton = document.getElementById('nextArrow');
     currentTopSerieIndex += 1;
 
     function showTopSerie1() {

@@ -6,12 +6,30 @@ let waitM1 = undefined;
 let waitM2 = undefined;
 let waitM3 = undefined;
 
+function fillTopMovieProgressBar(progressBarID) {
+    let progressBar = document.getElementById(`${progressBarID}`);
+    let progressBarWidth = 1;
+    setInterval(() => {
+        progressBarWidth += 1;
+        if (progressBarWidth > 100) {
+            clearInterval();
+        } else {
+            progressBar.style.width = progressBarWidth + "%";
+        }
+    }, 30);
+}
+
+function resetTopMovieProgressBar(progressBarID) {
+    let progressBar = document.getElementById(`${progressBarID}`);
+    let progressBarWidth = 1;
+    progressBar.style.width = progressBarWidth + "%";
+}
 
 function nextTopMovie() {
     let topMovie1 = document.getElementById('topMovie1Div');
     let topMovie2 = document.getElementById('topMovie2Div');
     let topMovie3 = document.getElementById('topMovie3Div');
-    let nextButton = document.getElementById('nextMovieArrow');
+    let nextButton = document.getElementById('nextArrow');
     currentTopMovieIndex += 1;
 
     function showTopMovie1() {
@@ -36,7 +54,8 @@ function nextTopMovie() {
         $('#topMovie3Div').fadeOut(50);
         $('#topMovie1Div').fadeIn(500);
         showTopMovie1();
-
+        resetTopMovieProgressBar('topMovieProgressBar3');
+        fillTopMovieProgressBar('topMovieProgressBar1');
         countM1 = true;
         countM2 = false;
         countM3 = false;
@@ -53,6 +72,8 @@ function nextTopMovie() {
         $('#topMovie1Div').fadeOut(50);
         $('#topMovie2Div').fadeIn(500);
         showTopMovie2();
+        resetTopMovieProgressBar('topMovieProgressBar1');
+        fillTopMovieProgressBar('topMovieProgressBar2');
 
         countM1 = false;
         countM2 = true;
@@ -70,6 +91,8 @@ function nextTopMovie() {
         $("#topMovie2Div").fadeOut(50);
         $("#topMovie3Div").fadeIn(500);
         showTopMovie3();
+        resetTopMovieProgressBar('topMovieProgressBar2');
+        fillTopMovieProgressBar('topMovieProgressBar3');
 
         countM1 = false;
         countM2 = false;
@@ -82,12 +105,15 @@ function nextTopMovie() {
         waitM3 = setTimeout(() => {
             nextButton.click();
         }, 3000);
+
     } else {
         if (currentTopMovieIndex > 2) {
             currentTopMovieIndex = 0;
             $('#topMovie3Div').fadeOut(50);
             $('#topMovie1Div').fadeIn(500);
             showTopMovie1();
+            resetTopMovieProgressBar('topMovieProgressBar3');
+            fillTopMovieProgressBar('topMovieProgressBar1');
     
             countM1 = true;
             countM2 = false;
