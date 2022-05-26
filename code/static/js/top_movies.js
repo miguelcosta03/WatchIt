@@ -66,7 +66,7 @@ function nextTopMovie() {
         
         waitM1 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
 
     } else if (currentTopMovieIndex == 1) {
         $('#topMovie1Div').fadeOut(50);
@@ -85,7 +85,7 @@ function nextTopMovie() {
 
         waitM2 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
 
     } else if (currentTopMovieIndex == 2) {
         $("#topMovie2Div").fadeOut(50);
@@ -104,7 +104,7 @@ function nextTopMovie() {
         
         waitM3 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
 
     } else {
         if (currentTopMovieIndex > 2) {
@@ -125,7 +125,7 @@ function nextTopMovie() {
             
             waitM1 = setTimeout(() => {
                 nextButton.click();
-            }, 3000);
+            }, 3080);
 
         } else if (currentTopMovieIndex < 0) {
             currentTopMovieIndex = 2;
@@ -143,7 +143,7 @@ function nextTopMovie() {
             
             waitM3 = setTimeout(() => {
                 nextButton.click();
-            }, 3000);
+            }, 3080);
         }
     }
 }
@@ -152,7 +152,7 @@ function previousTopMovie() {
     let topMovie1 = document.getElementById('topMovie1Div');
     let topMovie2 = document.getElementById('topMovie2Div');
     let topMovie3 = document.getElementById('topMovie3Div');
-    let nextButton = document.getElementById('nextMovieArrow');
+    let nextButton = document.getElementById('nextArrow');
     currentTopMovieIndex -= 1;
     
     function showTopMovie1() {
@@ -176,6 +176,8 @@ function previousTopMovie() {
     if (currentTopMovieIndex == 0) {
         $("#topMovie3Div").fadeOut(50);
         $("#topMovie1Div").fadeIn(500);
+        resetTopMovieProgressBar('topMovieProgressBar3');
+        fillTopMovieProgressBar('topMovieProgressBar1');
         showTopMovie1();
         countM1 = true;
         countM2 = false;
@@ -185,9 +187,9 @@ function previousTopMovie() {
             clearTimeout(waitM3);
         }
         
-        waitS1 = setTimeout(() => {
+        waitM1 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
         
     } else if (currentTopMovieIndex == 1){
         $("#topMovie1Div").fadeOut(50);
@@ -198,12 +200,12 @@ function previousTopMovie() {
         countM3 = false;
 
         if (countM2 === true) {
-            clearTimeout(waitS1);
+            clearTimeout(waitM1);
         }
 
         waitM2 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
 
     } else if (currentTopMovieIndex == 2) {
         $("#topMovie2Div").fadeOut(50);
@@ -219,7 +221,7 @@ function previousTopMovie() {
         
         waitM3 = setTimeout(() => {
             nextButton.click();
-        }, 3000);
+        }, 3080);
 
     } else {
         if (currentTopMovieIndex < -2) {
@@ -235,29 +237,33 @@ function previousTopMovie() {
                 clearTimeout(waitM2);
             }
             
-            waitS1 = setTimeout(() => {
+            waitM1 = setTimeout(() => {
                 nextButton.click();
-            }, 3000);
+            }, 3080);
         }
         else if (currentTopMovieIndex == -1) {
             $("#topMovie1Div").fadeOut(50);
             $("#topMovie3Div").fadeIn(500);
+            resetTopMovieProgressBar('topMovieProgressBar1');
+            fillTopMovieProgressBar('topMovieProgressBar3');
             showTopMovie3();
             countM1 = false;
             countM2 = false;
             countM3 = true;
     
             if (countM3 === true){
-                clearTimeout(waitS1);
+                clearTimeout(waitM1);
             }
             
             waitM3 = setTimeout(() => {
                 nextButton.click();
-            }, 3000);
+            }, 3080);
             
         } else if (currentTopMovieIndex == -2) {
             $("#topMovie3Div").fadeOut(50);
             $("#topMovie2Div").fadeIn(500);
+            resetTopMovieProgressBar('topMovieProgressBar3');
+            fillTopMovieProgressBar('topMovieProgressBar2');
             showTopMovie2();
             countM1 = false;
             countM2 = true;
@@ -269,7 +275,7 @@ function previousTopMovie() {
     
             waitM2 = setTimeout(() => {
                 nextButton.click();
-            }, 3000);
+            }, 3080);
         }
     }
 

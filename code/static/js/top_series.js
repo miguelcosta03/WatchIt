@@ -160,7 +160,7 @@ function previousTopSerie() {
     let topSerie1 = document.getElementById('topSerie1');
     let topSerie2 = document.getElementById('topSerie2');
     let topSerie3 = document.getElementById('topSerie3');
-    let nextButton = document.getElementById('nextSerieArrow');
+    let nextButton = document.getElementById('nextArrow');
     currentTopSerieIndex -= 1;
 
     function showTopSerie1() {
@@ -189,6 +189,8 @@ function previousTopSerie() {
     if (currentTopSerieIndex == 0) {
         $("#topSerie3Div").fadeOut(50);
         $("#topSerie1Div").fadeIn(500);
+        resetTopSerieProgressBar('topSerieProgressBar3');
+        fillTopSerieProgressBar('topSerieProgressBar1');
         showTopSerie1();
         countS1 = true;
         countS2 = false;
@@ -221,6 +223,8 @@ function previousTopSerie() {
     } else if (currentTopSerieIndex == 2) {
         $("#topSerie2Div").fadeOut(50);
         $("#topSerie3Div").fadeIn(500);
+        resetTopSerieProgressBar('topSerieProgressBar1');
+        fillTopSerieProgressBar('topSerieProgressBar3');
         showTopSerie3();
         countS1 = false;
         countS2 = false;
@@ -255,6 +259,8 @@ function previousTopSerie() {
         else if (currentTopSerieIndex == -1) {
             $("#topSerie1Div").fadeOut(50);
             $("#topSerie3Div").fadeIn(500);
+            resetTopSerieProgressBar('topSerieProgressBar1');
+            fillTopSerieProgressBar('topSerieProgressBar3');
             showTopSerie3();
             countS1 = false;
             countS2 = false;
@@ -272,6 +278,8 @@ function previousTopSerie() {
             $("#topSerie3Div").fadeOut(50);
             $("#topSerie2Div").fadeIn(500);
             showTopSerie2();
+            resetTopSerieProgressBar('topSerieProgressBar3');
+            fillTopSerieProgressBar('topSerieProgressBar2');
             counts1 = false;
             countS2 = true;
             countS3 = false;
