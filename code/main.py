@@ -177,19 +177,22 @@ def movies():
 
     tm1_background = database.getMovieBackgroundImage(1)
     tm1_name = database.getMovieName(1)
-    tm1_release_year = database.getMovieDuration(1)
+    tm1_release_year = database.getMovieReleaseYear(1)
+    tm1_duration = database.getMovieDuration(1)
     tm1_star_classification = database.getMovieStarClassification(1)
     tm1_description = database.getMovieDescription(1)
 
     tm2_background = database.getMovieBackgroundImage(2)
     tm2_name = database.getMovieName(2)
     tm2_release_year = database.getMovieReleaseYear(2)
+    tm2_duration = database.getMovieDuration(2)
     tm2_star_classification = database.getMovieStarClassification(2)
     tm2_description = database.getMovieDescription(2)
 
     tm3_background = database.getMovieBackgroundImage(3)
     tm3_name = database.getMovieName(3)
     tm3_release_year = database.getMovieReleaseYear(3)
+    tm3_duration = database.getMovieDuration(3)
     tm3_star_classification = database.getMovieStarClassification(3)
     tm3_description = database.getMovieDescription(3)
 
@@ -205,9 +208,9 @@ def movies():
             return redirect(url_for("watchMovie"))
             
     return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
-                           tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
-                           tm2_release_year=tm2_release_year, tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
-                           tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_star_classification=tm3_star_classification,
+                           tm1_duration=tm1_duration, tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
+                           tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
+                           tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, tm3_star_classification=tm3_star_classification,
                            tm3_description=tm3_description, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
 
 @app.route('/series', methods=['GET', 'POST'])
