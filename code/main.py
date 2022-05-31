@@ -213,28 +213,28 @@ def movies():
         if request.method == "POST":
             if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
                 if m1IsFavourite == None:
-                    database.removeFavouriteMovie(3)
+                    database.removeFavouriteMovie(database.getMovieID(m1_value))
                     m1IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(3)
+                    database.insertFavouriteMovie(database.getMovieID(m1_value))
                     m1IsFavourite = None
         
         if request.method == "POST":
             if request.form.get('addMovie2ToFavouriteMoviesButton') == "addMovie2ToFavouriteMoviesButton":
                 if m2IsFavourite == None:
-                    database.removeFavouriteMovie(2)
+                    database.removeFavouriteMovie(database.getMovieID(m2_value))
                     m2IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(2)
+                    database.insertFavouriteMovie(database.getMovieID(m2_value))
                     m2IsFavourite = None
         
         if request.method == "POST":
             if request.form.get('addMovie3ToFavouriteMoviesButton') == "addMovie3ToFavouriteMoviesButton":
                 if m3IsFavourite == None:
-                    database.removeFavouriteMovie(3)
+                    database.removeFavouriteMovie(database.getMovieID(m3_value))
                     m3IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(3)
+                    database.insertFavouriteMovie(database.getMovieID(m3_value))
                     m3IsFavourite = None
 
     return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
@@ -746,4 +746,3 @@ def watchMovie():
                            movie_star_classification=movie_star_classification, movie_description=movie_description)
 if __name__ == "__main__":
     app.run(debug=True)
-    app.no
