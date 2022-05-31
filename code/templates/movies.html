@@ -72,6 +72,13 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
+          <form method="post">
+            {% if m1IsFavourite != False %}
+              <button class="add-to-favourites-button" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+            {% else %}
+              <button class="add-to-favourites-button" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+            {% endif %}
+          </form>
           <div class="top-movies-progress-bar-div">
             <div class="top-movies-progress-bar" id="topMovieProgressBar1"></div>
           </div>
@@ -88,6 +95,13 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
+          <form method="post">
+            {% if m2IsFavourite != False %}
+              <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton"></button>
+            {% else %}
+              <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+            {% endif %}
+          </form>
           <div class="top-movies-progress-bar-div">
             <div class="top-movies-progress-bar" id="topMovieProgressBar2"></div>
           </div>
@@ -103,6 +117,13 @@
           <p class="movie-description">{{ tm3_description }}</p>
           <form method="post">
             <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
+          </form>
+          <form method="post">
+            {% if m3IsFavourite != False %}
+              <button class="add-to-favourites-button" name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton"></button>
+            {% else %}
+              <button class="add-to-favourites-button"  name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+            {% endif %}
           </form>
           <div class="top-movies-progress-bar-div">
             <div class="top-movies-progress-bar" id="topMovieProgressBar3"></div>

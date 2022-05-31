@@ -19,7 +19,7 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
@@ -166,11 +166,14 @@ def mainPage():
 def movies():
     global isLogged
     global movieName
-    
+
     m1_value = "Joker"
     m2_value = "Dunkirk"
     m3_value = "Look Mom I Can Fly"
 
+    m1IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m1_value))
+    m2IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m2_value))
+    m3IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m3_value))
     m1_image = database.getMovieCoverImage(1)
     m2_image = database.getMovieCoverImage(2)
     m3_image = database.getMovieCoverImage(3)
@@ -206,11 +209,38 @@ def movies():
         if request.form.get('m3Button') == m3_value:
             database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
             return redirect(url_for("watchMovie"))
-            
+    
+        if request.method == "POST":
+            if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
+                if m1IsFavourite == None:
+                    database.removeFavouriteMovie(3)
+                    m1IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(3)
+                    m1IsFavourite = None
+        
+        if request.method == "POST":
+            if request.form.get('addMovie2ToFavouriteMoviesButton') == "addMovie2ToFavouriteMoviesButton":
+                if m2IsFavourite == None:
+                    database.removeFavouriteMovie(2)
+                    m2IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(2)
+                    m2IsFavourite = None
+        
+        if request.method == "POST":
+            if request.form.get('addMovie3ToFavouriteMoviesButton') == "addMovie3ToFavouriteMoviesButton":
+                if m3IsFavourite == None:
+                    database.removeFavouriteMovie(3)
+                    m3IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(3)
+                    m3IsFavourite = None
+
     return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
-                           tm1_duration=tm1_duration, tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
-                           tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
-                           tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, tm3_star_classification=tm3_star_classification,
+                           tm1_duration=tm1_duration, m1IsFavourite=m1IsFavourite,tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
+                           tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, m2IsFavourite=m2IsFavourite,tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
+                           tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, m3IsFavourite=m3IsFavourite, tm3_star_classification=tm3_star_classification,
                            tm3_description=tm3_description, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
 
 @app.route('/series', methods=['GET', 'POST'])
@@ -716,3 +746,4 @@ def watchMovie():
                            movie_star_classification=movie_star_classification, movie_description=movie_description)
 if __name__ == "__main__":
     app.run(debug=True)
+    app.no

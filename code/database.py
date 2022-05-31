@@ -293,6 +293,34 @@ class Database:
         movieID = self.cursor.fetchall()
         return str(movieID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
+    def checkIfIsFavouriteMovie(self, movie_id):
+        query = f"""SELECT ID_Filme FROM dbo.Filmes_Favoritos
+                        WHERE ID_Filme = {movie_id}"""
+
+        self.cursor.execute(query)
+        isFavouriteMovie = self.cursor.fetchall()
+
+        try:
+            if movie_id == isFavouriteMovie[0][0]:
+                return True
+
+        except IndexError:
+            return False
+        
+    def insertFavouriteMovie(self, movie_id):
+        query = f"""INSERT INTO dbo.Filmes_Favoritos
+                    VALUES ({movie_id});"""
+        
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def removeFavouriteMovie(self, movie_id):
+        query = f"""DELETE FROM dbo.Filmes_Favoritos
+                    WHERE ID_Filme={movie_id}"""
+
+        self.cursor.execute(query)
+        self.connection.commit()
+
     def getMovieName(self, movieID):
         query = f"""SELECT
                         Nome

@@ -166,6 +166,23 @@ body {
   background-color: rgba(125, 255, 125, 0.712);
 }
 
+.top-movie-left-div .add-to-favourites-button {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: -13vw;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url('../images/other_images/favourite-filled.png');
+  background-size: 100%;
+  border-color: transparent;
+}
+
+.top-movie-left-div .add-to-favourites-button:hover {
+  background-image: url('../images/other_images/favourite-filled.png');
+}
+
 .grid-movies-container {
   position: absolute;
   display: grid;
