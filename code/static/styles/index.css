@@ -1,0 +1,243 @@
+html, body{
+    background: #093028; /* fallback for old browsers */
+    background: linear-gradient(to right, #000000 , #130F40);
+    /* background: linear-gradient(to left, #2C3E50 , #000000); */
+    /* background: linear-gradient(to right, #000000 , #130F40); */
+    /*background: linear-gradient(to left, #000428, #1a0950); */
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+ 
+
+.carousel-inner img {
+    width: 100%; 
+    margin: auto;
+    max-height: 850px;
+    filter: brightness(80%);
+}
+
+.top-widgets{
+    background: #093028; /* fallback for old browsers */
+    background: linear-gradient(to right, #000000 , #130F40);
+}
+
+.watchit-button{
+    position: relative;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-size: 45px;
+    background-color: transparent;
+    border-color: transparent;
+    margin-left: 0.5%;
+    margin-top: 0.5%;
+    top:-9.3px;
+    left: -16px;
+    height: 52px;
+    cursor: pointer;
+}
+
+.header-buttons{
+    position: relative;
+    width: 130px;
+    height: 50px;
+    border: 10px solid #000;
+    top: -13%;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.mainButton {
+    position: relative;
+    background: rgba(125, 255, 125, 0.712);
+    color: #fff;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    left: 1%;
+    margin-top:1%;
+}
+
+.mainButton span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+.mainButton:before,
+.mainButton:after {
+    position: absolute;
+    content: "";
+    height: 0%;
+    width: 2px;
+    background: #000;
+  }
+.mainButton:before {
+    right: 0;
+    top: 0;
+    transition: all 500ms ease;
+}
+.mainButton:after {
+    left: 0;
+    bottom: 0;
+    transition: all 500ms ease;
+}
+/*Change text Color*/
+.mainButton:hover{
+    color: #fff;
+    background: transparent;
+}
+.mainButton:hover:before {
+    transition: all 500ms ease;
+    height: 100%;
+}
+.mainButton:hover:after {
+    transition: all 500ms ease;
+    height: 100%;
+}
+/* Change background color */
+.mainButton:before,
+.mainButton:after {
+    position: relative;
+    content: "";
+    background: transparent;
+}
+.mainButton:before {
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+.mainButton:after {
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    transition: all 500ms ease;
+}
+.mainButton:hover:before {
+    width: 100%;
+}
+.mainButton:hover:after {
+    width: 100%;
+}
+
+.movies-button {
+    position: absolute;
+    margin-left: 180px;
+    margin-top: -33px;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+.movies-button:hover {
+    color: rgba(125, 255, 125, 0.712);
+    cursor: pointer;
+    text-shadow: 0 0 10px white;
+}
+
+.series-button {
+    position: absolute;
+    margin-left: 280px;
+    margin-top: -33px;;
+    font-size: 16px;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+}
+
+.series-button:hover {
+    color: rgba(125, 255, 125, 0.712);
+    cursor: pointer;
+    text-shadow: 0 0 10px white;
+}
+
+.profile-picture {
+    color: white;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: transparent;
+    left: -1700px;
+    margin-top: -5px;
+    background-image: url("../images/other_images/icon-profile-icon.png")
+  }
+
+  .dropdown {
+    position: absolute;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    left: -1px;
+    border-radius: 50%;
+    top: 10px;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgb(20, 20, 20);
+    border-style: outset;
+    border-color: black;
+    min-width: 150px;
+    height: 210%;
+    border-radius: 4%;
+    margin-top: 90%;
+    z-index: 1;
+    margin-left: -100px;
+  }
+  
+  .edit-profile-button {
+    color: white;
+    background: rgba(125, 255, 125, 0.712);
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom-color: rgba(125, 255, 125, 0.712);
+    display: block;
+    margin-top: 0%;
+    width: 160px;
+    height: 50px;
+  }
+
+  .logout-button{
+    color: white;
+    background: rgba(125, 255, 125, 0.712);
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    display: block;
+    margin-top: 0%;
+    width: 160px;
+    height: 50px;
+  }
+  
+  .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+.slider-serie-name {
+    position: absolute;
+    top: 18vw;
+    left: 45vw;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2vw;
+}
+.slogan{
+    position: relative;
+    color: white;
+    padding-left: 2%;
+    top: 150px;
+}

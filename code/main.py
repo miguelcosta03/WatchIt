@@ -7,7 +7,7 @@ from time import sleep
 app = Flask(__name__)
 
 
-mainPageTemplate = 'mainPage.html'
+mainPageTemplate = 'index.html'
 loginTemplate = 'login.html'
 signUpTemplate = 'signUp.html'
 serieTemplate = 'serie.html'
@@ -19,7 +19,7 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 49170, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
