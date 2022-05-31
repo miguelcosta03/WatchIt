@@ -166,14 +166,18 @@ def mainPage():
 def movies():
     global isLogged
     global movieName
+    global email_address
 
+    userID = int(database.getUserID(email_address))
+    
     m1_value = "Joker"
     m2_value = "Dunkirk"
     m3_value = "Look Mom I Can Fly"
 
-    m1IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m1_value))
-    m2IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m2_value))
-    m3IsFavourite = database.checkIfIsFavouriteMovie(database.getMovieID(m3_value))
+    m1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m1_value))
+    m2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m2_value))
+    m3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m3_value))
+
     m1_image = database.getMovieCoverImage(1)
     m2_image = database.getMovieCoverImage(2)
     m3_image = database.getMovieCoverImage(3)
@@ -213,28 +217,28 @@ def movies():
         if request.method == "POST":
             if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
                 if m1IsFavourite == None:
-                    database.removeFavouriteMovie(database.getMovieID(m1_value))
+                    database.removeFavouriteMovie(userID, database.getMovieID(m1_value))
                     m1IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(database.getMovieID(m1_value))
+                    database.insertFavouriteMovie(userID, database.getMovieID(m1_value))
                     m1IsFavourite = None
         
         if request.method == "POST":
             if request.form.get('addMovie2ToFavouriteMoviesButton') == "addMovie2ToFavouriteMoviesButton":
                 if m2IsFavourite == None:
-                    database.removeFavouriteMovie(database.getMovieID(m2_value))
+                    database.removeFavouriteMovie(userID, database.getMovieID(m2_value))
                     m2IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(database.getMovieID(m2_value))
+                    database.insertFavouriteMovie(userID, database.getMovieID(m2_value))
                     m2IsFavourite = None
         
         if request.method == "POST":
             if request.form.get('addMovie3ToFavouriteMoviesButton') == "addMovie3ToFavouriteMoviesButton":
                 if m3IsFavourite == None:
-                    database.removeFavouriteMovie(database.getMovieID(m3_value))
+                    database.removeFavouriteMovie(userID, database.getMovieID(m3_value))
                     m3IsFavourite = False
                 else:
-                    database.insertFavouriteMovie(database.getMovieID(m3_value))
+                    database.insertFavouriteMovie(userID, database.getMovieID(m3_value))
                     m3IsFavourite = None
 
     return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
