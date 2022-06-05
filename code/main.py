@@ -205,15 +205,16 @@ def movies():
 
 
         if request.method == "POST":
-            if request.form.get('m1Button') == m1_value:
-                database.updateCurrentMovieURL('joker', 'Joker')
-                return redirect(url_for("watchMovie"))
-            if request.form.get('m2Button') == m2_value:
-                database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
-                return redirect(url_for("watchMovie"))
-            if request.form.get('m3Button') == m3_value:
-                database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
-                return redirect(url_for("watchMovie"))
+            match request.form.get('movieButton'):
+                case 'Joker':
+                    database.updateCurrentMovieURL('joker', 'Joker')
+                    return redirect(url_for('watchMovie'))
+                case 'Dunkirk':
+                    database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
+                    return redirect(url_for('watchMovie'))
+                case 'Look Mom I Can Fly':
+                    database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
+                    return redirect(url_for('watchMovie'))
         
             if request.method == "POST":
                 if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
