@@ -73,10 +73,14 @@
             <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
           </form>
           <form method="post">
-            {% if m1IsFavourite != False %}
-              <button class="add-to-favourites-button" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+            {% if isLogged %}
+              {% if m1IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
             {% else %}
-              <button class="add-to-favourites-button" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              <button hidden class="add-to-favourites-button" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
             {% endif %}
           </form>
           <div class="top-movies-progress-bar-div">
@@ -93,13 +97,17 @@
           <p class="movie-star-classification">{{ tm2_star_classification }} / 10 ⭐</p>
           <p class="movie-description">{{ tm2_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie2">Assistir Agora</button>
           </form>
           <form method="post">
-            {% if m2IsFavourite != False %}
-              <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton"></button>
+            {% if isLogged %}
+              {% if m2IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
             {% else %}
-              <button class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie2ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              <button hidden class="add-to-favourites-button" name="addMovie2ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
             {% endif %}
           </form>
           <div class="top-movies-progress-bar-div">
@@ -116,13 +124,17 @@
           <p class="movie-star-classification">{{ tm3_star_classification }} / 10 ⭐</p>
           <p class="movie-description">{{ tm3_description }}</p>
           <form method="post">
-            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie1">Assistir Agora</button>
+            <button class="watch-now-button" name="watchTopMovie" value="watchTopMovie3">Assistir Agora</button>
           </form>
           <form method="post">
-            {% if m3IsFavourite != False %}
-              <button class="add-to-favourites-button" name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton"></button>
+            {% if isLogged %}
+              {% if m3IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button"  name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
             {% else %}
-              <button class="add-to-favourites-button"  name="addMovie3ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              <button hidden class="add-to-favourites-button" name="addMovie1ToFavouriteMoviesButton" value="addMovie3ToFavouriteMoviesButton"></button>
             {% endif %}
           </form>
           <div class="top-movies-progress-bar-div">
@@ -143,19 +155,20 @@
               <div class="grid-movies-item">
                   <form class="movie-container" method="post">
                       <img src="{{ m1_image }}">
-                      <button class="btn" name="m1Button" value="{{ m1_value }}"></button>
+                      <button class="btn" name="movieButton" value="Joker"></button>
                   </form>
               </div>
               <div class="grid-movies-item slot-m2">
                   <form class="movie-container" method="post">
                     <img src="{{ m2_image }}">
-                    <button class="btn" name="m2Button" value="{{ m2_value }}"></button>
+                    <button class="btn" name="movieButton" value="{{ m2_value }}"></button>
                   </form>
               </div>
+              
               <div class="grid-movies-item slot-m3">
                 <form class="movie-container" method="post">
                   <img src="{{ m3_image }}">
-                  <button class="btn" name="m3Button" value="{{ m3_value }}"></button>
+                  <button class="btn" name="movieButton" value="{{ m3_value }}"></button>
                 </form>
               </div>
           </div>
