@@ -73,6 +73,17 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie1">Assistir Agora</button>
           </form>
+          <form method="post">
+            {% if isLogged %}
+              {% if s1IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addSerie1ToFavouriteSeriesButton" value="addSerie1ToFavouriteSeriesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button"  name="addSerie1ToFavouriteSeriesButton" value="addSerie1ToFavouriteSeriesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
+            {% else %}
+              <button hidden class="add-to-favourites-button" name="addSerie1ToFavouriteSeriesButton" value="addSerie1ToFavouriteSeriesButton"></button>
+            {% endif %}
+          </form>
           <div class="top-series-progress-bar-div">
             <div class="top-series-progress-bar" id="topSerieProgressBar1"></div>
           </div>
@@ -90,6 +101,17 @@
           <form method="post">
             <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie2">Assistir Agora</button>
           </form>
+          <form method="post">
+            {% if isLogged %}
+              {% if s2IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addSerie2ToFavouriteSeriesButton" value="addSerie2ToFavouriteSeriesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button" name="addSerie2ToFavouriteSeriesButton" value="addSerie2ToFavouriteSeriesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
+            {% else %}
+              <button hidden class="add-to-favourites-button" name="addSerie2ToFavouriteSeriesButton" value="addSerie2ToFavouriteSeriesButton"></button>
+            {% endif %}
+          </form>
           <div class="top-series-progress-bar-div">
             <div class="top-series-progress-bar" id="topSerieProgressBar2"></div>
           </div>
@@ -106,6 +128,17 @@
           <p class="serie-description">{{ ts3_description }}</p>
           <form method="post">
             <button class="watch-now-button" name="watchTopSerie" value="watchTopSerie3">Assistir Agora</button>
+          </form>
+          <form method="post">
+            {% if isLogged %}
+              {% if s3IsFavourite != False %}
+                <button class="add-to-favourites-button" name="addSerie3ToFavouriteSeriesButton" value="addSerie3ToFavouriteSeriesButton"></button>
+              {% else %}
+                <button class="add-to-favourites-button"  name="addSerie3ToFavouriteSeriesButton" value="addSerie3ToFavouriteSeriesButton" style="background-image: url('../static/images/other_images/favourite-unfilled.png');" name="addMovie1ToFavouriteMoviesButton" value="addMovie1ToFavouriteMoviesButton"></button>
+              {% endif %}
+            {% else %}
+              <button hidden class="add-to-favourites-button" name="addSerie3ToFavouriteSeriesButton" value="addSerie3ToFavouriteSeriesButton"></button>
+            {% endif %}
           </form>
           <div class="top-series-progress-bar-div">
             <div class="top-series-progress-bar" id="topSerieProgressBar3"></div>
@@ -125,19 +158,19 @@
             <div class="grid-series-item">
                 <form class="serie-container" method="post">
                     <img src="{{ s1_image }}" style="height:100%; width:100%;">
-                    <button class="btn" name="s1Button" value="{{ s1_value }}"></button>
+                    <button class="btn" name="serieButton" value="{{ s1_value }}"></button>
                 </form>
             </div>
             <div class="grid-series-item">
                 <form class="serie-container slot-s2" method="post">
                     <img src="{{ s2_image }}" style="height:100%; width:100%;">
-                    <button class="btn" name="s2Button" value="{{ s2_value }}"></button>
+                    <button class="btn" name="serieButton" value="{{ s2_value }}"></button>
                 </form>
             </div>
             <div class="grid-series-item">
                 <form class="serie-container slot-s3" method="post">
                     <img src="{{ s3_image }}" style="height:100%; width:100%;">
-                    <button class="btn" name="s3Button" value="{{ s3_value }}"></button>
+                    <button class="btn" name="serieButton" value="{{ s3_value }}"></button>
                 </form>
             </div>
         </div>

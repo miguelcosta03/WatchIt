@@ -19,18 +19,19 @@ insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
-database = Database('SQL Server', '127.0.0.1', 1433, 'WatchItDB', 'su', '123456')
+database = Database('SQL Server', '192.168.20.9', 1433, 'WatchItDB', 'su', '123456')
 
 isLogged = False
 email_address = ""
 serieName = None
 movieName = None
 scrollToEpisodeGrid = False
-
+currentDeviceIP = None
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     global isLogged
+    isLogged = False
     global email_address
     invalidEmail = False
     invalidCredentialsText = ''
@@ -60,14 +61,16 @@ def login():
 @app.route("/registarConta", methods=['GET', 'POST'])
 def signUp():
     invalidCredentialsText = ''
+    global isLogged
+    global email_address
     if request.method == 'POST':
         if request.form.get('signUp') == "Registar":
-            email = request.form['email_address']
+            email_address = request.form['email_address']
             username = request.form['username']
             password = request.form['password']
             confPassword = request.form['confirmPassword']
 
-            invalidEmail = AccountOperations.checkEmail(email)
+            invalidEmail = AccountOperations.checkEmail(email_address)
             invalidUsername = AccountOperations.checkUsername(username)
             invalidPassword = AccountOperations.checkPassword(password)
             invalidConfPassword = AccountOperations.checkPassword(confPassword)
@@ -84,13 +87,36 @@ def signUp():
                         if invalidConfPassword:
                             invalidCredentialsText = '* Por favor confirme a sua password.'
                         else:
-                            database.createNewUser(email, username, password, confPassword)
+                            database.createNewUser(email_address, username, password)
+                            database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                            isLogged = True
                             return redirect(url_for('mainPage'))
 
     return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
 def mainPage():
+    global isLogged
+    global email_address
+    global currentDeviceIP
+    
+    currentDeviceIP = request.environ['REMOTE_ADDR']
+    
+    try:
+        userID = int(database.getUserID(email_address))
+        isConnected = database.checkIfIsConnectedToAnotherDevice(userID)
+        if isConnected:
+            connectedDeviceIP = database.getConnectedDeviceIP(database.getUserID(email_address))
+            if currentDeviceIP == connectedDeviceIP:
+                isLogged = True
+            else:
+                isLogged = False
+        else:
+            isLogged = True
+    except ValueError:
+        isLogged = False
+
+
     s1_value = None
     s2_value = None
     s3_value = None
@@ -104,6 +130,7 @@ def mainPage():
     s1_image = None
     s2_image = None
     s3_image = None
+
     try:
         s1_value = 'Peaky Blinders'
         s2_value = 'La Casa de Papel'
@@ -326,49 +353,106 @@ def series():
     s2_image = database.getSerieCoverImage(2)
     s3_image = database.getSerieCoverImage(3)
 
-    s1_value = database.getSerieName(1)
-    s2_value = database.getSerieName(2)
-    s3_value = database.getSerieName(3)
+    s1_value = 'Peaky Blinders'
+    s2_value = 'La Casa de Papel'
+    s3_value = 'Euphoria'
 
-    def convertSerieNameToURL(serieName):
-        return serieName.lower().replace(' ', '')
+    try:
+        userID = int(database.getUserID(email_address))
+        s1IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts1_name))
+        s2IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts2_name))
+        s3IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts3_name))
+        if request.method == "POST":
+            match request.form.get('watchTopSerie'):
+                case 'watchTopSerie1':
+                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                    return redirect(url_for('watchSerie'))
+                case 'watchTopSerie2':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('watchSerie'))
+                case 'watchTopSerie3':
+                    database.updateCurrentSerieURL('euphoria', 'Euphoria')
+                    return redirect(url_for('watchSerie'))
 
-    if request.method == "POST":
-        if request.form.get('watchTopSerie') == "watchTopSerie1":
-            database.updateCurrentSerieURL(convertSerieNameToURL(ts1_name), ts1_name)
-            return redirect(url_for("watchSerie"))
-
-        if request.form.get('watchTopSerie') == "watchTopSerie2":
-            database.updateCurrentSerieURL(convertSerieNameToURL(ts2_name), ts2_name)
-            return redirect(url_for("watchSerie"))
-        
-        if request.form.get('watchTopSerie') == "watchTopSerie3":
-            database.updateCurrentSerieURL(convertSerieNameToURL(ts3_name), ts3_name)
-            return redirect(url_for("watchSerie"))
+            if request.form.get('addSerie1ToFavouriteSeriesButton') == 'addSerie1ToFavouriteSeriesButton':
+                if s1IsFavourite == None:
+                    database.removeFavouriteSerie(userID, database.getSerieID(s1_value))
+                    s1IsFavourite = False
+                else:
+                    database.insertFavouriteSerie(userID, database.getSerieID(s1_value))
+                    s1IsFavourite = None
             
-    if request.method == "POST":
-        if request.form.get('s1Button') == s1_value:
-            database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-            return redirect(url_for("watchSerie"))
+            if request.form.get('addSerie2ToFavouriteSeriesButton') == 'addSerie2ToFavouriteSeriesButton':
+                if s2IsFavourite == None:
+                    database.removeFavouriteSerie(userID, database.getSerieID(s2_value))
+                    s2IsFavourite = False
+                else:
+                    database.insertFavouriteSerie(userID, database.getSerieID(s2_value))
+                    s2IsFavourite = None
+            
+            if request.form.get('addSerie3ToFavouriteSeriesButton') == 'addSerie3ToFavouriteSeriesButton':
+                if s3IsFavourite == None:
+                    database.removeFavouriteSerie(userID, database.getSerieID(s3_value))
+                    s3IsFavourite = False
+                else:
+                    database.insertFavouriteSerie(userID, database.getSerieID(s3_value))
+                    s3IsFavourite = None
+                
+            match request.form.get('serieButton'):
+                case 'Peaky Blinders':
+                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                    return redirect(url_for('watchSerie'))
+                case 'La Casa de Papel':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('watchSerie'))
+                case 'Euphoria':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('watchSerie'))
+
+        return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
+                            ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
+                            ts1_star_classification=ts1_star_classification, ts1_description=ts1_description, s1IsFavourite=s1IsFavourite,
+                            ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
+                            ts2_total_seasons_number=ts2_total_seasons_number, ts2_star_classification=ts2_star_classification, ts2_description=ts2_description,
+                            s2IsFavourite=s2IsFavourite,ts3_background=ts3_background, ts3_name=ts3_name, ts3_release_year=ts3_release_year, ts3_duration=ts3_duration,
+                            ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
+                            ts3_description=ts3_description, s3IsFavourite=s3IsFavourite, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
+                            s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
+
+    except ValueError:
+        if request.method == "POST":
+            match request.form.get('watchTopSerie'):
+                case 'watchTopSerie1':
+                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                    return redirect(url_for('watchSerie'))
+                case 'watchTopSerie2':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('watchSerie'))
+                case 'watchTopSerie3':
+                    database.updateCurrentSerieURL('euphoria', 'Euphoria')
+                    return redirect(url_for('watchSerie'))
+            
+            match request.form.get('serieButton'):
+                case 'Peaky Blinders':
+                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                    return redirect(url_for('login'))
+                case 'La Casa de Papel':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('login'))
+                case 'Euphoria':
+                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                    return redirect(url_for('login'))
         
-        if request.form.get('s2Button') == s2_value:
-            database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-            return redirect(url_for("watchSerie"))
-
-        if request.form.get('s3Button') == s3_value:
-            database.updateCurrentSerieURL('euphoria', "Euphoria")
-            return redirect(url_for("watchSerie"))
-
-    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
-                           ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
-                           ts1_star_classification=ts1_star_classification, ts1_description=ts1_description,
-                           ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
-                           ts2_total_seasons_number=ts2_total_seasons_number, ts2_star_classification=ts2_star_classification, ts2_description=ts2_description,
-                           ts3_background=ts3_background, ts3_name=ts3_name, ts3_release_year=ts3_release_year, ts3_duration=ts3_duration,
-                           ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
-                           ts3_description=ts3_description, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
-                           s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
-
+        return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
+                            ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
+                            ts1_star_classification=ts1_star_classification, ts1_description=ts1_description,
+                            ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
+                            ts2_total_seasons_number=ts2_total_seasons_number, ts2_star_classification=ts2_star_classification, ts2_description=ts2_description,
+                            ts3_background=ts3_background, ts3_name=ts3_name, ts3_release_year=ts3_release_year, ts3_duration=ts3_duration,
+                            ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
+                            ts3_description=ts3_description, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
+                            s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
+            
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
     global email_address

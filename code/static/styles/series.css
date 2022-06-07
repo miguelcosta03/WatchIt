@@ -177,6 +177,23 @@
 }
 
 
+.top-serie-left-div .add-to-favourites-button {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: -13vw;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-image: url('../images/other_images/favourite-filled.png');
+  background-size: 100%;
+  border-color: transparent;
+}
+
+.top-serie-left-div .add-to-favourites-button:hover {
+  background-image: url('../images/other_images/favourite-filled.png');
+}
+
 .slogan-series {
   position: absolute;
   margin-top: 65vw;

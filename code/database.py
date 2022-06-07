@@ -101,6 +101,40 @@ class Database:
         verCodeRegisteredDate = self.cursor.fetchall()
         return str(verCodeRegisteredDate).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
+    def getConnectedDeviceIP(self, userID):
+        query = f"""SELECT IP_Dispositivo FROM dbo.Conexoes
+                    WHERE ID_Utilizador={userID}"""
+        self.cursor.execute(query)
+        deviceIP = self.cursor.fetchall()
+        return str(deviceIP).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','').replace(' ','')
+
+    def checkIfIsConnectedToAnotherDevice(self, userID):
+        query = f"""SELECT Conectado FROM dbo.Conexoes
+                    WHERE ID_Utilizador={userID}"""
+        self.cursor.execute(query)
+        isConnected = self.cursor.fetchall()
+        formmatedIsConnected = str(isConnected).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+        if int(formmatedIsConnected) == 0:
+            return False
+        
+        else:
+            return True
+    
+    def updateDeviceConnectionNumber(self, userID, ipAddress):
+        query = f"""UPDATE dbo.Conexoes
+                        SET Conectado = Conectado + 1,
+                        IP_Dispositivo = '{ipAddress}'
+                    WHERE ID_Utilizador={userID};"""
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def addDeviceConnection(self, userID, ipAddress):
+        query = f"""INSERT INTO dbo.Conexoes
+                    VALUES ({userID}, 1, '{ipAddress}');"""
+        self.cursor.execute(query)
+        self.connection.commit()
+
     def updateEmail(self, userID, newEmail):
         query = f"""UPDATE dbo.Utilizadores
                         SET Nome_Utilizador = '{newEmail}'
@@ -283,11 +317,43 @@ class Database:
         self.cursor.execute(query)
         total_season_episodes = self.cursor.fetchall()
         return str(total_season_episodes).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getSerieID(self, serieName):
+        query = f"""SELECT ID FROM dbo.Series
+                    WHERE Nome='{serieName}'"""
+        self.cursor.execute(query)
+        serieID = self.cursor.fetchall()
+        return str(serieID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def checkIfIsFavouriteSerie(self, userID, serieID):
+        query = f"""SELECT ID_Serie FROM dbo.Series_Favoritas
+                    WHERE ID_Utilizador={userID} AND ID_Serie = {serieID}"""
+        self.cursor.execute(query)
+        isFavouriteSerie = self.cursor.fetchall()
+
+        try:
+            if serieID == isFavouriteSerie[0][0]:
+                return True
+
+        except IndexError:
+            return False
+
+    def insertFavouriteSerie(self, userID, serieID):
+        query = f"""INSERT INTO dbo.Series_Favoritas
+                    VALUES ({userID}, {serieID});"""
+
+        self.cursor.execute(query)
+        self.connection.commit()
+
+    def removeFavouriteSerie(self, userID, serieID):
+        query = f"""DELETE FROM dbo.Series_Favoritas
+                    WHERE ID_Utilizador={userID} AND ID_Serie={serieID}"""
+        
+        self.cursor.execute(query)
+        self.connection.commit()
 
     def getMovieID(self, movieName):
-        query = f"""SELECT
-                        ID
-                    FROM dbo.Filmes
+        query = f"""SELECT ID FROM dbo.Filmes
                     WHERE Nome='{movieName}'"""
         self.cursor.execute(query)
         movieID = self.cursor.fetchall()
@@ -401,3 +467,12 @@ class Database:
         self.cursor.execute(query)
         movieName = self.cursor.fetchall()
         return str(movieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+
+
+
+"""
+database = Database('SQL Server', '192.168.20.9', 1433, 'WatchItDB', 'su', '123456')
+database.updateDeviceConnectionNumber(1, '192.168.20.9')
+print(database.getConnectedDeviceIP(1))
+
+"""
