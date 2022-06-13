@@ -12,6 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="../static/js/urls.js"></script>
+    <script src="../static/js/scroll.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-inverse" style="background: transparent;">
@@ -55,7 +56,7 @@
         <p class="movie-duration">{{ movie_duration }}</p>
         <p class="movie-description">{{ movie_description }}</p>
         <p class="movie-star-classification">{{ movie_star_classification }} / 10 ⭐</p>
-        <button class="watch-now-button">Assistir Agora</button>
+        <button class="watch-now-button" onclick="scrollToMoviePlayer()">Assistir Agora</button>
     </div>
     {% if isLogged %}
         <div class="players-box">
@@ -63,8 +64,8 @@
             <button id="watchItPlayerButton" style="background-color: rgba(125, 255, 125, 0.712);"  onclick="selectWatchItPlayer()">WatchIt Player</button>
         </div>
         <div class="video-players-div" id="videoPlayersDiv">
-            <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
-            <video class="watchit-video-player" style="display: block;" id="watchItVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+            <video class="video-player" id="normalVideoPlayer" src="{{ movie_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
+            <video class="watchit-video-player" style="display: block;" id="watchItVideoPlayer" src="{{ movie_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
         </div>
     {% else %}
         <div hidden class="players-box">

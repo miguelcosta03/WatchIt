@@ -353,7 +353,7 @@ class Database:
         self.connection.commit()
 
     def getMovieID(self, movieName):
-        query = f"""SELECT ID FROM dbo.Filmes
+        query = f"""SELECT ID_Filme FROM dbo.Filmes
                     WHERE Nome='{movieName}'"""
         self.cursor.execute(query)
         movieID = self.cursor.fetchall()
@@ -391,7 +391,7 @@ class Database:
         query = f"""SELECT
                         Nome
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         movieName = self.cursor.fetchall()
         return str(movieName).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -400,7 +400,7 @@ class Database:
         query = f"""SELECT
                         Ano_Lancamento
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         release_year = self.cursor.fetchall()
         return str(release_year).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -409,7 +409,7 @@ class Database:
         query = f"""SELECT
                         Duracao
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         duration = self.cursor.fetchall()
         return str(duration).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -418,7 +418,7 @@ class Database:
         query = f"""SELECT
                         Classificacao
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         classification = self.cursor.fetchall()
         return str(classification).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -427,15 +427,16 @@ class Database:
         query = f"""SELECT
                         Descricao
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         description = self.cursor.fetchall()
         return str(description).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '')
+    
     def getMovieCoverImage(self, movieID):
         query = f"""SELECT
                         Imagem_Capa
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         cover_image = self.cursor.fetchall()
         return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
@@ -444,10 +445,19 @@ class Database:
         query = f"""SELECT
                         Imagem_Background
                     FROM dbo.Filmes
-                    WHERE ID={movieID}"""
+                    WHERE ID_Filme={movieID}"""
         self.cursor.execute(query)
         background_image = self.cursor.fetchall()
         return str(background_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+    
+    def getMovieVideo(self, movieID):
+        query = f"""SELECT 
+                        Video_Filme
+                    FROM dbo.Filmes
+                    WHERE ID_Filme={movieID}"""
+        self.cursor.execute(query)
+        movieVideo = self.cursor.fetchall()
+        return str(movieVideo).replace('[', '').replace(']','').replace('(','').replace(')','').replace(',','').replace("'",'')
 
     def updateCurrentMovieURL(self, movie_url, movie_name):
         query = f"""UPDATE dbo.FilmeAtual

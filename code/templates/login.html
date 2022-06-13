@@ -10,8 +10,9 @@
   <script src="../static/js/urls.js"></script>
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/check_credentials.js"></script>
+  <script src="../static/vendor/login.js"></script>
 </head>
-<body>
+<body onload="resizeWidgets()" onresize="resizeWidgets()">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -36,15 +37,15 @@
       <p1 class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalidCredentialsText }}</p1>
       <div>
         <br>
-        <button class="login-button" name="login" value="Login">Login</button>
+        <button class="login-button" id="loginButton" name="login" value="Login">Login</button>
       </div>
     </form>	
     <div>
       <p1 class="bottom-text">Novo por aqui?</p1>
-      <button class="redirect-to-signUp-button" onclick="redirectToSignUpPage()">Regista-te agora!</button>
+      <button class="redirect-to-signUp-button" id="redirectToSignUpPageButton" onclick="redirectToSignUpPage()">Regista-te agora!</button>
     </div>
     <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
-    <img class="side-image" src="../static/images/other_images/signup_background.jpg">
+    <img class="side-image" id="sideImage" src="../static/images/other_images/signup_background.jpg">
   </div>
 </body>
 </html>

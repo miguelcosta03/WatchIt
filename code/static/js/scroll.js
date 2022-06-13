@@ -30,3 +30,11 @@ function scrollToLastEpisode() {
         behavior : 'smooth'
     });
 }
+
+
+function scrollToMoviePlayer() {
+    window.scrollTo({
+        top : document.body.scrollHeight,
+        behavior : 'smooth'
+    });
+}

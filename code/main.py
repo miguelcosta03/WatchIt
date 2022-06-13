@@ -43,9 +43,11 @@ def login():
                 correctLogin = database.loginUser(email_address, password)
                 if correctLogin:
                     isLogged = True
+                    database.updateDeviceConnectionNumber(database.getUserID(email_address), currentDeviceIP)
                     return redirect(url_for('mainPage'))
                 else:
-                    invalidCredentialsText = '* Email ou Palavra-Passe Inválidos.'
+                    invalidCredentialsText = '* Email ou Password Inválidos.'
+
     except IndexError:
         invalidEmail = AccountOperations.checkEmail(request.form['email_address'])
         invalidPassword = AccountOperations.checkPassword(request.form['password'])
@@ -87,11 +89,14 @@ def signUp():
                         if invalidConfPassword:
                             invalidCredentialsText = '* Por favor confirme a sua password.'
                         else:
-                            database.createNewUser(email_address, username, password)
-                            database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
-                            isLogged = True
-                            return redirect(url_for('mainPage'))
-
+                            userExists = database.checkIfUserExistsByEmail(email_address)
+                            if userExists == False:
+                                database.createNewUser(email_address, username, password)
+                                database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                isLogged = True
+                                return redirect(url_for('mainPage'))
+                            else:
+                                invalidCredentialsText = '* Já existe uma conta associada a este email.'
     return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -641,7 +646,6 @@ def watchSerie():
 
     episode_video = f'{database.getEpisodeVideo(database.getSerieID(database.getCurrentSerieName()), season_number, episode_number)}'
 
-
     episode_limit = int(database.getSerieTotalSeasonEpisodes(database.getSerieID(database.getCurrentSerieName()), season_number))
     total_num_seasons = int(database.getSerieTotalSeasonsNumber(database.getSerieID(database.getCurrentSerieName())))
 
@@ -870,8 +874,11 @@ def watchMovie():
     movie_duration = database.getMovieDuration(database.getMovieID(movie_title))
     movie_star_classification = database.getMovieStarClassification(database.getMovieID(movie_title))
     movie_description = database.getMovieDescription(database.getMovieID(movie_title))
+    movie_video = database.getMovieVideo(database.getMovieID(movie_title))
+    print(movie_video)
     return render_template(movieTemplate, isLogged=isLogged, movie_title=movie_title, movie_image_background=movie_image_background,
                            movie_release_year=movie_release_year, movie_duration=movie_duration,
-                           movie_star_classification=movie_star_classification, movie_description=movie_description)
+                           movie_star_classification=movie_star_classification, movie_description=movie_description,
+                           movie_video=movie_video)
 if __name__ == "__main__":
     app.run(debug=True)
