@@ -15,7 +15,7 @@ function resizeWidgets() {
         showPasswordButton.style.marginLeft = "15vw";
         redirectToSignUpPageButton.style.marginTop = "5vw";
         redirectToSignUpPageButton.style.marginLeft = "-1vw";
-        loginButton.style.width = "35vw";
+        loginButton.style.width = "31vw";
     }
     else {
         sideImage.style.display = "block";
@@ -25,5 +25,6 @@ function resizeWidgets() {
         showPasswordButton.style.marginLeft = "1vw";
         redirectToSignUpPageButton.style.marginTop = "-1.1vw";
         redirectToSignUpPageButton.style.marginLeft = "7vw";
+        loginButton.style.width = "17vw";
     }
 }
