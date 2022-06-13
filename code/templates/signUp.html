@@ -9,9 +9,10 @@
   <script src="../static/js/urls.js"></script>
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/check_credentials.js"></script>
+  <script src="../static/vendor/signUp.js"></script>
   <title>Registar</title>
 </head>
-<body>
+<body onload="resizeWidgets()" onresize="resizeWidgets()">
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -26,35 +27,35 @@
       <span class="text-center">Registar</span>
       <div class="input-container">		
         <input class="email-address" type="mail" name="email_address" id="emailAddress" oninput="checkEmail()"/>
-        <label>Email</label>
+        <label id="emailLabel">Email</label>
       </div>
 
       <div class="input-container">		
         <input type="text" name="username" id="username" oninput="checkUsername()"/>
-        <label>Nome de Utilizador</label>
+        <label id="usernameLabel">Nome de Utilizador</label>
       </div>
 
       <div class="input-container">		
         <input type="password" name="password" id="password" oninput="checkPassword()"/>
-        <label>Password</label>
+        <label id="passwordLabel">Password</label>
       </div>
 
       <div class="input-container">		
         <input type="password" name="confirmPassword" id="confirmPassword" oninput="checkConfirmPassword()"/>
-        <label>Confirmar Password</label>
+        <label id="confirmPasswordLabel">Confirmar Password</label>
       </div>
       <p1 class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalidCredentialsText }}</p1>
       <div>
-        <button class="signup-button" name="signUp" value="Registar">Registar</button>
+        <button class="signup-button" id="signUpButton" name="signUp" value="Registar">Registar</button>
       </div>
     </form>	
     <div>
       <p1 class="bottom-text">Já tens conta?</p1>
-      <button class="redirect-to-login-button" onclick="redirectToLoginPage()">Inicia sessão agora</button>
+      <button class="redirect-to-login-button" id="redirectToLoginPageButton" onclick="redirectToLoginPage()">Inicia sessão agora</button>
     </div>
     <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
     <button class="confirm-password-button" id="conf_psw_button" onclick="showHidePassword()"></button>
-    <img class="side-image" src="../static/images/other_images/signup_background.jpg">
+    <img class="side-image" id="sideImage" src="../static/images/other_images/signup_background.jpg">
   </div>
 </body>
 </html>

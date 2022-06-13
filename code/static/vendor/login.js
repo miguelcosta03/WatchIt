@@ -16,8 +16,7 @@ function resizeWidgets() {
         redirectToSignUpPageButton.style.marginTop = "5vw";
         redirectToSignUpPageButton.style.marginLeft = "-1vw";
         loginButton.style.width = "31vw";
-    }
-    else {
+    } else {
         sideImage.style.display = "block";
         emailInputField.style.width = "100%";
         passwordInputField.style.width = "100%";
