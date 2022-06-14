@@ -7,7 +7,6 @@ function resizeWidgets() {
     let redirectToSignUpPageButton = document.getElementById('redirectToSignUpPageButton');
     let loginButton = document.getElementById('loginButton');
 
-    console.log(winWidth);
     if (winWidth < 780 && winWidth > 600) {
         sideImage.style.display = "none";
         emailInputField.style.width = "150px";
@@ -19,8 +18,14 @@ function resizeWidgets() {
         loginButton.style.width = "31vw";
 
     } else if (winWidth <= 600) {
-        showPasswordButton.style.position = "none";
-        showPasswordButton.style.marginLeft = "50px";
+        sideImage.style.display = "none";
+        emailInputField.style.width = "150px";
+        passwordInputField.style.width = "150px";
+        showPasswordButton.style.position = "absolute";
+        showPasswordButton.style.marginLeft = "70px";
+        redirectToSignUpPageButton.style.marginTop = "5vw";
+        redirectToSignUpPageButton.style.marginLeft = "-1vw";
+        loginButton.style.width = "31vw";
         
     } else if (winWidth >= 780 && winWidth < 1400) {
         redirectToSignUpPageButton.style.marginTop = "5vw";
