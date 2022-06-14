@@ -523,8 +523,10 @@ def changePassword():
 
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():
+    global isLogged
     global scrollToEpisodeGrid
 
+    print(f'IS LOGGGED::::: {isLogged}')
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
     serie_image_background = r'{}'.format(database.getSerieBackgroundImage(database.getSerieID(database.getCurrentSerieName())))
     serie_cover_image = r'{}'.format(database.getSerieCoverImage(database.getSerieID(database.getCurrentSerieName())))
@@ -566,10 +568,13 @@ def watchSerie():
             case 'playEpisode1Button':
                 episode_number = 1
                 scrollToEpisodeGrid = True
+                isLogged = True
             
             case 'playEpisode2Button':
                 episode_number = 2
                 scrollToEpisodeGrid = True
+                isLogged = True
+                
             
             case 'playEpisode3Button':
                 episode_number = 3
