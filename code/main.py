@@ -100,6 +100,7 @@ def signUp():
                                     return redirect(url_for('mainPage'))
                                 else:
                                     invalidCredentialsText = '* Já existe uma conta associada a este email.'
+                                    
     return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
