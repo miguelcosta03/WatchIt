@@ -86,17 +86,20 @@ def signUp():
                     if invalidPassword:
                         invalidCredentialsText = '* Por favor insira uma password.'
                     else:
-                        if invalidConfPassword:
-                            invalidCredentialsText = '* Por favor confirme a sua password.'
-                        else:
-                            userExists = database.checkIfUserExistsByEmail(email_address)
-                            if userExists == False:
-                                database.createNewUser(email_address, username, password)
-                                database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
-                                isLogged = True
-                                return redirect(url_for('mainPage'))
+                        if len(password) < 5:
+                            invalidCredentialsText = '* A password tem de ter no mínimo 5 caracteres.'
+                        else:        
+                            if invalidConfPassword:
+                                invalidCredentialsText = '* Por favor confirme a sua password.'
                             else:
-                                invalidCredentialsText = '* Já existe uma conta associada a este email.'
+                                userExists = database.checkIfUserExistsByEmail(email_address)
+                                if userExists == False:
+                                    database.createNewUser(email_address, username, password)
+                                    database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                    isLogged = True
+                                    return redirect(url_for('mainPage'))
+                                else:
+                                    invalidCredentialsText = '* Já existe uma conta associada a este email.'
     return render_template(signUpTemplate, invalidCredentialsText=invalidCredentialsText)
 
 @app.route("/", methods=['GET', 'POST'])
