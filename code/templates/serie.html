@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/styles/serie.css">
     <link rel="stylesheet" href="../static/styles/index.css">
     <link rel="stylesheet" href="../static/styles/watchit_player.css">
+    <link rel="stylesheet" href="../static/styles/accountWarning.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -58,7 +59,7 @@
               <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
             </form>
             <h1 class="movies-button" onclick="redirectToMoviesPage()">FILMES</h1>
-            <h1 class="series-button" onclick="redirectToSeriesPage()">SÉRIES</h1>
+            <h1 class="series-button" style="color: rgba(125, 255, 125, 0.712); text-shadow: 0 0 10px white;" onclick="redirectToSeriesPage()">SÉRIES</h1>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -346,7 +347,16 @@
                 <video class="video-player" id="normalVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
                 <video class="watchit-video-player" id="watchItVideoPlayer" src="{{ episode_video }}" controls disablepictureinpicture controlslist="nodownload noplaybackrate"></video>
             </div>
-            <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a esta série</p>
+            <div class="warning-box">
+                <div class="warning-box-content">
+                    <p class="warning-text">Ooops! Para assistires a esta série, tens que ter uma conta no WatchIt!</p>
+                    <button class="redirect-to-login-page-button" onclick="redirectToLoginPage()">Inicia Sessão</button>
+                    <p class="or-text">Ou</p>
+                    <button class="redirect-to-signUp-page-button" onclick="redirectToSignUpPage()">Cria uma conta</button>
+                    <img class="warning-mascot" src="../static/images/other_images/accountWarningMascot.png">
+                    <h1 class="return-to-main-page-button" onclick="returnToHomePage()">Voltar à página inicial</h1>
+                </div>
+            </div>
         {% endif %}
     </div>
 </body>

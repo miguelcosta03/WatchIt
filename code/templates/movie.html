@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/styles/movie.css">
     <link rel="stylesheet" href="../static/styles/index.css">
     <link rel="stylesheet" href="../static/styles/watchit_player.css">
+    <link rel="stylesheet" href="../static/styles/accountWarning.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -72,7 +73,16 @@
             <button id="normalPlayerButton" onclick="selectNormalPlayer()">Player Normal</button>
             <button id="watchItPlayerButton" style="background-color: rgba(125, 255, 125, 0.712);"  onclick="selectWatchItPlayer()">WatchIt Player</button>
         </div>
-        <p class="login-warn-text">Faz login na tua conta <br>para poderes assistir a este filme</p>
+        <div class="warning-box">
+            <div class="warning-box-content">
+                <p class="warning-text">Ooops! Para assistires a este filme, tens que ter uma conta no WatchIt!</p>
+                <button class="redirect-to-login-page-button" onclick="redirectToLoginPage()">Inicia Sessão</button>
+                <p class="or-text">Ou</p>
+                <button class="redirect-to-signUp-page-button" onclick="redirectToSignUpPage()">Cria uma conta</button>
+                <img class="warning-mascot" src="../static/images/other_images/accountWarningMascot.png">
+                <h1 class="return-to-main-page-button" onclick="returnToHomePage()">Voltar à página inicial</h1>
+            </div>
+        </div>
     {% endif %}
 </body>
 </html>

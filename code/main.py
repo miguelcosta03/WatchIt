@@ -568,12 +568,10 @@ def watchSerie():
             case 'playEpisode1Button':
                 episode_number = 1
                 scrollToEpisodeGrid = True
-                isLogged = True
             
             case 'playEpisode2Button':
                 episode_number = 2
                 scrollToEpisodeGrid = True
-                isLogged = True
                 
             
             case 'playEpisode3Button':
@@ -880,7 +878,6 @@ def watchMovie():
     movie_star_classification = database.getMovieStarClassification(database.getMovieID(movie_title))
     movie_description = database.getMovieDescription(database.getMovieID(movie_title))
     movie_video = database.getMovieVideo(database.getMovieID(movie_title))
-    print(movie_video)
     return render_template(movieTemplate, isLogged=isLogged, movie_title=movie_title, movie_image_background=movie_image_background,
                            movie_release_year=movie_release_year, movie_duration=movie_duration,
                            movie_star_classification=movie_star_classification, movie_description=movie_description,

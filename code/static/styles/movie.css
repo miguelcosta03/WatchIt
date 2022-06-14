@@ -8,7 +8,7 @@
 
 .left-div {
     position: absolute;
-    background:  linear-gradient(to left,  rgba(255, 255, 255, 0), black,black);
+    background: linear-gradient(to left,  rgba(255, 255, 255, 0), black,black);
     width: 55%;
     border-radius: 0 700px 700px 0;
     margin-top: -54vw;
