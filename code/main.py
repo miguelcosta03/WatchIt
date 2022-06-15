@@ -233,100 +233,79 @@ def movies():
     tm3_star_classification = database.getMovieStarClassification(3)
     tm3_description = database.getMovieDescription(3)
 
-    try:
-        userID = int(database.getUserID(email_address))
-        m1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m1_value))
-        m2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m2_value))
-        m3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m3_value))
+    currentDeviceIP = request.environ['REMOTE_ADDR']
+    userID = database.getUserIDByIP(currentDeviceIP)
 
-
-        if request.method == "POST":
-            match request.form.get('movieButton'):
-                case 'Joker':
-                    database.updateCurrentMovieURL('joker', 'Joker')
-                    return redirect(url_for('watchMovie'))
-                case 'Dunkirk':
-                    database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
-                    return redirect(url_for('watchMovie'))
-                case 'Look Mom I Can Fly':
-                    database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
-                    return redirect(url_for('watchMovie'))
+    if int(userID) > 0:
+        isLogged = True
+    else:
+        isLogged = False
         
-            if request.method == "POST":
-                if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
-                    if m1IsFavourite == None:
-                        database.removeFavouriteMovie(userID, database.getMovieID(m1_value))
-                        m1IsFavourite = False
-                    else:
-                        database.insertFavouriteMovie(userID, database.getMovieID(m1_value))
-                        m1IsFavourite = None
-            
-                if request.form.get('addMovie2ToFavouriteMoviesButton') == "addMovie2ToFavouriteMoviesButton":
-                    if m2IsFavourite == None:
-                        database.removeFavouriteMovie(userID, database.getMovieID(m2_value))
-                        m2IsFavourite = False
-                    else:
-                        database.insertFavouriteMovie(userID, database.getMovieID(m2_value))
-                        m2IsFavourite = None
-            
-                if request.form.get('addMovie3ToFavouriteMoviesButton') == "addMovie3ToFavouriteMoviesButton":
-                    if m3IsFavourite == None:
-                        database.removeFavouriteMovie(userID, database.getMovieID(m3_value))
-                        m3IsFavourite = False
-                    else:
-                        database.insertFavouriteMovie(userID, database.getMovieID(m3_value))
-                        m3IsFavourite = None
-            
+    m1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m1_value))
+    m2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m2_value))
+    m3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m3_value))
+
+
+    if request.method == "POST":
+        match request.form.get('movieButton'):
+            case 'Joker':
+                database.updateCurrentMovieURL('joker', 'Joker')
+                return redirect(url_for('watchMovie'))
+            case 'Dunkirk':
+                database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
+                return redirect(url_for('watchMovie'))
+            case 'Look Mom I Can Fly':
+                database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
+                return redirect(url_for('watchMovie'))
     
-                match request.form.get('watchTopMovie'):
-                    case 'watchTopMovie1':
-                        database.updateCurrentMovieURL('joker', 'Joker')
-                        return redirect(url_for('watchMovie'))
-                    case 'watchTopMovie2':
-                        database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
-                        return redirect(url_for('watchMovie'))
-                    case 'watchTopMovie3':
-                        database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
-                        return redirect(url_for('watchMovie'))
-
-        return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
-                            tm1_duration=tm1_duration, m1IsFavourite=m1IsFavourite,tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
-                            tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, m2IsFavourite=m2IsFavourite,tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
-                            tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, m3IsFavourite=m3IsFavourite, tm3_star_classification=tm3_star_classification,
-                            tm3_description=tm3_description, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
-        
-    except ValueError:
         if request.method == "POST":
+            if request.form.get('addMovie1ToFavouriteMoviesButton') == "addMovie1ToFavouriteMoviesButton":
+                if m1IsFavourite == None:
+                    database.removeFavouriteMovie(userID, database.getMovieID(m1_value))
+                    m1IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(userID, database.getMovieID(m1_value))
+                    m1IsFavourite = None
+        
+            if request.form.get('addMovie2ToFavouriteMoviesButton') == "addMovie2ToFavouriteMoviesButton":
+                if m2IsFavourite == None:
+                    database.removeFavouriteMovie(userID, database.getMovieID(m2_value))
+                    m2IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(userID, database.getMovieID(m2_value))
+                    m2IsFavourite = None
+        
+            if request.form.get('addMovie3ToFavouriteMoviesButton') == "addMovie3ToFavouriteMoviesButton":
+                if m3IsFavourite == None:
+                    database.removeFavouriteMovie(userID, database.getMovieID(m3_value))
+                    m3IsFavourite = False
+                else:
+                    database.insertFavouriteMovie(userID, database.getMovieID(m3_value))
+                    m3IsFavourite = None
+        
+
             match request.form.get('watchTopMovie'):
                 case 'watchTopMovie1':
-                    return redirect(url_for('login'))
-                case 'watchTopMovie2':
-                    return redirect(url_for('login'))
-                case 'watchTopMovie3':
-                    return(redirect(url_for('login')))
-            
-            match request.form.get('movieButton'):
-                case 'Joker':
                     database.updateCurrentMovieURL('joker', 'Joker')
                     return redirect(url_for('watchMovie'))
-                case 'Dunkirk':
+                case 'watchTopMovie2':
                     database.updateCurrentMovieURL('dunkirk', 'Dunkirk')
                     return redirect(url_for('watchMovie'))
-                case 'Look Mom I Can Fly':
+                case 'watchTopMovie3':
                     database.updateCurrentMovieURL('lookmomicanfly', 'Look Mom I Can Fly')
                     return redirect(url_for('watchMovie'))
 
-        return render_template(moviesTemplate, tm1_background=tm1_background, tm1_name=tm1_name,
-                               tm1_release_year=tm1_release_year, tm1_duration=tm1_duration, tm1_description=tm1_description, 
-                               tm1_star_classification=tm1_star_classification, tm2_background=tm2_background, tm2_name=tm2_name,
-                               tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, tm2_star_classification=tm2_star_classification,
-                               tm2_description=tm2_description, tm3_background=tm3_background, tm3_name=tm3_name,
-                               tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, tm3_star_classification=tm3_star_classification, tm3_description=tm3_description,
-                               m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
+    return render_template(moviesTemplate, isLogged=isLogged, tm1_name=tm1_name, tm1_background=tm1_background, tm1_release_year=tm1_release_year,
+                        tm1_duration=tm1_duration, m1IsFavourite=m1IsFavourite,tm1_star_classification=tm1_star_classification, tm1_description=tm1_description, tm2_background=tm2_background, tm2_name=tm2_name,
+                        tm2_release_year=tm2_release_year, tm2_duration=tm2_duration, m2IsFavourite=m2IsFavourite,tm2_star_classification=tm2_star_classification, tm2_description=tm2_description, 
+                        tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, m3IsFavourite=m3IsFavourite, tm3_star_classification=tm3_star_classification,
+                        tm3_description=tm3_description, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
+    
 
 @app.route('/series', methods=['GET', 'POST'])
 def series():
     global isLogged
+    global email_address
 
     ts_ids = database.getTrendingSeriesID()
     ts1_background = database.getSerieBackgroundImage(ts_ids[0])
@@ -340,7 +319,7 @@ def series():
     ts1_release_year = database.getSerieReleaseYear(ts_ids[0])
     ts2_release_year = database.getSerieReleaseYear(ts_ids[1])
     ts3_release_year = database.getSerieReleaseYear(ts_ids[2])
-    
+
     ts1_duration = database.getSerieDuration(ts_ids[0])
     ts2_duration = database.getSerieDuration(ts_ids[1])
     ts3_duration = database.getSerieDuration(ts_ids[2])
@@ -366,31 +345,37 @@ def series():
     s2_value = 'La Casa de Papel'
     s3_value = 'Euphoria'
 
-    try:
-        userID = int(database.getUserID(email_address))
-        s1IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts1_name))
-        s2IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts2_name))
-        s3IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts3_name))
-        if request.method == "POST":
-            match request.form.get('watchTopSerie'):
-                case 'watchTopSerie1':
-                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-                    return redirect(url_for('watchSerie'))
-                case 'watchTopSerie2':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('watchSerie'))
-                case 'watchTopSerie3':
-                    database.updateCurrentSerieURL('euphoria', 'Euphoria')
-                    return redirect(url_for('watchSerie'))
+    currentDeviceIP = request.environ['REMOTE_ADDR']
+    userID = int(database.getUserIDByIP(currentDeviceIP))
 
-            if request.form.get('addSerie1ToFavouriteSeriesButton') == 'addSerie1ToFavouriteSeriesButton':
-                if s1IsFavourite == None:
-                    database.removeFavouriteSerie(userID, database.getSerieID(s1_value))
-                    s1IsFavourite = False
-                else:
-                    database.insertFavouriteSerie(userID, database.getSerieID(s1_value))
-                    s1IsFavourite = None
-            
+    if userID > 0:
+        isLogged = True
+    else:
+        isLogged = False
+
+    s1IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts1_name))
+    s2IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts2_name))
+    s3IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts3_name))
+
+    if request.method == "POST":
+        match request.form.get('watchTopSerie'):
+            case 'watchTopSerie1':
+                database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                return redirect(url_for('watchSerie'))
+            case 'watchTopSerie2':
+                database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                return redirect(url_for('watchSerie'))
+            case 'watchTopSerie3':
+                database.updateCurrentSerieURL('euphoria', 'Euphoria')
+                return redirect(url_for('watchSerie'))
+        if request.form.get('addSerie1ToFavouriteSeriesButton') == 'addSerie1ToFavouriteSeriesButton':
+            if s1IsFavourite == None:
+                database.removeFavouriteSerie(userID, database.getSerieID(s1_value))
+                s1IsFavourite = False
+            else:
+                database.insertFavouriteSerie(userID, database.getSerieID(s1_value))
+                s1IsFavourite = None
+
             if request.form.get('addSerie2ToFavouriteSeriesButton') == 'addSerie2ToFavouriteSeriesButton':
                 if s2IsFavourite == None:
                     database.removeFavouriteSerie(userID, database.getSerieID(s2_value))
@@ -398,7 +383,7 @@ def series():
                 else:
                     database.insertFavouriteSerie(userID, database.getSerieID(s2_value))
                     s2IsFavourite = None
-            
+
             if request.form.get('addSerie3ToFavouriteSeriesButton') == 'addSerie3ToFavouriteSeriesButton':
                 if s3IsFavourite == None:
                     database.removeFavouriteSerie(userID, database.getSerieID(s3_value))
@@ -406,7 +391,7 @@ def series():
                 else:
                     database.insertFavouriteSerie(userID, database.getSerieID(s3_value))
                     s3IsFavourite = None
-                
+
             match request.form.get('serieButton'):
                 case 'Peaky Blinders':
                     database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
@@ -417,8 +402,7 @@ def series():
                 case 'Euphoria':
                     database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
                     return redirect(url_for('watchSerie'))
-
-        return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
+    return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
                             ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
                             ts1_star_classification=ts1_star_classification, ts1_description=ts1_description, s1IsFavourite=s1IsFavourite,
                             ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
@@ -427,40 +411,7 @@ def series():
                             ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
                             ts3_description=ts3_description, s3IsFavourite=s3IsFavourite, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
                             s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
-
-    except ValueError:
-        if request.method == "POST":
-            match request.form.get('watchTopSerie'):
-                case 'watchTopSerie1':
-                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-                    return redirect(url_for('watchSerie'))
-                case 'watchTopSerie2':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('watchSerie'))
-                case 'watchTopSerie3':
-                    database.updateCurrentSerieURL('euphoria', 'Euphoria')
-                    return redirect(url_for('watchSerie'))
-            
-            match request.form.get('serieButton'):
-                case 'Peaky Blinders':
-                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-                    return redirect(url_for('login'))
-                case 'La Casa de Papel':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('login'))
-                case 'Euphoria':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('login'))
-        
-        return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
-                            ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
-                            ts1_star_classification=ts1_star_classification, ts1_description=ts1_description,
-                            ts2_background=ts2_background, ts2_name=ts2_name, ts2_release_year=ts2_release_year, ts2_duration=ts2_duration,
-                            ts2_total_seasons_number=ts2_total_seasons_number, ts2_star_classification=ts2_star_classification, ts2_description=ts2_description,
-                            ts3_background=ts3_background, ts3_name=ts3_name, ts3_release_year=ts3_release_year, ts3_duration=ts3_duration,
-                            ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
-                            ts3_description=ts3_description, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
-                            s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
+    
             
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
@@ -886,5 +837,6 @@ def watchMovie():
                            movie_release_year=movie_release_year, movie_duration=movie_duration,
                            movie_star_classification=movie_star_classification, movie_description=movie_description,
                            movie_video=movie_video)
+
 if __name__ == "__main__":
     app.run(debug=True)

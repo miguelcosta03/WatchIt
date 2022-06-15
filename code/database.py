@@ -108,6 +108,13 @@ class Database:
         deviceIP = self.cursor.fetchall()
         return str(deviceIP).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','').replace(' ','')
 
+    def getUserIDByIP(self, ipAddress):
+        query = f"""SELECT ID_Utilizador FROM dbo.Conexoes
+                    WHERE IP_Dispositivo='{ipAddress}'"""
+        self.cursor.execute(query)
+        userID = self.cursor.fetchall()
+        return str(userID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','').replace(' ','')
+        
     def checkIfIsConnectedToAnotherDevice(self, userID):
         query = f"""SELECT Conectado FROM dbo.Conexoes
                     WHERE ID_Utilizador={userID}"""
@@ -484,5 +491,4 @@ class Database:
 database = Database('SQL Server', '192.168.20.9', 1433, 'WatchItDB', 'su', '123456')
 database.updateDeviceConnectionNumber(1, '192.168.20.9')
 print(database.getConnectedDeviceIP(1))
-
 """
