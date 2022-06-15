@@ -415,15 +415,17 @@ def series():
             
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
-    global email_address
-    username = str(database.getUsername(database.getUserID(email_address)))
+    currentDeviceIP = request.environ['REMOTE_ADDR']
+    userID = database.getUserIDByIP(currentDeviceIP)
+    username = database.getUsername(userID)
+    email_address = database.getUserEmail(userID)
     if request.method == 'POST':
         if request.form.get('saveNewUsername') == 'Salvar Username':
             newUsername = request.form['newUsernameInput']
-            database.updateUsername(database.getUserID(email_address), newUsername)
+            database.updateUsername(userID, newUsername)
         if request.form.get('saveNewEmail') == 'Salvar Email':
             newEmail = request.form['newEmailInput']
-            database.updateEmail(database.getUserID(email_address), newEmail)
+            database.updateEmail(userID, newEmail)
             email_address = newEmail
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
