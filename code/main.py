@@ -35,6 +35,8 @@ def login():
     global email_address
     invalidEmail = False
     invalidCredentialsText = ''
+    
+    currentDeviceIP = request.environ['REMOTE_ADDR']
     try:
         if request.method == 'POST':
             if request.form.get('login') == 'Login':
@@ -65,6 +67,9 @@ def signUp():
     invalidCredentialsText = ''
     global isLogged
     global email_address
+
+    currentDeviceIP = request.environ['REMOTE_ADDR']
+
     if request.method == 'POST':
         if request.form.get('signUp') == "Registar":
             email_address = request.form['email_address']
@@ -107,26 +112,16 @@ def signUp():
 def mainPage():
     global isLogged
     global email_address
-    global currentDeviceIP
     
     currentDeviceIP = request.environ['REMOTE_ADDR']
-    
+
     try:
-        userID = int(database.getUserID(email_address))
-        isConnected = database.checkIfIsConnectedToAnotherDevice(userID)
-        if isConnected:
-            connectedDeviceIP = database.getConnectedDeviceIP(database.getUserID(email_address))
-            if currentDeviceIP == connectedDeviceIP:
-                isLogged = True
-            else:
-                isLogged = False
-        else:
-            isLogged = True
+        userID = int(database.getUserIDByIP(currentDeviceIP))
+        isLogged = True
     except ValueError:
         isLogged = False
 
-
-    s1_value = None
+        s1_value = None
     s2_value = None
     s3_value = None
     ts_ids = None
@@ -197,6 +192,8 @@ def mainPage():
         return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
                             s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
                             ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+
+
 
 @app.route('/filmes', methods=['GET', 'POST'])
 def movies():
