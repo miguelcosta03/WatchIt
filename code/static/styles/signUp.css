@@ -126,7 +126,7 @@ input:-webkit-autofill:active {
     position: fixed;
     background-image: url('../images/other_images/password_invisible.png');
     background-repeat: no-repeat;
-    width: 3%;
+    width: 5%;
     height: 20px;
     border-left:50px;
     border-color: transparent;
@@ -140,7 +140,7 @@ input:-webkit-autofill:active {
     position: fixed;
     background-image: url('../images/other_images/password_invisible.png');
     background-repeat: no-repeat;
-    width: 3%;
+    width: 5%;
     height: 20px;
     border-left:50px;
     border-color: transparent;

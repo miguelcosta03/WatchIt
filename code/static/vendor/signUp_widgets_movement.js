@@ -15,13 +15,17 @@ function resizeWidgets() {
     let signUpButton = document.getElementById('signUpButton');
     let redirectToLoginPageButton = document.getElementById('redirectToLoginPageButton');
 
-    if (winWidth <= 600) {
-        if (winWidth >= 530 && winWidth <= 599) {
+    console.log(winWidth);
+
+    if (winWidth <= 600) { 
+        if (winWidth < 500) {
+            showPasswordButton.style.marginTop = "-1vw";
+            showPasswordButton.style.marginLeft = "20vw";
+            showConfirmPasswordButton.style.marginTop = "-1vw";
+            showConfirmPasswordButton.style.marginLeft = "20vw";
+        } else if (winWidth >= 530 && winWidth <= 599) {
             showPasswordButton.style.marginLeft = "10.5vw";
             showConfirmPasswordButton.style.marginLeft = "10.5vw";
-        } else {
-            showPasswordButton.style.marginLeft = "12vw";
-            showConfirmPasswordButton.style.marginLeft = "12vw";
         }
         sideImage.style.display = "none";
 
@@ -44,6 +48,11 @@ function resizeWidgets() {
         confirmPasswordLabel.style.fontSize = "2vw";
         confirmPasswordInputField.style.width = "150px";
         confirmPasswordInputField.style.fontSize = "12px";
+        
+        showPasswordButton.style.marginTop = "-1vw";
+        showPasswordButton.style.marginLeft = "20vw";
+        showConfirmPasswordButton.style.marginTop = "-1vw";
+        showConfirmPasswordButton.style.marginLeft = "20vw";
 
         invalidCredentialsLabel.style.fontSize = "2.2vw";
         signUpButton.style.width = "31vw";
@@ -106,9 +115,9 @@ function resizeWidgets() {
         confirmPasswordInputField.style.fontSize = "12px";
 
         showPasswordButton.style.marginTop = "-1vw";
-        showPasswordButton.style.marginLeft = "0vw";
+        showPasswordButton.style.marginLeft = "1vw";
         showConfirmPasswordButton.style.marginTop = "-1vw";
-        showConfirmPasswordButton.style.marginLeft = "0vw";
+        showConfirmPasswordButton.style.marginLeft = "1vw";
 
         redirectToLoginPageButton.style.marginTop = "2vw";
         redirectToLoginPageButton.style.marginLeft = "-0.5vw";
