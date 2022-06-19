@@ -6,9 +6,7 @@ function resizeWidgets() {
     let sideImage = document.getElementById('sideImage');
     let redirectToSignUpPageButton = document.getElementById('redirectToSignUpPageButton');
     let loginButton = document.getElementById('loginButton');
-
-    console.log(winWidth);
-
+    
     if (winWidth < 780 && winWidth > 600) {
         sideImage.style.display = "none";
         emailInputField.style.width = "150px";

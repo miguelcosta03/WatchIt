@@ -15,8 +15,6 @@ function resizeWidgets() {
     let signUpButton = document.getElementById('signUpButton');
     let redirectToLoginPageButton = document.getElementById('redirectToLoginPageButton');
 
-    console.log(winWidth);
-
     if (winWidth <= 600) {
         if (winWidth >= 530 && winWidth <= 599) {
             showPasswordButton.style.marginLeft = "10.5vw";
