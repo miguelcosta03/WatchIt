@@ -456,12 +456,14 @@ def insertVericationCode():
             else:
                 invalidVerificationCode = True
     return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
+    return render_template(insertVericationCodeTemplate)
 
 @app.route('/alterarPalavraPasse', methods=['GET', 'POST'])
 def changePassword():
     global email_address
     invalidCredentials = False
     invalidCredentialsText = ''
+
     if request.method == 'POST':
         if request.form.get('confirmNewPasswordButton') == 'alterarPalavraPasse':
             password = request.form['password']

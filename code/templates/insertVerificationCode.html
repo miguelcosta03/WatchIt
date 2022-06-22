@@ -7,26 +7,27 @@
     <link rel="stylesheet" href="../static/styles/insertVerificationCode.css">
     <script src="../static/js/effects.js"></script>
     <script src="../static/js/urls.js"></script>
+    <script src="../static/vendor/insertVerificationCode_widgets_movement.js"></script>
     <title>Código de Verificação</title>
 </head>
-<body>
-    <div class="box">
+<body onload="resizeWidgets()" onresize="resizeWidgets()">
+    <div class="box" id="verCodeBox">
         <form action="/inserirCodigodeVerificacao" method="post">
-            <p class="verification-code-text">Código de Verificação</p>
+            <p class="verification-code-text" id="verCodeTitle">Código de Verificação</p>
             {% if not invalidVerificationCode %}
-                <input autofocus class="first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
-                <input class="second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
-                <input class="third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
-                <input class="fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
+                <input maxlength="1" class="first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
+                <input maxlength="1" class="second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
+                <input maxlength="1" class="third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
+                <input maxlength="1" class="fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
             {% else %}
-                <input class="invalid-first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
-                <input class="invalid-second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
-                <input class="invalid-third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
-                <input class="invalid-fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
-                <label class="invalid-code-text">Código Inválido. Tenta Novamente.</label>
-                <label class="verification-code-time-warning">Novos códigos são gerados e enviados de 10 em 10 minutos, após este tempo atualiza a página e verifica o teu email.</label>
+                <input maxlength="1" class="invalid-first-digit-input" type="text" id="first_input" name="first_input" oninput="focusElement()">
+                <input maxlength="1" class="invalid-second-digit-input"type="text" id="second_input" name="second_input" oninput="focusElement()">
+                <input maxlength="1" class="invalid-third-digit-input"type="text" id="third_input" name="third_input" oninput="focusElement()">
+                <input maxlength="1" class="invalid-fourth-digit-input"type="text" id="fourth_input" name="fourth_input" oninput="focusElement()">
+                <label maxlength="1" class="invalid-code-text">Código Inválido. Tenta Novamente.</label>
+                <label maxlength="1" class="verification-code-time-warning">Novos códigos são gerados e enviados de 10 em 10 minutos, após este tempo atualiza a página e verifica o teu email.</label>
             {% endif %}
-            <button class="submit-button" name="submitButton" value="Verificar">Verificar</button>
+            <button class="submit-button" name="submitButton" value="Verificar" id="verCodeButton">Verificar</button>
         </form>
     </div>
 </body>

@@ -16,5 +16,3 @@ class Contacts:
         server.sendmail(self.supportEmail, self.user_email, emailMsg.encode("utf-8"))
         server.close()
         return
-
-        # 192.168.10.1, 25

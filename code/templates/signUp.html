@@ -53,8 +53,8 @@
       <p1 class="bottom-text">Já tens conta?</p1>
       <button class="redirect-to-login-button" id="redirectToLoginPageButton" onclick="redirectToLoginPage()">Inicia sessão agora</button>
     </div>
-    <button class="password-button" id="psw_button" onclick="showHidePassword()"></button>
-    <button class="confirm-password-button" id="conf_psw_button" onclick="showHidePassword()"></button>
+    <button class="password-button" id="psw_button" onclick="showHidePassword(); showHideConfirmPassword()"></button>
+    <button class="confirm-password-button" id="conf_psw_button" onclick="showHidePassword(); showHideConfirmPassword()"></button>
     <img class="side-image" id="sideImage" src="../static/images/other_images/signup_background.jpg">
   </div>
 </body>

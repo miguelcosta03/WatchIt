@@ -15,52 +15,72 @@ function resizeWidgets() {
     let signUpButton = document.getElementById('signUpButton');
     let redirectToLoginPageButton = document.getElementById('redirectToLoginPageButton');
 
-    console.log(winWidth);
-
     if (winWidth <= 600) { 
-        if (winWidth < 500) {
-            showPasswordButton.style.marginTop = "-1vw";
-            showPasswordButton.style.marginLeft = "20vw";
-            showConfirmPasswordButton.style.marginTop = "-1vw";
-            showConfirmPasswordButton.style.marginLeft = "20vw";
-        } else if (winWidth >= 530 && winWidth <= 599) {
-            showPasswordButton.style.marginLeft = "10.5vw";
-            showConfirmPasswordButton.style.marginLeft = "10.5vw";
-        }
         sideImage.style.display = "none";
 
         emailLabel.style.width = "100px";
         emailLabel.style.fontSize = "2vw";
-        emailInputField.style.width = "150px";
+        emailInputField.style.width = "200px";
         emailInputField.style.fontSize = "12px";
 
         usernameLabel.style.width = "100px";
         usernameLabel.style.fontSize = "2vw";
-        usernameInputField.style.width = "150px";
+        usernameInputField.style.width = "200px";
         usernameInputField.style.fontSize = "12px";
 
         passwordLabel.style.width = "100px";
         passwordLabel.style.fontSize = "2vw";
-        passwordInputField.style.width = "150px";
+        passwordInputField.style.width = "200px";
         passwordInputField.style.fontSize = "12px";
 
         confirmPasswordLabel.style.width = "150px";
         confirmPasswordLabel.style.fontSize = "2vw";
-        confirmPasswordInputField.style.width = "150px";
+        confirmPasswordInputField.style.width = "200px";
         confirmPasswordInputField.style.fontSize = "12px";
         
         showPasswordButton.style.marginTop = "-1vw";
-        showPasswordButton.style.marginLeft = "20vw";
-        showConfirmPasswordButton.style.marginTop = "-1vw";
-        showConfirmPasswordButton.style.marginLeft = "20vw";
+        showPasswordButton.style.marginLeft = "32vw";
+        showConfirmPasswordButton.style.marginTop = "-1.2vw";
+        showConfirmPasswordButton.style.marginLeft = "32vw";
 
         invalidCredentialsLabel.style.fontSize = "2.2vw";
-        signUpButton.style.width = "31vw";
+
+        signUpButton.style.width = "50vw";
         
         redirectToLoginPageButton.style.marginTop = "1vw";
-        redirectToLoginPageButton.style.marginLeft = "-1vw";
+        redirectToLoginPageButton.style.marginLeft = "-2vw";
 
-    } else if (winWidth > 600 && winWidth < 780) {
+    } else if (winWidth > 600 && winWidth <= 710) {
+        sideImage.style.display = "none";
+        
+        emailInputField.style.width = "220px";
+        emailInputField.style.fontSize = "12px";
+
+        usernameInputField.style.width = "220px";
+        usernameInputField.style.fontSize = "12px";
+
+        passwordInputField.style.width = "220px";
+        passwordInputField.style.fontSize = "12px";
+        
+        confirmPasswordInputField.style.width = "220px";
+        confirmPasswordInputField.style.fontSize = "12px";
+
+        showPasswordButton.style.width = "5vw";
+        showPasswordButton.style.marginTop = "-1vw";
+        showPasswordButton.style.marginLeft = "16vw";
+
+        showConfirmPasswordButton.style.width = "5vw";
+        showConfirmPasswordButton.style.marginTop = "-1vw";
+        showConfirmPasswordButton.style.marginLeft = "16vw";
+
+        invalidCredentialsLabel.style.fontSize = "2.2vw";
+
+        signUpButton.style.width = "33vw";
+        
+        redirectToLoginPageButton.style.marginTop = "-2.4vw";
+        redirectToLoginPageButton.style.marginLeft = "15vw";
+
+    } else if (winWidth > 710 && winWidth < 780) {
         sideImage.style.display = "none";
 
         emailLabel.style.width = "100px";
