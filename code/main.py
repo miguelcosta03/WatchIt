@@ -456,7 +456,6 @@ def insertVericationCode():
             else:
                 invalidVerificationCode = True
     return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
-    return render_template(insertVericationCodeTemplate)
 
 @app.route('/alterarPalavraPasse', methods=['GET', 'POST'])
 def changePassword():
