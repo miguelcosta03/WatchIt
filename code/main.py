@@ -233,15 +233,23 @@ def movies():
     currentDeviceIP = request.environ['REMOTE_ADDR']
     userID = database.getUserIDByIP(currentDeviceIP)
 
-    if int(userID) > 0:
-        isLogged = True
-    else:
-        isLogged = False
-        
-    m1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m1_value))
-    m2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m2_value))
-    m3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m3_value))
+    print(f'USER ID: {userID}')
 
+    m1IsFavourite = None
+    m2IsFavourite = None
+    m3IsFavourite = None
+
+    try:
+        if int(userID) > 0:
+            isLogged = True
+            m1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m1_value))
+            m2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m2_value))
+            m3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(m3_value))
+
+        else:
+            isLogged = False
+    except ValueError:
+        isLogged = False
 
     if request.method == "POST":
         match request.form.get('movieButton'):
@@ -343,16 +351,23 @@ def series():
     s3_value = 'Euphoria'
 
     currentDeviceIP = request.environ['REMOTE_ADDR']
-    userID = int(database.getUserIDByIP(currentDeviceIP))
+    userID = database.getUserIDByIP(currentDeviceIP)
 
-    if userID > 0:
-        isLogged = True
-    else:
+    s1IsFavourite = None
+    s2IsFavourite = None
+    s3IsFavourite = None
+
+    try:
+        if int(userID) > 0:
+            isLogged = True
+            s1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s1_value))
+            s2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s2_value))
+            s3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s3_value))
+
+        else:
+            isLogged = False
+    except ValueError:
         isLogged = False
-
-    s1IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts1_name))
-    s2IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts2_name))
-    s3IsFavourite = database.checkIfIsFavouriteSerie(userID, database.getSerieID(ts3_name))
 
     if request.method == "POST":
         match request.form.get('watchTopSerie'):
@@ -484,9 +499,13 @@ def watchSerie():
     currentDeviceIP = request.environ['REMOTE_ADDR']
     userID = database.getUserIDByIP(currentDeviceIP)
 
-    if int(userID) > 0:
-        isLogged = True
-    else:
+    try:
+        if int(userID) > 0:
+            isLogged = True
+        else:
+            isLogged = False
+    
+    except ValueError:
         isLogged = False
         
     serie_title = f'WatchIt - {database.getCurrentSerieName()}'
