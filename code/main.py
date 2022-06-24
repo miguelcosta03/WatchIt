@@ -360,9 +360,9 @@ def series():
     try:
         if int(userID) > 0:
             isLogged = True
-            s1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s1_value))
-            s2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s2_value))
-            s3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getMovieID(s3_value))
+            s1IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getSerieID(s1_value))
+            s2IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getSerieID(s2_value))
+            s3IsFavourite = database.checkIfIsFavouriteMovie(userID, database.getSerieID(s3_value))
 
         else:
             isLogged = False
