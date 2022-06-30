@@ -58,5 +58,49 @@ function resizeWidgets() {
         passwordLabel.style.fontSize = "2.5vw";
         changePasswordButton.style.height = "5vw";
         changePasswordButton.style.fontSize = "2vw";
+
+    } else if (winWidth >= 600) {
+        editProfileBox.style.width = "50vw";
+        editProfileBox.style.marginLeft = "25vw";
+
+        profileImage.style.width = "5vw";
+
+        usernameTitle.style.fontSize = "1.5vw";
+        usernameTitle.style.marginTop = "-5vw";
+        usernameTitle.style.marginLeft = "6.5vw";
+        usernameLabel.style.fontSize = "1vw";
+        usernameLabel.style.marginTop = "2.5vw"
+        usernameLabel.style.marginLeft = "0vw";
+        editableUsername.style.fontSize = "1vw";
+
+        newUsernameInput.style.height = "2vw";
+        newUsernameInput.style.width = "10vw";
+        newUsernameInput.style.fontSize = "1vw";
+        saveNewUsernameButton.style.height = "2vw";
+        saveNewUsernameButton.style.width = "10vw";
+        saveNewUsernameButton.style.fontSize = "1vw";
+        invalidUsernameLabel.style.width = "10vw";
+        invalidUsernameLabel.style.marginLeft = "1vw";
+        invalidUsernameLabel.style.fontSize = "1vw";
+
+        emailLabel.style.fontSize = "1vw";
+        editableEmail.style.width = "3vw";
+        editableEmail.style.fontSize = "1vw";
+        editEmailButton.style.position = "absolute";
+        editEmailButton.style.marginTop = "0.1vw";
+        editEmailButton.style.marginLeft = "9.5vw";
+        newEmailInput.style.height = "2vw";
+        newEmailInput.style.width = "13.5vw";
+        newEmailInput.style.fontSize = "1vw";
+        saveNewEmailButton.style.width = "13.5vw";
+        saveNewEmailButton.style.height = "2vw";
+        saveNewEmailButton.style.fontSize = "1vw";
+        invalidEmailLabel.style.width = "10vw";
+        invalidEmailLabel.style.marginLeft = "1vw";
+        invalidEmailLabel.style.fontSize = "1vw";
+
+        passwordLabel.style.fontSize = "1vw";
+        changePasswordButton.style.height = "2vw";
+        changePasswordButton.style.fontSize = "1vw";
     }
 }

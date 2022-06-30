@@ -91,9 +91,9 @@ function checkConfirmPassword() {
 }
 
 function checkNewEmail() {
-    let newEmailInput = document.getElementById('newEmail').value;
+    let newEmailInput = document.getElementById('newEmail');
     let invalidEmailLabel = document.getElementById('invalidEmailLabel');
-    if (newEmailInput.length > 0) {
+    if (newEmailInput.value.length > 0) {
         let validateNewEmail = (newEmail) => {
             newEmailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             return newEmailRegex.test(newEmail);
@@ -103,9 +103,11 @@ function checkNewEmail() {
         } else {
             invalidEmailLabel.style.display = "block";
             invalidEmailLabel.innerHTML = "* Email Inválido."
+            newEmailInput.style.borderColor = "red";
         }
     } else {
         invalidEmailLabel.style.display = "block";
         invalidEmailLabel.innerHTML = "* Por favor insira um email."
+        newEmailInput.style.borderColor = "red";
     }
 }
