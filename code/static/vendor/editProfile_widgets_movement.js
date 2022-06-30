@@ -28,6 +28,9 @@ function resizeWidgets() {
 
         usernameTitle.style.fontSize = "3vw";
         usernameLabel.style.fontSize = "2.5vw";
+        editUsernameButton.style.position = "absolute";
+        editUsernameButton.style.marginTop = "-6vw";
+        editUsernameButton.style.marginLeft = "5vw";
         editableUsername.style.fontSize = "2.2vw";
         newUsernameInput.style.height = "5vw";
         newUsernameInput.style.width = "35vw";
@@ -43,8 +46,8 @@ function resizeWidgets() {
         editableEmail.style.width = "3vw";
         editableEmail.style.fontSize = "2.2vw";
         editEmailButton.style.position = "absolute";
-        editEmailButton.style.marginTop = "-1vw";
-        editEmailButton.style.marginLeft = "25vw";
+        editEmailButton.style.marginTop = "-6vw";
+        editEmailButton.style.marginLeft = "5vw";
         newEmailInput.style.height = "5vw";
         newEmailInput.style.width = "35vw";
         newEmailInput.style.fontSize = "2.5vw";
@@ -71,6 +74,9 @@ function resizeWidgets() {
         usernameLabel.style.fontSize = "1vw";
         usernameLabel.style.marginTop = "2.5vw"
         usernameLabel.style.marginLeft = "0vw";
+        editUsernameButton.style.position = "absolute";
+        editUsernameButton.style.marginTop = "-1.8vw";
+        editUsernameButton.style.marginLeft = "1.8vw";
         editableUsername.style.fontSize = "1vw";
 
         newUsernameInput.style.height = "2vw";
@@ -87,8 +93,8 @@ function resizeWidgets() {
         editableEmail.style.width = "3vw";
         editableEmail.style.fontSize = "1vw";
         editEmailButton.style.position = "absolute";
-        editEmailButton.style.marginTop = "0.1vw";
-        editEmailButton.style.marginLeft = "9.5vw";
+        editEmailButton.style.marginTop = "-1.7vw";
+        editEmailButton.style.marginLeft = "0vw";
         newEmailInput.style.height = "2vw";
         newEmailInput.style.width = "13.5vw";
         newEmailInput.style.fontSize = "1vw";
