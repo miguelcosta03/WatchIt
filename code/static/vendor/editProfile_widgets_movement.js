@@ -22,7 +22,7 @@ function resizeWidgets() {
 
     console.log(winWidth);
 
-    if (winWidth < 600) {
+    if (winWidth < 800) {
         editProfileBox.style.width = "97.8vw";
         editProfileBox.style.marginLeft = "1vw";
 
@@ -35,8 +35,8 @@ function resizeWidgets() {
         saveNewUsernameButton.style.height = "5vw";
         saveNewUsernameButton.style.width = "35vw";
         saveNewUsernameButton.style.fontSize = "2.2vw";
-        invalidUsernameLabel.style.width = "30vw";
-        invalidUsernameLabel.style.marginLeft = "-3vw";
+        invalidUsernameLabel.style.width = "25vw";
+        invalidUsernameLabel.style.marginLeft = "1vw";
         invalidUsernameLabel.style.fontSize = "2.3vw";
 
         emailLabel.style.fontSize = "2.5vw";
@@ -51,15 +51,15 @@ function resizeWidgets() {
         saveNewEmailButton.style.width = "35vw";
         saveNewEmailButton.style.height = "5vw";
         saveNewEmailButton.style.fontSize = "2.2vw";
-        invalidEmailLabel.style.width = "30vw";
-        invalidEmailLabel.style.marginLeft = "-5vw";
+        invalidEmailLabel.style.width = "20vw";
+        invalidEmailLabel.style.marginLeft = "1vw";
         invalidEmailLabel.style.fontSize = "2.3vw";
 
         passwordLabel.style.fontSize = "2.5vw";
         changePasswordButton.style.height = "5vw";
         changePasswordButton.style.fontSize = "2vw";
 
-    } else if (winWidth >= 600) {
+    } else if (winWidth >= 800) {
         editProfileBox.style.width = "50vw";
         editProfileBox.style.marginLeft = "25vw";
 
