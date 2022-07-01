@@ -3,6 +3,7 @@ from database import Database
 from contacts import Contacts
 from account_operations import AccountOperations
 from security import Security
+from data_validator import DataValidator
 from time import sleep
 
 app = Flask(__name__)
@@ -435,11 +436,19 @@ def editProfile():
     if request.method == 'POST':
         if request.form.get('saveNewUsername') == 'Salvar Username':
             newUsername = request.form['newUsernameInput']
-            database.updateUsername(userID, newUsername)
+            validUsername = DataValidator.validateUsername(newUsername)
+            if validUsername:
+                database.updateUsername(userID, newUsername)
+                username = newUsername
+            else:
+                pass
         if request.form.get('saveNewEmail') == 'Salvar Email':
             newEmail = request.form['newEmailInput']
-            database.updateEmail(userID, newEmail)
-            email_address = newEmail
+            if len(newEmail) > 0:
+                database.updateEmail(userID, newEmail)
+                email_address = newEmail
+            else:
+                pass
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
