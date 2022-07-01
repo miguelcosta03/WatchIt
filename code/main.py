@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 from contacts import Contacts
 from account_operations import AccountOperations
+from security import Security
 from time import sleep
 
 app = Flask(__name__)
@@ -42,7 +43,7 @@ def login():
             if request.form.get('login') == 'Login':
                 email_address = request.form['email_address']
                 password = request.form['password']
-                correctLogin = database.loginUser(email_address, password)
+                correctLogin = database.loginUser(email_address, Security.encrypt(password))
                 if correctLogin:
                     isLogged = True
                     database.updateDeviceConnectionNumber(database.getUserID(email_address), currentDeviceIP)
@@ -99,7 +100,7 @@ def signUp():
                             else:
                                 userExists = database.checkIfUserExistsByEmail(email_address)
                                 if userExists == False:
-                                    database.createNewUser(email_address, username, password)
+                                    database.createNewUser(email_address, username, Security.encrypt(password))
                                     database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
                                     isLogged = True
                                     return redirect(url_for('mainPage'))
