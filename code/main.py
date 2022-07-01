@@ -444,7 +444,8 @@ def editProfile():
                 pass
         if request.form.get('saveNewEmail') == 'Salvar Email':
             newEmail = request.form['newEmailInput']
-            if len(newEmail) > 0:
+            validEmail = DataValidator.validateEmail(newEmail)
+            if validEmail:
                 database.updateEmail(userID, newEmail)
                 email_address = newEmail
             else:

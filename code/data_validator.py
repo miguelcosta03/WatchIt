@@ -1,3 +1,4 @@
+import re
 from string import punctuation
 
 class DataValidator:
@@ -18,3 +19,14 @@ class DataValidator:
             validUsername = False
 
         return validUsername
+
+    @staticmethod
+    def validateEmail(email):
+        validEmail = None
+        regexEmail = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+        if re.fullmatch(regexEmail, email):
+            validEmail = True
+        else:
+            validEmail = False
+        
+        return validEmail

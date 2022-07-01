@@ -144,7 +144,7 @@ class Database:
 
     def updateEmail(self, userID, newEmail):
         query = f"""UPDATE dbo.Utilizadores
-                        SET Nome_Utilizador = '{newEmail}'
+                        SET Email_Utilizador = '{newEmail}'
                     WHERE ID_Utilizador = {userID}"""
         self.cursor.execute(query)
         self.connection.commit()
