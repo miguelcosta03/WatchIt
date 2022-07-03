@@ -496,7 +496,7 @@ def changePassword():
             if len(password) > 0 and password == conf_password:
                 invalidCredentials = False
                 invalidCredentialsText = ''
-                database.updateUserPassword(database.getUserID(email_address), password)
+                database.updateUserPassword(database.getUserID(email_address), Security.encrypt(password))
             else:
                 invalidCredentials = True
                 invalidCredentialsText = '* Por favor insira uma password.'
