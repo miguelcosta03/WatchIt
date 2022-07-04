@@ -72,9 +72,11 @@
         <img src="{{ ts1_bg_img }}" alt="Image">
         <div>
           <h1 class="slider-top-name">{{ ts1_name }}</h1>
-          <button class="slider-watch-now-button" name="watchT1Button" value="watchT1Button" id="watchT1Button" onmouseenter="changeButtonBackgroundColor('watchT1Button');" onmouseleave="resetButtonBackgroundColor('watchT1Button');" style="font-size:24px">Assistir Agora 
-            <i class="fa fa-play-circle"></i>
-          </button>
+          <form method="post">
+            <button class="slider-watch-now-button" name="watchT1Button" value="watchPeakyBlinders" id="watchT1Button" onmouseenter="changeButtonBackgroundColor('watchT1Button');" onmouseleave="resetButtonBackgroundColor('watchT1Button');" style="font-size:24px">Assistir Agora 
+              <i class="fa fa-play-circle" style="font-size: 1vw;"></i>
+            </button>
+          </form>
           <p1 class="slider-top-description">{{ t1_description }}</p1>
         </div>      
       </div>
@@ -83,24 +85,30 @@
         <img src="{{ ts2_bg_img }}" alt="Image">
         <div>
             <h1 class="slider-top-name">{{ ts2_name }}</h1>
-            <button class="slider-watch-now-button" name="watchT2Button" value="watchT2" id="watchT2Button" onmouseenter="changeButtonBackgroundColor('watchT2Button');" onmouseleave="resetButtonBackgroundColor('watchT2Button');" style="font-size:24px">Assistir Agora 
-              <i class="fa fa-play-circle"></i>
-            </button>
+            <form method="post">
+              <button class="slider-watch-now-button" name="watchT2Button" value="watchLaCasadePapel" id="watchT2Button" onmouseenter="changeButtonBackgroundColor('watchT2Button');" onmouseleave="resetButtonBackgroundColor('watchT2Button');" style="font-size:24px">Assistir Agora 
+                <i class="fa fa-play-circle"></i>
+              </button>
+            </form>
             <p1 class="slider-top-description">{{ t2_description }}</p1>
         </div>      
       </div>
-
+      
       <div class="item">
         <img src="{{ ts3_bg_img }}" alt="Image">
         <div>
             <h1 class="slider-top-name">{{ ts3_name }}</h1>
-            <button class="slider-watch-now-button" name="watchT3Button" value="watchT3Button" id="watchT3Button" onmouseenter="changeButtonBackgroundColor('watchT3Button');" onmouseleave="resetButtonBackgroundColor('watchT3Button');" style="font-size:24px">Assistir Agora 
-              <i class="fa fa-play-circle"></i>
-            </button>
+            <form method="post">
+              <button class="slider-watch-now-button" name="watchT3Button" value="watchT3Button" id="watchT3Button" onmouseenter="changeButtonBackgroundColor('watchT3Button');" onmouseleave="resetButtonBackgroundColor('watchT3Button');" style="font-size:24px">Assistir Agora 
+                <i class="fa fa-play-circle"></i>
+              </button>
+            </form>
             <p1 class="slider-top-description">{{ t3_description }}</p1>
         </div>      
       </div>
     </div>
+
+    
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" style="background: rgb(20, 20, 20);" role="button" data-slide="prev">

@@ -168,6 +168,18 @@ def mainPage():
                 database.updateCurrentSerieURL('euphoria', 'Euphoria')
                 return redirect(url_for('watchSerie'))
             
+            if request.form.get('watchT1Button') == 'watchPeakyBlinders':
+                database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                return redirect(url_for('watchSerie'))
+            
+            if request.form.get('watchT2Button') == 'watchLaCasadePapel':
+                database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                return redirect(url_for('watchSerie'))
+            
+            if request.form.get('watchT3Button') == 'watchEuphoria':
+                database.updateCurrentMovieURL('euphoria', 'Euphoria')
+                return redirect(url_for('watchSerie'))
+                
         ts1_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts1_name))
         ts2_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts2_name))
         ts3_bg_img = database.getSerieBackgroundImage(database.getSerieID(ts3_name))
