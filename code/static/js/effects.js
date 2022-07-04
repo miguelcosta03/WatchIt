@@ -87,7 +87,6 @@ function focusElement() {
     }
 }
 
-
 function changeButtonBackgroundColor(buttonID) {
     let button = document.getElementById(`${buttonID}`);
     button.style.color = "rgba(125, 255, 125, 0.712)";
