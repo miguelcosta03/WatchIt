@@ -244,6 +244,22 @@ html, body{
     width: 50vw;
     text-align: justify;
 }
+
+.slider-top-button {
+    position: absolute;
+    margin-top: -20vw;
+    margin-left: 25vw;
+}
+
+.slider-watch-now-button {
+    position: absolute;
+    margin-top: -32vw;
+    margin-left: 44.5vw;
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .slogan{
     position: relative;
     color: white;

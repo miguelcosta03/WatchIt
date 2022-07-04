@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="../static/styles/index.css">
   <link rel="stylesheet" href="../static/styles/series.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../static/js/effects.js"></script>
   <script src="../static/js/urls.js"></script>
   <script src="../static/vendor/header_widgets_movement.js"></script>
@@ -70,6 +72,9 @@
         <img src="{{ ts1_bg_img }}" alt="Image">
         <div>
           <h1 class="slider-top-name">{{ ts1_name }}</h1>
+          <button class="slider-watch-now-button" name="watchT1Button" value="watchT1Button" id="watchT1Button" onmouseenter="changeButtonBackgroundColor('watchT1Button');" onmouseleave="resetButtonBackgroundColor('watchT1Button');" style="font-size:24px">Assistir Agora 
+            <i class="fa fa-play-circle"></i>
+          </button>
           <p1 class="slider-top-description">{{ t1_description }}</p1>
         </div>      
       </div>
@@ -78,6 +83,9 @@
         <img src="{{ ts2_bg_img }}" alt="Image">
         <div>
             <h1 class="slider-top-name">{{ ts2_name }}</h1>
+            <button class="slider-watch-now-button" name="watchT2Button" value="watchT2" id="watchT2Button" onmouseenter="changeButtonBackgroundColor('watchT2Button');" onmouseleave="resetButtonBackgroundColor('watchT2Button');" style="font-size:24px">Assistir Agora 
+              <i class="fa fa-play-circle"></i>
+            </button>
             <p1 class="slider-top-description">{{ t2_description }}</p1>
         </div>      
       </div>
@@ -86,6 +94,9 @@
         <img src="{{ ts3_bg_img }}" alt="Image">
         <div>
             <h1 class="slider-top-name">{{ ts3_name }}</h1>
+            <button class="slider-watch-now-button" name="watchT3Button" value="watchT3Button" id="watchT3Button" onmouseenter="changeButtonBackgroundColor('watchT3Button');" onmouseleave="resetButtonBackgroundColor('watchT3Button');" style="font-size:24px">Assistir Agora 
+              <i class="fa fa-play-circle"></i>
+            </button>
             <p1 class="slider-top-description">{{ t3_description }}</p1>
         </div>      
       </div>
