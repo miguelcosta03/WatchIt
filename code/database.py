@@ -203,17 +203,25 @@ class Database:
         cover_image = self.cursor.fetchall()
         return str(cover_image).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
     
-    def getTrendingSeriesID(self):
-        trending_IDs = []
+    def getTrendingID(self):
+        trendingIDs = []
         query = """SELECT ID
-                    FROM dbo.Tendencias_Series"""
+                    FROM dbo.Tendencias"""
         self.cursor.execute(query)
-        trending_series = self.cursor.fetchall()
-        for id in trending_series:
-            formatted_id = str(id).replace('(','').replace(')','').replace(' ','').replace(',','')
-            trending_IDs.append(int(formatted_id))
-        return trending_IDs
-
+        trendingSeries = self.cursor.fetchall()
+        for id in trendingSeries:
+            formattedID = str(id).replace('(','').replace(')','').replace(' ','').replace(',','')
+            trendingIDs.append(int(formattedID))
+        return trendingIDs
+    
+    def getTrendingDescription(self, ID):
+        query = f"""SELECT Descricao
+                   FROM dbo.Tendencias
+                   WHERE ID_Popular={ID}"""
+        self.cursor.execute(query)
+        trendingDescription = self.cursor.fetchall()
+        return str(trendingDescription).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+        
     def getSerieID(self, serie_name):
         query = f"""SELECT
                         ID

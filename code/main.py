@@ -141,10 +141,14 @@ def mainPage():
         s1_value = 'Peaky Blinders'
         s2_value = 'La Casa de Papel'
         s3_value = 'Euphoria'
-        ts_ids = database.getTrendingSeriesID()
+        ts_ids = database.getTrendingID()
         ts1_name = database.getSerieName(ts_ids[0])
         ts2_name = database.getSerieName(ts_ids[1])
         ts3_name = database.getSerieName(ts_ids[2])
+        t1_description = database.getTrendingDescription(ts_ids[0])
+        t2_description = database.getTrendingDescription(ts_ids[1])
+        t3_description = database.getTrendingDescription(ts_ids[2])
+        
         if request.method == 'POST':
             if request.form.get('loginButton') == 'Login':
                 return redirect(url_for('login'))
@@ -175,13 +179,13 @@ def mainPage():
 
         return render_template(mainPageTemplate, isLogged=isLogged, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,s1_value=s1_value, s2_value=s2_value,
                             s3_value=s3_value, ts1_bg_img=ts1_bg_img, ts2_bg_img=ts2_bg_img, ts3_bg_img=ts3_bg_img,
-                            ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
+                            ts1_name=ts1_name, t1_description=t1_description, ts2_name=ts2_name, t2_description=t2_description, ts3_name=ts3_name, t3_description=t3_description)
     except Exception:
         sleep(0.1)
         s1_value = 'Peaky Blinders'
         s2_value = 'La Casa de Papel'
         s3_value = 'Euphoria'
-        ts_ids = database.getTrendingSeriesID()
+        ts_ids = database.getTrendingID()
         ts1_name = database.getSerieName(ts_ids[0])
         ts2_name = database.getSerieName(ts_ids[1])
         ts3_name = database.getSerieName(ts_ids[2])
