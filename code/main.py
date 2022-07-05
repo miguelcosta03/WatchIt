@@ -330,7 +330,7 @@ def series():
     global isLogged
     global email_address
 
-    ts_ids = database.getTrendingSeriesID()
+    ts_ids = database.getTrendingID()
     ts1_background = database.getSerieBackgroundImage(ts_ids[0])
     ts2_background = database.getSerieBackgroundImage(ts_ids[1])
     ts3_background = database.getSerieBackgroundImage(ts_ids[2])

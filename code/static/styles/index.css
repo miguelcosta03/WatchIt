@@ -232,6 +232,7 @@ html, body {
     color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 2vw;
+    font-weight: bolder;
 }
 
 .slider-watch-now-button {

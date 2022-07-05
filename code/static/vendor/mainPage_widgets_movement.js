@@ -35,26 +35,26 @@ function resizeWidgets() {
         
     } else if (winWidth >= 1530 && winWidth < 1920){
         watchT1Button.style.position = "absolute";
-        watchT1Button.style.marginTop = "-32vw";
+        watchT1Button.style.marginTop = "-34vw";
         watchT1Button.style.marginLeft = "43.5vw";
-        watchT1Button.style.fontSize = "1.8vw";
-        playT1Logo.style.fontSize = "1.8vw";
+        watchT1Button.style.fontSize = "1.5vw";
+        playT1Logo.style.fontSize = "1.5vw";
         sliderT1Description.style.marginTop = "-20vw";
         sliderT1Description.style.fontSize = "1vw";
 
         watchT2Button.style.position = "absolute";
-        watchT2Button.style.marginTop = "-32vw";
+        watchT2Button.style.marginTop = "-34vw";
         watchT2Button.style.marginLeft = "43.5vw";
-        watchT2Button.style.fontSize = "1.8vw";
-        playT2Logo.style.fontSize = "1.8vw";
+        watchT2Button.style.fontSize = "1.5vw";
+        playT2Logo.style.fontSize = "1.5vw";
         sliderT2Description.style.marginTop = "-20vw";
         sliderT2Description.style.fontSize = "1vw";
 
         watchT3Button.style.position = "absolute";
-        watchT3Button.style.marginTop = "-32vw";
+        watchT3Button.style.marginTop = "-34vw";
         watchT3Button.style.marginLeft = "43.5vw";
-        watchT3Button.style.fontSize = "1.8vw";
-        playT3Logo.style.fontSize = "1.8vw";
+        watchT3Button.style.fontSize = "1.5vw";
+        playT3Logo.style.fontSize = "1.5vw";
         sliderT3Description.style.marginTop = "-20vw";
         sliderT3Description.style.fontSize = "1vw";
 
