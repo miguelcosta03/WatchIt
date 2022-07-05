@@ -241,7 +241,8 @@ html, body {
     margin-left: 840px;
     color: white;
     background-color: transparent;
-    border-color: transparent;
+    border-color: white;
+    border-radius: 15px;
 }
 
 .slider-top-description {

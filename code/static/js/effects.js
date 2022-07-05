@@ -90,9 +90,11 @@ function focusElement() {
 function changeButtonBackgroundColor(buttonID) {
     let button = document.getElementById(`${buttonID}`);
     button.style.color = "rgba(125, 255, 125, 0.712)";
+    button.style.borderColor = "rgba(125, 255, 125, 0.712)";
 }
 
 function resetButtonBackgroundColor(buttonID) {
     let button = document.getElementById(`${buttonID}`);
     button.style.color = "white";
+    button.style.borderColor = "white";
 }
