@@ -37,20 +37,25 @@ def login():
     global email_address
     invalidEmail = False
     invalidCredentialsText = ''
-    
+    correctLogin = None
     currentDeviceIP = request.environ['REMOTE_ADDR']
     try:
         if request.method == 'POST':
             if request.form.get('login') == 'Login':
                 email_address = request.form['email_address']
-                password = request.form['password']
-                correctLogin = database.loginUser(email_address, Security.encrypt(password))
-                if correctLogin:
-                    isLogged = True
-                    database.updateDeviceConnectionNumber(database.getUserID(email_address), currentDeviceIP)
-                    return redirect(url_for('mainPage'))
+                userExists = database.checkIfUserExistsByEmail(email_address)
+                if userExists:
+                    password = request.form['password']
+                    userExists = database.checkIfUserExistsByEmail(email_address)
+                    correctLogin = database.loginUser(email_address, Security.encrypt(password))
+                    if correctLogin:
+                        isLogged = True
+                        database.updateDeviceConnectionNumber(database.getUserID(email_address), currentDeviceIP)
+                        return redirect(url_for('mainPage'))
+                    else:
+                        invalidCredentialsText = '* Email ou Password Inválidos.'
                 else:
-                    invalidCredentialsText = '* Email ou Password Inválidos.'
+                    invalidCredentialsText = '* Esta conta não está registada.'
 
     except IndexError:
         invalidEmail = AccountOperations.checkEmail(request.form['email_address'])
