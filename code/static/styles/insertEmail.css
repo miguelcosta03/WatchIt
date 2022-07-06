@@ -1,0 +1,55 @@
+.email-box {
+    position: absolute;
+    margin-top: 3vw;
+    margin-left: 30vw;
+    width: 35vw;
+    height: 35vw;
+    background-color: black;
+}
+
+.insert-email-label {
+    position: absolute;
+    margin-top: 6vw;
+    margin-left: 8vw;
+    font-size: 2vw;
+    color:white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.email-input {
+    position: absolute;
+    border:0;
+    border-bottom:1px solid #555;  
+    background:transparent;
+    width: 18vw;
+    margin-top: 18vw;
+    margin-left: 8vw;
+    font-size:1.2vw;
+    color:#fff;
+}
+
+.email-input:focus {
+    border:none;	
+    outline:none;
+    border-bottom:1px solid rgba(125, 255, 125, 0.712);
+}
+
+.verify-email-button {
+    position: absolute;
+    color: white;
+    margin-top: 25vw;
+    margin-left: 7.9vw;
+    background-color: rgba(125, 255, 125, 0.712);
+    border-color: rgba(125, 255, 125, 0.712);
+    border-radius: 5px;
+    width: 52%;
+    height: 4vw;
+}
+
+.invalid-credentials-text {
+    position: absolute;
+    margin-top: 22vw;
+    margin-left: 8vw;
+    color: red;
+    font-size: 1vw;
+}

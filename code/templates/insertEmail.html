@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Password</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="../static/styles/insertEmail.css">
+    <script src="../static/js/check_credentials.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button class="watchit-button" id="watchit-button" onmouseenter="decreaseButtonBrightness('watchit-button')" onmouseout="resetButtonBrightness('watchit-button')" onclick="returnToHomePage()">WatchIt</button>
+        </div>
+    </div>
+    <div class="email-box">
+        <label class="insert-email-label">Insira o seu email <br>de recuperação</label>
+        <input type="email" class="email-input" name="emailInput" placeholder="Insira o seu endereço de email" id="emailAddress" oninput="checkEmail()">
+        <label class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalid_credentials }}</label>
+        <form method="post">
+            <button class="verify-email-button" name="verifyEmailButton" value="verifyEmail">Verificar Email</button>
+        </form>
+    </div>
+</body>
+</html>

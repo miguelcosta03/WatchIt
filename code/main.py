@@ -16,6 +16,7 @@ serieTemplate = 'serie.html'
 moviesTemplate = 'movies.html'
 movieTemplate = 'movie.html'
 seriesTemplate = 'series.html'
+insertEmailTemplate = 'insertEmail.html'
 editProfileTemplate = 'editProfile.html'
 insertVericationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
@@ -217,7 +218,6 @@ def mainPage():
                             ts1_name=ts1_name, ts2_name=ts2_name, ts3_name=ts3_name)
 
 
-
 @app.route('/filmes', methods=['GET', 'POST'])
 def movies():
     global isLogged
@@ -329,7 +329,6 @@ def movies():
                         tm3_background=tm3_background, tm3_name=tm3_name, tm3_release_year=tm3_release_year, tm3_duration=tm3_duration, m3IsFavourite=m3IsFavourite, tm3_star_classification=tm3_star_classification,
                         tm3_description=tm3_description, m1_image=m1_image, m2_image=m2_image, m3_image=m3_image, m1_value=m1_value, m2_value=m2_value, m3_value=m3_value)
     
-
 @app.route('/series', methods=['GET', 'POST'])
 def series():
     global isLogged
@@ -446,8 +445,7 @@ def series():
                             ts3_total_seasons_number=ts3_total_seasons_number, ts3_star_classification=ts3_star_classification,
                             ts3_description=ts3_description, s3IsFavourite=s3IsFavourite, s1_image=s1_image, s2_image=s2_image, s3_image=s3_image,
                             s1_value=s1_value, s2_value=s2_value, s3_value=s3_value)
-    
-            
+              
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
     currentDeviceIP = request.environ['REMOTE_ADDR']
@@ -472,6 +470,23 @@ def editProfile():
             else:
                 pass
     return render_template(editProfileTemplate, username=username, email_address=email_address)
+
+@app.route('/inserirEmail', methods=['GET', 'POST'])
+def insertEmail():
+    if request.method == 'POST':
+        if request.form.get('verifyEmailButton') == 'verifyEmail':
+            emailAddress = request.form['emailInput']
+            validEmail = DataValidator.validateEmail(emailAddress)
+            if validEmail:
+                if len(email_address) > 0:
+                    return redirect(url_for('changePassword'))
+                else:
+                    invalidCredentials = "* Por favor insira um email."
+            else:
+                invalidCredentials = "* Email Inválido"
+    return render_template(insertEmailTemplate, invalidCredentials=invalidCredentials)
+
+
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
