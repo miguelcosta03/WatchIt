@@ -17,10 +17,10 @@
         </div>
     </div>
     <div class="email-box">
-        <label class="insert-email-label">Insira o seu email <br>de recuperação</label>
-        <input type="email" class="email-input" name="emailInput" placeholder="Insira o seu endereço de email" id="emailAddress" oninput="checkEmail()">
-        <label class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalid_credentials }}</label>
         <form method="post">
+            <label class="insert-email-label">Insira o seu email <br>de recuperação</label>
+            <input type="email" class="email-input" name="emailInput" placeholder="Insira o seu endereço de email" id="emailAddress" oninput="checkEmail()">
+            <label class="invalid-credentials-text" id="invalidCredentialsLabel">{{ invalid_credentials }}</label>
             <button class="verify-email-button" name="verifyEmailButton" value="verifyEmail">Verificar Email</button>
         </form>
     </div>

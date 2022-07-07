@@ -26,6 +26,10 @@ function redirectToInsertVerificationCodePage() {
     location.replace('http://127.0.0.1:5000/inserirCodigodeVerificacao');
 }
 
+function redirectToInsertRecuperationEmailPage() {
+    location.replace('http://127.0.0.1:5000/inserirEmailRecuperacao')
+}
+
 function redirectToChangePasswordPage() {
     location.replace('http://127.0.0.1:5000/alterarPalavraPasse');
 }

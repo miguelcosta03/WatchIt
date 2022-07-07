@@ -471,22 +471,21 @@ def editProfile():
                 pass
     return render_template(editProfileTemplate, username=username, email_address=email_address)
 
-@app.route('/inserirEmail', methods=['GET', 'POST'])
+@app.route('/inserirEmailRecuperacao', methods=['GET', 'POST'])
 def insertEmail():
+    invalidCredentials = None
     if request.method == 'POST':
         if request.form.get('verifyEmailButton') == 'verifyEmail':
             emailAddress = request.form['emailInput']
             validEmail = DataValidator.validateEmail(emailAddress)
             if validEmail:
-                if len(email_address) > 0:
+                if len(emailAddress) > 0:
                     return redirect(url_for('changePassword'))
                 else:
                     invalidCredentials = "* Por favor insira um email."
             else:
                 invalidCredentials = "* Email Inválido"
     return render_template(insertEmailTemplate, invalidCredentials=invalidCredentials)
-
-
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
 def insertVericationCode():
