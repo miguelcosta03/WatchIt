@@ -130,7 +130,7 @@ def signUp():
                                         validEmail = DataValidator.validateEmail(email_address)
                                         validUsername = DataValidator.validateUsername(username)
                                         validPassword = DataValidator.validatePassword(password)
-                                        validConfPassword = DataValidator.validateConfPassword(confPassword, password))
+                                        validConfPassword = DataValidator.validateConfPassword(confPassword, password)
                                         if validEmail == True and validUsername == True and validPassword == True and validConfPassword == True:
                                             database.createNewUser(email_address, username, Security.encrypt(password))
                                             database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
