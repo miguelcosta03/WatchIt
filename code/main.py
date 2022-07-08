@@ -473,6 +473,7 @@ def editProfile():
 
 @app.route('/inserirEmailRecuperacao', methods=['GET', 'POST'])
 def insertEmail():
+    global email_address
     invalidCredentials = None
     if request.method == 'POST':
         if request.form.get('verifyEmailButton') == 'verifyEmail':
@@ -480,7 +481,8 @@ def insertEmail():
             validEmail = DataValidator.validateEmail(emailAddress)
             if validEmail:
                 if len(emailAddress) > 0:
-                    return redirect(url_for('changePassword'))
+                    email_address = emailAddress
+                    return redirect(url_for('insertVericationCode'))
                 else:
                     invalidCredentials = "* Por favor insira um email."
             else:
@@ -523,7 +525,7 @@ def changePassword():
     global email_address
     invalidCredentials = False
     invalidCredentialsText = ''
-
+    print(email_address)
     if request.method == 'POST':
         if request.form.get('confirmNewPasswordButton') == 'alterarPalavraPasse':
             password = request.form['password']
