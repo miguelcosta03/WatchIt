@@ -90,35 +90,54 @@ def signUp():
             invalidPassword = AccountOperations.checkPassword(password)
             invalidConfPassword = AccountOperations.checkPassword(confPassword)
 
+            credentialsStatus = []
             if invalidEmail:
-                invalidCredentialsText = '* Por favor insira um email.'
+                credentialsStatus.append('False')
+                invalidCredentialsText = '* Por favor 3insira um email.'
             else:
                 if invalidUsername:
+                    credentialsStatus.append('False')
                     invalidCredentialsText = '* Por favor insira um username'
                 else:
                     if invalidPassword:
                         invalidCredentialsText = '* Por favor insira uma password.'
                     else:
                         if len(password) < 5:
+                            credentialsStatus.append('False')
                             invalidCredentialsText = '* A password tem de ter no mínimo 5 caracteres.'
                         else:        
                             if invalidConfPassword:
+                                credentialsStatus.append('False')
                                 invalidCredentialsText = '* Por favor confirme a sua password.'
                             else:
                                 userExists = database.checkIfUserExistsByEmail(email_address)
                                 if userExists == False:
                                     ipRegistered = database.checkIfIPIsRegistered(currentDeviceIP)
                                     if ipRegistered:
-                                        database.updateDeviceIP(database.getUserIDByIP(currentDeviceIP), '000.000.000.000')
-                                        database.createNewUser(email_address, username, Security.encrypt(password))
-                                        database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
-                                        isLogged = True
-                                        return redirect(url_for('mainPage'))
+                                        validEmail = DataValidator.validateEmail(email_address)
+                                        validUsername = DataValidator.validateUsername(username)
+                                        validPassword = DataValidator.validatePassword(password)
+                                        validConfPassword = DataValidator.validateConfPassword(confPassword, password)
+                                        if validEmail == True and validUsername == True and validPassword == True and validConfPassword == True:
+                                            database.updateDeviceIP(database.getUserIDByIP(currentDeviceIP), '000.000.000.000')
+                                            database.createNewUser(email_address, username, Security.encrypt(password))
+                                            database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                            isLogged = True
+                                            return redirect(url_for('mainPage'))
+                                        else:
+                                            pass
                                     else:
-                                        database.createNewUser(email_address, username, Security.encrypt(password))
-                                        database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
-                                        isLogged = True
-                                        return redirect(url_for('mainPage'))
+                                        validEmail = DataValidator.validateEmail(email_address)
+                                        validUsername = DataValidator.validateUsername(username)
+                                        validPassword = DataValidator.validatePassword(password)
+                                        validConfPassword = DataValidator.validateConfPassword(confPassword, password))
+                                        if validEmail == True and validUsername == True and validPassword == True and validConfPassword == True:
+                                            database.createNewUser(email_address, username, Security.encrypt(password))
+                                            database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                            isLogged = True
+                                            return redirect(url_for('mainPage'))
+                                        else:
+                                            pass
                                 else:
                                     invalidCredentialsText = '* Já existe uma conta associada a este email.'
                                     

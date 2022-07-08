@@ -30,3 +30,18 @@ class DataValidator:
             validEmail = False
         
         return validEmail
+    
+    @staticmethod
+    def validatePassword(password):
+        if len(password) >= 5:
+            return True
+        else:
+            return False
+    
+    def validateConfPassword(confPassword, password):
+        if len(confPassword) >= 5 and confPassword == password:
+            return True
+        else: 
+            return False
+
+print(DataValidator.validateConfPassword('12345', '12345'))
