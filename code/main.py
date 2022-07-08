@@ -18,7 +18,7 @@ movieTemplate = 'movie.html'
 seriesTemplate = 'series.html'
 insertEmailTemplate = 'insertEmail.html'
 editProfileTemplate = 'editProfile.html'
-insertVericationCodeTemplate = 'insertVerificationCode.html'
+insertVerificationCodeTemplate = 'insertVerificationCode.html'
 changePasswordTemplate = 'changePassword.html'
 errorPageTemplate = 'errorPage.html'
 
@@ -482,7 +482,7 @@ def insertEmail():
             if validEmail:
                 if len(emailAddress) > 0:
                     email_address = emailAddress
-                    return redirect(url_for('insertVericationCode'))
+                    return redirect(url_for('insertVerificationCode'))
                 else:
                     invalidCredentials = "* Por favor insira um email."
             else:
@@ -490,8 +490,9 @@ def insertEmail():
     return render_template(insertEmailTemplate, invalidCredentials=invalidCredentials)
 
 @app.route('/inserirCodigodeVerificacao', methods=['GET', 'POST'])
-def insertVericationCode():
+def insertVerificationCode():
     global email_address
+    
     invalidVerificationCode = False
     genVerCode = AccountOperations.generateNewVerificationCode()
     verCode = ""
@@ -518,14 +519,14 @@ def insertVericationCode():
             
             else:
                 invalidVerificationCode = True
-    return render_template(insertVericationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
+    return render_template(insertVerificationCodeTemplate, invalidVerificationCode=invalidVerificationCode)
 
 @app.route('/alterarPalavraPasse', methods=['GET', 'POST'])
 def changePassword():
     global email_address
     invalidCredentials = False
     invalidCredentialsText = ''
-    print(email_address)
+
     if request.method == 'POST':
         if request.form.get('confirmNewPasswordButton') == 'alterarPalavraPasse':
             password = request.form['password']
@@ -534,6 +535,7 @@ def changePassword():
                 invalidCredentials = False
                 invalidCredentialsText = ''
                 database.updateUserPassword(database.getUserID(email_address), Security.encrypt(password))
+                return redirect(url_for('mainPage'))
             else:
                 invalidCredentials = True
                 invalidCredentialsText = '* Por favor insira uma password.'
