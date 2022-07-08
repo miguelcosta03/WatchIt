@@ -107,10 +107,18 @@ def signUp():
                             else:
                                 userExists = database.checkIfUserExistsByEmail(email_address)
                                 if userExists == False:
-                                    database.createNewUser(email_address, username, Security.encrypt(password))
-                                    database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
-                                    isLogged = True
-                                    return redirect(url_for('mainPage'))
+                                    ipRegistered = database.checkIfIPIsRegistered(currentDeviceIP)
+                                    if ipRegistered:
+                                        database.updateDeviceIP(database.getUserIDByIP(currentDeviceIP), '000.000.000.000')
+                                        database.createNewUser(email_address, username, Security.encrypt(password))
+                                        database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                        isLogged = True
+                                        return redirect(url_for('mainPage'))
+                                    else:
+                                        database.createNewUser(email_address, username, Security.encrypt(password))
+                                        database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
+                                        isLogged = True
+                                        return redirect(url_for('mainPage'))
                                 else:
                                     invalidCredentialsText = '* Já existe uma conta associada a este email.'
                                     
@@ -255,8 +263,6 @@ def movies():
 
     currentDeviceIP = request.environ['REMOTE_ADDR']
     userID = database.getUserIDByIP(currentDeviceIP)
-
-    print(f'USER ID: {userID}')
 
     m1IsFavourite = None
     m2IsFavourite = None

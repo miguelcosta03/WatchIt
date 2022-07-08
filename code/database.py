@@ -101,6 +101,14 @@ class Database:
         verCodeRegisteredDate = self.cursor.fetchall()
         return str(verCodeRegisteredDate).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
 
+    def checkIfIPIsRegistered(self, deviceIP):
+        query = f"""SELECT ID_Utilizador FROM dbo.Conexoes
+                    WHERE IP_Dispositivo='{deviceIP}'"""
+        self.cursor.execute(query)
+        userID = self.cursor.fetchall()
+        formattedUserID = str(userID).replace('[', '').replace(']', '').replace('(', '').replace(')','').replace("'", '').replace(',','')
+        return bool(len(formattedUserID) > 0)
+
     def getConnectedDeviceIP(self, userID):
         query = f"""SELECT IP_Dispositivo FROM dbo.Conexoes
                     WHERE ID_Utilizador={userID}"""
@@ -136,6 +144,13 @@ class Database:
         self.cursor.execute(query)
         self.connection.commit()
 
+    def updateDeviceIP(self, userID, deviceIP):
+        query = f"""UPDATE dbo.Conexoes
+                        SET IP_Dispositivo='{deviceIP}'
+                    WHERE ID_Utilizador = {userID}"""
+        self.cursor.execute(query)
+        self.connection.commit()
+        
     def addDeviceConnection(self, userID, ipAddress):
         query = f"""INSERT INTO dbo.Conexoes
                     VALUES ({userID}, 1, '{ipAddress}');"""
@@ -495,8 +510,7 @@ class Database:
 
 
 
-"""
+
 database = Database('SQL Server', '192.168.20.9', 1433, 'WatchItDB', 'su', '123456')
 database.updateDeviceConnectionNumber(1, '192.168.20.9')
-print(database.getConnectedDeviceIP(1))
-"""
+print(database.checkIfIPIsRegistered('192.168.20.9'))
