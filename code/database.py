@@ -391,7 +391,7 @@ class Database:
     
     def checkIfIsFavouriteMovie(self, userID, movieID):
         query = f"""SELECT ID_Filme FROM dbo.Filmes_Favoritos
-                    WHERE ID_Utilizador={userID} AND ID_Filme = {movieID}"""
+                    WHERE ID_Utilizador={int(userID)} AND ID_Filme={int(movieID)}"""
 
         self.cursor.execute(query)
         isFavouriteMovie = self.cursor.fetchall()

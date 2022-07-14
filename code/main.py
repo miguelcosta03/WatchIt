@@ -39,7 +39,7 @@ def login():
     invalidEmail = False
     invalidCredentialsText = ''
     correctLogin = None
-    currentDeviceIP = request.environ['REMOTE_ADDR']
+
     try:
         if request.method == 'POST':
             if request.form.get('login') == 'Login':
@@ -51,7 +51,6 @@ def login():
                     correctLogin = database.loginUser(email_address, Security.encrypt(password))
                     if correctLogin:
                         isLogged = True
-                        database.updateDeviceConnectionNumber(database.getUserID(email_address), currentDeviceIP)
                         return redirect(url_for('mainPage'))
                     else:
                         invalidCredentialsText = '* Email ou Password Inválidos.'
@@ -75,8 +74,6 @@ def signUp():
     invalidCredentialsText = ''
     global isLogged
     global email_address
-
-    currentDeviceIP = request.environ['REMOTE_ADDR']
 
     if request.method == 'POST':
         if request.form.get('signUp') == "Registar":
@@ -119,7 +116,6 @@ def signUp():
                                         validPassword = DataValidator.validatePassword(password)
                                         validConfPassword = DataValidator.validateConfPassword(confPassword, password)
                                         if validEmail == True and validUsername == True and validPassword == True and validConfPassword == True:
-                                            database.updateDeviceIP(database.getUserIDByIP(currentDeviceIP), '000.000.000.000')
                                             database.createNewUser(email_address, username, Security.encrypt(password))
                                             database.addDeviceConnection(int(database.getUserID(email_address)), currentDeviceIP)
                                             isLogged = True
@@ -148,15 +144,7 @@ def mainPage():
     global isLogged
     global email_address
     
-    currentDeviceIP = request.environ['REMOTE_ADDR']
-
-    try:
-        userID = int(database.getUserIDByIP(currentDeviceIP))
-        isLogged = True
-    except ValueError:
-        isLogged = False
-
-        s1_value = None
+    s1_value = None
     s2_value = None
     s3_value = None
     ts_ids = None
@@ -280,13 +268,12 @@ def movies():
     tm3_star_classification = database.getMovieStarClassification(3)
     tm3_description = database.getMovieDescription(3)
 
-    currentDeviceIP = request.environ['REMOTE_ADDR']
-    userID = database.getUserIDByIP(currentDeviceIP)
 
     m1IsFavourite = None
     m2IsFavourite = None
     m3IsFavourite = None
 
+    userID = database.getUserID(email_address)
     try:
         if int(userID) > 0:
             isLogged = True
@@ -397,12 +384,12 @@ def series():
     s2_value = 'La Casa de Papel'
     s3_value = 'Euphoria'
 
-    currentDeviceIP = request.environ['REMOTE_ADDR']
-    userID = database.getUserIDByIP(currentDeviceIP)
-
     s1IsFavourite = None
     s2IsFavourite = None
     s3IsFavourite = None
+
+    userID = database.getUserID(email_address)
+
 
     try:
         if int(userID) > 0:
@@ -427,6 +414,8 @@ def series():
             case 'watchTopSerie3':
                 database.updateCurrentSerieURL('euphoria', 'Euphoria')
                 return redirect(url_for('watchSerie'))
+
+    if request.method == "POST":
         if request.form.get('addSerie1ToFavouriteSeriesButton') == 'addSerie1ToFavouriteSeriesButton':
             if s1IsFavourite == None:
                 database.removeFavouriteSerie(userID, database.getSerieID(s1_value))
@@ -435,32 +424,32 @@ def series():
                 database.insertFavouriteSerie(userID, database.getSerieID(s1_value))
                 s1IsFavourite = None
 
-            if request.form.get('addSerie2ToFavouriteSeriesButton') == 'addSerie2ToFavouriteSeriesButton':
-                if s2IsFavourite == None:
-                    database.removeFavouriteSerie(userID, database.getSerieID(s2_value))
-                    s2IsFavourite = False
-                else:
-                    database.insertFavouriteSerie(userID, database.getSerieID(s2_value))
-                    s2IsFavourite = None
+        if request.form.get('addSerie2ToFavouriteSeriesButton') == 'addSerie2ToFavouriteSeriesButton':
+            if s2IsFavourite == None:
+                database.removeFavouriteSerie(userID, database.getSerieID(s2_value))
+                s2IsFavourite = False
+            else:
+                database.insertFavouriteSerie(userID, database.getSerieID(s2_value))
+                s2IsFavourite = None
 
-            if request.form.get('addSerie3ToFavouriteSeriesButton') == 'addSerie3ToFavouriteSeriesButton':
-                if s3IsFavourite == None:
-                    database.removeFavouriteSerie(userID, database.getSerieID(s3_value))
-                    s3IsFavourite = False
-                else:
-                    database.insertFavouriteSerie(userID, database.getSerieID(s3_value))
-                    s3IsFavourite = None
+        if request.form.get('addSerie3ToFavouriteSeriesButton') == 'addSerie3ToFavouriteSeriesButton':
+            if s3IsFavourite == None:
+                database.removeFavouriteSerie(userID, database.getSerieID(s3_value))
+                s3IsFavourite = False
+            else:
+                database.insertFavouriteSerie(userID, database.getSerieID(s3_value))
+                s3IsFavourite = None
 
-            match request.form.get('serieButton'):
-                case 'Peaky Blinders':
-                    database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
-                    return redirect(url_for('watchSerie'))
-                case 'La Casa de Papel':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('watchSerie'))
-                case 'Euphoria':
-                    database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
-                    return redirect(url_for('watchSerie'))
+        match request.form.get('serieButton'):
+            case 'Peaky Blinders':
+                database.updateCurrentSerieURL('peakyblinders', 'Peaky Blinders')
+                return redirect(url_for('watchSerie'))
+            case 'La Casa de Papel':
+                database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                return redirect(url_for('watchSerie'))
+            case 'Euphoria':
+                database.updateCurrentSerieURL('lacasadepapel', 'La Casa de Papel')
+                return redirect(url_for('watchSerie'))
     return render_template(seriesTemplate, isLogged=isLogged, ts1_background=ts1_background, ts1_name=ts1_name,
                             ts1_release_year=ts1_release_year, ts1_duration=ts1_duration, ts1_total_seasons_number=ts1_total_seasons_number,
                             ts1_star_classification=ts1_star_classification, ts1_description=ts1_description, s1IsFavourite=s1IsFavourite,
@@ -473,8 +462,9 @@ def series():
               
 @app.route('/editarPerfil', methods=['GET', 'POST'])
 def editProfile():
+    global email_address
     currentDeviceIP = request.environ['REMOTE_ADDR']
-    userID = database.getUserIDByIP(currentDeviceIP)
+    userID = database.getUserID(email_address)
     username = database.getUsername(userID)
     email_address = database.getUserEmail(userID)
     if request.method == 'POST':
@@ -569,10 +559,11 @@ def changePassword():
 @app.route(f"/{database.getCurrentSerieURL()}", methods=['GET', 'POST'])
 def watchSerie():
     global isLogged
+    global email_address
     global scrollToEpisodeGrid
 
     currentDeviceIP = request.environ['REMOTE_ADDR']
-    userID = database.getUserIDByIP(currentDeviceIP)
+    userID = database.getUserID(email_address)
 
     try:
         if int(userID) > 0:
@@ -927,6 +918,7 @@ def watchSerie():
 @app.route(f"/{database.getCurrentMovieURL()}", methods=['GET', 'POST'])
 def watchMovie():
     global isLogged
+    print(isLogged)
     movie_title = database.getCurrentMovieName()
     movie_image_background = r'{}'.format(database.getMovieBackgroundImage(database.getMovieID(movie_title)))
     movie_release_year = database.getMovieReleaseYear(database.getMovieID(movie_title))
